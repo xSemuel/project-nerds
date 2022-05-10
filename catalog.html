@@ -16,15 +16,21 @@
                 <li><a href="catalog.html">Магазин</a></li>
                 <li><a href="blank.html">Контакты</a></li> 
             </Ul>
+            <img src="img/cart-icon.svg" width="15" heigth="15">
             <a href="blank.html">Корзина</a>
         </nav>
     </header>
     <main>
         <h1>Магазин готових шаблонів</h1>
-    <section>
+    <aside>
     <form>
         <h2>Фильтр товаров</h2>
         <form action="serg_artemenko@ukr.net" method="get"
+        <fieldset>
+            <legend>Стоимость:</legend>
+                <label>От</label>
+                <label>До</label>
+        </fieldset>
         <fieldset>
             <legend>Cетка:</legend>
             <ul>
@@ -46,9 +52,8 @@
             <legend>Особености:</legend>
             <ul>
                 <li>
-                    <legend>
-                    <input type="checkbox" name="Slider" checked>
-                    Cлайдер</legend>
+                    <input type="checkbox" name="Slider" id="filter-for-slider" checked>
+                    <legend for="filter-for-slider">Cлайдер</legend>
                 </li>
                 <li>
                     <input type="checkbox" name="preimyschestva" id="filter-for-preimyschestva">
@@ -70,20 +75,104 @@
         </fieldset>
         <button input="submit">Показать</button>
     </form>
+</aside>
+
+    <section>
+        <H2>Каталог Веб-сайтов</H2>
+        <p>Сортировать:</p>
+        <ul>
+            <li>
+                <a href="#">по цене</a>
+            </li>
+            <li>
+                <a href="#">по типу</a>
+            </li>
+            <li>
+                <a href="#">по названию</a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="#"><img src="img/icon-down-dir.svg" width="11" height="10" alt="down"></a>
+            </li>
+            <li>
+                <a href="#"><img src="img/icon-up-dir.svg" width="11" height="10" alt="up"></a>
+            </li>
+        </ul>
     </section>
+<section>
+    <ul>
+        <li>
+            <img src="browser.png" width="360" height="40" alt="icon-browser">
+            <img src="maket-sedona.jpg" width="360" height="580" alt="maket-sedona">
+            <h3>Sedona</h3>
+              <p>Информационный сайт<br>для туристов</p>
+              <a href="#">9 900 руб.</a>
+        </li>
+        <li>
+            <img src="browser1.png" width="360" height="40" alt="icon-browser">
+            <img src="maket-pink.jpg" width="358" height="578" alt="maket-pink">
+            <h3>PINK APP</h3>
+              <p>Продуктовый лендинг<br>приложения для iOS и Android</p>
+              <a href="#">9 900 руб.</a>
+        </li>
+        <li>
+            <img src="browser1.png" width="360" height="40" alt="icon-browser">
+            <img src="maket-barbershop.jpg" width="358" height="578" alt="maket-barbershop">
+            <h3>Barbershop</h3>
+              <p>Сайт салона красоты<br>Для мужчин, да.</p>
+              <a href="#">9 900 руб.</a>
+        </li>
+        <li>
+            <img src="browser1.png" width="360" height="40" alt="icon-browser">
+            <img src="maket-mishka.jpg" width="358" height="578" alt="maket-mishka">
+            <h3>Mishka</h3>
+              <p>Интернет-магазин<br>вязаных игрушек</p>
+              <a href="#">9 900 руб.</a>
+        </li>
+        <li>
+            <img src="browser1.png" width="360" height="40" alt="icon-browser">
+            <img src="maket-a-plus.jpg" width="358" height="578" alt="maket-a-plus">
+            <h3>A Plus</h3>
+              <p>Лендинг курсов повышения<br>квалификации</p>
+              <a href="#">9 900 руб.</a>
+        </li>
+        <li>
+            <img src="browser1.png" width="360" height="40" alt="icon-browser">
+            <img src="maket-kvast.jpg" width="358" height="578" alt="maket-kvast">
+            <h3>KBACT</h3>
+              <p>Промо-сайт производителя<br>крафтового кваса</p>
+              <a href="#">9 900 руб.</a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+          <a>1</a>
+        </li>
+        <li>
+          <a>2</a>
+        </li>
+        <li>
+          <a>3</a>
+        </li>
+        <li>
+          <a>Следующая</a>
+        </li>
+      </ul>
+</section>
     </main>
     <footer>
         <section>
         <h2>Социальные сети</h2>
         <ul>
             <li>
-                <a href="#">Вконтакте</a>
+                <a><img src="img/vk-icon.svg" width="26" heigth="15"  alt="Вконтакте">ВК</a>
             </li>
             <li>
-                <a href="#">Фейсбук</a>
+                <a href="#"><img src="img/fb-icon.png" width="12" heigth="22"  alt="Фейсбук">ФБ</a>
             </li>
             <li>
-                <a href="#">Инстаграм</a>
+                <a href="#"><img src="img/insta-icon.svg" width="21" heigth="21"  alt="Інстаграм">Инстаграм</a>
             </li>
         </ul>
         </section>
