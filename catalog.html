@@ -11,7 +11,7 @@
         <nav>
             <a><img src="img/nerds-logo.svg" width="160" heigth="66"  alt="Nerds"></a>
             <Ul>
-                li><a href="blank.html">Студия</a> </li>
+                <li><a href="blank.html">Студия</a> </li>
                 <li><a href="blank.html">Клиенты</a></li>
                 <li><a href="catalog.html">Магазин</a></li>
                 <li><a href="blank.html">Контакты</a></li> 
@@ -21,6 +21,56 @@
     </header>
     <main>
         <h1>Магазин готових шаблонів</h1>
+    <section>
+    <form>
+        <h2>Фильтр товаров</h2>
+        <form action="serg_artemenko@ukr.net" method="get"
+        <fieldset>
+            <legend>Cетка:</legend>
+            <ul>
+                <li>
+                    <input type="radio" name="product-group" value="adaptivna" id="filter-adaptivna" checked> 
+                    <label for="filter-adaptivna">Адаптивная</label>
+                </li>
+                <li>
+                    <input type="radio" name="product-group" value="Fiksirovana" id="filter-fiksirovana"> 
+                    <label for="filter-fiksirovana">Фиксированая</label>
+                </li>
+                <li>
+                    <input type="radio" name="product-group" value="rezinova" id="filter-rezinova"> 
+                    <label for="filter-rezinova">Резиновая</label>
+                </li>
+            </ul>
+        </fieldset>
+        <fieldset>
+            <legend>Особености:</legend>
+            <ul>
+                <li>
+                    <legend>
+                    <input type="checkbox" name="Slider" checked>
+                    Cлайдер</legend>
+                </li>
+                <li>
+                    <input type="checkbox" name="preimyschestva" id="filter-for-preimyschestva">
+                    <legend for="filter-for-preimyschestva">Преимущества</legend>
+                </li>
+                <li>
+                    <input type="checkbox" name="novosti" id="filter-for-novosti">
+                    <legend for="filter-for-novosti">Новости</legend>
+                </li>
+                <li>
+                    <input type="checkbox" name="galerea" id="filter-for-galerea">
+                    <legend for="filter-for-galerea">Галерея</legend>
+                </li>
+                <li>
+                    <input type="checkbox" name="Korzina" id="filter-for-korzina">
+                    <legend for="filter-for-korzina">Корзина</legend>
+                </li>
+            </ul>
+        </fieldset>
+        <button input="submit">Показать</button>
+    </form>
+    </section>
     </main>
     <footer>
         <section>
