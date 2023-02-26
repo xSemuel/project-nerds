@@ -8,43 +8,40 @@
     <link rel="stylesheet" href="Styles/normalize.css">
     <link rel="stylesheet" href="Styles/style.css">
 </head>
-<body class="page-body inner-body">
-    <header class="header">
-      <nav class="nav container">
-        <a
-          class="header-logo"
-          href="index.html"
-          aria-label="Перейти на главную страницу"
-        >
-          <img
-            src="img/nerds-logo.svg"
-            width="160"
-            height="65"
-            alt="Логотип дизайн-студии «Нёрдс»"
-          />
-        </a>
-        <ul class="site-nav-list">
-          <li class="site-nav-item"><a href="#">Студия</a></li>
-          <li class="site-nav-item"><a href="#">Клиенты</a></li>
-          <li class="site-nav-item current-nav-item"><a>Магазин</a></li>
-          <li class="site-nav-item"><a href="#">Контакты</a></li>
-        </ul>
-        <a class="cart" href="#">Корзина</a>
-      </nav>
+<body class="page-body">
+    <header class="main-header">
+        <div class="container">
+            <nav class="main-navigation">
+                <a class="header-logo">
+                  <img src="img/nerds-logo.svg" width="160" heigth="65"  alt="Nerds">
+                </a>
+                <Ul class="site-navigation">
+                <li class="site-navigation-item"><a href="blank.html">Студия</a> </li>
+                <li class="site-navigation-item"><a href="blank.html">Клиенты</a></li>
+                <li class="site-navigation-item"><a href="catalog.html">Магазин</a></li>
+                <li class="site-navigation-item"><a href="blank.html">Контакты</a></li> 
+                </Ul>
+                <div class="user-navigation">
+                <img src="img/cart-icon.svg" width="15" heigth="15">
+                <a href="blank.html">Корзина</a>
+                </div>
+            </nav>
+        </div>
     </header>
-    <main>
-        <h1>Магазин готових шаблонів</h1>
+    
+<main>
+    <h1>Магазин готових шаблонів</h1>
     <aside>
-    <form>
-        <h2>Фильтр товаров</h2>
-        <form action="serg_artemenko@ukr.net" method="get"
-        <fieldset>
-            <legend>Стоимость:</legend>
-                <label>От</label>
-                <label>До</label>
-        </fieldset>
-        <fieldset>
-            <legend>Cетка:</legend>
+        <form>
+         <h2>Фильтр товаров</h2>
+             <form action="serg_artemenko@ukr.net" method="get"
+               <fieldset>
+                 <legend>Стоимость:</legend>
+                 <label>От</label>
+                 <label>До</label>
+                 </fieldset>
+                 <fieldset>
+                 <legend>Cетка:</legend>
             <ul>
                 <li>
                     <input type="radio" name="product-group" value="adaptivna" id="filter-adaptivna" checked> 
