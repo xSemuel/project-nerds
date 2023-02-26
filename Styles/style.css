@@ -284,3 +284,151 @@
 
 
 
+/* Футер*/
+
+/*Футер Как нас найти*/
+
+.wrap-map {
+  height: 416px;
+  position: relative;
+}
+
+.contacts-map {
+  height: 416px;
+  width: 100%;
+  position: absolute;
+}
+
+.contacts-map iframe {
+  height: 416px;
+  width: 100%;
+  border: none;
+}
+
+.contacts-inner {
+  min-height: 416px;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.contacts-adress {
+  width: 319px;
+  box-sizing: border-box;
+  padding: 48px 50px;
+  background-color: var(--basic-white);
+  position: absolute;
+  top: 54px;
+  left: 20px;
+  box-shadow: 0 1px 1px rgba(var(--basic-black-rgb), 0.1);
+}
+
+.adress-title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 30px;
+  text-transform: uppercase;
+  margin: 0;
+  margin-bottom: 23px;
+}
+
+.adress-text,
+.tel-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  color: var(--basic-grey);
+  margin: 0;
+  margin-bottom: 18px;
+}
+
+.tel-text {
+  margin-bottom: 38px;
+}
+
+.footer-phone {
+  color: var(--basic-grey);
+}
+
+/*Футер - соціальні сторінки */
+
+
+.social {
+  padding-top: 68px;
+  padding-bottom: 58px;
+}
+
+.wrap-social {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  column-gap: 40px;
+}
+
+.social-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.social-list li {
+  width: 81px;
+  padding-bottom: 10px;
+}
+
+.btn-social {
+  background-color: var(--basic-grey-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 81px;
+  height: 81px;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+
+.btn-social:hover {
+  background-color: var(--special-red-hover);
+}
+
+.btn-social:active {
+  background-color: var(--special-red-active);
+  box-shadow: inset 0px 3px 0px rgba(var(--basic-black-rgb), 0.1);
+}
+
+.btn-social:active img {
+  opacity: 0.3;
+}
+
+.btn-vk img {
+  width: 27px;
+  height: 15px;
+}
+
+.btn-fb img {
+  width: 12px;
+  height: 22px;
+}
+
+.btn-insta img {
+  width: 21px;
+  height: 21px;
+}
+
+.social-inner {
+  padding-top: 7px;
+  padding-left: 100px;
+}
+
+.social-slogan {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 36px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.social-text {
+  line-height: 22px;
+  color: var(--basic-grey-dark);
+  margin: 0;
+}
