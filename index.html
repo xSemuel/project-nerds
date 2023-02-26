@@ -5,31 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Дизайн-студія «Ньордс»</title>
-    <link rel="stylesheet" href="Styles/Normalize.css">
+    <link rel="stylesheet" href="Styles/normalize.css">
     <link rel="stylesheet" href="Styles/style.css">
 </head>
 <body class="page-body">
     <header class="main-header">
-        <div class="container"
-          <div class="main-navigation-wrapper">
+        <div class="container">
             <nav class="main-navigation">
-                <a class="header-logo"><img src="img/nerds-logo.svg" width="160" heigth="65"  alt="Nerds"></a>
+                <a class="header-logo">
+                  <img src="img/nerds-logo.svg" width="160" heigth="65"  alt="Nerds">
+                </a>
                 <Ul class="site-navigation">
-                <li><a href="blank.html">Студия</a> </li>
-                <li><a href="blank.html">Клиенты</a></li>
-                <li><a href="catalog.html">Магазин</a></li>
-                <li><a href="blank.html">Контакты</a></li> 
+                <li class="site-navigation-item"><a href="blank.html">Студия</a> </li>
+                <li class="site-navigation-item"><a href="blank.html">Клиенты</a></li>
+                <li class="site-navigation-item"><a href="catalog.html">Магазин</a></li>
+                <li class="site-navigation-item"><a href="blank.html">Контакты</a></li> 
                 </Ul>
                 <div class="user-navigation">
                 <img src="img/cart-icon.svg" width="15" heigth="15">
                 <a href="blank.html">Корзина</a>
                 </div>
             </nav>
-          </div>
         </div>
     </header>
     <main>
-        <section class="slider">
+        <section class="slider container">
             <div class="slider-item">
               <div class="slider-description">
                 <h2>Долго, дорого, скрупулезно.</h2>
@@ -57,8 +57,8 @@
               <button type="button"><span class="visually-hidden">Показать третий слайд</span></button>
             </div>
           </section>
-        <section class="features">
-            <h2>Важная информация</h2>
+        <section class="features container">
+            <h2 class="visually-hidden">Важная информация</h2>
             <ul class="features_list">
                 <Li class="features_items">
                     <img src="img/illustration_1.jpg" alt="Веб-сайты" width="300" height="146">
@@ -80,33 +80,82 @@
                 </li>
             </ul>
         </section>
-        <div class="other_information">   
+        <div class="other_information container">   
           <section class="informations1">
-            <h2>Информация о студии</h2>
-            <P>Мы — маленькая, но гордая</br>дизайн-студия из Краснодара.</P>
-            <p>Исповедуем принципы минимализма и чистоты. Ставим математический расчет</br> превыше креатива. Работаем не покладая рук, как роботы.</p>
-       
+            <h2 class="visually-hidden">Информация о студии</h2>
+            <P class="informations1-slogan">Мы — маленькая, но гордая</br>дизайн-студия из Краснодара.</P>
+            <p class="informations1-text">Исповедуем принципы минимализма и чистоты. Ставим математический расчет</br> превыше креатива. Работаем не покладая рук, как роботы.</p>
             <p>Выполняем заказы на разработку:</p>
             <p>	Веб-сайтов любой сложности</br></br>  Мобильных приложений для iOS и Android</br></br>	Слайдшоу и видео для корпоративных презентаций</p>
           </section>
           <section class="informations2">
             <a><img src="img/nerds-illustration.png" width="360" heigth="280"  alt="Nerds-illustration"></a>
             <h2>с 2004 года Любим точность во всем:</h2>
-            <p>146</p>
-            <p>%</p>
-            <p>100</p>
-            <p>%</p>
-            <P>50</P>
-            <p>%</p>
-            <p>Уровень</br>самоотдачи</p>
-            <P>Соблюдение</br>сроков</P>
-            <p>Минимальная</br>предоплата</p>
+            <ul class="informations2-list">
+              <li class="informations2-item">
+                <p>146%</p>
+                <p class="informations2-text">Уровень<br />самоотдачи</p>
+              </li>
+              <li class="informations2-item">
+                <p>100%</p>
+                <p class="informations2-text">Соблюдение<br />сроков</p>
+              </li>
+              <li class="informations2-item">
+                <p>50%</p>
+                <p class="informations2-text">Минимальная<br />предоплата</p>
+              </li>
+            </ul>
           </section>
         </div>
+        <section class="partners container">
+          <h2 class="visually-hidden">Партнеры</h2>
+          <ul class="partners-list">
+            <li class="partners-item">
+              <a href="https://htmlacademy.ru/intensive/htmlcss" target="_blank">
+                <img
+                  src="img/logo-1.svg"
+                  width="199"
+                  height="68"
+                  alt="Логотип «html academy»"
+                />
+              </a>
+            </li>
+            <li class="partners-item">
+              <a href="#">
+                <img
+                  src="img/logo-2.svg"
+                  width="209"
+                  height="90"
+                  alt="Логотип Барбершоп «Бородинский»"
+                />
+              </a>
+            </li>
+            <li class="partners-item">
+              <a href="#">
+                <img
+                  src="img/logo-3.svg"
+                  width="185"
+                  height="52"
+                  alt="Логотип PINK"
+                />
+              </a>
+            </li>
+            <li class="partners-item">
+              <a href="#">
+                <img
+                  src="img/logo-4.svg"
+                  width="173"
+                  height="84"
+                  alt="Логотип MISHKA"
+                />
+              </a>
+            </li>
+          </ul>
+        </section>
     </main>
 
-    <footer>
-        <section class="contacts">
+    <footer class="footer">
+        <section class="contacts">         
             <h2 class="visually-hidden">Контакты</h2>
             <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ac1545d169bb420ef90648754a6fea53576f6d8beea52be2b904fad6d67ff5f3b&amp;source=constructor"></iframe>
             <img src="img/map.jpg" alt="Дизайн-студия NЁRDS расположена по адресу г. Санкт-Петербург, ул. Б. Конюшенная, д. 19/8"
