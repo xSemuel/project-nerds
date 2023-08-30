@@ -1,10 +1,9 @@
 import cartIcon from '../images/cart-icon.svg';
 import nerdsLogo from '../images/nerds-logo.svg';
-import { Button } from 'bootstrap'
 
 export const Home = () => {
     return ( 
-        <div className="">
+        <div className="container-fluid">
             <nav className="">
                 <a className="navbar-brand" href="!#">
                 <img className="d-inline-block align-text-top" src={nerdsLogo} width="160" heigth="65"  alt="Nerds logo" />
@@ -19,7 +18,6 @@ export const Home = () => {
                 <img src={cartIcon} width="15" heigth="15" alt="Cart"/>
                 <a href="blank.html">Корзина</a>
                 </div>
-                <button className={Button}>gfdgfdgfdgfg</button>
             </nav>
         </div>
 
