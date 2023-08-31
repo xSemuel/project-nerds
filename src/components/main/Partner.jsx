@@ -8,7 +8,7 @@ export const Partner = () => {
     return ( 
         <section className="container">
           <h2 className="visually-hidden">Партнеры</h2>
-          <ul className="partners-list">
+          <ul className="d-flex justify-content-around align-items-center p-0">
             <li className="partners-item">
               <a href="!#" target="_blank">
                 <img

@@ -19,6 +19,7 @@ export const Home = () => {
         <div className="container my-5">
             <hr className="hrDevided m-0"/>
         </div>
+        
     </>
 
 );
