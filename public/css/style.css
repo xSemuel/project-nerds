@@ -1,12 +1,15 @@
 :root {
-    
+    --color-bg-main: #eee;
 }
-
-
 
 
 /* Global */
 
 .container {
     max-width: 1150px;
+   
+}
+
+.bg-color-main {
+    background-color: var(--color-bg-main);
 }
