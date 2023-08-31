@@ -8,8 +8,8 @@ export const Footer = () => {
         <div className="container-fluid bg-color-main">
             <div className="container d-flex align-self-center" style={{height: '12rem'}}>
                 <h2 className="visually-hidden">Социальные сети</h2>  
-                <div className="d-flex gap-5 align-items-center">          
-                    <ul className="d-flex">
+                <div className="d-flex gap-5 align-items-center mx-0">          
+                    <ul className="d-flex gap-1">
                         <li>
                         <a className="btn-social btn-vk" href="!#" >
                             <img
@@ -50,6 +50,6 @@ export const Footer = () => {
                 </div>
             </div>
         </div>
-    );
+    )
 }
  

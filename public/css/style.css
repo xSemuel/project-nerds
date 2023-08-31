@@ -1,5 +1,11 @@
 :root {
     --color-bg-main: #eee;
+    --special-grey-active: #a6a6a6;
+    --basic-grey-dark: #444444;
+    --basic-grey-light: #e1e1e1;
+    --special-red-hover: #e74246;
+    --special-red-active: #d7373b;
+    --basic-black-rgb: 0, 0, 0;
 }
 
 
@@ -7,9 +13,84 @@
 
 .container {
     max-width: 1150px;
-   
 }
 
 .bg-color-main {
     background-color: var(--color-bg-main);
 }
+
+ul, li {
+    text-decoration: none !important;
+    list-style-type: none;
+}
+
+/*Футер - соціальні сторінки */
+
+  .social-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .social-list li {
+    width: 81px;
+    padding-bottom: 10px;
+  }
+  
+  .btn-social {
+    background-color: var(--basic-grey-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 81px;
+    height: 81px;
+    box-sizing: border-box;
+    border-radius: 50%;
+  }
+  
+  .btn-social:hover {
+    background-color: var(--special-red-hover);
+  }
+  
+  .btn-social:active {
+    background-color: var(--special-red-active);
+    box-shadow: inset 0px 3px 0px rgba(var(--basic-black-rgb), 0.1);
+  }
+  
+  .btn-social:active img {
+    opacity: 0.3;
+  }
+  
+  .btn-vk img {
+    width: 27px;
+    height: 15px;
+  }
+  
+  .btn-fb img {
+    width: 12px;
+    height: 22px;
+  }
+  
+  .btn-insta img {
+    width: 21px;
+    height: 21px;
+  }
+  
+  .social-inner {
+    padding-top: 7px;
+    padding-left: 100px;
+  }
+  
+  .social-slogan {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  
+  .social-text {
+    line-height: 22px;
+    color: var(--basic-grey-dark);
+    margin: 0;
+  }
