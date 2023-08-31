@@ -1,4 +1,5 @@
-import { Footer, Home } from './components'
+import { Footer} from './components'
+import { Home } from './components/main'
 import './App.css';
 
 function App() {
