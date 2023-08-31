@@ -1,5 +1,5 @@
 import { Header } from '../../components'
-import { Advantage, Slider } from '../main';
+import { Advantage, Slider, Information } from '../main';
 
 
 export const Home = () => {
@@ -8,6 +8,7 @@ export const Home = () => {
         <Header />    
         <Slider />
         <Advantage />  
+        <Information />
     </>
 
 );
