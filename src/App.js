@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Footer, Mapcontact} from './components'
 import { Home } from './components/main'
 import './App.css';
@@ -5,9 +6,14 @@ import './App.css';
 function App() {
   return (
     <div>
-      <Home />
-      <Mapcontact />
-      <Footer />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}/>
+         
+        </Routes>
+        <Mapcontact />
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }
