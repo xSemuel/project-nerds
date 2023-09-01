@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Header, Mapcontact, Footer, Clients } from './components'
+import { Header, Mapcontact, Footer, Store, Clients} from './components'
 import { Home } from './components/main'
 import './App.css';
 
@@ -10,6 +10,9 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />}/>
+          <Route path="/clients" element={<Clients />}/>
+          <Route path="/clients" element={<Store />}/>
+          <Route path="/clients" element={<Clients />}/>
           <Route path="/clients" element={<Clients />}/>
         </Routes>
         <Mapcontact />

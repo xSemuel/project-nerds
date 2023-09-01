@@ -46,17 +46,17 @@ export const Mapcontact = () => {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Закрыть" ></button>
                         </div>
                         <div className="modal-body">
-                            <form className="row g-2 needs-validation" novalidate>
+                            <form className="row g-2 needs-validation" noValidate>
                                 <div className="col-4 position-relative">
-                                    <label for="validationTooltip01" className="form-label">Ваше ім'я:</label>
-                                    <input type="text" className="form-control" id="validationTooltip01" value="Ім'я Прізвище" required />
+                                    <label htmlFor="validationTooltip01" className="form-label">Ваше ім'я:</label>
+                                    <input type="text" className="form-control" id="validationTooltip01" defaultValue="Ім'я Прізвище" required />
                                 </div>
                                 <div className="col-4 position-relative">
-                                    <label for="validationTooltip02" className="form-label">Ваш email:</label>
-                                    <input type="email" className="form-control" id="validationTooltip02" value="email@example.com" required />
+                                    <label htmlFor="validationTooltip02" className="form-label">Ваш email:</label>
+                                    <input type="email" className="form-control" id="validationTooltip02" defaultValue="email@example.com" required />
                                 </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlTextarea1" className="form-label">Пример текстового поля</label>
+                                <div className="mb-3">
+                                    <label htmlFor="exampleFormControlTextarea1" className="form-label">Пример текстового поля</label>
                                     <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
                             </form>    
