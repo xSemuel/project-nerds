@@ -17,7 +17,7 @@ export const Mapcontact = () => {
                         />
                     </div>
 
-                    <div className="contacts-inner containerA">
+                    <div className="contacts-inner container-writeus">
                         <div className="contacts-adress">
                         <p className="adress-title">NЁRDS DESIGN STUDIO</p>
                         <p className="adress-text">
@@ -39,21 +39,34 @@ export const Mapcontact = () => {
                 </div>
             </div>
             <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div className="modal-dialog">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">Заголовок модального окна</h5>
-                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Закрыть" ></button>
+                <div className="modal-dialog">
+                    <div className="modal-content modal-content-user">
+                        <div className="modal-header">
+                            <h2 className="modal-title" id="exampleModalLabel">Напишіть нам</h2>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Закрыть" ></button>
+                        </div>
+                        <div className="modal-body">
+                            <form className="row g-2 needs-validation" novalidate>
+                                <div className="col-4 position-relative">
+                                    <label for="validationTooltip01" className="form-label">Ваше ім'я:</label>
+                                    <input type="text" className="form-control" id="validationTooltip01" value="Ім'я Прізвище" required />
                                 </div>
-                                <div className="modal-body">
-                                    ...
+                                <div className="col-4 position-relative">
+                                    <label for="validationTooltip02" className="form-label">Ваш email:</label>
+                                    <input type="email" className="form-control" id="validationTooltip02" value="email@example.com" required />
                                 </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-primary">Сохранить изменения</button>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" className="form-label">Пример текстового поля</label>
+                                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
-                            </div>
+                            </form>    
+                        </div>
+                        <div className="d-flex p-3">
+                            <button type="button" className="btn btn-primary">Відправити</button>
                         </div>
                     </div>
+                </div>
+            </div>
         </>
     )
 }

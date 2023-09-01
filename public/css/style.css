@@ -9,6 +9,10 @@
   --basic-black-rgb: 0, 0, 0;
   --basic-grey: #666666;
   --basic-black-rgb: 0, 0, 0;
+  --basic-red: #fb565a;
+  --special-red-hover: #e74246;
+  --special-red-active: #d7373b;
+
 }
 
 /* Global */
@@ -36,7 +40,7 @@ ul, li {
   display: none;
 }
 
-.containerA {
+.container-writeus {
   width: 1160px;
   margin: 0 auto;
   padding: 0 20px;
@@ -84,6 +88,14 @@ ul, li {
 
 .footer-phone {
   color: var(--basic-grey);
+}
+
+/* Modal window */
+
+.modal-content-user {
+  border: none;
+  border-radius: var(none);
+  outline: none;
 }
 
 /*Футер - соціальні сторінки */
