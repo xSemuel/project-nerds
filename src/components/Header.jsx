@@ -1,6 +1,7 @@
+import { NavLink } from "react-router-dom";
+import { NAVIGATION_LINKS } from '../constants';
 import cartIcon from '../images/cart-icon.svg';
 import nerdsLogo from '../images/nerds-logo.svg';
-
 
 export const Header = () => {
     return ( 
@@ -15,12 +16,15 @@ export const Header = () => {
                 </button>
 
                 <div className="collapse navbar-collapse ms-5" id="navbarSupportedContent">
+                    
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item"><a className="nav-link active" href="!#">Студия</a> </li>
-                        <li className="nav-item"><a className="nav-link" href="!#">Клиенты</a></li>
-                        <li className="nav-item"><a className="nav-link" href="!#">Магазин</a></li>
-                        <li className="nav-item"><a className="nav-link" href="!#">Контакты</a></li> 
+
+                        {NAVIGATION_LINKS.map(({ text, link }, index) => 
+                            <li className="nav-item" key={index}><NavLink className="nav-link" to={link}>{text}</NavLink></li>
+                        )}
+
                     </ul>
+
                     <div className="d-flex gap-3">
                         <img src={cartIcon} width="15" heigth="11" alt="Cart"/>
                         <a className="nav-link" href="!#">Корзина</a>
