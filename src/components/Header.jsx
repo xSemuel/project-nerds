@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { NAVIGATION_LINKS } from '../constants';
-import cartIcon from '../images/cart-icon.svg';
-import nerdsLogo from '../images/nerds-logo.svg';
+
 
 export const Header = () => {
     return ( 
