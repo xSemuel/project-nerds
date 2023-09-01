@@ -11,5 +11,5 @@ export const NAVIGATION_LINKS = [
     { text: 'Cтудія', link: '/studio' },
     { text: 'Клієнти', link: '/clients' },
     { text: 'Магазин', link: '/store' },
-    { text: 'Контакти', link: '/contacts' },  
+    { text: 'Контакти', link: '/contacts' },   
 ]
