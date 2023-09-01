@@ -15,7 +15,7 @@ function App() {
           <Route path="/store" element={<Store />}/>
           <Route path="/contacts" element={<Contacts />}/>
           <Route path="/cart" element={<Cart />}/>
-          <Route path="*" element={<NotFound />}/>
+          <Route path="/*" element={<NotFound />}/>
         </Routes>
         <Mapcontact />
         <Footer />
