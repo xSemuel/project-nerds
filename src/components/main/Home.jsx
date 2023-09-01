@@ -1,11 +1,8 @@
-import { Header } from '../../components'
 import { Advantage, Slider, Information, Partner } from '../main';
-
 
 export const Home = () => {
     return ( 
-    <>
-        <Header />    
+    <>    
         <Slider />
         <Advantage />  
         <div className="container my-5">
