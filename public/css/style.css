@@ -1,31 +1,90 @@
 :root {
-    --color-bg-main: #eee;
-    --special-grey-active: #a6a6a6;
-    --basic-grey-dark: #444444;
-    --basic-grey-light: #e1e1e1;
-    --special-red-hover: #e74246;
-    --special-red-active: #d7373b;
-    --basic-black-rgb: 0, 0, 0;
+  --color-bg-main: #eee;
+  --special-grey-active: #a6a6a6;
+  --basic-white: #ffffff;
+  --basic-grey-dark: #444444;
+  --basic-grey-light: #e1e1e1;
+  --special-red-hover: #e74246;
+  --special-red-active: #d7373b;
+  --basic-black-rgb: 0, 0, 0;
+  --basic-grey: #666666;
+  --basic-black-rgb: 0, 0, 0;
 }
-
 
 /* Global */
 
 .container {
-    max-width: 1150px;
+  max-width: 1150px;
 }
 
 .bg-color-main {
-    background-color: var(--color-bg-main);
+  background-color: var(--color-bg-main);
 }
 
 ul, li {
-    text-decoration: none !important;
-    list-style-type: none;
+  text-decoration: none !important;
+  list-style-type: none;
 }
 
 .hrDevided {
-    border: solid 2px var(--color-bg-main);
+  border: solid 2px var(--color-bg-main);
+}
+
+/* Mapcontact */
+
+.ratio::before {
+  display: none;
+}
+
+.containerA {
+  width: 1160px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.contacts-inner {
+  min-height: 416px;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.contacts-adress {
+  width: 319px;
+  box-sizing: border-box;
+  padding: 48px 50px;
+  background-color: var(--basic-white);
+  position: absolute;
+  top: -350px;
+  left: 20px;
+  box-shadow: 0 1px 1px rgba(var(--basic-black-rgb), 0.1);
+}
+
+.adress-title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 30px;
+  text-transform: uppercase;
+  margin: 0;
+  margin-bottom: 23px;
+}
+
+.adress-text,
+.tel-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  color: var(--basic-grey);
+  margin: 0;
+  margin-bottom: 18px;
+}
+
+.tel-text {
+  margin-bottom: 38px;
+}
+
+.footer-phone {
+  color: var(--basic-grey);
 }
 
 /*Футер - соціальні сторінки */

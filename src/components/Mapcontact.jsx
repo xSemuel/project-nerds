@@ -1,14 +1,4 @@
-import { useState } from 'react';
-
 export const Mapcontact = () => {
-
-    const [toogleMoodal, setToogleModal] = useState(false);
-
-    const openModalWindow = (event) => {
-        event.preventDefault();
-        setToogleModal(true);
-
-    }
 
     return ( 
         <>
@@ -24,10 +14,10 @@ export const Mapcontact = () => {
                         aria-hidden="false"
                         tabIndex="0"
                         title="Офис компании по адресу ул. Большая Конюшенная 19/8, Санкт-Петербург"
-                        ></iframe>
+                        />
                     </div>
 
-                    <div className="contacts-inner container">
+                    <div className="contacts-inner containerA">
                         <div className="contacts-adress">
                         <p className="adress-title">NЁRDS DESIGN STUDIO</p>
                         <p className="adress-text">
@@ -40,32 +30,30 @@ export const Mapcontact = () => {
                             >+7 (812) 275-75-75</a
                             >
                         </p>
-                        <a href="writeus.html">Напишите нам</a>
-                        </div>
-                        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={openModalWindow}>
+                        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
                             Напишите нам
                         </button>
                     </div>
-
-                   {toogleMoodal && <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                       
+                    </div>
+                </div>
+            </div>
+            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div className="modal-dialog">
                             <div className="modal-content">
                                 <div className="modal-header">
                                     <h5 className="modal-title" id="exampleModalLabel">Заголовок модального окна</h5>
-                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Закрыть" ></button>
                                 </div>
-                                <div class="modal-body">
+                                <div className="modal-body">
                                     ...
                                 </div>
                                 <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
                                     <button type="button" className="btn btn-primary">Сохранить изменения</button>
                                 </div>
                             </div>
                         </div>
-                    </div>}
-                </div>
-            </div>
+                    </div>
         </>
     )
 }
