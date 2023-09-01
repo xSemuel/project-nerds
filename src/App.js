@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Header, Mapcontact, Footer, Store, Clients, Contacts, Cart} from './components'
+import { Header, Mapcontact, Footer, Store, Clients, Contacts, Cart, NotFound} from './components'
 import { Home } from './components/main'
 import './App.css';
 
@@ -11,9 +11,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/clients" element={<Clients />}/>
-          <Route path="/clients" element={<Store />}/>
-          <Route path="/clients" element={<Contacts />}/>
-          <Route path="/clients" element={<Cart />}/>
+          <Route path="/store" element={<Store />}/>
+          <Route path="/contacts" element={<Contacts />}/>
+          <Route path="/cart" element={<Cart />}/>
+          <Route path="*" element={<NotFound />}/>
         </Routes>
         <Mapcontact />
         <Footer />

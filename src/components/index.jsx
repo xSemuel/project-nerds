@@ -6,3 +6,4 @@ export * from './Contacts';
 export * from './Cart';
 export * from './Mapcontact';
 export * from './Footer';
+export * from './NotFound';
