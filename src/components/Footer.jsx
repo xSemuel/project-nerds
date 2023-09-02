@@ -2,7 +2,6 @@ import iconInst from '../images/insta-icon.svg';
 import iconFB from '../images/fb-icon.png';
 import iconVK from '../images/vk-icon.svg';
 
-
 export const Footer = () => {
     return ( 
         <div className="container-fluid bg-color-main">
