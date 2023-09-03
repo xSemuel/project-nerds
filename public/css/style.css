@@ -172,40 +172,20 @@ ul, li {
 
   /*КАТАЛОГ*/
 
-/* Каталог - оглавление*/
-
-.wrap-catalor-title {
-  background-color: var(--basic-grey-extra-light);
-  text-align: center;
-  margin-bottom: 55px;
-  padding-top: 58px;
-  padding-bottom: 108px;
-  display: grid;
-  justify-content: center;
-}
-
-.catalor-title {
-  margin: 0;
-  font-weight: 500;
-  font-size: 55px;
-  line-height: 55px;
-  grid-column: 1/-1;
-}
-
 /* Каталог - основная часть*/
 
-.wrap-filters-catalog {
+/* .wrap-filters-catalog {
   display: grid;
   grid-template-columns: 260px 1fr;
   column-gap: 140px;
   margin-bottom: 50px;
-}
+} */
 
 /*Фильтры*/
 
-.filters {
+/* .filters {
   width: 260px;
-}
+} */
 
 .filteres-form fieldset {
   padding: 0;

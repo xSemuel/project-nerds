@@ -1,3 +1,19 @@
+import aplusImg from './img/img-aplus-1.jpg';
+import barberImg from './img/img-barbershop-1.jpg';
+import kvastImg from './img/img-kvast-1.jpg';
+import mishkaImg from './img/img-mishka-1.jpg';
+import pinkImg from './img/img-pink-1.jpg';
+import sedonaImg from './img/img-sedona-1.jpg';
+
+const CATALOG_IMG = [
+    {title: 'Cайт Седона', srcLogo: sedonaImg, alt: 'Изображение главной страницы сайта Седона', descName: 'SEDONA', descInfo: `Информационный сайт <br /> для туристов`, descAriaLabel: 'добавить в корзину создание сайта по шаблону SEDONA', descPrice: '9900' }, 
+    {title: 'Cайт PINK APP', srcLogo: pinkImg, alt: 'Изображение главной страницы сайта PINK', descName: 'PINK APP', descInfo: `Продуктовый лендинг приложения для iOS и Android`, descAriaLabel: 'добавить в корзину создание сайта по шаблону PINK APP', descPrice: '9900' }, 
+    {title: 'Cайт Барбершоп «Бородинский»', srcLogo: barberImg, alt: 'Изображение главной страницы сайта Барбершоп «Бородинский»', descName: 'Barbershop', descInfo: `Сайт мужской парикмахерской`, descAriaLabel: 'добавить в корзину создание сайта по шаблону Барбершоп «Бородинский»', descPrice: '9900' }, 
+    {title: 'Cайт MISHKA', srcLogo: mishkaImg, alt: 'Изображение главной страницы сайта MISHKA', descName: 'Mishka', descInfo: `Сайт о товарах ручной работы`, descAriaLabel: 'добавить в корзину создание сайта по шаблону MISHKA', descPrice: '9900' }, 
+    {title: 'Cайт A+', srcLogo: aplusImg, alt: 'Изображение главной страницы сайта A+', descName: 'A+', descInfo: `Сайт учебного заведения`, descAriaLabel: 'добавить в корзину создание сайта по шаблону А+', descPrice: '9900' }, 
+    {title: 'Cайт КВАСТ', srcLogo: kvastImg, alt: 'Изображение главной страницы сайта КВАСТ', descName: 'КВАСТ', descInfo: `Сайт производителя крафтового кваса`, descAriaLabel: 'добавить в корзину создание сайта по шаблону КВАСТ', descPrice: '9900' }, 
+]
+
 export const Catalog = () => {
     return ( 
         <div className="catalog">
@@ -50,184 +66,39 @@ export const Catalog = () => {
                     </div>
                 </div>
                 <ul className="catalog-list">
-                    <li className="catalog-item">
-                        <div className="catalog-slider">
-                            <div className="circle"></div>
-                        </div>
-                        <div className="catalog-img">
-                            <h3 className="visually-hidden">Cайт Седона</h3>
-                            <img
-                                src="img/img-sedona-1.jpg"
-                                width="358"
-                                height="578"
-                                alt="Изображение главной страницы сайта Седона"
-                            />
-                        </div>
-                        <div className="catalog-item-description">
-                            <h3>
-                                <a href="!#" aria-label="открыть окно с демонстрацией сайта"
-                                >SEDONA
-                                </a>
-                            </h3>
-                            <p>
-                                Информационный сайт <br />
-                                для туристов
-                            </p>
-                            <button
-                                className="btn btn-catalog-item"
-                                type="button"
-                                aria-label="добавить в корзину создание сайта по шаблону SEDONA"
-                            >
-                                9 900 <span>&!#8381;</span>
-                            </button>
-                        </div>
-                    </li>
-                    <li className="catalog-item">
-                        <div className="catalog-slider">
-                            <div className="circle"></div>
-                        </div>
-                        <div className="catalog-img">
-                            <h3 className="visually-hidden">Cайт PINK APP</h3>
-                            <img
-                                src="img/img-pink-1.jpg"
-                                width="358"
-                                height="578"
-                                alt="Изображение главной страницы сайта PINK"
-                            />
-                        </div>
-                        <div className="catalog-item-description">
-                            <h3>
-                                <a href="!#" aria-label="открыть окно с демонстрацией сайта"
-                                >PINK APP</a
+                    
+                    {CATALOG_IMG.map(({ title, srcLogo, alt, descName, descInfo, descAriaLabel, descPrice }, index) => 
+
+                        <li key={index} className="catalog-item">
+                            <div className="catalog-slider">
+                                <div className="circle"></div>
+                            </div>
+                            <div className="catalog-img">
+                                <h3 className="visually-hidden">{title}</h3>
+                                <img
+                                    src={srcLogo}
+                                    width="358"
+                                    height="578"
+                                    alt={alt}
+                                />
+                            </div>
+                            <div className="catalog-item-description">
+                                <h3>
+                                    <a href="!#" aria-label="открыть окно с демонстрацией сайта"
+                                    >{descName}</a
+                                    >
+                                </h3>
+                                <p>{descInfo}</p>
+                                <button
+                                    className="btn btn-catalog-item"
+                                    type="button"
+                                    aria-label={descAriaLabel}
                                 >
-                            </h3>
-                            <p>Продуктовый лендинг приложения для iOS и Android</p>
-                            <button
-                                className="btn btn-catalog-item"
-                                type="button"
-                                aria-label="добавить в корзину создание сайта по шаблону PINK APP"
-                            >
-                                9 900 <span>&!#8381;</span>
-                            </button>
-                        </div>
-                    </li>
-                    <li className="catalog-item">
-                        <div className="catalog-slider">
-                            <div className="circle"></div>
-                        </div>
-                        <div className="catalog-img">
-                            <h3 className="visually-hidden">Cайт Барбершоп «Бородинский»</h3>
-                            <img
-                                src="img/img-barbershop-1.jpg"
-                                width="358"
-                                height="578"
-                                alt="Изображение главной страницы сайта Барбершоп «Бородинский»"
-                            />
-                        </div>
-                        <h3 className="visually-hidden">Cайт MISHKA</h3>
-                        <div className="catalog-item-description">
-                            <h3>
-                                <a href="!#" aria-label="открыть окно с демонстрацией сайта"
-                                >Барбершоп «Бородинский»</a
-                                >
-                            </h3>
-                            <p>Сайт мужской парикмахерской</p>
-                            <button
-                                className="btn btn-catalog-item"
-                                type="button"
-                                aria-label="добавить в корзину создание сайта по шаблону Барбершоп «Бородинский»"
-                            >
-                                9 900 <span>&!#8381;</span>
-                            </button>
-                        </div>
-                    </li>
-                    <li className="catalog-item">
-                        <div className="catalog-slider">
-                            <div className="circle"></div>
-                        </div>
-                        <div className="catalog-img">
-                            <h3 className="visually-hidden">Cайт MISHKA</h3>
-                            <img
-                                src="img/img-mishka-1.jpg"
-                                width="358"
-                                height="578"
-                                alt="Изображение главной страницы сайта MISHKA"
-                            />
-                        </div>
-                        <div className="catalog-item-description">
-                            <h3>
-                                <a href="!#" aria-label="открыть окно с демонстрацией сайта"
-                                >MISHKA</a
-                                >
-                            </h3>
-                            <p>Сайт о товарах ручной работы</p>
-                            <button
-                                className="btn btn-catalog-item"
-                                type="button"
-                                aria-label="добавить в корзину создание сайта по шаблону MISHKA"
-                            >
-                                9 900 <span>&!#8381;</span>
-                            </button>
-                        </div>
-                    </li>
-                    <li className="catalog-item">
-                        <div className="catalog-slider">
-                            <div className="circle"></div>
-                        </div>
-                        <div className="catalog-img">
-                            <h3 className="visually-hidden">Cайт A+</h3>
-                            <img
-                                src="img/img-aplus-1.jpg"
-                                width="358"
-                                height="578"
-                                alt="Изображение главной страницы сайта A+"
-                            />
-                        </div>
-                        <div className="catalog-item-description">
-                            <h3>
-                                <a href="!#" aria-label="открыть окно с демонстрацией сайта"
-                                >A+</a
-                                >
-                            </h3>
-                            <p>Сайт учебного заведения</p>
-                            <button
-                                className="btn btn-catalog-item"
-                                type="button"
-                                aria-label="добавить в корзину создание сайта по шаблону А+"
-                            >
-                                9 900 <span>&!#8381;</span>
-                            </button>
-                        </div>
-                    </li>
-                    <li className="catalog-item">
-                        <div className="catalog-slider">
-                            <div className="circle"></div>
-                        </div>
-                        <div className="catalog-img">
-                            <h3 className="visually-hidden">Cайт КВАСТ</h3>
-                            <img
-                                src="img/img-kvast-1.jpg"
-                                width="358"
-                                height="578"
-                                alt="Изображение главной страницы сайта КВАСТ"
-                            />
-                        </div>
-                        <div className="catalog-item-description">
-                            <h3>
-                                <a href="!#" aria-label="открыть окно с демонстрацией сайта"
-                                >КВАСТ</a
-                                >
-                            </h3>
-                            <p>Сайт производителя крафтового кваса</p>
-                            <button
-                                className="btn btn-catalog-item"
-                                type="button"
-                                aria-label="добавить в корзину создание сайта по шаблону КВАСТ"
-                            >
-                                9 900 <span>&!#8381;</span>
-                            </button>
-                        </div>
-                    </li>
+                                    {descPrice} <span>&!#8381;</span>
+                                </button>
+                            </div>
+                        </li>
+                    )},
                 </ul>
                 <ul className="page-list">
                     <li className="page-item current-page-item">
