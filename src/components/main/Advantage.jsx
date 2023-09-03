@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { ADVANTAGE_BLOCK } from '../constants';
+import { ADVANTAGE_BLOCK } from '../../constants';
 
 export const Advantage = () => {
     return ( 
@@ -11,7 +11,7 @@ export const Advantage = () => {
                     <div className="card-body">
                         <h3 className="card-title mb-3">{title}</h3>
                         <p className="card-text mb-4">{info}</p>
-                        <NavLink to={link} className="btn btn-primary btnColor">{btnInfo}</NavLink>
+                        <NavLink to={link} className="btn btn-primary" style={{backgroundColor: btnColor}}>{btnInfo}</NavLink>
                     </div>
                 </div>
             )}
