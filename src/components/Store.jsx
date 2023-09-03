@@ -31,95 +31,71 @@ export const Store = () => {
                                 </div>
                             </div>
                         </fieldset>
-                        <fieldset className="filter-grids">
-                            <legend>Сетка:</legend>
-                            <ul className="filter-grids-list">
-                                <li className="filter-option filter-radio">
-                                <input
-                                    className="filter-input filter-input-radio visually-hidden"
-                                    id="grid-adaptive"
-                                    type="radio"
-                                    name="grid"
-                                    defaultValue="adaptive"
-                                    defaultChecked
-                                />
-                                <label htmlFor="grid-adaptive">Адаптивная</label>
-                                </li>
-                                <li className="filter-option filter-radio">
-                                <input
-                                    className="filter-input filter-input-radio visually-hidden"
-                                    id="grid-fixed"
-                                    type="radio"
-                                    name="grid"
-                                    defaultValue="fixed"
-                                />
-                                <label htmlFor="grid-fixed">Фиксированная</label>
-                                </li>
-                                <li className="filter-option filter-radio">
-                                <input
-                                    className="filter-input filter-input-radio visually-hidden"
-                                    id="grid-elastic"
-                                    type="radio"
-                                    name="grid"
-                                    defaultValue=" elastic"
-                                />
-                                <label htmlFor="grid-elastic">Резиновая</label>
-                                </li>
-                            </ul>
-                        </fieldset>
-                        <fieldset className="filter-features">
-                            <legend>Особенности:</legend>
-                            <ul className="filter-features-list">
-                                <li className="filter-option filter-checkbox">
-                                <input
-                                    className="filter-input filter-input-checkbox visually-hidden"
-                                    id="feature-slider"
-                                    type="checkbox"
-                                    name="slider"
-                                    defaultChecked
-                                />
-                                <label htmlFor="feature-slider">Слайдер</label>
-                                </li>
-                                <li className="filter-option filter-checkbox">
-                                <input
-                                    className="filter-input filter-input-checkbox visually-hidden"
-                                    id="feature-block"
-                                    type="checkbox"
-                                    name="advantages"
-                                />
-                                <label htmlFor="feature-block">Блок преимуществ</label>
-                                </li>
-                                <li className="filter-option filter-checkbox">
-                                <input
-                                    className="filter-input filter-input-checkbox visually-hidden"
-                                    id="feature-news"
-                                    type="checkbox"
-                                    name="news"
-                                    defaultChecked
-                                />
-                                <label htmlFor="feature-news">Новости</label>
-                                </li>
-                                <li className="filter-option filter-checkbox">
-                                <input
-                                    className="filter-input filter-input-checkbox visually-hidden"
-                                    id="feature-gallery"
-                                    type="checkbox"
-                                    name="gallery"
-                                />
-                                <label htmlFor="feature-gallery">Галерея</label>
-                                </li>
-                                <li className="filter-option filter-checkbox">
-                                <input
-                                    className="filter-input filter-input-checkbox visually-hidden"
-                                    id="feature-cart"
-                                    type="checkbox"
-                                    name="basket"
-                                />
-                                <label htmlFor="feature-cart">Корзина</label>
-                                </li>
-                            </ul>
-                        </fieldset>
-                        <button className="btn btn-filter" type="submit">Показать</button>      
+
+
+                        <div>
+                            <h3>Сітка:</h3>
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                                <label className="form-check-label" htmlFor="flexRadioDefault1">
+                                    Адаптивна
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" defaultChecked />
+                                <label className="form-check-label" htmlFor="flexRadioDefault2">
+                                    Фіксована
+                                </label>
+
+                                <label className="form-check-label" htmlFor="flexRadioDefault2">
+                                    Гумова
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                                <label className="form-check-label" htmlFor="flexRadioDefault2">
+                                    Гумова
+                                </label>
+                            </div>
+                        </div>
+
+<div>
+
+                        <h3>Особености:</h3>
+                        <div className="form-check">                           
+                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+                            <label className="form-check-label" htmlFor="defaultCheck1">
+                                 Слайдер
+                            </label>
+                        </div>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
+                            <label className="form-check-label" htmlFor="defaultCheck2">
+                                Блок преимуществ
+                            </label>
+                        </div>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
+                            <label className="form-check-label" htmlFor="defaultCheck2">
+                            Новости
+                            </label>
+                        </div>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
+                            <label className="form-check-label" htmlFor="defaultCheck2">
+                            Галерея
+                            </label>
+                        </div>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
+                            <label className="form-check-label" htmlFor="defaultCheck2">
+                            Корзина
+                            </label>
+                        </div>
+</div>
+
+                       
+                        <button className="btn btn-filter" type="submit">Показати</button>      
                     </div>
 
                     <div className="col-8">
