@@ -1,3 +1,5 @@
+import { Catalog } from './store/index';
+
 export const Store = () => {
     return ( 
         <div className="page-catalog">
@@ -134,7 +136,7 @@ export const Store = () => {
                     <button className="btn btn-filter" type="submit">Показать</button>
                 </htmlForm>
                 </section>
-                   
+                <Catalog /> 
             </div>
         </div>
     
