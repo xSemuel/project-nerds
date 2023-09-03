@@ -1,15 +1,5 @@
 import { NavLink } from "react-router-dom";
-import htmlPartner from '../../images/html-academy.svg';
-import barberPartner from '../../images/barber-shop.svg';
-import pinkPartner from '../../images/pink.svg';
-import mishkaPartner from '../../images/mishka.svg';
-
-const PARTNERS_BLOCK = [
-  { logo: htmlPartner, alt: 'Логотип «html academy»', link: '!#' },
-  { logo: barberPartner, alt: 'Логотип Барбершоп «Бородинский»', link: '!#' },
-  { logo: pinkPartner, alt: 'Логотип PINK', link: '!#' },
-  { logo: mishkaPartner, alt: 'Логотип MISHKA', link: '!#' },
-]
+import { PARTNERS_BLOCK } from '../../constants';
 
 export const Partner = () => {
     return ( 
