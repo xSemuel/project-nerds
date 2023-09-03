@@ -174,18 +174,7 @@ ul, li {
 
 /* Каталог - основная часть*/
 
-/* .wrap-filters-catalog {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  column-gap: 140px;
-  margin-bottom: 50px;
-} */
-
 /*Фильтры*/
-
-/* .filters {
-  width: 260px;
-} */
 
 .filteres-form fieldset {
   padding: 0;
@@ -195,23 +184,15 @@ ul, li {
 
 /*Фильтр шаблонов Стоимость*/
 
-.filter-cost {
-  text-transform: uppercase;
+.store__input-range {
+  max-width: 80px;
+  max-height: 38px;
+  background-color: var(--color-bg-main);
+
 }
 
-.filter-cost-range {
-  padding-bottom: 54px;
-}
-
-.filter-cost legend {
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 30px;
-  margin-bottom: 48px;
-}
-
-.range-controls {
-  width: 260px;
+.store__input-range:active {
+  border: none;
 }
 
 .range-controls:nth-child(1) {
@@ -343,7 +324,7 @@ ul, li {
   left: -36px;
   width: 25px;
   height: 25px;
-  background-image: url(../img/radio-on.svg);
+  background-image: url(../../src/images/checkbox-on.svg);
   background-repeat: no-repeat;
   opacity: 0.4;
 }
