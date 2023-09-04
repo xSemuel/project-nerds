@@ -176,11 +176,7 @@ ul, li {
 
 /*Фильтры*/
 
-.filteres-form fieldset {
-  padding: 0;
-  margin: 0;
-  border: none;
-}
+
 
 /*Фильтр шаблонов Стоимость*/
 
@@ -197,13 +193,6 @@ ul, li {
 
 /*Каталог шаблонов Сортировать*/
 
-.catalog-sort {
-  text-transform: uppercase;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 48px;
-}
-
 .catalog-sort h3 {
   margin: 0;
   font-weight: 700;
@@ -219,10 +208,6 @@ ul, li {
   padding-bottom: 6px;
 }
 
-.sort-type-list {
-  width: 273px;
-  margin-right: 47px;
-}
 
 /* Виды сортировки: по цене, по названию... */
 
@@ -232,7 +217,7 @@ ul, li {
   line-height: 18px;
   display: inline-block;
   vertical-align: baseline;
-  margin-right: 22px;
+  margin-right: 1rem;
 }
 
 .sort-type-item:not(.current-type-item) {
@@ -280,16 +265,7 @@ ul, li {
   fill-opacity: 0.2;
 }
 
-.sort-badge:not(.current-badge):hover svg {
-  fill: var(--special-grey-active);
-  fill-opacity: 1;
-}
 
-.sort-badge:not(.current-badge):active svg,
-.current-badge svg {
-  fill: var(--basic-black-l);
-  fill-opacity: 1;
-}
 
 .sort-badge:active {
   outline: none;

@@ -10,13 +10,13 @@ export const Store = () => {
 
                 <div className="row row-cols-2">
                     
-                    <div className="col-4">
+                    <div className="col-3">
                        
                         <h2 className="visually-hidden">Фильтр шаблонов</h2>
-                        <fieldset className="filter-cost">
+                        <fieldset className="">
                             <legend>Стоимость:</legend>
                             <div className='w-75'>
-                                <label for="customRange2" className="form-label">Пример диапазона</label>
+                                <label htmlFor="customRange2" className="form-label">Пример диапазона</label>
                                 <input type="range" className="form-range" min="0" max="5" id="customRange2"></input>
                                     
                                 <div className="d-flex justify-content-around">
@@ -59,46 +59,44 @@ export const Store = () => {
                             </div>
                         </div>
 
-<div>
+                        <div>
+                            <h3>Особености:</h3>
+                            <div className="form-check">                           
+                                <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+                                <label className="form-check-label" htmlFor="defaultCheck1">
+                                    Слайдер
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
+                                <label className="form-check-label" htmlFor="defaultCheck2">
+                                    Блок преимуществ
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
+                                <label className="form-check-label" htmlFor="defaultCheck2">
+                                Новости
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
+                                <label className="form-check-label" htmlFor="defaultCheck2">
+                                Галерея
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
+                                <label className="form-check-label" htmlFor="defaultCheck2">
+                                Корзина
+                                </label>
+                            </div>
+                        </div>
 
-                        <h3>Особености:</h3>
-                        <div className="form-check">                           
-                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                            <label className="form-check-label" htmlFor="defaultCheck1">
-                                 Слайдер
-                            </label>
-                        </div>
-                        <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
-                            <label className="form-check-label" htmlFor="defaultCheck2">
-                                Блок преимуществ
-                            </label>
-                        </div>
-                        <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
-                            <label className="form-check-label" htmlFor="defaultCheck2">
-                            Новости
-                            </label>
-                        </div>
-                        <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
-                            <label className="form-check-label" htmlFor="defaultCheck2">
-                            Галерея
-                            </label>
-                        </div>
-                        <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
-                            <label className="form-check-label" htmlFor="defaultCheck2">
-                            Корзина
-                            </label>
-                        </div>
-</div>
-
-                       
-                        <button className="btn btn-filter" type="submit">Показати</button>      
+                        <button className="btn btn-primary" type="submit">Показати</button>      
                     </div>
 
-                    <div className="col-8">
+                    <div className="col-9">
                         <Catalog /> 
                     </div>
 

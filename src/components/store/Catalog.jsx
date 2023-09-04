@@ -19,12 +19,12 @@ export const Catalog = () => {
         <div className="catalog">
             <h2 className="visually-hidden">Каталог шаблонов</h2>
             <div className="wrap-catalog">
-                <div className="catalog-sort">
+                <div className="d-flex justify-content-between text-uppercase">
                     <h3>Сортировать:</h3>
-                    <div className="sort-inner">
-                        <ul className="sort-type-list">
-                            <li className="sort-type-item current-type-item">
-                                <a href> По цене </a>
+                    <div className="d-flex justify-content-between">
+                        <ul className="d-flex">
+                            <li className="sort-type-item">
+                                <a href='!#'> По цене </a>
                             </li>
                             <li className="sort-type-item">
                                 <a href="!#"> По типу </a>
@@ -33,8 +33,8 @@ export const Catalog = () => {
                                 <a href="!#"> По названию </a>
                             </li>
                         </ul>
-                        <div className="sort-badge current-badge">
-                            <a href>
+                        <div className="sort-badge">
+                            <a href='!#'>
                                 <svg
                                     role="img"
                                     aria-label="Значок по убыванию"
@@ -85,8 +85,7 @@ export const Catalog = () => {
                             <div className="catalog-item-description">
                                 <h3>
                                     <a href="!#" aria-label="открыть окно с демонстрацией сайта"
-                                    >{descName}</a
-                                    >
+                                    >{descName}</a>
                                 </h3>
                                 <p>{descInfo}</p>
                                 <button
@@ -100,26 +99,23 @@ export const Catalog = () => {
                         </li>
                     )},
                 </ul>
-                <ul className="page-list">
-                    <li className="page-item current-page-item">
-                        <a href>1</a>
-                    </li>
-                    <li className="page-item">
-                        <a href="!#" aria-label="перейти на страницу 2">2</a>
-                    </li>
-                    <li className="page-item">
-                        <a href="!#" aria-label="перейти на страницу 3">3</a>
-                    </li>
-                    <li className="page-item">
-                        <a href="!#" aria-label="перейти на следующую страницу"
-                        >СЛЕДУЮЩАЯ</a
-                        >
-                    </li>
-                </ul>
-         
+                <nav aria-label="..." >
+                    <ul className="pagination d-flex justify-content-center">
+                        <li className="page-item disabled">
+                            <span className="page-link">Предыдущая</span>
+                        </li>
+                        <li className="page-item"><a className="page-link" href="!#">1</a></li>
+                        <li className="page-item active" aria-current="page">
+                            <span className="page-link">2</span>
+                        </li>
+                        <li className="page-item"><a className="page-link" href="!#">3</a></li>
+                        <li className="page-item">
+                            <a className="page-link" href="!#">Следующая</a>
+                        </li>
+                    </ul>
+                </nav>      
             </div>
-        </div>
-
+       </div>
     )
 }
  
