@@ -21,8 +21,8 @@ export const Catalog = () => {
             <div className="wrap-catalog">
                 <div className="d-flex justify-content-between text-uppercase">
                     <h3>Сортировать:</h3>
-                    <div className="d-flex justify-content-between">
-                        <ul className="d-flex">
+                    <div className="d-flex justify-content-between px-4">
+                        <ul className="d-flex p-2">
                             <li className="sort-type-item">
                                 <a href='!#'> По цене </a>
                             </li>
