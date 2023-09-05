@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Header, Mapcontact, Footer, Studio, Store, Clients, Contacts, Cart, NotFound } from './components'
+import { Header, Mapcontact, Footer, Studio, Clients, Contacts, Cart, NotFound } from './components'
 import { Home } from './components/main'
+import { Store } from './pages'
+
 import './App.css';
 
 function App() {
@@ -12,6 +14,7 @@ function App() {
           <Route path="/" element={<Home />}/>
           <Route path="/studio" element={<Studio />}/>
           <Route path="/clients" element={<Clients />}/>
+          {/* <Route path="/store" element={<Store />}/> */}
           <Route path="/store" element={<Store />}/>
           <Route path="/contacts" element={<Contacts />}/>
           <Route path="/cart" element={<Cart />}/>
