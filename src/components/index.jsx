@@ -8,3 +8,6 @@ export * from './Cart';
 export * from './Mapcontact';
 export * from './Footer';
 export * from './NotFound';
+
+
+export * from './range-filter'
