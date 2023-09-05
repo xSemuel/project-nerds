@@ -1,6 +1,19 @@
 import { Catalog } from './store/index';
 
 export const Store = () => {
+
+    const FILTER_RANGE = [
+        {text: 'від', name: 'min-price', defaultValue: 0},
+        {text: 'до', name: 'max-price', defaultValue: 15000}
+    ]
+
+    const FILTER_NETWORK = [
+        {text: 'Адаптивна', id: 'flexRadioDefault1', htmlFor: 'flexRadioDefault1'},
+        {text: 'Фіксована', id: 'flexRadioDefault2', htmlFor: 'flexRadioDefault2'},
+        {text: 'Гумова', id: 'flexRadioDefault3', htmlFor: 'flexRadioDefault3'},
+    ]
+
+
     return ( 
         <>
             <div className="container-fluid bg-color-main mb-5 py-5">
@@ -17,17 +30,18 @@ export const Store = () => {
                             <legend>Стоимость:</legend>
                             <div className='w-75'>
                                 <label htmlFor="customRange2" className="form-label">Пример диапазона</label>
-                                <input type="range" className="form-range" min="0" max="5" id="customRange2"></input>
+                                <input type="range" className="form-range" min="0" max="15000" id="customRange2"></input>
                                     
                                 <div className="d-flex justify-content-around">
-                                    <label className="d-flex w-50"
-                                        >от
-                                        <input className='store__input-range' type="number" name="min-price" defaultValue="0" id="customRange2"/>
-                                    </label>
-                                    <label className="d-flex w-50"
-                                        >до
-                                        <input className='store__input-range' type="number" name="max-price" defaultValue="15 000" id="customRange2"/>
-                                    </label>
+
+                                    {FILTER_RANGE.map(({ text, name, defaultValue }) =>
+
+                                        <label key={text} className="d-flex w-50"
+                                            >{text}
+                                            <input className='store__input-range' type="number" name={name} defaultValue={defaultValue} id="customRange2"/>
+                                        </label>
+                                    )}
+
                                 </div>
                             </div>
                         </fieldset>
@@ -35,28 +49,17 @@ export const Store = () => {
 
                         <div>
                             <h3>Сітка:</h3>
-                            <div className="form-check">
-                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                <label className="form-check-label" htmlFor="flexRadioDefault1">
-                                    Адаптивна
-                                </label>
-                            </div>
-                            <div className="form-check">
-                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" defaultChecked />
-                                <label className="form-check-label" htmlFor="flexRadioDefault2">
-                                    Фіксована
-                                </label>
 
-                                <label className="form-check-label" htmlFor="flexRadioDefault2">
-                                    Гумова
-                                </label>
-                            </div>
-                            <div className="form-check">
-                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                                <label className="form-check-label" htmlFor="flexRadioDefault2">
-                                    Гумова
-                                </label>
-                            </div>
+                            {FILTER_NETWORK.map(({ text, id, htmlFor }) =>
+  
+                                <div key={text} className="form-check">
+                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id={id} />
+                                    <label className="form-check-label" htmlFor={htmlFor}>
+                                        {text}
+                                    </label>
+                                </div>
+                            )}
+
                         </div>
 
                         <div>
