@@ -1,4 +1,5 @@
 import { Catalog } from './store/index';
+import { useRef } from 'react';
 
 export const Store = () => {
 
@@ -13,6 +14,24 @@ export const Store = () => {
         {text: 'Гумова', id: 'flexRadioDefault3', htmlFor: 'flexRadioDefault3'},
     ]
 
+    const FILTER_FEATURES = [
+        {text: 'Слайдер', value: 1, id: 'defaultCheck1', htmlFor: 'defaultCheck1'},
+        {text: 'Блок преимуществ', value: 2, id: 'defaultCheck2', htmlFor: 'defaultCheck2'},
+        {text: 'Новости', value: 3, id: 'defaultCheck3', htmlFor: 'defaultCheck3'},
+        {text: 'Галерея', value: 4, id: 'defaultCheck4', htmlFor: 'defaultCheck4'},
+        {text: 'Корзина', value: 5, id: 'defaultCheck5', htmlFor: 'defaultCheck5'},
+    ]
+
+
+
+    const filterGoods = (event) => {
+        event.preventDefault();
+        
+        console.log(event);
+    }
+
+
+
 
     return ( 
         <>
@@ -23,14 +42,14 @@ export const Store = () => {
 
                 <div className="row row-cols-2">
                     
-                    <div className="col-3">
+                    <form className="col-3" id='idRange'>
                        
                         <h2 className="visually-hidden">Фильтр шаблонов</h2>
                         <fieldset className="">
                             <legend>Стоимость:</legend>
                             <div className='w-75'>
                                 <label htmlFor="customRange2" className="form-label">Пример диапазона</label>
-                                <input type="range" className="form-range" min="0" max="15000" id="customRange2"></input>
+                                <input type="range" className="form-range" min="0" max="15000" id="customRange"></input>
                                     
                                 <div className="d-flex justify-content-around">
 
@@ -38,7 +57,7 @@ export const Store = () => {
 
                                         <label key={text} className="d-flex w-50"
                                             >{text}
-                                            <input className='store__input-range' type="number" name={name} defaultValue={defaultValue} id="customRange2"/>
+                                            <input className='store__input-range' type="number" name={name} defaultValue={defaultValue} id="customRange"/>
                                         </label>
                                     )}
 
@@ -64,40 +83,21 @@ export const Store = () => {
 
                         <div>
                             <h3>Особености:</h3>
-                            <div className="form-check">                           
-                                <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                                <label className="form-check-label" htmlFor="defaultCheck1">
-                                    Слайдер
-                                </label>
-                            </div>
-                            <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
-                                <label className="form-check-label" htmlFor="defaultCheck2">
-                                    Блок преимуществ
-                                </label>
-                            </div>
-                            <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
-                                <label className="form-check-label" htmlFor="defaultCheck2">
-                                Новости
-                                </label>
-                            </div>
-                            <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
-                                <label className="form-check-label" htmlFor="defaultCheck2">
-                                Галерея
-                                </label>
-                            </div>
-                            <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="" id="defaultCheck2" />
-                                <label className="form-check-label" htmlFor="defaultCheck2">
-                                Корзина
-                                </label>
-                            </div>
+
+                            {FILTER_FEATURES.map(({ text, value, id, htmlFor }) =>
+
+                                <div key={text} className="form-check">                           
+                                    <input className="form-check-input" type="checkbox" value={value} id={id} />
+                                    <label className="form-check-label" htmlFor={htmlFor}>
+                                        {text}
+                                    </label>
+                                </div>
+                            )}
+
                         </div>
 
-                        <button className="btn btn-primary" type="submit">Показати</button>      
-                    </div>
+                        <button className="btn btn-primary" type="submit" onClick={filterGoods}>Показати</button>      
+                    </form>
 
                     <div className="col-9">
                         <Catalog /> 
