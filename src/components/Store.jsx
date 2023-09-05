@@ -1,5 +1,8 @@
 import { Catalog } from './store/index';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+
+
+
 
 export const Store = () => {
 
@@ -9,25 +12,41 @@ export const Store = () => {
     ]
 
     const FILTER_NETWORK = [
-        {text: 'Адаптивна', id: 'flexRadioDefault1', htmlFor: 'flexRadioDefault1'},
-        {text: 'Фіксована', id: 'flexRadioDefault2', htmlFor: 'flexRadioDefault2'},
-        {text: 'Гумова', id: 'flexRadioDefault3', htmlFor: 'flexRadioDefault3'},
+        {text: 'Адаптивна', id: 'Adaptive1'},
+        {text: 'Фіксована', id: 'Fixed2'},
+        {text: 'Гумова', id: 'Rubber3'},
     ]
 
     const FILTER_FEATURES = [
-        {text: 'Слайдер', value: 1, id: 'defaultCheck1', htmlFor: 'defaultCheck1'},
-        {text: 'Блок преимуществ', value: 2, id: 'defaultCheck2', htmlFor: 'defaultCheck2'},
-        {text: 'Новости', value: 3, id: 'defaultCheck3', htmlFor: 'defaultCheck3'},
-        {text: 'Галерея', value: 4, id: 'defaultCheck4', htmlFor: 'defaultCheck4'},
-        {text: 'Корзина', value: 5, id: 'defaultCheck5', htmlFor: 'defaultCheck5'},
+        {text: 'Слайдер', value: 'Slider', id: 'defaultCheck1'},
+        {text: 'Блок преимуществ', value: 'blockFeatures', id: 'defaultCheck2'},
+        {text: 'Новости', value: 'News', id: 'defaultCheck3'},
+        {text: 'Галерея', value: 'Gallery', id: 'defaultCheck4'},
+        {text: 'Корзина', value: 'Cart', id: 'defaultCheck5'},
     ]
 
+    const inputRange = useRef();
 
+    const [inputRadio, setInputRadio] = useState();
+    const [inputCheckbox, setInputCheckbox] = useState();
+    const [objectFilter, setObjectFilter] = useState({})
+
+    const getInputRadio = (event) => {
+        event.preventDefault();
+        console.log(event.target.id)
+        setInputRadio(event.target.id)
+    }
+
+    const getInputCheckbox = (event) => {
+        event.preventDefault();
+        console.log(event.target.value)
+
+    }
 
     const filterGoods = (event) => {
         event.preventDefault();
-        
         console.log(event);
+        setObjectFilter(prev => inputRange.current.value)
     }
 
 
@@ -49,7 +68,7 @@ export const Store = () => {
                             <legend>Стоимость:</legend>
                             <div className='w-75'>
                                 <label htmlFor="customRange2" className="form-label">Пример диапазона</label>
-                                <input type="range" className="form-range" min="0" max="15000" id="customRange"></input>
+                                <input type="range" className="form-range" min="0" max="15000" id="customRange" value='' ref={inputRange}></input>
                                     
                                 <div className="d-flex justify-content-around">
 
@@ -66,41 +85,41 @@ export const Store = () => {
                         </fieldset>
 
 
-                        <div>
+                        <form onChange={getInputRadio}>
                             <h3>Сітка:</h3>
 
                             {FILTER_NETWORK.map(({ text, id, htmlFor }) =>
   
-                                <div key={text} className="form-check">
+                                <div key={text} className="form-check" >
                                     <input className="form-check-input" type="radio" name="flexRadioDefault" id={id} />
-                                    <label className="form-check-label" htmlFor={htmlFor}>
+                                    <label className="form-check-label" htmlFor='flexRadioDefault1'>
                                         {text}
                                     </label>
                                 </div>
                             )}
 
-                        </div>
+                        </form>
 
-                        <div>
+                        <form onChange={getInputCheckbox}>
                             <h3>Особености:</h3>
 
                             {FILTER_FEATURES.map(({ text, value, id, htmlFor }) =>
 
                                 <div key={text} className="form-check">                           
                                     <input className="form-check-input" type="checkbox" value={value} id={id} />
-                                    <label className="form-check-label" htmlFor={htmlFor}>
+                                    <label className="form-check-label" htmlFor='defaultCheck1'>
                                         {text}
                                     </label>
                                 </div>
                             )}
 
-                        </div>
+                        </form>
 
                         <button className="btn btn-primary" type="submit" onClick={filterGoods}>Показати</button>      
                     </form>
 
                     <div className="col-9">
-                        <Catalog /> 
+                        <Catalog objectFilter={objectFilter}/> 
                     </div>
 
                 </div>

@@ -1,6 +1,9 @@
 import { CATALOG_GOODS } from "../../constants"
 
-export const Catalog = () => {
+export const Catalog = ({objectFilter}) => {
+
+    console.log(objectFilter)
+    
     return ( 
         <div className="catalog">
             <h2 className="visually-hidden">Каталог шаблонов</h2>
