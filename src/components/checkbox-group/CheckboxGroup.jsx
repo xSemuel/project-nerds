@@ -4,9 +4,8 @@ export const CheckboxGroup = (props) => {
 
     return (
         <div>
-            <h1>Check box</h1>
-            <form>
-                <h3>Особености:</h3>
+            <form className="filter-cost mb-4">
+                <legend>Особливості:</legend>
 
                 {options.map(({ text, value, id }) =>
 

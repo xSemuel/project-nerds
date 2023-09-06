@@ -4,8 +4,8 @@ export const RadioGroup = (props) => {
 
     return ( 
         <div>
-            <form>
-                <h3>Сітка:</h3>
+            <form className="filter-cost mb-4">
+                <legend>Сітка:</legend>
 
                 {options.map(({ text, id }) =>
 

@@ -35,8 +35,8 @@ export const FilterPanel = (props) => {
 
     return ( 
         <div className={styles.wrapper}>
-            <h1>FilterPanel</h1>
-            <label htmlFor="customRange2" className="form-label">Пример диапазона</label>
+            <h1 className='visually-hidden'>FilterPanel</h1>
+            <label htmlFor="customRange2" className="form-label visually-hidden">Фільтри:</label>
             <RangeFilter options={FILTER_RANGE} min={0} max={15000} onChange={() => {}} />
             <RadioGroup options={FILTER_NETWORK} onChange={() => {}} />
             <CheckboxGroup options={FILTER_FEATURES} onChange={() => {}} />

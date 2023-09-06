@@ -170,317 +170,61 @@ ul, li {
   }
 
 
-  /*КАТАЛОГ*/
+/*Store*/
 
-/* Каталог - основная часть*/
+/*Filters*/
 
-/*Фильтры*/
+/*Filter Panel*/
 
-
-
-/*Фильтр шаблонов Стоимость*/
-
-.store__input-range {
-  max-width: 80px;
-  max-height: 38px;
-  background-color: var(--color-bg-main);
-
-}
-
-.store__input-range:active {
-  border: none;
-}
-
-/*Каталог шаблонов Сортировать*/
-
-.catalog-sort h3 {
-  margin: 0;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 30px;
-  width: 360px;
-}
-
-.sort-inner {
-  width: 360px;
-  display: flex;
-  padding-top: 6px;
-  padding-bottom: 6px;
-}
-
-
-/* Виды сортировки: по цене, по названию... */
-
-.sort-type-item {
-  opacity: 0.3;
-  font-size: 14px;
-  line-height: 18px;
-  display: inline-block;
-  vertical-align: baseline;
-  margin-right: 1rem;
-}
-
-.sort-type-item:not(.current-type-item) {
-  cursor: pointer;
-}
-
-.sort-type-item:last-child {
-  margin-right: 0;
-}
-
-.sort-type-item:not(.current-type-item):hover {
-  opacity: 0.6;
-}
-
-.sort-type-item:not(.current-type-item):active,
-.current-type-item {
-  opacity: 1;
-}
-
-.sort-type-item:active {
-  outline: none;
-}
-
-.sort-badge:focus svg {
-  fill: var(--basic-black-l);
-  fill-opacity: 1;
-}
-
-/*Значки-тругольники: по возрастанию, по убыванию */
-
-.sort-badge {
-  margin-right: 18px;
-}
-
-.sort-badge:not(.current-badge) {
-  cursor: pointer;
-}
-
-.sort-badge:last-child {
-  margin-right: 0;
-}
-
-.sort-badge svg {
-  fill: var(--special-grey-active);
-  fill-opacity: 0.2;
-}
-
-
-
-.sort-badge:active {
-  outline: none;
-}
-
-.sort-type-item:focus {
-  opacity: 1;
-}
-
-/*Каталог шаблонов Каталог*/
-
-.catalog-list {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 23px;
-}
-
-.catalog-item {
-  width: 360px;
-  height: 620px;
-  margin-right: 40px;
-  margin-bottom: 30px;
-  position: relative;
-  border-radius: 0 0 5px 5px;
-  cursor: pointer;
-}
-
-.catalog-item:nth-child(2n) {
-  margin-right: 0;
-}
-
-.catalog-slider {
-  width: 360px;
-  height: 40px;
-  background-color: var(--basic-grey--dark-l);
-  opacity: 0.12;
-  padding: 13px 284px 13px 16px;
-  box-sizing: border-box;
-  border: 1px solid var(--basic-grey--dark-l);
-  border-radius: 5px 5px 0 0;
-}
-
-/*Кружки на слайдере*/
-
-.circle,
-.circle::after,
-.circle::before {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background-color: var(--basic-white);
-}
-
-.circle {
-  display: inline-block;
-  position: relative;
-  left: 22px;
-  vertical-align: baseline;
-}
-
-.circle::after,
-.circle::before {
-  content: "";
-  position: absolute;
-}
-
-.circle::after {
-  left: 23px;
-}
-
-.circle::before {
-  right: 23px;
-}
-
-/*------------------*/
-
-.catalog-item:hover .catalog-slider {
-  opacity: 1;
-}
-
-.catalog-item:hover {
-  box-shadow: 0px 6px 15px rgba(var(--basic-black-rgb), 0.25);
-}
-
-.catalog-img {
-  width: 358px;
-  height: 578px;
-  border: 1px solid rgba(var(--basic-black-rgb), 0.1);
-  border-radius: 0 0 5px 5px;
-}
-
-.catalog-img img {
-  width: 358px;
-  height: 578px;
-  border-radius: 0 0 5px 5px;
-}
-
-/*Карточка шаблонов*/
-
-.catalog-item-description {
-  width: 360px;
-  min-height: 231px;
-  padding: 26px 52px 44px 52px;
-  border-radius: 0 0 5px 5px;
-  box-sizing: border-box;
-  position: absolute;
-  bottom: 0;
-  background-color: var(--basic-grey-extra-light);
-  display: none;
-  overflow: hidden;
-}
-
-.catalog-item:hover .catalog-item-description {
-  display: block;
-}
-
-.catalog-item-description h3 {
-  margin: 0;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 30px;
-  text-align: center;
+.filter-cost {
   text-transform: uppercase;
-  margin-bottom: 12px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
-.catalog-item-description a:hover {
-  color: var(--basic-red);
+.filter-cost legend {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 30px;
 }
 
-.catalog-item-description a:active {
-  color: var(--basic-black);
-  opacity: 0.3;
-}
-
-.catalog-item-description p {
-  line-height: 18px;
-  text-align: center;
-  color: var(--basic-grey);
-  margin: 0;
-  margin-bottom: 32px;
-  display: -webkit-box;
-  -webkit-line-clamp: 10;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.btn-catalog-item {
-  display: block;
-  width: 200px;
-  padding: 17px 72px 15px 72px;
-  box-sizing: border-box;
-  background-color: var(--basic-red);
-  margin: 0 auto;
-  cursor: pointer;
-}
-
-.btn-catalog-item:hover {
-  background-color: var(--special-red-hover);
-}
-
-.btn-catalog-item:active {
-  background-color: var(--special-red-active);
-  box-shadow: inset 0px 3px 0px rgba(var(--basic-black-rgb), 0.1);
-  outline: none;
-}
-
-/*Список страниц*/
-
-.page-list {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.page-item {
-  font-weight: 500;
-  line-height: 18px;
-  margin-right: 11px;
-  margin-bottom: 10px;
-}
-
-.page-item:last-child {
-  margin-right: 0;
-}
-
-.page-item a {
-  min-width: 50px;
-  height: 50px;
-  box-sizing: border-box;
+.form-range { 
+  margin-bottom: 13px;
+  padding: 0 18px;
+  height: 80px;
   border-radius: 3px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--basic-grey-extra-light);
+  background-color: var(--color-bg-main);
 }
 
-.page-item:last-child a {
+.range-controls {
   width: 260px;
 }
 
-.current-page-item a {
-  border: 3px solid var(--basic-grey-light-l);
-  background-color: var(--basic-white);
+.inut-range__number {
+  box-sizing: border-box;
+  margin-left: 8px;
+  padding: 2px;
+  width: 80px;
+  height: 38px;
+  border-radius: 2px;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  text-align: center;
+  background-color: #eee;
 }
 
-.page-item:not(.current-page-item) a:hover {
-  background-color: var(--special-grey-hover);
+.inut-range__number:active, :hover, :focus {
+  outline: 0;
+  outline-offset: 0;
 }
 
-.page-item:not(.current-page-item) a:active {
-  background-color: var(--special-grey-active-catalog);
-  color: rgba(var(--basic-black-rgb), 0.3);
-  box-shadow: inset 0px 3px 0px rgba(var(--basic-black-rgb), 0.1);
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+    appearance: none;
+    -moz-appearance: textfield;
 }

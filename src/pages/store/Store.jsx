@@ -14,6 +14,10 @@ export const Store = () => {
                     <form className="col-3">
                         <FilterPanel />
                     </form>
+                    <div className='col-9'>
+                        <h1>Карточки товаров</h1>
+                    </div>    
+                    
                 </div>
 
             </div>

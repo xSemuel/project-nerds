@@ -6,11 +6,11 @@ export const RangeFilter = (props) => {
     // useId() hook
 
     return (
-        <div className='w-75'>
-            {/* <label htmlFor="customRange2" className="form-label">Пример диапазона</label> */}
+        <form className='filter-cost mb-4'>
+            <legend>Вартість:</legend>
             <input
                 type="range"
-                className="form-range"
+                className="form-range range-controls"
                 // min="0"
                 // max="15000"
                 min={min}
@@ -20,12 +20,15 @@ export const RangeFilter = (props) => {
                 // ref={inputRange}
             />
             
-            <div className="d-flex justify-content-around">
+            <div className="d-flex justify-content-between">
                 {options.map(({ text, name, defaultValue }) =>
-                    <label key={text} className="d-flex w-50">
-                        {text}
+                    <label key={text} className="d-flex align-content-center ">
+                        <div className="">
+                            <p className="">{text}</p>   
+                        </div>
+                        
                         <input
-                            className='store__input-range'
+                            className='inut-range__number'
                             type="number"
                             name={name}
                             defaultValue={defaultValue}
@@ -34,6 +37,6 @@ export const RangeFilter = (props) => {
                     </label>
                 )}
             </div>
-        </div>
+        </form>
     )
 }
