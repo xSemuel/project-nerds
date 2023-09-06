@@ -5,8 +5,20 @@ import styles from './Store.module.css'
 export const Store = () => {
     return ( 
         <div className={styles.wrapper}>
-            <h1>Store</h1>
-            <FilterPanel />
+            <div className="container-fluid bg-color-main mb-5 py-5">
+                <h1 className="container text-center">Магазин готовых шаблонов</h1>
+            </div>
+
+            <div className="container">
+                <div className="row row-cols-2">
+                    <form className="col-3">
+                        <FilterPanel />
+                    </form>
+                </div>
+
+            </div>
+            
         </div>
+
     );
 }

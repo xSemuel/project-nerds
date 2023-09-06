@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Header, Mapcontact, Footer, Studio, Clients, Contacts, Cart, NotFound, Store } from './components'
+import { Header, Mapcontact, Footer, Studio, Clients, Contacts, Cart, NotFound } from './components'
 import { Home } from './components/main'
-// import { Store } from './pages'
+import { Store } from './pages'
 
 import './App.css';
 
