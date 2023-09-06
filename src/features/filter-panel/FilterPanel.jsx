@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { RangeFilter, RadioGroup } from '../../components'
+import { RangeFilter, RadioGroup, CheckboxGroup } from '../../components'
 
 import styles from './FilterPanel.module.css'
 
@@ -14,12 +14,22 @@ const FILTER_NETWORK = [
     {text: 'Гумова', id: 'Rubber3'},
 ]
 
+const FILTER_FEATURES = [
+    {text: 'Слайдер', value: 'Slider', id: 'defaultCheck1'},
+    {text: 'Блок преимуществ', value: 'blockFeatures', id: 'defaultCheck2'},
+    {text: 'Новости', value: 'News', id: 'defaultCheck3'},
+    {text: 'Галерея', value: 'Gallery', id: 'defaultCheck4'},
+    {text: 'Корзина', value: 'Cart', id: 'defaultCheck5'},
+]
+
+
 export const FilterPanel = (props) => {
     const { onSubmit } = props
 
     const [filters, setFilters] = useState({})
 
-    const applyFiltersHandler = () => {
+    const applyFiltersHandler = (event) => {
+        event.preventDefault();
         onSubmit(filters)
     }
 
@@ -28,11 +38,11 @@ export const FilterPanel = (props) => {
             <h1>FilterPanel</h1>
             <label htmlFor="customRange2" className="form-label">Пример диапазона</label>
             <RangeFilter options={FILTER_RANGE} min={0} max={15000} onChange={() => {}} />
-            <RadioGroup options={FILTER_NETWORK} onChange={() => {}}/>
+            <RadioGroup options={FILTER_NETWORK} onChange={() => {}} />
+            <CheckboxGroup options={FILTER_FEATURES} onChange={() => {}} />
             {/* RadioGroup  */}
             {/* CheckboxGroup */}
             <button className="btn btn-primary" type="submit" onClick={applyFiltersHandler}>Показати</button> 
-        </div>
-        
-    );
+        </div>   
+    )
 }

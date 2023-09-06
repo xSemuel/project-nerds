@@ -2,10 +2,8 @@ export const RadioGroup = (props) => {
 
     const { options } = props;
 
-    console.log(options)
     return ( 
         <div>
-            <h1>RadioGroup</h1>
             <form>
                 <h3>Сітка:</h3>
 

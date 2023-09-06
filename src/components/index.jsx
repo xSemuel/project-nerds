@@ -12,3 +12,4 @@ export * from './NotFound';
 
 export * from './range-filter'
 export * from './radio-group'
+export * from './checkbox-group'
