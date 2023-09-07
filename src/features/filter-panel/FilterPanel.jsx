@@ -41,11 +41,9 @@ export const FilterPanel = (props) => {
             <RangeFilter options={FILTER_RANGE} min={0} max={15000} onChange={() => {}} />
             <RadioGroup options={FILTER_NETWORK} onChange={() => {}} />
             <CheckboxGroup options={FILTER_FEATURES} onChange={() => {}} />
-            {/* RadioGroup  */}
-            {/* CheckboxGroup */}
-            <button className="btn btn-primary" type="submit" onClick={applyFiltersHandler}>Показати</button> 
-            <Button variant="contained" size="small">
-                Small
+
+            <Button type="submit" sx={{mx: 'auto', width: 260, height: 52, color: '#000', background: '#eee', fontSize: 16, fontWeight: 500 }} variant="contained" size="large" onClick={applyFiltersHandler}>
+                Показати
             </Button>
         </div>   
     )
