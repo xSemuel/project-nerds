@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { RangeFilter, RadioGroup, CheckboxGroup } from '../../components'
+import { Button } from '@mui/material'
 
 import styles from './FilterPanel.module.css'
 
@@ -43,6 +44,9 @@ export const FilterPanel = (props) => {
             {/* RadioGroup  */}
             {/* CheckboxGroup */}
             <button className="btn btn-primary" type="submit" onClick={applyFiltersHandler}>Показати</button> 
+            <Button variant="contained" size="small">
+                Small
+            </Button>
         </div>   
     )
 }
