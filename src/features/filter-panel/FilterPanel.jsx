@@ -5,8 +5,8 @@ import { Button } from '@mui/material'
 import styles from './FilterPanel.module.css'
 
 const FILTER_RANGE = [
-    {text: 'від', name: 'min-price', defaultValue: 0},
-    {text: 'до', name: 'max-price', defaultValue: 15000}
+    {text: 'від', indexValue: 0},
+    {text: 'до', indexValue: 1 }
 ]
 
 const FILTER_NETWORK = [
@@ -27,18 +27,31 @@ const FILTER_FEATURES = [
 export const FilterPanel = (props) => {
     const { onSubmit } = props
 
-    const [filters, setFilters] = useState({})
+    const [filters, setFilters] = useState({
+        range: [1000, 11000]
+    })
 
     const applyFiltersHandler = (event) => {
         event.preventDefault();
-        onSubmit(filters)
+        console.log("filters", filters)
+        // onSubmit(filters)
+    }
+
+    const onChangeRangeHandler = (range) => {
+        setFilters((prevState) => ({ ...prevState, range }))
     }
 
     return ( 
         <div className={styles.wrapper}>
             <h1 className='visually-hidden'>FilterPanel</h1>
             <label htmlFor="customRange2" className="form-label visually-hidden">Фільтри:</label>
-            <RangeFilter options={FILTER_RANGE} min={0} max={15000} onChange={() => {}} />
+            <RangeFilter
+                options={FILTER_RANGE}
+                min={0}
+                max={15000}
+                value={filters.range}
+                onChange={onChangeRangeHandler}
+            />
             <RadioGroup options={FILTER_NETWORK} onChange={() => {}} />
             <CheckboxGroup options={FILTER_FEATURES} onChange={() => {}} />
 

@@ -1,11 +1,16 @@
-import { useState} from 'react';
+import { css, Theme } from '@emotion/react'
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import Input from '@mui/material/Input';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
-import { Typography } from '@mui/material';
+import {  Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
+
+
+// const boxStyles = (theme: Theme) => css`  
+//     padding-left: ${theme.spacing(2)};
+// `
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -21,17 +26,10 @@ function valuetext(value) {
 }
 
 export const RangeFilter = (props) => {
-
-    const { options, min, max, /*onChange*/ } = props;
-
-
-
-    const [value, setValue] = useState([3000, 12000]);
+    const { value, min, max, onChange } = props;
 
     const handleChange = (event, newValue) => {
-        console.log(newValue)
-        console.log(event)
-        setValue(newValue);
+        onChange(newValue)
     };
 
     const handleInputChange = (event) => {
@@ -42,16 +40,17 @@ export const RangeFilter = (props) => {
         } else {
             newState = [value[0], newNum]
         }
-        setValue(newState)
+        onChange(newState)
     };
 
     return (
         <form className='filter-cost mb-4'>
             <legend>Вартість:</legend>
-            <Box  sx={{ width: 260 }}>
+            {/* <Box css={boxStyles}  sx={{ width: 260 }}> */}
+            <Box sx={{ width: 260 }}>
                 <Stack spacing={{ xs: 1, sm: 2 }} direction="row"  justifyContent="space-between" useFlexGap flexWrap="wrap">
-                    <Item sx={{ width: 260, height: 80, background: '#eee', pt: 3}} >
-                        <Slider sx={{ color: '#ffffff' }}
+                    <Item sx={{ width: 260, height: 80, background: '#eee', pt: 3 }} >
+                        <Slider sx={{ color: '#ffffff', width: 200 }}
                             getAriaLabel={() => 'Temperature range'}
                             value={value}
                             onChange={handleChange}
@@ -62,10 +61,10 @@ export const RangeFilter = (props) => {
                         />
                     </Item>
 
-                    <Item spacing={{sm:1, xs: 1}} sx={{width: 120, height: 38}}>
+                    <Box spacing={{sm:1, xs: 1}} sx={{width: 120, height: 38}}>
                         <Stack direction="row" justifyContent="space-between">
-                            <Typography sx={{width: 40, height: 20, mr: 1}} noWrap>Від:</Typography>
-                            <Input sx={{width: 76, height: 20, background: '#eee'}}
+                            <Typography sx={{width: 40, height: 38, mr: 1, pt: 1}} noWrap>Від:</Typography>
+                            <Input sx={{width: 76, height: 38, background: '#eee', alignText: 'center', pl: 1}}
                                 value={value[0]}
                                 size="small"
                                 id='0'
@@ -79,12 +78,12 @@ export const RangeFilter = (props) => {
                             />
                         </Stack>
 
-                    </Item>
+                    </Box>
 
-                    <Item direction="row" spacing={{sm:1, xs:1}} sx={{width: 120, height: 38}}>
+                    <Box direction="row" spacing={{sm:1, xs:1}} sx={{width: 120, height: 38}}>
                         <Stack direction="row" justifyContent="space-between">
-                            <Typography sx={{width: 40, height: 20, mr: 1}} noWrap>До:</Typography>
-                            <Input sx={{width: 76, height: 20, background: '#eee'}}
+                            <Typography  sx={{width: 40, height: 38, mr: 1, pt: 1}} noWrap>До:</Typography>
+                            <Input sx={{width: 76, height: 38, background: '#eee'}}
                                 value={value[1]}
                                 size="small"
                                 id='1'
@@ -97,7 +96,7 @@ export const RangeFilter = (props) => {
                                 }}
                             />
                         </Stack>
-                    </Item>      
+                    </Box>      
                 </Stack>
             </Box>
         </form>
