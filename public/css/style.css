@@ -188,14 +188,15 @@ ul, li {
 
 .form-range { 
   margin-bottom: 13px;
-  padding: 0 18px;
+  padding: 23px 18px;
   height: 80px;
   border-radius: 3px;
   background-color: var(--color-bg-main);
+  
 }
 
-.range-controls {
-  width: 260px;
+.slider-color {
+  color: var(--basic-black);
 }
 
 .inut-range__number {

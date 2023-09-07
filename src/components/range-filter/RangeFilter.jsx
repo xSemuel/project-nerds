@@ -1,73 +1,87 @@
-// // options = [{ text, name, defaultValue }]
-
-// export const RangeFilter = (props) => {
-//     const { options, min, max, /*onChange*/ } = props
 
 //     // useId() hook
 
-//     return (
-//         <form className='filter-cost mb-4'>
-//             <legend>Вартість:</legend>
-//             <input
-//                 type="range"
-//                 className="form-range range-controls"
-//                 // min="0"
-//                 // max="15000"
-//                 min={min}
-//                 max={max}
-//                 id="customRange"
-//                 value=''
-//                 // ref={inputRange}
-//             />
-            
-//             <div className="d-flex justify-content-between">
-//                 {options.map(({ text, name, defaultValue }) =>
-//                     <label key={text} className="d-flex align-content-center ">
-//                         <div className="">
-//                             <p className="">{text}</p>   
-//                         </div>
-                        
-//                         <input
-//                             className='inut-range__number'
-//                             type="number"
-//                             name={name}
-//                             defaultValue={defaultValue}
-//                             id="customRange"
-//                         />
-//                     </label>
-//                 )}
-//             </div>
-//         </form>
-//     )
-// }
-
 import { useState} from 'react';
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
+import Input from '@mui/material/Input';
 
 function valuetext(value) {
   return `${value}°C`;
 }
 
-export function RangeFilter() {
-  const [value, setValue] = useState([20, 37]);
+export const RangeFilter = (props) => {
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    const { options, min, max, /*onChange*/ } = props;
 
-  return (
-    <Box sx={{ width: 260 }}>
-      <Slider
-        getAriaLabel={() => 'Temperature range'}
-        value={value}
-        onChange={handleChange}
-        valueLabelDisplay="auto"
-        getAriaValueText={valuetext}
-      />
-    </Box>
-  );
+
+
+    const [value, setValue] = useState([3000, 12000]);
+
+    const handleChange = (event, newValue) => {
+        console.log(newValue)
+        console.log(event)
+        setValue(newValue);
+    };
+
+    const handleInputChange = (event) => {
+        let newState = [];
+        const newNum = +event.currentTarget.value;
+        console.log(event.target.value)
+        console.log(event.currentTarget.id)
+        // setValue(event.target.value === '' ? 0 : Number(event.target.value));
+        if (event.currentTarget.id === '0') {
+            newState = [newNum, value[1]]       
+        } else {
+            newState = [value[0], newNum]
+        }
+        setValue(newState)
+    };
+
+    return (
+        <form className='filter-cost mb-4'>
+            <legend>Вартість:</legend>
+            <Box className="form-range" sx={{ width: 260 }}>
+            <Slider sx={{color: 'white'}}
+                getAriaLabel={() => 'Temperature range'}
+                value={value}
+                onChange={handleChange}
+                valueLabelDisplay="auto"
+                getAriaValueText={valuetext}
+                min={min}
+                max={max}         
+            />
+            </Box>
+
+            <Grid>
+                <Input sx={{width: 22}}
+                    value={value[0]}
+                    size="small"
+                    id='0'
+                    onChange={handleInputChange}
+                    // onBlur={handleBlur}
+                    inputProps={{
+                    min: {min},
+                    max: {max},
+                    type: 'number',
+                    'aria-labelledby': 'input-slider',
+                    }}
+                />
+                <Input sx={{width: 22}}
+                    value={value[1]}
+                    size="small"
+                    id='1'
+                    onChange={handleInputChange}
+                    // onBlur={handleBlur}
+                    inputProps={{
+                    min: {min},
+                    max: {max},
+                    type: 'number',
+                    'aria-labelledby': 'input-slider',
+                    }}
+                />
+            </Grid>
+        </form>
+    );
 }
-
-
-
