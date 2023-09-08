@@ -16,7 +16,7 @@ export const RadioButtonGroup = (props) => {
       <RadioGroup 
         onChange={handleChange}
         aria-labelledby="demo-radio-buttons-group-label"
-        defaultValue="female"
+        defaultValue="Adaptive1"
         name="radio-buttons-group"
         >
 
