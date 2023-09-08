@@ -1,12 +1,5 @@
+import { Box, Slider, Input, Paper, Stack, Typography, styled } from '@mui/material';
 import { css, Theme } from '@emotion/react'
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
-import Input from '@mui/material/Input';
-import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
-import { Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
-
 
 // const boxStyles = (theme: Theme) => css`  
 //     padding-left: ${theme.spacing(2)};
@@ -99,5 +92,5 @@ export const RangeFilter = (props) => {
                 </Stack>
             </Box>
         </form>
-    );
+    )
 }
