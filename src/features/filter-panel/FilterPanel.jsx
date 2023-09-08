@@ -28,7 +28,7 @@ export const FilterPanel = (props) => {
     const { onSubmit } = props
 
     const [filters, setFilters] = useState({
-        range: [1000, 11000]
+        range: [1000, 11000],
     })
 
     const applyFiltersHandler = (event) => {

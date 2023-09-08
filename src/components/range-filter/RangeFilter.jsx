@@ -49,7 +49,7 @@ export const RangeFilter = (props) => {
             {/* <Box css={boxStyles}  sx={{ width: 260 }}> */}
             <Box sx={{ width: 260 }}>
                 <Stack spacing={{ xs: 1, sm: 2 }} direction="row"  justifyContent="space-between" useFlexGap flexWrap="wrap">
-                    <Item sx={{ width: 260, height: 80, background: '#eee', pt: 3 }} >
+                    <Item sx={{ width: 260, height: 80, background: '#eee', pt: 3, borderRadius: 1 }} >
                         <Slider sx={{ color: '#ffffff', width: 200 }}
                             getAriaLabel={() => 'Temperature range'}
                             value={value}
@@ -64,7 +64,7 @@ export const RangeFilter = (props) => {
                     <Box spacing={{sm:1, xs: 1}} sx={{width: 120, height: 38}}>
                         <Stack direction="row" justifyContent="space-between">
                             <Typography sx={{width: 40, height: 38, mr: 1, pt: 1}} noWrap>Від:</Typography>
-                            <Input sx={{width: 76, height: 38, background: '#eee', alignText: 'center', pl: 1}}
+                            <Input sx={{width: 76, height: 38, background: '#eee', pl: 2, borderRadius: 1}}
                                 value={value[0]}
                                 size="small"
                                 id='0'
@@ -77,13 +77,12 @@ export const RangeFilter = (props) => {
                                 }}
                             />
                         </Stack>
-
                     </Box>
 
                     <Box direction="row" spacing={{sm:1, xs:1}} sx={{width: 120, height: 38}}>
                         <Stack direction="row" justifyContent="space-between">
                             <Typography  sx={{width: 40, height: 38, mr: 1, pt: 1}} noWrap>До:</Typography>
-                            <Input sx={{width: 76, height: 38, background: '#eee'}}
+                            <Input sx={{width: 76, height: 38, background: '#eee', pl: 2, borderRadius: 1 }}
                                 value={value[1]}
                                 size="small"
                                 id='1'
