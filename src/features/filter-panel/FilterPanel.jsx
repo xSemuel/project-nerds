@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { RangeFilter, RadioGroup, CheckboxGroup } from '../../components'
+import { RangeFilter, RadioButtonGroup, CheckboxGroup } from '../../components'
 import { Button } from '@mui/material'
 
 import styles from './FilterPanel.module.css'
@@ -52,7 +52,7 @@ export const FilterPanel = (props) => {
                 value={filters.range}
                 onChange={onChangeRangeHandler}
             />
-            <RadioGroup options={FILTER_NETWORK} onChange={() => {}} />
+            <RadioButtonGroup options={FILTER_NETWORK} onChange={() => {}} />
             <CheckboxGroup options={FILTER_FEATURES} onChange={() => {}} />
 
             <Button type="submit" sx={{mx: 'auto', width: 260, height: 52, color: '#000', background: '#eee', fontSize: 16, fontWeight: 500 }} variant="contained" size="large" onClick={applyFiltersHandler}>
