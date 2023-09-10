@@ -22,38 +22,26 @@
 // }
 
 import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
-import { useState } from 'react';
 
 export const CheckboxGroup = (props) => {
-
-    const { options, onChange } = props;
-    const [checked, setChecked] = useState({
-                                            Slider: false,
-                                            blockFeatures: true, 
-                                            News: false,
-                                            Gallery: false,
-                                            Cart: false,     
-                                        });
-
-    const changeGlobalState = () => {
-        onChange({checked});
-    }
+    const { options, selectedValues, onChange } = props;
 
     const handleChange = (event) => {
-        const { target } = event;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const { id } = target;
-        setChecked((prevState) => ({ ...prevState, [id]: value }));
-
-  
-        changeGlobalState()
+      const { checked, value } = event.target
+      const checkedValues = checked
+        ? [...selectedValues, value]
+        : selectedValues.filter((item) => item !== value )
+      onChange(checkedValues);
     }
 
   return (
     <FormGroup >
       <legend>Особливості:</legend>
-        {options.map(({ text, defaultChecked, value, id }) =>
-            <FormControlLabel key={text} control={<Checkbox id={value} onChange={handleChange} checked={checked[value]} />} label={text} />
+        {options.map(({ text, value }) =>
+            <FormControlLabel
+              key={value}
+              control={<Checkbox onChange={handleChange} value={value} checked={selectedValues.includes(value)} />}
+              label={text} />
         )}  
 
     </FormGroup>

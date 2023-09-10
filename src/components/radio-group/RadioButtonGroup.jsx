@@ -2,7 +2,7 @@ import { Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mu
 
 export const RadioButtonGroup = (props) => {
 
-  const { options, onChange } = props;
+  const { options, onChange, defaultValue = options[0].valueNetwork } = props;
 
   const handleChange = (event) => {
     const valueRadioGroup = event.currentTarget.value;
@@ -16,7 +16,7 @@ export const RadioButtonGroup = (props) => {
       <RadioGroup 
         onChange={handleChange}
         aria-labelledby="demo-radio-buttons-group-label"
-        defaultValue="Adaptive1"
+        defaultValue={defaultValue}
         name="radio-buttons-group"
         >
 

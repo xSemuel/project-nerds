@@ -9,6 +9,16 @@ import styles from './FilterPanel.module.css'
 //     {text: 'до', indexValue: 1 }
 // ]
 
+const buttonStyles = {
+    mx: 'auto',
+    width: 260,
+    height: 52,
+    color: '#000', 
+    background: '#eee',
+    fontSize: 16,
+    fontWeight: 500
+}
+
 const FILTER_NETWORK = [
     {text: 'Адаптивна', valueNetwork: 'Adaptive1', defaultValue: 'Adaptive1'},
     {text: 'Фіксована', valueNetwork: 'Fixed2'},
@@ -16,12 +26,14 @@ const FILTER_NETWORK = [
 ]
 
 const FILTER_FEATURES = [
-    {text: 'Слайдер', value: 'Slider', id: 'defaultCheck1' , defaultChecked: false},
-    {text: 'Блок преимуществ', value: 'blockFeatures', id: 'defaultCheck2', defaultChecked: true},
-    {text: 'Новости', value: 'News', id: 'defaultCheck3', defaultChecked: false},
-    {text: 'Галерея', value: 'Gallery', id: 'defaultCheck4', defaultChecked: false},
-    {text: 'Корзина', value: 'Cart', id: 'defaultCheck5', defaultChecked: false},
+    { text: 'Слайдер', value: 'Slider' },
+    { text: 'Блок преимуществ', value: 'blockFeatures' },
+    { text: 'Новости', value: 'News' },
+    { text: 'Галерея', value: 'Gallery' },
+    { text: 'Корзина', value: 'Cart' },
 ]
+
+// const a ['blockFeatures'] = 
 
 
 export const FilterPanel = (props) => {
@@ -29,14 +41,8 @@ export const FilterPanel = (props) => {
 
     const [filters, setFilters] = useState({
         range: [1000, 11000],
-        radio: FILTER_NETWORK[0].defaultValue, 
-        checkbox: {
-            Slider: false,
-            blockFeatures: true, 
-            News: false,
-            Gallery: false,
-            Cart: false, 
-        },        
+        radio: FILTER_NETWORK[0].defaultValue,
+        features: [FILTER_FEATURES[1].value]       
     })
 
     const applyFiltersHandler = (event) => {
@@ -54,11 +60,9 @@ export const FilterPanel = (props) => {
         setFilters((prevState) => ({ ...prevState, radio }))
     }
 
-    const onChangeCheckboxHandler = (checkbox) => {
-        setFilters((prevState) => ({ ...prevState, checkbox }))
+    const onChangeCheckboxHandler = (features) => {
+        setFilters((prevState) => ({ ...prevState, features }))
     }
-
-    console.log(filters)
 
     return ( 
         <div className={styles.wrapper}>
@@ -71,10 +75,21 @@ export const FilterPanel = (props) => {
                 value={filters.range}
                 onChange={onChangeRangeHandler}
             />
-            <RadioButtonGroup options={FILTER_NETWORK} onChange={onChangeRadioHandler} />
-            <CheckboxGroup options={FILTER_FEATURES} onChange={onChangeCheckboxHandler} />
-
-            <Button type="submit" sx={{mx: 'auto', width: 260, height: 52, color: '#000', background: '#eee', fontSize: 16, fontWeight: 500 }} variant="contained" size="large" onClick={applyFiltersHandler}>
+            <RadioButtonGroup
+                options={FILTER_NETWORK}
+                onChange={onChangeRadioHandler}
+            />
+            <CheckboxGroup
+                options={FILTER_FEATURES}
+                onChange={onChangeCheckboxHandler}
+                selectedValues={filters.features}
+            />
+            <Button
+                sx={buttonStyles}
+                variant="contained"
+                size="large"
+                onClick={applyFiltersHandler}
+            >
                 Показати
             </Button>
         </div>   
