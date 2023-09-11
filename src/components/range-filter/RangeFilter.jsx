@@ -9,11 +9,9 @@ const titleFilterCost = css`
     text-transform: uppercase;
     margin-bottom: 38px;
 `
-
 const wrapperSlider = css`
     width: 260px; 
     height: 80px; 
-    background: #eee; 
     padding-top: 24px; 
     border-radius: 8px;
 `
@@ -28,9 +26,6 @@ const Item = styled(Paper)(({ theme }) => ({
     maxWidth: 400,
   }));
 
-function valuetext(value) {
-  return `${value}°C`;
-}
 
 export const RangeFilter = (props) => {
     const { value, min, max, onChange } = props;
@@ -55,12 +50,9 @@ export const RangeFilter = (props) => {
             <Typography variant="h3" css={titleFilterCost}>Вартість:</Typography>
             <Stack spacing={{ xs: 1, sm: 2 }} direction="row"  justifyContent="space-between" useFlexGap flexWrap="wrap">
                 <Item css={wrapperSlider} >
-                    <Slider css={css` color: #00ca74; width: 200px;`}
-                        getAriaLabel={() => 'Temperature range'}
+                    <Slider css={css` color: #d7373b; width: 200px;`}
                         value={value}
                         onChange={handleChange}
-                        valueLabelDisplay="auto"
-                        getAriaValueText={valuetext}
                         min={min}
                         max={max}         
                     />
