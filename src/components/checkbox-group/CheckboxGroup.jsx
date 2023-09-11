@@ -1,10 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { FormGroup, FormControlLabel, Checkbox, Typography } from '@mui/material';
 import { css } from '@emotion/react';
-import iconCheckOn from './img/checkbox-on.svg';
-import iconCheckOff from './img/checkbox-off.svg';
-import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
-import Favorite from '@mui/icons-material/Favorite';
+import VerifiedIcon from '@mui/icons-material/Verified'
 
 const titleFilterCost = css`
   font-weight: 700;
@@ -31,7 +28,7 @@ export const CheckboxGroup = (props) => {
         {options.map(({ text, value }) =>
           <FormControlLabel
             key={value}
-            control={<Checkbox onChange={handleChange} value={value} checked={selectedValues.includes(value)} icon={<Favorite />} checkedIcon={<FavoriteBorder />}/>}
+            control={<Checkbox onChange={handleChange} value={value} checked={selectedValues.includes(value)} icon={<VerifiedIcon sx={{ color: '#e1e1e1'}} />} checkedIcon={<VerifiedIcon sx={{color: '#d7373b'}} />}/>}
             label={text} 
           />
         )}  
