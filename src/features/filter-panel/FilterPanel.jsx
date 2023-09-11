@@ -23,7 +23,7 @@ const buttonStyles = css`
     text-transform: uppercase;
     transition: .3s ease-in;
     &:hover {
-        background: #a6a6a6;
+        background: #d7373b;
         color: #ffffff;
     }
 
