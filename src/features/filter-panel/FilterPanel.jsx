@@ -46,9 +46,9 @@ export const FilterPanel = (props) => {
     const { onSubmit } = props
 
     const [filters, setFilters] = useState({
-        range: [1000, 11000],
-        radio: FILTER_NETWORK[0].defaultValue,
-        features: [FILTER_FEATURES[1].value]       
+        sliderFilter: [1000, 11000],
+        networkFilter: FILTER_NETWORK[0].defaultValue,
+        featuresFilter: [FILTER_FEATURES[1].value]       
     })
 
     const applyFiltersHandler = (event) => {
@@ -57,17 +57,16 @@ export const FilterPanel = (props) => {
         // onSubmit(filters)
     }
 
-    const onChangeRangeHandler = (range) => {
-        setFilters((prevState) => ({ ...prevState, range }))
+    const onChangeRangeHandler = (sliderFilter) => {
+        setFilters((prevState) => ({ ...prevState, sliderFilter }))
     }
 
-    const onChangeRadioHandler = (radio) => {
-        console.log(radio)
-        setFilters((prevState) => ({ ...prevState, radio }))
+    const onChangeRadioHandler = (networkFilter) => {
+        setFilters((prevState) => ({ ...prevState, networkFilter }))
     }
 
-    const onChangeCheckboxHandler = (features) => {
-        setFilters((prevState) => ({ ...prevState, features }))
+    const onChangeCheckboxHandler = (featuresFilter) => {
+        setFilters((prevState) => ({ ...prevState, featuresFilter }))
     }
 
     return ( 
@@ -78,7 +77,7 @@ export const FilterPanel = (props) => {
                 // options={FILTER_RANGE}
                 min={0}
                 max={15000}
-                value={filters.range}
+                value={filters.sliderFilter}
                 onChange={onChangeRangeHandler}
             />
             <RadioButtonGroup
@@ -88,7 +87,7 @@ export const FilterPanel = (props) => {
             <CheckboxGroup
                 options={FILTER_FEATURES}
                 onChange={onChangeCheckboxHandler}
-                selectedValues={filters.features}
+                selectedValues={filters.featuresFilter}
             />
             <Button
                 css={buttonStyles}
