@@ -1,47 +1,35 @@
-// export const CheckboxGroup = (props) => {
+/** @jsxImportSource @emotion/react */
+import { FormGroup, FormControlLabel, Checkbox, Typography } from '@mui/material';
+import { css } from '@emotion/react'
 
-//     const { options } = props;
-
-//     return (
-//         <div>
-//             <form className="filter-cost mb-4">
-//                 <legend>Особливості:</legend>
-
-//                 {options.map(({ text, value, id }) =>
-
-//                     <div key={text} className="form-check">                           
-//                         <input className="form-check-input" type="checkbox" value={value} id={id} />
-//                         <label className="form-check-label" htmlFor='defaultCheck1'>
-//                             {text}
-//                         </label>
-//                     </div>
-//                 )}
-//             </form>
-//         </div> 
-//     )
-// }
-
-import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
+const titleFilterCost = css`
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 30px;
+  text-transform: uppercase;
+`
 
 export const CheckboxGroup = (props) => {
-    const { options, selectedValues, onChange } = props;
 
-    const handleChange = (event) => {
-      const { checked, value } = event.target
-      const checkedValues = checked
-        ? [...selectedValues, value]
-        : selectedValues.filter((item) => item !== value )
-      onChange(checkedValues);
-    }
+  const { options, selectedValues, onChange } = props;
+
+  const handleChange = (event) => {
+    const { checked, value } = event.target
+    const checkedValues = checked
+      ? [...selectedValues, value]
+      : selectedValues.filter((item) => item !== value )
+    onChange(checkedValues);
+  }
 
   return (
-    <FormGroup >
-      <legend>Особливості:</legend>
+    <FormGroup css={css` width: 260px; margin-bottom: 38px;`}>
+      <Typography variant="h3" css={titleFilterCost}>Особливості:</Typography>
         {options.map(({ text, value }) =>
-            <FormControlLabel
-              key={value}
-              control={<Checkbox onChange={handleChange} value={value} checked={selectedValues.includes(value)} />}
-              label={text} />
+          <FormControlLabel
+            key={value}
+            control={<Checkbox onChange={handleChange} value={value} checked={selectedValues.includes(value)} />}
+            label={text} 
+          />
         )}  
 
     </FormGroup>

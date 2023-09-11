@@ -37,12 +37,10 @@ export const RadioButtonGroup = (props) => {
         aria-labelledby="demo-radio-buttons-group-label"
         defaultValue={defaultValue}
         name="radio-buttons-group"
-        icon={radioButtonOff} 
-        checkedIcon={radioButtonOn}
         >
 
         {options.map(({ text, valueNetwork }) => 
-          <FormControlLabel key={valueNetwork} value={valueNetwork} control={<Radio />} label={text} />
+          <FormControlLabel key={valueNetwork} value={valueNetwork} control={<Radio/>} label={text} />
         )}
 
       </RadioGroup>
