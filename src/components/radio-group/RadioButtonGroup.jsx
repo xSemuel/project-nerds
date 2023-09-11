@@ -1,4 +1,24 @@
-import { Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material';
+/** @jsxImportSource @emotion/react */
+import { Radio, RadioGroup, FormControlLabel, FormControl, Typography } from '@mui/material';
+import { css } from '@emotion/react'
+import radioButtonOn from './img/radio-on.svg';
+import radioButtonOff from './img/radio-off.svg';
+
+const titleFilterCost = css`
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 30px;
+  text-transform: uppercase;
+`
+
+const radioButtonStyle = css`
+      color: #444444;
+      border: 5px;
+      background-image: url(./img/radio-on.svg)
+      .checked: {
+        color: green;
+      }
+`
 
 export const RadioButtonGroup = (props) => {
 
@@ -10,14 +30,15 @@ export const RadioButtonGroup = (props) => {
   };
 
   return (
-    <FormControl sx={{mb: 4}}>
-      <FormLabel id="demo-radio-buttons-group-label">Cітка:</FormLabel>
-      <legend>Сітка:</legend> {/* Убрать */}
+    <FormControl css={css` width: 260px; margin-bottom: 38px;`}>
+      <Typography variant="h3" css={titleFilterCost}>Cітка:</Typography>
       <RadioGroup 
         onChange={handleChange}
         aria-labelledby="demo-radio-buttons-group-label"
         defaultValue={defaultValue}
         name="radio-buttons-group"
+        icon={radioButtonOff} 
+        checkedIcon={radioButtonOn}
         >
 
         {options.map(({ text, valueNetwork }) => 
