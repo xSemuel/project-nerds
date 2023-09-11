@@ -1,9 +1,41 @@
+/** @jsxImportSource @emotion/react */
 import { Box, Slider, Input, Paper, Stack, Typography, styled } from '@mui/material';
-import { css, Theme } from '@emotion/react'
+import { css } from '@emotion/react'
 
-// const boxStyles = (theme: Theme) => css`  
-//     padding-left: ${theme.spacing(2)};
-// `
+const titleFilterCost = css`
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 30px;
+    text-transform: uppercase;
+    margin-bottom: 38px;
+`
+const filterCostParam = css`
+    font-size: 16px;
+    line-height: 22px;
+    width: 40px;
+    height: 38px;
+    margin-right: 2px;
+    padding-top: 8px;
+    text-transform: uppercase;
+    
+`
+const wrapperSlider = css`
+    width: 260px; 
+    height: 80px; 
+    background: #eee; 
+    padding-top: 24px; 
+    border-radius: 8px;
+`
+
+const inputSliderParam = css` 
+    width: 76px; 
+    height: 38px; 
+    background: #eee; 
+    padding-left: 16px; 
+    border-radius: 8px;
+    font-weight: 500;
+`
+
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -37,13 +69,11 @@ export const RangeFilter = (props) => {
     };
 
     return (
-        <form className='filter-cost mb-4'>
-            <legend>Вартість:</legend>
-            {/* <Box css={boxStyles}  sx={{ width: 260 }}> */}
-            <Box sx={{ width: 260 }}>
+            <Box css={css` width: 260px; margin-bottom: 38px;`}>
+                <Typography variant="h3" css={titleFilterCost}>Вартість:</Typography>
                 <Stack spacing={{ xs: 1, sm: 2 }} direction="row"  justifyContent="space-between" useFlexGap flexWrap="wrap">
-                    <Item sx={{ width: 260, height: 80, background: '#eee', pt: 3, borderRadius: 1 }} >
-                        <Slider sx={{ color: '#ffffff', width: 200 }}
+                    <Item css={wrapperSlider} >
+                        <Slider css={css` color: #00ca74; width: 200px;`}
                             getAriaLabel={() => 'Temperature range'}
                             value={value}
                             onChange={handleChange}
@@ -54,10 +84,10 @@ export const RangeFilter = (props) => {
                         />
                     </Item>
 
-                    <Box spacing={{sm:1, xs: 1}} sx={{width: 120, height: 38}}>
+                    <Box spacing={{sm:1, xs: 1}} css={css`width: 120px; height: 38px;`}>
                         <Stack direction="row" justifyContent="space-between">
-                            <Typography sx={{width: 40, height: 38, mr: 1, pt: 1}} noWrap>Від:</Typography>
-                            <Input sx={{width: 76, height: 38, background: '#eee', pl: 2, borderRadius: 1}}
+                            <Typography css={filterCostParam} noWrap>Від:</Typography>
+                            <Input css={inputSliderParam}
                                 value={value[0]}
                                 size="small"
                                 id='0'
@@ -72,10 +102,10 @@ export const RangeFilter = (props) => {
                         </Stack>
                     </Box>
 
-                    <Box direction="row" spacing={{sm:1, xs:1}} sx={{width: 120, height: 38}}>
+                    <Box direction="row" spacing={{sm:1, xs:1}} css={css`width: 120px; height: 38px;`}>
                         <Stack direction="row" justifyContent="space-between">
-                            <Typography  sx={{width: 40, height: 38, mr: 1, pt: 1}} noWrap>До:</Typography>
-                            <Input sx={{width: 76, height: 38, background: '#eee', pl: 2, borderRadius: 1 }}
+                            <Typography  css={filterCostParam} noWrap>До:</Typography>
+                            <Input css={inputSliderParam}
                                 value={value[1]}
                                 size="small"
                                 id='1'
@@ -91,6 +121,5 @@ export const RangeFilter = (props) => {
                     </Box>      
                 </Stack>
             </Box>
-        </form>
     )
 }

@@ -10,7 +10,6 @@ import { css } from '@emotion/react'
 //     {text: 'до', indexValue: 1 }
 // ]
 
-
 const buttonStyles = css`  
     width: 260px;
     height: 52px;
@@ -72,7 +71,7 @@ export const FilterPanel = (props) => {
     }
 
     return ( 
-        <div>
+        <div css={css`margin-bottom: 38px;`}>
             <Typography variant="h3" className="visually-hidden">FilterPanel</Typography>
             <Typography className="visually-hidden">Фільтри:</Typography>
             <RangeFilter
