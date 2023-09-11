@@ -1,24 +1,34 @@
+/** @jsxImportSource @emotion/react */
 import { useState } from 'react'
 import { RangeFilter, RadioButtonGroup, CheckboxGroup } from '../../components'
-import { Button } from '@mui/material'
+import { Button, Typography } from '@mui/material'
+import { css } from '@emotion/react'
 
-import styles from './FilterPanel.module.css'
 
 // const FILTER_RANGE = [
 //     {text: 'від', indexValue: 0},
 //     {text: 'до', indexValue: 1 }
 // ]
 
-const buttonStyles = {
-    mx: 'auto',
-    width: 260,
-    height: 52,
-    color: '#000', 
-    background: '#eee',
-    fontSize: 16,
-    fontWeight: 500
-}
 
+const buttonStyles = css`  
+    width: 260px;
+    height: 52px;
+    margin: 0 auto;
+    background: #eee;
+    color: #000;
+    fontSize: 16px;
+    fontWeight: 500;
+    font-family: inherit;
+    line-height: 18px;
+    text-transform: uppercase;
+    transition: .3s ease-in;
+    &:hover {
+        background: #a6a6a6;
+        color: #ffffff;
+    }
+
+`
 const FILTER_NETWORK = [
     {text: 'Адаптивна', valueNetwork: 'Adaptive1', defaultValue: 'Adaptive1'},
     {text: 'Фіксована', valueNetwork: 'Fixed2'},
@@ -32,9 +42,6 @@ const FILTER_FEATURES = [
     { text: 'Галерея', value: 'Gallery' },
     { text: 'Корзина', value: 'Cart' },
 ]
-
-// const a ['blockFeatures'] = 
-
 
 export const FilterPanel = (props) => {
     const { onSubmit } = props
@@ -65,9 +72,9 @@ export const FilterPanel = (props) => {
     }
 
     return ( 
-        <div className={styles.wrapper}>
-            <h1 className='visually-hidden'>FilterPanel</h1>
-            <label htmlFor="customRange2" className="form-label visually-hidden">Фільтри:</label>
+        <div>
+            <Typography variant="h3" className="visually-hidden">FilterPanel</Typography>
+            <Typography className="visually-hidden">Фільтри:</Typography>
             <RangeFilter
                 // options={FILTER_RANGE}
                 min={0}
@@ -85,7 +92,7 @@ export const FilterPanel = (props) => {
                 selectedValues={filters.features}
             />
             <Button
-                sx={buttonStyles}
+                css={buttonStyles}
                 variant="contained"
                 size="large"
                 onClick={applyFiltersHandler}
