@@ -1,23 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { Radio, RadioGroup, FormControlLabel, FormControl, Typography } from '@mui/material';
 import { css } from '@emotion/react'
-import radioButtonOn from './img/radio-on.svg';
-import radioButtonOff from './img/radio-off.svg';
+import TaskAltOutlinedIcon from '@mui/icons-material/TaskAltOutlined';
 
 const titleFilterCost = css`
   font-weight: 700;
   font-size: 18px;
   line-height: 30px;
   text-transform: uppercase;
-`
-
-const radioButtonStyle = css`
-      color: #444444;
-      border: 5px;
-      background-image: url(./img/radio-on.svg)
-      .checked: {
-        color: green;
-      }
 `
 
 export const RadioButtonGroup = (props) => {
@@ -40,7 +30,7 @@ export const RadioButtonGroup = (props) => {
         >
 
         {options.map(({ text, valueNetwork }) => 
-          <FormControlLabel key={valueNetwork} value={valueNetwork} control={<Radio/>} label={text} />
+          <FormControlLabel key={valueNetwork} value={valueNetwork} control={<Radio icon={<TaskAltOutlinedIcon sx={{ color: '#e1e1e1'}} />} checkedIcon={<TaskAltOutlinedIcon sx={{color: '#d7373b'}} />}    />} label={text} />
         )}
 
       </RadioGroup>
