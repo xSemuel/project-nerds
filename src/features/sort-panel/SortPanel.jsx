@@ -6,9 +6,9 @@ import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const SORT_TYPE = [
-    {text: 'По ціні'},
-    {text: 'По типу'},
-    {text: 'По назві'},
+    {text: 'По ціні', value: 'forPrice'},
+    {text: 'По типу', value: 'forType'},
+    {text: 'По назві', value: 'forName'},
 ]
 
 const SORT_ICON = [
