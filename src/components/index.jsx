@@ -14,4 +14,4 @@ export * from './radio-group'
 export * from './checkbox-group'
 
 
-export * from './sort-filter'
+export * from './sort-items'

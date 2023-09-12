@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from 'react';
-import { SortFilter } from '../../components';
+import { SortItems } from '../../components';
 import { Typography } from '@mui/material';
 import { css } from '@emotion/react';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
@@ -14,9 +14,24 @@ const SORT_TYPE = [
 ]
 
 const SORT_ICON = [
-    {text: 'Значок зростання', value: 'up', icon: <ArrowDropUpIcon sx={{ color: '#e1e1e1'}} />, checkedIcon: <ArrowDropUpIcon sx={{color: '#d7373b'}} />},
-    {text: 'Значок спадання', value: 'down', icon: <ArrowDropDownIcon sx={{ color: '#e1e1e1'}} />, checkedIcon: <ArrowDropDownIcon sx={{color: '#d7373b'}} /> },
+    {text: 'Значок зростання', value: 'accending', icon: <ArrowDropUpIcon sx={{ color: '#e1e1e1'}} />, checkedIcon: <ArrowDropUpIcon sx={{color: '#d7373b'}} />},
+    {text: 'Значок спадання', value: 'deccending', icon: <ArrowDropDownIcon sx={{ color: '#e1e1e1'}} />, checkedIcon: <ArrowDropDownIcon sx={{color: '#d7373b'}} /> },
 ]
+
+const sortWrapper = css`
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    min-height: 70px;
+`
+const titleFilterCost = css`
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 30px;
+    text-transform: uppercase;
+    margin-bottom: 38px;
+    padding-top: 5px;
+`
 
 export const Store = () => {
 
@@ -43,24 +58,21 @@ export const Store = () => {
 
             <div className="container">
                 <div className="row row-cols-2">
-                    <form className="col-3">
+                    <div className="col-3">
                         <FilterPanel />
-                    </form>
+                    </div>
                     <div className='col-9'>
-                        <div css={css`margin-bottom: 38px;`}>
-                            <Typography variant="h3" className="visually-hidden">SortPanel</Typography>
-                            <SortFilter options1={SORT_TYPE} options2={SORT_ICON} onClick={onClickSortTypeHandler} onChange={onChangeIconSortHandler} selectedSortIcon={SORT_ICON[0].value}/>
+                        <div css={sortWrapper}>
+                            <Typography variant="h3" css={titleFilterCost}>Сортувати:</Typography>
+                            <SortItems optionsType={SORT_TYPE} options2={SORT_ICON} onClick={onClickSortTypeHandler} onChange={onChangeIconSortHandler} selectedSortIcon={SORT_ICON[0].value}/>
                         </div>
 
-
-                        <h1>Карточки товаров</h1>
-                    </div>    
-                    
+                        <div>
+                            <h1>Карточки товаров</h1>
+                        </div>     
+                    </div>                       
                 </div>
-
-            </div>
-            
+            </div>           
         </div>
-
-    );
+    )
 }
