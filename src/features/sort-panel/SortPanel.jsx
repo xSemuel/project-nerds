@@ -1,9 +1,12 @@
+/** @jsxImportSource @emotion/react */
 import { SortFilter } from "../../components";
+import { Typography } from '@mui/material';
+import { css } from '@emotion/react';
 
 export const SortPanel = () => {
     return ( 
-        <div className="">
-            <h3>Cортувати:</h3>
+        <div css={css`margin-bottom: 38px;`}>
+            <Typography variant="h3" className="visually-hidden">SortPanel</Typography>
             <SortFilter />
         </div>
     );
