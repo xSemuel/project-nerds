@@ -8,6 +8,7 @@ const titleFilterCost = css`
     line-height: 30px;
     text-transform: uppercase;
     margin-bottom: 38px;
+    padding-top: 5px;
 `
 const wrapperSlider = css`
     width: 260px; 

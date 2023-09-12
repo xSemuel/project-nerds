@@ -18,6 +18,7 @@ const titleFilterCost = css`
     line-height: 30px;
     text-transform: uppercase;
     margin-bottom: 38px;
+    padding-top: 5px;
 `
 const buttonStyle = css`
     color: #e1e1e1;
