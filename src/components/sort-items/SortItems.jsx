@@ -8,13 +8,11 @@ const sortWrapperItem = css`
     justify-content: space-between;
 `
 
-// const buttonStyle = (selectedValue, value) => css`
-//     background: ${selectedValue === value ? 'red' : ''};
-const buttonStyle = css`
-    color: #e1e1e1;
+const buttonStyle = (selectedValue, value) => css`
+    background: ${selectedValue === value ? '#d7373b' : null};
+    color: ${selectedValue === value ? '#ffffff' : '#e1e1e1'};
     border: none;
     &:hover {
-        color: #a6a6a6;
         border: none;
     }
     &:active {
@@ -25,7 +23,7 @@ const buttonStyle = css`
 
 export const SortItems = (props) => {
 
-    const {optionsType, options2, onClick, onChange, selectedSortIcon} = props;
+    const {optionsType, optionsDir, onClick, onChange, selectedSortDir, selectedSortType} = props;
 
     const handleSortType = (event) => {
         event.preventDefault();
@@ -37,7 +35,6 @@ export const SortItems = (props) => {
         onChange(event.target.value)
     }
 
-
     return (          
         <Box css={sortWrapperItem}>
             <ButtonGroup 
@@ -47,8 +44,7 @@ export const SortItems = (props) => {
                 >
 
                 {optionsType.map(({ text, value }) => 
-                    // <Button css={buttonStyle(selectedValue, value)} key={value} value={value}>{text}</Button>
-                    <Button css={buttonStyle} key={value} value={value}>{text}</Button>
+                    <Button css={buttonStyle(selectedSortType, value)} key={value} value={value}>{text}</Button>
                 )}
             </ButtonGroup>
 
@@ -57,12 +53,12 @@ export const SortItems = (props) => {
                 row 
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="row-radio-buttons-group"
-                defaultValue={selectedSortIcon}
+                defaultValue={selectedSortDir}
                 css={css`margin-bottom: 38px`}
                 >
                     
-                {options2.map(({ text, value, icon, checkedIcon }) => 
-                <FormControlLabel key={text} value={value} control={<Radio icon={icon} checkedIcon={checkedIcon} />} />
+                {optionsDir.map(({ text, value, icon, checkedIcon }) => 
+                    <FormControlLabel key={text} value={value} control={<Radio icon={icon} checkedIcon={checkedIcon} />} />
                 )}
             </RadioGroup>
         </Box>

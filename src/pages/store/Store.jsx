@@ -13,7 +13,7 @@ const SORT_TYPE = [
     {text: 'По назві', value: 'forName'},
 ]
 
-const SORT_ICON = [
+const SORT_DIR = [
     {text: 'Значок зростання', value: 'accending', icon: <ArrowDropUpIcon sx={{ color: '#e1e1e1'}} />, checkedIcon: <ArrowDropUpIcon sx={{color: '#d7373b'}} />},
     {text: 'Значок спадання', value: 'deccending', icon: <ArrowDropDownIcon sx={{ color: '#e1e1e1'}} />, checkedIcon: <ArrowDropDownIcon sx={{color: '#d7373b'}} /> },
 ]
@@ -36,16 +36,16 @@ const titleFilterCost = css`
 export const Store = () => {
 
     const [sorts, setSorts] = useState({
-        sortTypeFilter: SORT_TYPE[0].value,
-        sortIconFilter: SORT_ICON[0].value,      
+        sortType: SORT_TYPE[0].value,
+        sortDir: SORT_DIR[0].value,      
     })
 
-    const onClickSortTypeHandler = (sortTypeFilter) => {
-        setSorts((prevState) => ({ ...prevState, sortTypeFilter }))
+    const onClickSortTypeHandler = (sortType) => {
+        setSorts((prevState) => ({ ...prevState, sortType }))
     }
 
-    const onChangeIconSortHandler = ( sortIconFilter) => {
-        setSorts((prevState) => ({ ...prevState, sortIconFilter }))
+    const onChangeIconSortHandler = (sortDir) => {
+        setSorts((prevState) => ({ ...prevState, sortDir }))
     }
 
     console.log(sorts)
@@ -64,7 +64,14 @@ export const Store = () => {
                     <div className='col-9'>
                         <div css={sortWrapper}>
                             <Typography variant="h3" css={titleFilterCost}>Сортувати:</Typography>
-                            <SortItems optionsType={SORT_TYPE} options2={SORT_ICON} onClick={onClickSortTypeHandler} onChange={onChangeIconSortHandler} selectedSortIcon={SORT_ICON[0].value}/>
+                            <SortItems 
+                                optionsType={SORT_TYPE} 
+                                optionsDir={SORT_DIR} 
+                                onClick={onClickSortTypeHandler} 
+                                onChange={onChangeIconSortHandler} 
+                                selectedSortType={sorts.sortType} 
+                                selectedSortDir={SORT_DIR[0].value}
+                            />
                         </div>
 
                         <div>
