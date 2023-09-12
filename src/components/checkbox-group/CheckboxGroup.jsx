@@ -3,12 +3,7 @@ import { FormGroup, FormControlLabel, Checkbox, Typography } from '@mui/material
 import { css } from '@emotion/react';
 import VerifiedIcon from '@mui/icons-material/Verified'
 
-const titleFilterCost = css`
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 30px;
-  text-transform: uppercase;
-`
+
 
 export const CheckboxGroup = (props) => {
 
@@ -23,8 +18,7 @@ export const CheckboxGroup = (props) => {
   }
 
   return (
-    <FormGroup css={css` width: 260px; margin-bottom: 38px;`}>
-      <Typography variant="h3" css={titleFilterCost}>Особливості:</Typography>
+    <FormGroup css={css` width: 260px; margin-bottom: 38px;`}>  
         {options.map(({ text, value }) =>
           <FormControlLabel
             key={value}

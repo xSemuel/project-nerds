@@ -3,12 +3,6 @@ import { Radio, RadioGroup, FormControlLabel, FormControl, Typography } from '@m
 import { css } from '@emotion/react'
 import TaskAltOutlinedIcon from '@mui/icons-material/TaskAltOutlined';
 
-const titleFilterCost = css`
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 30px;
-  text-transform: uppercase;
-`
 
 export const RadioButtonGroup = (props) => {
 
@@ -21,7 +15,6 @@ export const RadioButtonGroup = (props) => {
 
   return (
     <FormControl css={css` width: 260px; margin-bottom: 38px;`}>
-      <Typography variant="h3" css={titleFilterCost}>Cітка:</Typography>
       <RadioGroup 
         onChange={handleChange}
         aria-labelledby="demo-radio-buttons-group-label"

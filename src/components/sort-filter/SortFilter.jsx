@@ -20,6 +20,8 @@ const titleFilterCost = css`
     margin-bottom: 38px;
     padding-top: 5px;
 `
+// const buttonStyle = (selectedValue, value) => css`
+//     background: ${selectedValue === value ? 'red' : ''};
 const buttonStyle = css`
     color: #e1e1e1;
     border: none;
@@ -59,6 +61,7 @@ export const SortFilter = (props) => {
                     >
 
                     {options1.map(({ text, value }) => 
+                        // <Button css={buttonStyle(selectedValue, value)} key={value} value={value}>{text}</Button>
                         <Button css={buttonStyle} key={value} value={value}>{text}</Button>
                     )}
                 </ButtonGroup>

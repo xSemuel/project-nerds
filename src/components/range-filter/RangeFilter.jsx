@@ -2,14 +2,6 @@
 import { Box, Slider, Paper, Stack, Typography, styled, TextField } from '@mui/material';
 import { css } from '@emotion/react'
 
-const titleFilterCost = css`
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 30px;
-    text-transform: uppercase;
-    margin-bottom: 38px;
-    padding-top: 5px;
-`
 const wrapperSlider = css`
     width: 260px; 
     height: 80px; 
@@ -47,7 +39,6 @@ export const RangeFilter = (props) => {
 
     return (
         <Box css={css` width: 260px; margin-bottom: 38px;`}>
-            <Typography variant="h3" css={titleFilterCost}>Вартість:</Typography>
             <Stack spacing={{ xs: 1, sm: 2 }} direction="row"  justifyContent="space-between" useFlexGap flexWrap="wrap">
                 <Item css={wrapperSlider} >
                     <Slider css={css` color: #d7373b; width: 200px;`}
@@ -98,6 +89,15 @@ export const RangeFilter = (props) => {
                         />
                     </Stack>
                 </Box>     
+
+
+ {/* окремий компонент */}
+                        {/* <RangeInput
+                            value={value[1]}
+                            onChange={handleInputChange}
+                            label="До:"
+                            validator={validateFunc}
+                        /> */}
             </Stack>
         </Box>
     )

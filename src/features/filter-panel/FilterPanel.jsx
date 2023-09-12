@@ -10,6 +10,20 @@ import { css } from '@emotion/react'
 //     {text: 'до', indexValue: 1 }
 // ]
 
+const titleFilterCost = css`
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 30px;
+    text-transform: uppercase;
+    margin-bottom: 38px;
+    padding-top: 5px;
+`
+const titleFilterOther = css`
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 30px;
+  text-transform: uppercase;
+`
 const buttonStyles = css`  
     width: 260px;
     height: 52px;
@@ -70,8 +84,7 @@ export const FilterPanel = (props) => {
 
     return ( 
         <div css={css`margin-bottom: 38px;`}>
-            <Typography variant="h3" className="visually-hidden">FilterPanel</Typography>
-            <Typography className="visually-hidden">Фільтри:</Typography>
+            <Typography variant="h3" css={titleFilterCost}>Вартість:</Typography>
             <RangeFilter
                 // options={FILTER_RANGE}
                 min={0}
@@ -79,10 +92,12 @@ export const FilterPanel = (props) => {
                 value={filters.sliderFilter}
                 onChange={onChangeRangeHandler}
             />
+            <Typography variant="h3" css={titleFilterOther}>Cітка:</Typography>
             <RadioButtonGroup
                 options={FILTER_NETWORK}
                 onChange={onChangeRadioHandler}
             />
+            <Typography variant="h3" css={titleFilterOther}>Особливості:</Typography>
             <CheckboxGroup
                 options={FILTER_FEATURES}
                 onChange={onChangeCheckboxHandler}

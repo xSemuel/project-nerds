@@ -16,6 +16,10 @@ export const Store = () => {
                     </form>
                     <div className='col-9'>
                         <SortPanel />
+                        {/* <div css={css`margin-bottom: 38px;`}>
+                            <Typography variant="h3" className="visually-hidden">SortPanel</Typography>
+                            <SortFilter options1={SORT_TYPE} options2={SORT_ICON} onClick={onClickSortTypeHandler} onChange={onChangeIconSortHandler} selectedSortIcon={SORT_ICON[0].value}/>
+                        </div> */}
                         <h1>Карточки товаров</h1>
                     </div>    
                     
