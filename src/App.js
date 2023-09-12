@@ -3,7 +3,6 @@ import { Header, Mapcontact, Footer, Studio, Clients, Contacts, Cart, NotFound }
 import { Home } from './components/main'
 import { Store } from './pages'
 
-import './App.css';
 
 function App() {
   return (

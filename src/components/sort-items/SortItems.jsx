@@ -14,6 +14,7 @@ const buttonStyle = (selectedValue, value) => css`
     border: none;
     &:hover {
         border: none;
+        background: #e74246;
     }
     &:active {
         color: #d7373b;
