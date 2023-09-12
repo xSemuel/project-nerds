@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import { SortFilter } from "../../components";
+import { useState } from 'react';
+import { SortFilter } from '../../components';
 import { Typography } from '@mui/material';
 import { css } from '@emotion/react';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
@@ -17,11 +18,29 @@ const SORT_ICON = [
 ]
 
 
-export const SortPanel = () => {
+export const SortPanel = (props) => {
+
+    // const { onChange } = props;
+
+    const [sorts, setSorts] = useState({
+        sortTypeFilter: SORT_TYPE[0].value,
+        sortIconFilter: SORT_ICON[0].value,      
+    })
+
+    const onClickSortTypeHandler = (sortTypeFilter) => {
+        setSorts((prevState) => ({ ...prevState, sortTypeFilter }))
+    }
+
+    const onChangeIconSortHandler = ( sortIconFilter) => {
+        setSorts((prevState) => ({ ...prevState, sortIconFilter }))
+    }
+
+    console.log(sorts)
+
     return ( 
         <div css={css`margin-bottom: 38px;`}>
             <Typography variant="h3" className="visually-hidden">SortPanel</Typography>
-            <SortFilter options1={SORT_TYPE} options2={SORT_ICON}/>
+            <SortFilter options1={SORT_TYPE} options2={SORT_ICON} onClick={onClickSortTypeHandler} onChange={onChangeIconSortHandler} selectedSortIcon={SORT_ICON[0].value}/>
         </div>
     );
 }

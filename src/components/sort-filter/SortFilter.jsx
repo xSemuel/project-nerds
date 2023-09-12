@@ -33,16 +33,18 @@ const buttonStyle = css`
     }
 `
 
-export const SortFilter = ({options1, options2}) => {
+export const SortFilter = (props) => {
+
+    const {options1, options2, onClick, onChange, selectedSortIcon} = props;
 
     const handleSortType = (event) => {
         event.preventDefault();
-        console.log(event.target.value)
+        onClick(event.target.value)
     }
 
     const handleIconSort = (event) => {
         event.preventDefault();
-        console.log(event.target.value)
+        onChange(event.target.value)
     }
 
 
@@ -66,6 +68,7 @@ export const SortFilter = ({options1, options2}) => {
                     row 
                     aria-labelledby="demo-row-radio-buttons-group-label"
                     name="row-radio-buttons-group"
+                    defaultValue={selectedSortIcon}
                     css={css`margin-bottom: 38px`}
                     >
                         

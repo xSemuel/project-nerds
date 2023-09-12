@@ -42,7 +42,7 @@ const FILTER_FEATURES = [
 ]
 
 export const FilterPanel = (props) => {
-    const { onSubmit } = props
+    // const { onSubmit } = props
 
     const [filters, setFilters] = useState({
         sliderFilter: [1000, 11000],
