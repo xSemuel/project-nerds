@@ -1,5 +1,10 @@
+import { SortFilter } from "../../components";
+
 export const SortPanel = () => {
     return ( 
-        <h3>Cортувати:</h3>
+        <div>
+            <h3>Cортувати:</h3>
+            <SortFilter />
+        </div>
     );
 }

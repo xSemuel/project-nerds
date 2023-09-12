@@ -1,4 +1,4 @@
-import { FilterPanel } from '../../features'
+import { FilterPanel, SortPanel } from '../../features'
 
 import styles from './Store.module.css'
 
@@ -15,6 +15,7 @@ export const Store = () => {
                         <FilterPanel />
                     </form>
                     <div className='col-9'>
+                        <SortPanel />
                         <h1>Карточки товаров</h1>
                     </div>    
                     
