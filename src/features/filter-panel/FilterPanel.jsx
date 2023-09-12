@@ -26,7 +26,6 @@ const buttonStyles = css`
         background: #d7373b;
         color: #ffffff;
     }
-
 `
 const FILTER_NETWORK = [
     {text: 'Адаптивна', valueNetwork: 'Adaptive1', defaultValue: 'Adaptive1'},
