@@ -5,10 +5,10 @@ import { Button, Typography } from '@mui/material'
 import { css } from '@emotion/react'
 
 
-// const FILTER_RANGE = [
-//     {text: 'від', indexValue: 0},
-//     {text: 'до', indexValue: 1 }
-// ]
+const FILTER_RANGE = [
+    {text: 'від', indexValue: 0},
+    {text: 'до', indexValue: 1 }
+]
 
 const titleFilterCost = css`
     font-weight: 700;
@@ -86,7 +86,7 @@ export const FilterPanel = (props) => {
         <div css={css`margin-bottom: 38px;`}>
             <Typography variant="h3" css={titleFilterCost}>Вартість:</Typography>
             <RangeFilter
-                // options={FILTER_RANGE}
+                options={FILTER_RANGE}
                 min={0}
                 max={15000}
                 value={filters.sliderFilter}

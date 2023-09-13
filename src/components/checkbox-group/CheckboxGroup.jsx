@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { FormGroup, FormControlLabel, Checkbox, Typography } from '@mui/material';
+import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 import { css } from '@emotion/react';
 import VerifiedIcon from '@mui/icons-material/Verified'
 
