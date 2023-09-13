@@ -5,11 +5,6 @@ import { Button, Typography } from '@mui/material'
 import { css } from '@emotion/react'
 
 
-const FILTER_RANGE = [
-    {text: 'від', indexValue: 0},
-    {text: 'до', indexValue: 1 }
-]
-
 const titleFilterCost = css`
     font-weight: 700;
     font-size: 18px;
@@ -41,6 +36,13 @@ const buttonStyles = css`
         color: #ffffff;
     }
 `
+
+
+const FILTER_RANGE = [
+    {text: 'від', indexValue: 0},
+    {text: 'до', indexValue: 1 }
+]
+
 const FILTER_NETWORK = [
     {text: 'Адаптивна', valueNetwork: 'Adaptive1', defaultValue: 'Adaptive1'},
     {text: 'Фіксована', valueNetwork: 'Fixed2'},
@@ -56,7 +58,7 @@ const FILTER_FEATURES = [
 ]
 
 export const FilterPanel = (props) => {
-    // const { onSubmit } = props
+    const { options } = props
 
     const [filters, setFilters] = useState({
         sliderFilter: [1000, 11000],
@@ -66,8 +68,7 @@ export const FilterPanel = (props) => {
 
     const applyFiltersHandler = (event) => {
         event.preventDefault();
-        console.log("filters", filters)
-        // onSubmit(filters)
+        options(filters)
     }
 
     const onChangeRangeHandler = (sliderFilter) => {

@@ -49,6 +49,10 @@ export const Store = () => {
         setSorts((prevState) => ({ ...prevState, sortDir }))
     }
 
+    const onSubmit = (dataFilter) => {
+        console.log(dataFilter)
+    }
+
     console.log(sorts)
 
     return ( 
@@ -60,7 +64,7 @@ export const Store = () => {
             <div className="container">
                 <div className="row row-cols-2">
                     <div className="col-3">
-                        <FilterPanel />
+                        <FilterPanel options={onSubmit}/>
                     </div>
                     <div className='col-9'>
                         <div css={sortWrapper}>
