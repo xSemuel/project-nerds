@@ -4,6 +4,10 @@ import { css } from '@emotion/react';
 import VerifiedIcon from '@mui/icons-material/Verified'
 
 
+const wrapperCheckboxGroup = css`
+  width: 260px; 
+  margin-bottom: 38px;
+`
 
 export const CheckboxGroup = (props) => {
 
@@ -18,7 +22,7 @@ export const CheckboxGroup = (props) => {
   }
 
   return (
-    <FormGroup css={css` width: 260px; margin-bottom: 38px;`}>  
+    <FormGroup css={wrapperCheckboxGroup}>  
         {options.map(({ text, value }) =>
           <FormControlLabel
             key={value}
