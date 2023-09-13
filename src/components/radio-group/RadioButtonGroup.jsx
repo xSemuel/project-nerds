@@ -4,6 +4,11 @@ import { css } from '@emotion/react'
 import TaskAltOutlinedIcon from '@mui/icons-material/TaskAltOutlined';
 
 
+const wrapperRadioButtonGroup = css`
+  width: 260px; 
+  margin-bottom: 38px;
+`
+
 export const RadioButtonGroup = (props) => {
 
   const { options, onChange, defaultValue = options[0].valueNetwork } = props;
@@ -14,7 +19,7 @@ export const RadioButtonGroup = (props) => {
   };
 
   return (
-    <FormControl css={css` width: 260px; margin-bottom: 38px;`}>
+    <FormControl css={wrapperRadioButtonGroup}>
       <RadioGroup 
         onChange={handleChange}
         aria-labelledby="demo-radio-buttons-group-label"
