@@ -96,12 +96,12 @@ export const RangeFilter = (props) => {
                     />
                 </Item>
 
-                {options.map(({text, indexValue}) => 
+                {options.map(({text, id, indexValue}) => 
                     <Box key={text} direction="row" spacing={{sm:1, xs:1}} css={wrapperInputItem}>
                         <Stack direction="row" justifyContent="space-between">
                             <TextField
                                 value={value[indexValue]}
-                                id={indexValue}
+                                id={id}
                                 onChange={validateFunc}
                                 label={text}
                                 type="number"

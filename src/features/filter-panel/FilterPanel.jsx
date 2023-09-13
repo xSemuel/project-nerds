@@ -39,8 +39,8 @@ const buttonStyles = css`
 
 
 const FILTER_RANGE = [
-    {text: 'від', indexValue: 0},
-    {text: 'до', indexValue: 1 }
+    {text: 'від', indexValue: 0, id: '0' },
+    {text: 'до', indexValue: 1, id: '1' }
 ]
 
 const FILTER_NETWORK = [
