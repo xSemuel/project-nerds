@@ -4,11 +4,26 @@ import { css } from '@emotion/react';
 import { useState } from 'react';
 // import RangeInput from './RangeInput';
 
+
+
+const wrapperRangeFilter = css`
+    width: 260px; 
+    margin-bottom: 38px;
+`
 const wrapperSlider = css`
     width: 260px; 
     height: 80px; 
     padding-top: 24px; 
     border-radius: 8px;
+`
+const sliderRange = css`
+    color: #d7373b; 
+    width: 200px;
+`
+
+const wrapperInputItem = css`
+    width: 120px; 
+    height: 38px;
 `
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -45,17 +60,17 @@ export const RangeFilter = (props) => {
 
     const [valueError, setValueError] = useState('')
 
-    const validateFunc = (e, minRange={min}, maxRange={max}) => {
+    const validateFunc = (e) => {
         const newNum = +e.currentTarget.value;
         const id = e.currentTarget.id;
         console.log(newNum, id)
         if (id === '0') {
-            if (newNum <= 0) setValueError(`Мінімальне число не може бути менше ${minRange}`)
+            if (newNum <= 0) setValueError(`Мінімальне число не може бути менше ${min}`)
             if (newNum >= value[1]) setValueError(`Мінімальне число не може бути більше ${value[1]}`)
             else handleInputChange(id, newNum)            
         } else {
-            if (newNum > 15000) setValueError(`Мaксимальне число не може бути більше ${maxRange}`)
-            if (newNum <= value[0]) setValueError(`Мaксимальне число не може бути менше ${value[0]}`)
+            if (newNum > 15000) setValueError(`Мaксимальне число не може бути більше ${max}`)
+            if (newNum <= value[0]) setValueError(`Мaксимальне число не може бути менше або дорівнювати ${value[0]}`)
             else {
                 handleInputChange(id, newNum)
             }
@@ -70,10 +85,10 @@ export const RangeFilter = (props) => {
     };
 
     return (
-        <Box css={css` width: 260px; margin-bottom: 38px;`}>
+        <Box css={wrapperRangeFilter}>
             <Stack spacing={{ xs: 1, sm: 2 }} direction="row"  justifyContent="space-between" useFlexGap flexWrap="wrap">
                 <Item css={wrapperSlider} >
-                    <Slider css={css` color: #d7373b; width: 200px;`}
+                    <Slider css={sliderRange}
                         value={value}
                         onChange={handleChange}
                         min={min}
@@ -82,7 +97,7 @@ export const RangeFilter = (props) => {
                 </Item>
 
                 {options.map(({text, indexValue}) => 
-                    <Box key={text} direction="row" spacing={{sm:1, xs:1}} css={css`width: 120px; height: 38px;`}>
+                    <Box key={text} direction="row" spacing={{sm:1, xs:1}} css={wrapperInputItem}>
                         <Stack direction="row" justifyContent="space-between">
                             <TextField
                                 value={value[indexValue]}
