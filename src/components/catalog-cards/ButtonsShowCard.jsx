@@ -1,21 +1,40 @@
-const ButtonsShowCard = () => {
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
+import { useState } from 'react';
+import { createTheme, ThemeProvider, Typography, Pagination, Stack } from '@mui/material';
+
+const paginationWrapper = css`
+    align-items: center;
+    margin-bottom: 18px;
+`
+
+export const ButtonsShowCard = () => {
+
+    const theme = createTheme({
+        Typography: {
+            button: {
+              fontSize: '1rem',
+              color: 'yellow'
+            },
+            
+          },
+    
+    
+    })
+
+    const [page, setPage] = useState(1);
+    const handleChange = (event, value) => {
+        setPage(value);
+    };
+
     return ( 
-        <nav aria-label="..." >
-            <ul className="pagination d-flex justify-content-center">
-                <li className="page-item disabled">
-                    <span className="page-link">Предыдущая</span>
-                </li>
-                <li className="page-item"><a className="page-link" href="!#">1</a></li>
-                <li className="page-item active" aria-current="page">
-                    <span className="page-link">2</span>
-                </li>
-                <li className="page-item"><a className="page-link" href="!#">3</a></li>
-                <li className="page-item">
-                    <a className="page-link" href="!#">Следующая</a>
-                </li>
-            </ul>
-        </nav>
+        <ThemeProvider theme={theme}>
+            <Stack spacing={2} css={paginationWrapper}>
+                {/* <Typography>Page:{page}</Typography> */}
+                <Pagination count={5} page={page} onChange={handleChange} />
+            </Stack>
+
+
+        </ThemeProvider>
     );
 }
- 
-export default ButtonsShowCard;

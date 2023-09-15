@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import ButtonsShowCard from "./ButtonsShowCard"
+import { ButtonsShowCard } from './ButtonsShowCard';
 import { CATALOG_GOODS } from "../../constants"
 
     const catalogList = css`
