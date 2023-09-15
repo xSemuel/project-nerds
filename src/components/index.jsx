@@ -15,3 +15,5 @@ export * from './checkbox-group'
 
 
 export * from './sort-items'
+
+export * from './catalogCards'

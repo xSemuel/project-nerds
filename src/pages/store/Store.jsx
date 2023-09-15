@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from 'react';
-import { SortItems } from '../../components';
+import { SortItems, CatalogCards } from '../../components';
 import { Typography } from '@mui/material';
 import { css } from '@emotion/react';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
@@ -80,7 +80,7 @@ export const Store = () => {
                         </div>
 
                         <div>
-                            <h1>Карточки товаров</h1>
+                            <CatalogCards />
                         </div>     
                     </div>                       
                 </div>
