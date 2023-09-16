@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { ButtonsShowCard } from './ButtonsShowCard';
+import { PaginationList } from './PaginationList';
 import { CardItem } from './CardItem';
 import { CATALOG_GOODS } from "../../constants";
 
@@ -15,17 +15,16 @@ const cardWrapper = css `
     margin-bottom: 58px;
 `
 
-export const CatalogCards = () => {
+export const Catalog = () => {
     return ( 
         <>
             <div css={cardWrapper}>
                 {CATALOG_GOODS.map((item) =>
-                    <CardItem options={item}/>
+                    <CardItem key={item.title} options={item}/>
                 )}
             </div>
            
-
-            <ButtonsShowCard />
+            <PaginationList />
         </>
     )
 }

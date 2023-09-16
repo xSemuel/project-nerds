@@ -8,7 +8,7 @@ const paginationWrapper = css`
     margin-bottom: 18px;
 `
 
-export const ButtonsShowCard = () => {
+export const PaginationList = () => {
 
     const theme = createTheme({
             // button.MuiButtonBase: {
@@ -33,5 +33,5 @@ export const ButtonsShowCard = () => {
                 <Pagination count={5} page={page} onChange={handleChange} />
             </Stack>
         </ThemeProvider>
-    );
+    )
 }

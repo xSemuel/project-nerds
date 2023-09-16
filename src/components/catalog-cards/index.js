@@ -1,1 +1,1 @@
-export * from './CatalogCards'
+export * from './Catalog'
