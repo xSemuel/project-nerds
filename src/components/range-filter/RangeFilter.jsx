@@ -4,8 +4,6 @@ import { css } from '@emotion/react';
 import { useState } from 'react';
 // import RangeInput from './RangeInput';
 
-
-
 const wrapperRangeFilter = css`
     width: 260px; 
     margin-bottom: 38px;
@@ -64,8 +62,11 @@ export const RangeFilter = (props) => {
         const newNum = +e.currentTarget.value;
         const id = e.currentTarget.id;
         console.log(newNum, id)
-        if (id === '0') {
-            if (newNum <= 0) setValueError(`Мінімальне число не може бути менше ${min}`)
+        // const errorMessage = validateRange(min, max, limitRange) // => 'eeror message' || ''
+        // setValueError(errorMessage)
+        // ---------------------- helper 2 for min and max
+        if (id === '0') { // Why '0' magic
+            if (newNum <= 0/* why 0 ?? */) setValueError(`Мінімальне число не може бути менше ${min}`)
             if (newNum >= value[1]) setValueError(`Мінімальне число не може бути більше ${value[1]}`)
             else handleInputChange(id, newNum)            
         } else {
@@ -75,6 +76,7 @@ export const RangeFilter = (props) => {
                 handleInputChange(id, newNum)
             }
         }
+        // ----------------------
     }
 
     const handleInputChange = (id, newNum) => {
@@ -106,7 +108,7 @@ export const RangeFilter = (props) => {
                                 label={text}
                                 type="number"
                                 size="small"
-                                color="error"
+                                color="primary"
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
