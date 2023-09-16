@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { useState } from 'react';
-import { createTheme, ThemeProvider, Typography, Pagination, Stack } from '@mui/material';
+import { createTheme, ThemeProvider, Pagination, Stack } from '@mui/material';
 
 const paginationWrapper = css`
     align-items: center;
@@ -11,16 +11,15 @@ const paginationWrapper = css`
 export const ButtonsShowCard = () => {
 
     const theme = createTheme({
-        Typography: {
-            button: {
-              fontSize: '1rem',
-              color: 'yellow'
-            },
-            
-          },
-    
-    
+            // button.MuiButtonBase: {
+            //     color: 'yellow'
+
+            // }, 
+            // button.MuiPaginationItem: {
+            //     color: 'yellow'
+            // }
     })
+    
 
     const [page, setPage] = useState(1);
     const handleChange = (event, value) => {
@@ -33,8 +32,6 @@ export const ButtonsShowCard = () => {
                 {/* <Typography>Page:{page}</Typography> */}
                 <Pagination count={5} page={page} onChange={handleChange} />
             </Stack>
-
-
         </ThemeProvider>
     );
 }
