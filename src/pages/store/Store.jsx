@@ -35,7 +35,7 @@ const titleFilterCost = css`
 `
 
 export const Store = () => {
-
+    // 2 useSelectors
     const [sorts, setSorts] = useState({
         sortType: SORT_TYPE[0].value,
         sortDir: SORT_DIR[0].value,      
@@ -46,6 +46,7 @@ export const Store = () => {
     }
 
     const onChangeIconSortHandler = (sortDir) => {
+        // dispatch(someAction(sortDir))
         setSorts((prevState) => ({ ...prevState, sortDir }))
     }
 
