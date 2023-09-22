@@ -12,12 +12,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    type: 'sds',
-    dir: 'asc',
+  dateRange: [1, 100],
+  networkFilter: 'Adaptive1',
+  featuresFilter: 'blockFeatures',
 }
 
-export const searchParamsSlice = createSlice({
-  name: 'sorting',
+export const filterParamsSlice = createSlice({
+  name: 'filter',
   initialState,
   reducers: {
     ascendingDir: (state) => {
@@ -39,7 +40,7 @@ export const searchParamsSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { ascendingDir, descendingDir, forPriceType, forTypeType, forNameType } = searchParamsSlice.actions
+export const { ascendingDir, descendingDir, forPriceType, forTypeType, forNameType } = filterParamsSlice.actions
 
-export default searchParamsSlice.reducer
+export default filterParamsSlice.reducer
 
