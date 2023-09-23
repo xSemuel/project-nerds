@@ -11,10 +11,6 @@ import { selectedSort } from '../../store/slices/searchParamsSlice';
 import { changeDirection, changeType } from '../../store/slices/searchParamsSlice';
 
 
-console.log(changeDirection)
-console.log(changeType)
-
-
 const sortWrapper = css`
     display: flex;
     justify-content: space-between;

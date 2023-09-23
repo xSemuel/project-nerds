@@ -2,7 +2,8 @@
 import { useState } from 'react'
 import { RangeFilter, RadioButtonGroup, CheckboxGroup } from '../../components'
 import { Button, Typography } from '@mui/material'
-import { css } from '@emotion/react'
+import { css } from '@emotion/react';
+import { FILTER_RANGE, FILTER_NETWORK, FILTER_FEATURES } from '../../constants';
 
 
 const titleFilterCost = css`
@@ -38,24 +39,24 @@ const buttonStyles = css`
 `
 
 
-const FILTER_RANGE = [
-    {text: 'від', indexValue: 0, id: '0' },
-    {text: 'до', indexValue: 1, id: '1' }
-]
+// const FILTER_RANGE = [
+//     {text: 'від', indexValue: 0, id: '0' },
+//     {text: 'до', indexValue: 1, id: '1' }
+// ]
 
-const FILTER_NETWORK = [
-    {text: 'Адаптивна', valueNetwork: 'Adaptive1', defaultValue: 'Adaptive1'},
-    {text: 'Фіксована', valueNetwork: 'Fixed2'},
-    {text: 'Гумова', valueNetwork: 'Rubber3'},
-]
+// const FILTER_NETWORK = [
+//     {text: 'Адаптивна', valueNetwork: 'Adaptive1', defaultValue: 'Adaptive1'},
+//     {text: 'Фіксована', valueNetwork: 'Fixed2'},
+//     {text: 'Гумова', valueNetwork: 'Rubber3'},
+// ]
 
-const FILTER_FEATURES = [
-    { text: 'Слайдер', value: 'Slider' },
-    { text: 'Блок преимуществ', value: 'blockFeatures' },
-    { text: 'Новости', value: 'News' },
-    { text: 'Галерея', value: 'Gallery' },
-    { text: 'Корзина', value: 'Cart' },
-]
+// const FILTER_FEATURES = [
+//     { text: 'Слайдер', value: 'Slider' },
+//     { text: 'Блок преимуществ', value: 'blockFeatures' },
+//     { text: 'Новости', value: 'News' },
+//     { text: 'Галерея', value: 'Gallery' },
+//     { text: 'Корзина', value: 'Cart' },
+// ]
 
 export const FilterPanel = (props) => {
     const { options } = props

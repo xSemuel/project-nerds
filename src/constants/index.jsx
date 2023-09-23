@@ -4,3 +4,4 @@ export * from './app-partners';
 export * from './app-social';
 export * from './catalog-goods';
 export * from './catalog-sortParams';
+export * from './catalog-filterParams';
