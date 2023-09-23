@@ -2,7 +2,9 @@
 import { css } from '@emotion/react';
 import { PaginationList } from './PaginationList';
 import { CardItem } from './CardItem';
-import { CATALOG_GOODS } from "../../constants";
+// import { CATALOG_GOODS } from "../../constants";
+import { selectGoods } from '../../store/slices/goodsSlice';
+import { useSelector } from 'react-redux';
 
 
 const cardWrapper = css `
@@ -16,10 +18,18 @@ const cardWrapper = css `
 `
 
 export const Catalog = () => {
+
+    const goods = useSelector(selectGoods);
+
     return ( 
         <>
-            <div css={cardWrapper}>
+            {/* <div css={cardWrapper}>
                 {CATALOG_GOODS.map((item) =>
+                    <CardItem key={item.title} options={item}/>
+                )}
+            </div> */}
+            <div css={cardWrapper}>
+                {goods.map((item) =>
                     <CardItem key={item.title} options={item}/>
                 )}
             </div>
