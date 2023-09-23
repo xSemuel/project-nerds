@@ -31,7 +31,7 @@ export const SortItems = (props) => {
         onClick(event.target.value)
     }
 
-    const handleIconSort = (event) => {
+    const handleSortDir = (event) => {
         event.preventDefault();
         onChange(event.target.value)
     }
@@ -50,7 +50,7 @@ export const SortItems = (props) => {
             </ButtonGroup>
 
             <RadioGroup
-                onChange={handleIconSort}
+                onChange={handleSortDir}
                 row 
                 aria-labelledby="demo-row-radio-buttons-group-label"
                 name="row-radio-buttons-group"

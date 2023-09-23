@@ -1,26 +1,19 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from 'react';
+// import { useState } from 'react';
 import { SortItems, Catalog } from '../../components';
 import { Typography } from '@mui/material';
 import { css } from '@emotion/react';
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { SORT_TYPE, SORT_DIR } from '../../constants';
 import { FilterPanel } from '../../features';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectedFilters } from '../../store/slices/filtersParamsSlice';
 import { selectedSort } from '../../store/slices/searchParamsSlice';
+import { changeDirection, changeType } from '../../store/slices/searchParamsSlice';
 
 
-const SORT_TYPE = [
-    {text: 'По ціні', value: 'forPrice'},
-    {text: 'По типу', value: 'forType'},
-    {text: 'По назві', value: 'forName'},
-]
+console.log(changeDirection)
+console.log(changeType)
 
-const SORT_DIR = [
-    {text: 'Значок зростання', value: 'ascending', icon: <ArrowDropUpIcon sx={{ color: '#e1e1e1'}} />, checkedIcon: <ArrowDropUpIcon sx={{color: '#d7373b'}} />},
-    {text: 'Значок спадання', value: 'descending', icon: <ArrowDropDownIcon sx={{ color: '#e1e1e1'}} />, checkedIcon: <ArrowDropDownIcon sx={{color: '#d7373b'}} /> },
-]
 
 const sortWrapper = css`
     display: flex;
@@ -47,18 +40,21 @@ export const Store = () => {
     console.log(sortsMas)
 
 
-    const [sorts, setSorts] = useState({
-        sortType: SORT_TYPE[0].value,
-        sortDir: SORT_DIR[0].value,      
-    })
+    // const [sorts, setSorts] = useState({
+    //     sortType: SORT_TYPE[0].value,
+    //     sortDir: SORT_DIR[0].value,      
+    // })
 
     const onClickSortTypeHandler = (sortType) => {
-        setSorts((prevState) => ({ ...prevState, sortType }))
+        console.log(sortType)
+        dispatch(changeType(sortType))
+        // setSorts((prevState) => ({ ...prevState, sortType }))
     }
 
-    const onChangeIconSortHandler = (sortDir) => {
-        // dispatch(someAction(sortDir))
-        setSorts((prevState) => ({ ...prevState, sortDir }))
+    const onChangeSortDirHandler = (sortDir) => {
+        console.log(sortDir)
+        dispatch(changeDirection(sortDir))
+        // setSorts((prevState) => ({ ...prevState, sortDir }))
     }
 
     const onSubmit = (dataFilter) => {
@@ -85,9 +81,11 @@ export const Store = () => {
                                 optionsType={SORT_TYPE} 
                                 optionsDir={SORT_DIR} 
                                 onClick={onClickSortTypeHandler} 
-                                onChange={onChangeIconSortHandler} 
-                                selectedSortType={sorts.sortType} 
-                                selectedSortDir={SORT_DIR[0].value}
+                                onChange={onChangeSortDirHandler} 
+                                // selectedSortType={sorts.sortType} 
+                                // selectedSortDir={SORT_DIR[0].value}
+                                selectedSortType={sortsMas.sortType} 
+                                selectedSortDir={sortsMas.sortDir}
                             />
                         </div>
 

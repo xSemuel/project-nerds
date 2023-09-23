@@ -1,25 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import { SORT_TYPE, SORT_DIR } from '../../constants';
 
 const initialState = {
-    type: 'sds',
-    dir: 'asc',
+    sortType: SORT_TYPE[0].value,
+    sortDir: SORT_DIR[0].value,
 }
 
 export const searchParamsSlice = createSlice({
   name: 'sort',
   initialState,
   reducers: {
-    changeDirection: (state) => {
-      state.value += 1
+    changeDirection: (state, action) => {
+        state.sortDir = action.payload; 
     },  
     changeType: (state, action) => {
-      state.value += action.payload
+        state.sortType = action.payload;
     },
     }
 })
 
-// Action creators are generated for each case reducer function
 export const { changeDirection, changeType } = searchParamsSlice.actions
 export const selectedSort = state => state.sort;
 export default searchParamsSlice.reducer
-
