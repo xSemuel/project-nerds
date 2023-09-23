@@ -1,46 +1,30 @@
-// {
-//     filters: {
-//         dateRange: [1, 100],
-
-//     },
-//      sort: {
-//         type: 'sds',
-//         dir: 'asc'
-//      }
-// }
-
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import { FILTER_NETWORK, FILTER_FEATURES } from '../../constants';
 
 const initialState = {
-  dateRange: [1, 100],
-  networkFilter: 'Adaptive1',
-  featuresFilter: 'blockFeatures',
+  sliderFilter: [1000, 11000],
+  networkFilter: FILTER_NETWORK[0].defaultValue,
+  featuresFilter: [FILTER_FEATURES[1].value],
 }
 
 export const filterParamsSlice = createSlice({
   name: 'filter',
   initialState,
   reducers: {
-    ascendingDir: (state) => {
-      state.value += 1
+    changeSlider: (state, action) => {
+      state.sliderFilter = action.payload
     },
-    descendingDir: (state) => {
-      state.value -= 1
+    changeNetwork: (state, action) => {
+      state.networkFilter = action.payload
     },
-    forPriceType: (state, action) => {
-      state.value += action.payload
-    },
-    forTypeType: (state, action) => {
-      state.value += action.payload
-    },
-    forNameType: (state, action) => {
-      state.value += action.payload
+    changeFeatures: (state, action) => {
+      state.featuresFilter = action.payload
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { ascendingDir, descendingDir, forPriceType, forTypeType, forNameType } = filterParamsSlice.actions
+export const { changeSlider, changeNetwork, changeFeatures } = filterParamsSlice.actions
 export const selectedFilters = state => state.filter;
 export default filterParamsSlice.reducer
 
