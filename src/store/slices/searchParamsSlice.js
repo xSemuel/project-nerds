@@ -1,14 +1,3 @@
-// {
-//     filters: {
-//         dateRange: [1, 100],
-
-//     },
-//      sort: {
-//         type: 'sds',
-//         dir: 'asc'
-//      }
-// }
-
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
@@ -17,29 +6,20 @@ const initialState = {
 }
 
 export const searchParamsSlice = createSlice({
-  name: 'sorting',
+  name: 'sort',
   initialState,
   reducers: {
-    ascendingDir: (state) => {
+    changeDirection: (state) => {
       state.value += 1
-    },
-    descendingDir: (state) => {
-      state.value -= 1
-    },
-    forPriceType: (state, action) => {
+    },  
+    changeType: (state, action) => {
       state.value += action.payload
     },
-    forTypeType: (state, action) => {
-      state.value += action.payload
-    },
-    forNameType: (state, action) => {
-      state.value += action.payload
-    },
-  },
+    }
 })
 
 // Action creators are generated for each case reducer function
-export const { ascendingDir, descendingDir, forPriceType, forTypeType, forNameType } = searchParamsSlice.actions
-
+export const { changeDirection, changeType } = searchParamsSlice.actions
+export const selectedSort = state => state.sort;
 export default searchParamsSlice.reducer
 

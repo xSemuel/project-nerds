@@ -5,7 +5,10 @@ import { Typography } from '@mui/material';
 import { css } from '@emotion/react';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { FilterPanel } from '../../features'
+import { FilterPanel } from '../../features';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectedFilters } from '../../store/slices/filtersParamsSlice';
+import { selectedSort } from '../../store/slices/searchParamsSlice';
 
 
 const SORT_TYPE = [
@@ -36,6 +39,14 @@ const titleFilterCost = css`
 
 export const Store = () => {
     // 2 useSelectors
+    const dispatch = useDispatch();
+    const filtersMas = useSelector(selectedFilters);
+    const sortsMas = useSelector(selectedSort);
+
+    console.log(filtersMas)
+    console.log(sortsMas)
+
+
     const [sorts, setSorts] = useState({
         sortType: SORT_TYPE[0].value,
         sortDir: SORT_DIR[0].value,      
@@ -54,7 +65,7 @@ export const Store = () => {
         console.log(dataFilter)
     }
 
-    console.log(sorts)
+    // console.log(sorts)
 
     return ( 
         <div>

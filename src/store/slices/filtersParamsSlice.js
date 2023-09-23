@@ -41,6 +41,6 @@ export const filterParamsSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { ascendingDir, descendingDir, forPriceType, forTypeType, forNameType } = filterParamsSlice.actions
-
+export const selectedFilters = state => state.filter;
 export default filterParamsSlice.reducer
 
