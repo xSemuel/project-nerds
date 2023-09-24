@@ -5,7 +5,6 @@ import { css } from '@emotion/react';
 import { SORT_TYPE, SORT_DIR } from '../../constants';
 import { FilterPanel } from '../../features';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectedFilters } from '../../store/slices/filtersParamsSlice';
 import { selectedSort } from '../../store/slices/searchParamsSlice';
 import { changeDirection, changeType } from '../../store/slices/searchParamsSlice';
 import { updateFilter } from '../../store/slices/filtersParamsSlice';
@@ -27,14 +26,8 @@ const titleFilterCost = css`
 `
 
 export const Store = () => {
-    // 2 useSelectors
     const dispatch = useDispatch();
-    const filtersMas = useSelector(selectedFilters);
     const sortsMas = useSelector(selectedSort);
-
-    console.log(filtersMas)
-    console.log(sortsMas)
-
 
     // const [sorts, setSorts] = useState({
     //     sortType: SORT_TYPE[0].value,

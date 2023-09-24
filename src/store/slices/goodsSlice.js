@@ -14,14 +14,15 @@ export const goodsSlice = createSlice({
 
 
 // export const {} = goodsSlice.actions;
-export const selectGoods = state => state.goods.items;
-// export const selectGoods = state => { 
-//     const { goods, filter } = state
-//     return goods.items.filter((item, index) => {
-//         const isPrice = item.descPrice >= filter.price[0] && item.descPrice <= dataFilter.sliderFilter[1]
+export const selectGoods = state => { 
+    const { goods, filter } = state
+    return goods.items.filter( item => {
+        const isPrice = item.descPrice >= filter.price[0] && item.descPrice <= filter.price[1]
+        const isLayout = item.layout === filter.layout
+        const isFeatures = item.features.every(item => filter.features.includes(item)) && item.features.length === filter.features.length 
 
 
-//         // return isPrice && 
-//     }   
-// )}
+        return filter.features.length !== 0 ? isPrice && isLayout && isFeatures : isPrice && isLayout
+    }   
+)}
 export default goodsSlice.reducer;
