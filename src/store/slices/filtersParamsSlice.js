@@ -1,24 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { FILTER_NETWORK, FILTER_FEATURES } from '../../constants';
 
+
 const initialState = {
-  sliderFilter: [1000, 11000],
-  networkFilter: FILTER_NETWORK[0].defaultValue,
-  featuresFilter: [FILTER_FEATURES[1].value],
+  price: [1000, 11000],
+  layout: FILTER_NETWORK[0].defaultValue,
+  features: [FILTER_FEATURES[1].value],
 }
 
 export const filterParamsSlice = createSlice({
   name: 'filter',
   initialState,
   reducers: {
-    changeSlider: (state, action) => {
-      state.sliderFilter = action.payload
-    },
-    changeNetwork: (state, action) => {
-      state.networkFilter = action.payload
-    },
-    changeFeatures: (state, action) => {
-      state.featuresFilter = action.payload
+    updateFilter: (state, action) => {
+      const { key, value } = action.payload
+      state[key] = value
     },
   },
 })

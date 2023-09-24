@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectedFilters } from '../../store/slices/filtersParamsSlice';
 import { selectedSort } from '../../store/slices/searchParamsSlice';
 import { changeDirection, changeType } from '../../store/slices/searchParamsSlice';
+import { selectGoods } from '../../store/slices';
 
 
 const sortWrapper = css`
@@ -31,6 +32,7 @@ export const Store = () => {
     const dispatch = useDispatch();
     const filtersMas = useSelector(selectedFilters);
     const sortsMas = useSelector(selectedSort);
+    // const goodsMas = useSelector(selectGoods);
 
     console.log(filtersMas)
     console.log(sortsMas)
@@ -55,6 +57,10 @@ export const Store = () => {
 
     const onSubmit = (dataFilter) => {
         console.log(dataFilter)
+        // goodsMas.filter((item, index) => 
+        //     (item.descPrice >= dataFilter.sliderFilter[0] && item.descPrice <= dataFilter.sliderFilter[1])
+        // )
+        // console.log(goodsMas)
     }
 
     // console.log(sorts)

@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
-// import { useState } from 'react'
+import { useState } from 'react';
 import { RangeFilter, RadioButtonGroup, CheckboxGroup } from '../../components'
 import { Button, Typography } from '@mui/material'
 import { css } from '@emotion/react';
 import { FILTER_RANGE, FILTER_NETWORK, FILTER_FEATURES } from '../../constants';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectedFilters } from '../../store/slices/filtersParamsSlice';
-import { changeSlider, changeNetwork, changeFeatures } from '../../store/slices/filtersParamsSlice';
+import { updateFilter, changeNetwork, changeFeatures } from '../../store/slices/filtersParamsSlice';
 
 
 const titleFilterCost = css`
@@ -44,34 +44,34 @@ const buttonStyles = css`
 export const FilterPanel = (props) => {
     const { options } = props
 
-    const dispatch = useDispatch();
-    const filtersMas = useSelector(selectedFilters);
+    // const dispatch = useDispatch();
+    // const filtersMas = useSelector(selectedFilters);
 
 
-    // const [filters, setFilters] = useState({
-    //     sliderFilter: [1000, 11000],
-    //     networkFilter: FILTER_NETWORK[0].defaultValue,
-    //     featuresFilter: [FILTER_FEATURES[1].value]       
-    // })
+    const [filters, setFilters] = useState({
+        sliderFilter: [1000, 11000],
+        networkFilter: FILTER_NETWORK[0].defaultValue,
+        featuresFilter: [FILTER_FEATURES[1].value]       
+    })
 
     const applyFiltersHandler = (event) => {
         event.preventDefault();
-        options(filtersMas)
+        options(filters)
     }
 
     const onChangeRangeHandler = (sliderFilter) => {
-        dispatch(changeSlider(sliderFilter))
-        // setFilters((prevState) => ({ ...prevState, sliderFilter }))
+        // dispatch(updateFilter({key: 'price', value: sliderFilter}))
+        setFilters((prevState) => ({ ...prevState, sliderFilter }))
     }
 
     const onChangeRadioHandler = (networkFilter) => {
-        dispatch(changeNetwork(networkFilter))
-        // setFilters((prevState) => ({ ...prevState, networkFilter }))
+        // dispatch(changeNetwork(networkFilter))
+        setFilters((prevState) => ({ ...prevState, networkFilter }))
     }
 
     const onChangeCheckboxHandler = (featuresFilter) => {
-        dispatch(changeFeatures(featuresFilter))
-        // setFilters((prevState) => ({ ...prevState, featuresFilter }))
+        // dispatch(changeFeatures(featuresFilter))
+        setFilters((prevState) => ({ ...prevState, featuresFilter }))
     }
 
     return ( 
@@ -81,7 +81,7 @@ export const FilterPanel = (props) => {
                 options={FILTER_RANGE}
                 min={0}
                 max={15000}
-                value={filtersMas.sliderFilter}
+                value={filters.sliderFilter}
                 onChange={onChangeRangeHandler}
             />
             <Typography variant="h3" css={titleFilterOther}>Cітка:</Typography>
@@ -93,7 +93,7 @@ export const FilterPanel = (props) => {
             <CheckboxGroup
                 options={FILTER_FEATURES}
                 onChange={onChangeCheckboxHandler}
-                selectedValues={filtersMas.featuresFilter}
+                selectedValues={filters.featuresFilter}
             />
             <Button
                 css={buttonStyles}
