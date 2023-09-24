@@ -4,9 +4,6 @@ import { RangeFilter, RadioButtonGroup, CheckboxGroup } from '../../components'
 import { Button, Typography } from '@mui/material'
 import { css } from '@emotion/react';
 import { FILTER_RANGE, FILTER_NETWORK, FILTER_FEATURES } from '../../constants';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectedFilters } from '../../store/slices/filtersParamsSlice';
-import { updateFilter, changeNetwork, changeFeatures } from '../../store/slices/filtersParamsSlice';
 
 
 const titleFilterCost = css`
@@ -44,9 +41,6 @@ const buttonStyles = css`
 export const FilterPanel = (props) => {
     const { options } = props
 
-    // const dispatch = useDispatch();
-    // const filtersMas = useSelector(selectedFilters);
-
 
     const [filters, setFilters] = useState({
         sliderFilter: [1000, 11000],
@@ -60,17 +54,14 @@ export const FilterPanel = (props) => {
     }
 
     const onChangeRangeHandler = (sliderFilter) => {
-        // dispatch(updateFilter({key: 'price', value: sliderFilter}))
         setFilters((prevState) => ({ ...prevState, sliderFilter }))
     }
 
     const onChangeRadioHandler = (networkFilter) => {
-        // dispatch(changeNetwork(networkFilter))
         setFilters((prevState) => ({ ...prevState, networkFilter }))
     }
 
     const onChangeCheckboxHandler = (featuresFilter) => {
-        // dispatch(changeFeatures(featuresFilter))
         setFilters((prevState) => ({ ...prevState, featuresFilter }))
     }
 

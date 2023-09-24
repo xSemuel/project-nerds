@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-// import { useState } from 'react';
 import { SortItems, Catalog } from '../../components';
 import { Typography } from '@mui/material';
 import { css } from '@emotion/react';
@@ -9,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectedFilters } from '../../store/slices/filtersParamsSlice';
 import { selectedSort } from '../../store/slices/searchParamsSlice';
 import { changeDirection, changeType } from '../../store/slices/searchParamsSlice';
-import { selectGoods } from '../../store/slices';
+import { updateFilter } from '../../store/slices/filtersParamsSlice';
 
 
 const sortWrapper = css`
@@ -32,7 +31,6 @@ export const Store = () => {
     const dispatch = useDispatch();
     const filtersMas = useSelector(selectedFilters);
     const sortsMas = useSelector(selectedSort);
-    // const goodsMas = useSelector(selectGoods);
 
     console.log(filtersMas)
     console.log(sortsMas)
@@ -44,26 +42,22 @@ export const Store = () => {
     // })
 
     const onClickSortTypeHandler = (sortType) => {
-        console.log(sortType)
         dispatch(changeType(sortType))
         // setSorts((prevState) => ({ ...prevState, sortType }))
     }
 
     const onChangeSortDirHandler = (sortDir) => {
-        console.log(sortDir)
         dispatch(changeDirection(sortDir))
         // setSorts((prevState) => ({ ...prevState, sortDir }))
     }
 
     const onSubmit = (dataFilter) => {
-        console.log(dataFilter)
-        // goodsMas.filter((item, index) => 
-        //     (item.descPrice >= dataFilter.sliderFilter[0] && item.descPrice <= dataFilter.sliderFilter[1])
-        // )
-        // console.log(goodsMas)
+        const { sliderFilter, networkFilter, featuresFilter } = dataFilter
+        dispatch(updateFilter({key: 'price', value: sliderFilter}))
+        dispatch(updateFilter({key: 'layout', value: networkFilter}))
+        dispatch(updateFilter({key: 'features', value: featuresFilter}))
     }
 
-    // console.log(sorts)
 
     return ( 
         <div>

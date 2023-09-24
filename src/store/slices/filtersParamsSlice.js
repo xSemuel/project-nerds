@@ -20,7 +20,7 @@ export const filterParamsSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { changeSlider, changeNetwork, changeFeatures } = filterParamsSlice.actions
+export const { updateFilter } = filterParamsSlice.actions
 export const selectedFilters = state => state.filter;
 export default filterParamsSlice.reducer
 

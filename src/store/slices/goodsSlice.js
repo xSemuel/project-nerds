@@ -14,7 +14,7 @@ export const goodsSlice = createSlice({
 
 
 // export const {} = goodsSlice.actions;
-// export const selectGoods = state => state.goods.goods;
+export const selectGoods = state => state.goods.items;
 // export const selectGoods = state => { 
 //     const { goods, filter } = state
 //     return goods.items.filter((item, index) => {
