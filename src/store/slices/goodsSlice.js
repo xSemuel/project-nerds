@@ -21,7 +21,6 @@ export const selectGoods = state => {
         const isLayout = item.layout === filter.layout
         const isFeatures = item.features.every(item => filter.features.includes(item)) && item.features.length === filter.features.length 
 
-
         return filter.features.length !== 0 ? isPrice && isLayout && isFeatures : isPrice && isLayout
     }   
 )}

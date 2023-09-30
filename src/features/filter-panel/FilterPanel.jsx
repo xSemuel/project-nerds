@@ -39,30 +39,34 @@ const buttonStyles = css`
 `
 
 export const FilterPanel = (props) => {
-    const { options } = props
+    const { config, options } = props
 
-
-    const [filters, setFilters] = useState({
-        sliderFilter: [1000, 11000],
-        networkFilter: FILTER_NETWORK[0].defaultValue,
-        featuresFilter: [FILTER_FEATURES[1].value]       
-    })
+    const [filters, setFilters] = useState({...config})
+    // const [filters, setFilters] = useState({
+    //     sliderFilter: [1000, 11000], // price
+    //     networkFilter: FILTER_NETWORK[0].defaultValue, // layout
+    //     featuresFilter: [FILTER_FEATURES[1].value]    // features   
+    // })
 
     const applyFiltersHandler = (event) => {
         event.preventDefault();
-        options(filters)
+        options(filters) // TODO: options => onChange
     }
 
-    const onChangeRangeHandler = (sliderFilter) => {
-        setFilters((prevState) => ({ ...prevState, sliderFilter }))
-    }
+    // const onChangeRangeHandler = (sliderFilter) => {
+    //     setFilters((prevState) => ({ ...prevState, sliderFilter }))
+    // }
 
-    const onChangeRadioHandler = (networkFilter) => {
-        setFilters((prevState) => ({ ...prevState, networkFilter }))
-    }
+    // const onChangeRadioHandler = (networkFilter) => {
+    //     setFilters((prevState) => ({ ...prevState, networkFilter }))
+    // }
 
-    const onChangeCheckboxHandler = (featuresFilter) => {
-        setFilters((prevState) => ({ ...prevState, featuresFilter }))
+    // const onChangeCheckboxHandler = (featuresFilter) => {
+    //     setFilters((prevState) => ({ ...prevState, featuresFilter }))
+    // }
+
+    const onChangeHandler = (filterName, value) => {
+        setFilters((prevState) => ({ ...prevState, [filterName]: value }))
     }
 
     return ( 
@@ -72,19 +76,19 @@ export const FilterPanel = (props) => {
                 options={FILTER_RANGE}
                 min={0}
                 max={15000}
-                value={filters.sliderFilter}
-                onChange={onChangeRangeHandler}
+                value={filters.price}
+                onChange={(value) => onChangeHandler('price', value)}
             />
             <Typography variant="h3" css={titleFilterOther}>Cітка:</Typography>
             <RadioButtonGroup
                 options={FILTER_NETWORK}
-                onChange={onChangeRadioHandler}
+                onChange={(value) => onChangeHandler('layout', value)}
             />
             <Typography variant="h3" css={titleFilterOther}>Особливості:</Typography>
             <CheckboxGroup
                 options={FILTER_FEATURES}
-                onChange={onChangeCheckboxHandler}
-                selectedValues={filters.featuresFilter}
+                onChange={(value) => onChangeHandler('features', value)}
+                selectedValues={filters.features}
             />
             <Button
                 css={buttonStyles}

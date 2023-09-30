@@ -6,11 +6,12 @@ import { SORT_TYPE, SORT_DIR } from '../../constants';
 import { FilterPanel } from '../../features';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectedSort } from '../../store/slices/searchParamsSlice';
+import { selectedFilters } from '../../store/slices/filtersParamsSlice';
 import { changeDirection, changeType } from '../../store/slices/searchParamsSlice';
 import { updateFilter } from '../../store/slices/filtersParamsSlice';
 
 
-const sortWrapper = css`
+const sortWrapperStyle = css`
     display: flex;
     justify-content: space-between;
     align-items: top;
@@ -28,6 +29,7 @@ const titleFilterCost = css`
 export const Store = () => {
     const dispatch = useDispatch();
     const sortsMas = useSelector(selectedSort);
+    const filters = useSelector(selectedFilters); // init state
 
     // const [sorts, setSorts] = useState({
     //     sortType: SORT_TYPE[0].value,
@@ -44,8 +46,11 @@ export const Store = () => {
         // setSorts((prevState) => ({ ...prevState, sortDir }))
     }
 
+
     const onSubmit = (dataFilter) => {
         const { sliderFilter, networkFilter, featuresFilter } = dataFilter
+        // TODO: 1 dispatch
+        // dispatch(updateFilters(dataFilter))
         dispatch(updateFilter({key: 'price', value: sliderFilter}))
         dispatch(updateFilter({key: 'layout', value: networkFilter}))
         dispatch(updateFilter({key: 'features', value: featuresFilter}))
@@ -61,20 +66,23 @@ export const Store = () => {
             <div className="container">
                 <div className="row row-cols-2">
                     <div className="col-3">
-                        <FilterPanel options={onSubmit}/>
+                        <FilterPanel config={filters}  options={onSubmit} />
                     </div>
                     <div className='col-9'>
-                        <div css={sortWrapper}>
+                        <div css={sortWrapperStyle}>
                             <Typography variant="h3" css={titleFilterCost}>Сортувати:</Typography>
                             <SortItems 
                                 optionsType={SORT_TYPE} 
                                 optionsDir={SORT_DIR} 
+                                // onChangeType={onClickSortTypeHandler} 
+                                // onChangeDir={onChangeSortDirHandler} 
                                 onClick={onClickSortTypeHandler} 
                                 onChange={onChangeSortDirHandler} 
                                 // selectedSortType={sorts.sortType} 
                                 // selectedSortDir={SORT_DIR[0].value}
                                 selectedSortType={sortsMas.sortType} 
                                 selectedSortDir={sortsMas.sortDir}
+                                // sortOptions={sortsMas}
                             />
                         </div>
 

@@ -3,9 +3,10 @@ import { FILTER_NETWORK, FILTER_FEATURES } from '../../constants';
 
 
 const initialState = {
-  price: [1000, 11000],
-  layout: FILTER_NETWORK[0].defaultValue,
-  features: [FILTER_FEATURES[1].value],
+  price: [1000, 12000],
+  // layout: FILTER_NETWORK[0].defaultValue,
+  features: [],
+  // features: [FILTER_FEATURES[1].value],
 }
 
 export const filterParamsSlice = createSlice({
