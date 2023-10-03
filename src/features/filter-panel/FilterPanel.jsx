@@ -42,11 +42,6 @@ export const FilterPanel = (props) => {
     const { config, options } = props
 
     const [filters, setFilters] = useState({...config})
-    // const [filters, setFilters] = useState({
-    //     sliderFilter: [1000, 11000], // price
-    //     networkFilter: FILTER_NETWORK[0].defaultValue, // layout
-    //     featuresFilter: [FILTER_FEATURES[1].value]    // features   
-    // })
 
     const applyFiltersHandler = (event) => {
         event.preventDefault();
