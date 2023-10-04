@@ -1,14 +1,11 @@
 /** @jsxImportSource @emotion/react */
-import { SortItems, Catalog } from '../../components';
+import { useSelector, useDispatch } from 'react-redux';
 import { Typography } from '@mui/material';
 import { css } from '@emotion/react';
-import { SORT_TYPE, SORT_DIR } from '../../constants';
 import { FilterPanel } from '../../features';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectedSort } from '../../store/slices/searchParamsSlice';
-import { selectedFilters } from '../../store/slices/filtersParamsSlice';
-import { changeDirection, changeType } from '../../store/slices/searchParamsSlice';
-import { updateFilter } from '../../store/slices/filtersParamsSlice';
+import { SortItems, Catalog } from '../../components';
+import { SORT_TYPE, SORT_DIR } from '../../constants';
+import { selectedSort, updateFilters, selectedFilters, changeDirection, changeType  } from '../../store/slices';
 
 
 const sortWrapperStyle = css`
@@ -31,29 +28,16 @@ export const Store = () => {
     const sortsMas = useSelector(selectedSort);
     const filters = useSelector(selectedFilters); // init state
 
-    // const [sorts, setSorts] = useState({
-    //     sortType: SORT_TYPE[0].value,
-    //     sortDir: SORT_DIR[0].value,      
-    // })
-
     const onClickSortTypeHandler = (sortType) => {
         dispatch(changeType(sortType))
-        // setSorts((prevState) => ({ ...prevState, sortType }))
     }
 
     const onChangeSortDirHandler = (sortDir) => {
         dispatch(changeDirection(sortDir))
-        // setSorts((prevState) => ({ ...prevState, sortDir }))
     }
 
-
     const onSubmit = (dataFilter) => {
-        const { sliderFilter, networkFilter, featuresFilter } = dataFilter
-        // TODO: 1 dispatch
-        // dispatch(updateFilters(dataFilter))
-        dispatch(updateFilter({key: 'price', value: sliderFilter}))
-        dispatch(updateFilter({key: 'layout', value: networkFilter}))
-        dispatch(updateFilter({key: 'features', value: featuresFilter}))
+        dispatch(updateFilters(dataFilter))
     }
 
 
@@ -66,7 +50,7 @@ export const Store = () => {
             <div className="container">
                 <div className="row row-cols-2">
                     <div className="col-3">
-                        <FilterPanel config={filters}  options={onSubmit} />
+                        <FilterPanel config={filters} onChange={onSubmit} />
                     </div>
                     <div className='col-9'>
                         <div css={sortWrapperStyle}>
@@ -85,7 +69,6 @@ export const Store = () => {
                                 // sortOptions={sortsMas}
                             />
                         </div>
-
                         <div>
                             <Catalog />
                         </div>     

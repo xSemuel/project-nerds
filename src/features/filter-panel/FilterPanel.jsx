@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from 'react';
-import { RangeFilter, RadioButtonGroup, CheckboxGroup } from '../../components'
 import { Button, Typography } from '@mui/material'
 import { css } from '@emotion/react';
+import { RangeFilter, RadioButtonGroup, CheckboxGroup } from '../../components'
 import { FILTER_RANGE, FILTER_NETWORK, FILTER_FEATURES } from '../../constants';
 
 
@@ -39,26 +39,14 @@ const buttonStyles = css`
 `
 
 export const FilterPanel = (props) => {
-    const { config, options } = props
+    const { config, onChange } = props
 
     const [filters, setFilters] = useState({...config})
 
     const applyFiltersHandler = (event) => {
         event.preventDefault();
-        options(filters) // TODO: options => onChange
+        onChange(filters);
     }
-
-    // const onChangeRangeHandler = (sliderFilter) => {
-    //     setFilters((prevState) => ({ ...prevState, sliderFilter }))
-    // }
-
-    // const onChangeRadioHandler = (networkFilter) => {
-    //     setFilters((prevState) => ({ ...prevState, networkFilter }))
-    // }
-
-    // const onChangeCheckboxHandler = (featuresFilter) => {
-    //     setFilters((prevState) => ({ ...prevState, featuresFilter }))
-    // }
 
     const onChangeHandler = (filterName, value) => {
         setFilters((prevState) => ({ ...prevState, [filterName]: value }))

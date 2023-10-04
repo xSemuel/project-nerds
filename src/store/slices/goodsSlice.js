@@ -16,12 +16,12 @@ export const goodsSlice = createSlice({
 // export const {} = goodsSlice.actions;
 export const selectGoods = state => { 
     const { goods, filter } = state
-    return goods.items.filter( item => {
+    return goods.items.filter(item => {
         const isPrice = item.descPrice >= filter.price[0] && item.descPrice <= filter.price[1]
         const isLayout = item.layout === filter.layout
-        const isFeatures = item.features.every(item => filter.features.includes(item)) && item.features.length === filter.features.length 
+        const isFeatures = filter.features.every(feature => item.features.includes(feature)) // TODO: AND, some => OR
 
-        return filter.features.length !== 0 ? isPrice && isLayout && isFeatures : isPrice && isLayout
+        return isPrice && isLayout && isFeatures
     }   
 )}
 export default goodsSlice.reducer;

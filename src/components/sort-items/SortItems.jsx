@@ -26,6 +26,8 @@ export const SortItems = (props) => {
 
     const {optionsType, optionsDir, onClick, onChange, selectedSortDir, selectedSortType} = props;
 
+    console.log(selectedSortDir)
+
     const handleSortType = (event) => {
         event.preventDefault();
         onClick(event.target.value)
@@ -53,8 +55,8 @@ export const SortItems = (props) => {
                 onChange={handleSortDir}
                 row 
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
-                defaultValue={selectedSortDir}
+                name="controlled-radio-buttons-group"
+                value={selectedSortDir}
                 css={css`margin-bottom: 38px`}
                 >
                     
