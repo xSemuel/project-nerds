@@ -26,7 +26,7 @@ const titleFilterCost = css`
 export const Store = () => {
     const dispatch = useDispatch();
     const sortsMas = useSelector(selectedSort);
-    const filters = useSelector(selectedFilters); // init state
+    const filters = useSelector(selectedFilters);
 
     const onClickSortTypeHandler = (sortType) => {
         dispatch(changeType(sortType))
@@ -39,7 +39,6 @@ export const Store = () => {
     const onSubmit = (dataFilter) => {
         dispatch(updateFilters(dataFilter))
     }
-
 
     return ( 
         <div>
@@ -58,15 +57,10 @@ export const Store = () => {
                             <SortItems 
                                 optionsType={SORT_TYPE} 
                                 optionsDir={SORT_DIR} 
-                                // onChangeType={onClickSortTypeHandler} 
-                                // onChangeDir={onChangeSortDirHandler} 
                                 onClick={onClickSortTypeHandler} 
                                 onChange={onChangeSortDirHandler} 
-                                // selectedSortType={sorts.sortType} 
-                                // selectedSortDir={SORT_DIR[0].value}
                                 selectedSortType={sortsMas.sortType} 
                                 selectedSortDir={sortsMas.sortDir}
-                                // sortOptions={sortsMas}
                             />
                         </div>
                         <div>
