@@ -26,8 +26,7 @@ export const SortItems = (props) => {
 
     const {optionsType, optionsDir, onClick, onChange, selectedSortDir, selectedSortType} = props;
 
-    console.log(selectedSortDir)
-
+    
     const handleSortType = (event) => {
         event.preventDefault();
         onClick(event.target.value)
