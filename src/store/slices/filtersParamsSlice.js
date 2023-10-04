@@ -12,7 +12,7 @@ export const filterParamsSlice = createSlice({
   name: 'filter',
   initialState,
   reducers: {
-    updateFilters: (action) => {
+    updateFilters: (state, action) => {
       return action.payload
     },
   },

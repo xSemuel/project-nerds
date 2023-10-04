@@ -51,7 +51,7 @@ export const CATALOG_GOODS = [
         descAriaLabel: 'добавить в корзину создание сайта по шаблону MISHKA', 
         descPrice: 2000, 
         layout: 'Fixed2', 
-        features: ['blockFeatures'], 
+        features: ['blockFeatures', 'Gallery'], 
     }, 
 
     {
@@ -63,7 +63,7 @@ export const CATALOG_GOODS = [
         descAriaLabel: 'добавить в корзину создание сайта по шаблону А+', 
         descPrice: 8000, 
         layout: 'Fixed2', 
-        features: ['blockFeatures'], 
+        features: ['Slider', 'blockFeatures'], 
     }, 
 
     {
@@ -75,7 +75,7 @@ export const CATALOG_GOODS = [
         descAriaLabel: 'добавить в корзину создание сайта по шаблону КВАСТ', 
         descPrice: 7000, 
         layout: 'Fixed2', 
-        features: ['blockFeatures'], 
+        features: ['blockFeatures', 'News', 'Gallery'], 
     }, 
 
     {
