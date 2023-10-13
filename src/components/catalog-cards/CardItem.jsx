@@ -57,9 +57,9 @@ export const CardItem = ({options}) => {
     return ( 
             <Card key={title} sx={{ maxWidth: 360, maxHeight: 618 }}>
                 <CardActionArea>
-                    <CardTooltip title={
+                    <CardTooltip placement="bottom-start" title={
                         <Box css={wrapperDescCardStyle}>
-                            <Typography variant="h5">
+                            <Typography variant="h5" component="div">
                                 {title}
                             </Typography>
                             <Typography variant="h6">

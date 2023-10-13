@@ -15,13 +15,14 @@ export const goodsSlice = createSlice({
 
 // export const {} = goodsSlice.actions;
 export const selectGoods = state => { 
-    const { goods, filter } = state
+    const { goods, filter, sort } = state
     return goods.items.filter(item => {
         const isPrice = item.descPrice >= filter.price[0] && item.descPrice <= filter.price[1]
         const isLayout = item.layout === filter.layout
         const isFeatures = filter.features.every(feature => item.features.includes(feature)) // TODO: AND, some => OR
 
         return isPrice && isLayout && isFeatures
-    }   
-)}
+    })
+}
+
 export default goodsSlice.reducer;
