@@ -3,18 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 export const cartSlice = createSlice({
     name: 'cart',
     initialState: {
-        value: {}
+        value: [] // id1, id2
     },
     reducers: {
-        increment: (state, data) => {
-            let articul = data.payload;
-            if (state.value[articul] === undefined) state.value[articul] = 0;
-            state.value[articul]++;
-        },
-        minus: (state, action) => {
-            const articul = action.payload;
-            if (state.value[articul] === 0) delete state.value[articul];
-            state.value[articul]--;
+        increment: (state, action) => {
+            console.log(action.payload)
+            state.value = Array.from(new Set([...state.value, action.payload])) // TODO: Array -> Set -> Array
         },
         remove: (state, action) => {
             const articul = action.payload;
@@ -23,6 +17,9 @@ export const cartSlice = createSlice({
     }
 });
 
-export const { increment, minus, remove } = cartSlice.actions;
-export const selectCart = state => state.cart.value;
+export const { increment, remove } = cartSlice.actions;
+
+export const selectCart = state => state.cart.value; // TODO state.goods [{ id, .... }]   \\   createSelector 
+
+
 export default cartSlice.reducer;

@@ -4,9 +4,8 @@ import { styled } from '@mui/material/styles';
 import { Card, CardMedia, Typography, Button, CardActionArea, Box } from '@mui/material';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
-export const CardItem = ({options}) => {
+export const CardItem = ({options, goodCartAdd}) => {
     const { title, srcLogo, alt, descInfo, descPrice } = options;
-
 
     const CardTooltip = styled(({ className, ...props }) => (
             <Tooltip {...props} classes={{ popper: className }} />
@@ -15,10 +14,9 @@ export const CardItem = ({options}) => {
                 maxWidth: 360,
                 maxHeight: 420,
                 backgroundColor: `#eee`,
-                color: "black",
+                color: "black"
             },
         });
-
 
         const buttonStyles = css`  
             width: 160px;
@@ -55,33 +53,35 @@ export const CardItem = ({options}) => {
         `
 
     return ( 
-            <Card key={title} sx={{ maxWidth: 360, maxHeight: 618 }}>
-                <CardActionArea>
-                    <CardTooltip placement="bottom-start" title={
-                        <Box css={wrapperDescCardStyle}>
-                            <Typography variant="h5" component="div">
-                                {title}
-                            </Typography>
-                            <Typography variant="h6">
-                                {descInfo}
-                            </Typography>
-                            <Button css={buttonStyles}
-                                variant="contained"
-                                size="large">
-                                {descPrice}  
-                                <Typography css={currencyButtonStyle} variant="body2">грн.</Typography>
-                            </Button>
-                        </Box>
-                    }>
-                        <CardMedia
-                        component="img"
-                        height="418"
-                        image={srcLogo}
-                        alt={alt}
-                        />
-                    </CardTooltip>
-                </CardActionArea>
-            </Card>
+        <Card key={title} sx={{ maxWidth: 360, maxHeight: 618 }}>
+            <CardActionArea>
+                <CardTooltip placement="bottom-start" title={
+                    <Box css={wrapperDescCardStyle}>
+                        <Typography variant="h5" component="div">
+                            {title}
+                        </Typography>
+                        <Typography variant="h6">
+                            {descInfo}
+                        </Typography>
+                        <Button css={buttonStyles}
+                            value={title}
+                            onClick={goodCartAdd}
+                            variant="submit"
+                            size="large">
+                            {descPrice}  
+                            <Typography css={currencyButtonStyle} variant="body2">грн.</Typography>
+                        </Button>
+                    </Box>
+                }>
+                    <CardMedia
+                    component="img"
+                    height="418"
+                    image={srcLogo}
+                    alt={alt}
+                    />
+                </CardTooltip>
+            </CardActionArea>    
+        </Card>
     )
 }
  

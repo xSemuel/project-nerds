@@ -7,6 +7,8 @@ export * from './Cart';
 export * from './Mapcontact';
 export * from './Footer';
 export * from './NotFound';
+export * from './Cart';
+export * from './CartList';
 
 
 export * from './range-filter'

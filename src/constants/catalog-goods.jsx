@@ -7,6 +7,7 @@ import sedonaImg from '../components/store/img/img-sedona-1.jpg';
 
 export const CATALOG_GOODS = [
     {
+        id: '001',
         title: 'Cайт Седона', 
         srcLogo: sedonaImg, 
         alt: 'Изображение главной страницы сайта Седона', 
@@ -16,9 +17,9 @@ export const CATALOG_GOODS = [
         descPrice: 5000, 
         layout: 'Adaptive1', 
         features: ['Slider'], 
-    }, 
-
+    },
     {
+        id: '002',
         title: 'Cайт PINK APP', 
         srcLogo: pinkImg, 
         alt: 'Изображение главной страницы сайта PINK', 
@@ -28,9 +29,9 @@ export const CATALOG_GOODS = [
         descPrice: 6000, 
         layout: 'Adaptive1', 
         features: ['blockFeatures', 'Slider'], 
-    }, 
-
+    },
     {
+        id: '003',
         title: 'Cайт Барбершоп «Бородинский»', 
         srcLogo: barberImg, 
         alt: 'Изображение главной страницы сайта Барбершоп «Бородинский»', 
@@ -40,9 +41,9 @@ export const CATALOG_GOODS = [
         descPrice: 12000, 
         layout: 'Adaptive1', 
         features: ['blockFeatures'], 
-    }, 
-
+    },
     {
+        id: '004',
         title: 'Cайт MISHKA', 
         srcLogo: mishkaImg, 
         alt: 'Изображение главной страницы сайта MISHKA', 
@@ -52,9 +53,9 @@ export const CATALOG_GOODS = [
         descPrice: 2000, 
         layout: 'Fixed2', 
         features: ['blockFeatures', 'Gallery'], 
-    }, 
-
+    },
     {
+        id: '005',
         title: 'Cайт A+', 
         srcLogo: aplusImg, 
         alt: 'Изображение главной страницы сайта A+', 
@@ -64,9 +65,9 @@ export const CATALOG_GOODS = [
         descPrice: 8000, 
         layout: 'Fixed2', 
         features: ['Slider', 'blockFeatures'], 
-    }, 
-
+    },
     {
+        id: '006',
         title: 'Cайт КВАСТ', 
         srcLogo: kvastImg, 
         alt: 'Изображение главной страницы сайта КВАСТ', 
@@ -76,9 +77,9 @@ export const CATALOG_GOODS = [
         descPrice: 7000, 
         layout: 'Fixed2', 
         features: ['blockFeatures', 'News', 'Gallery'], 
-    }, 
-
+    },
     {
+        id: '007',
         title: 'Cайт Рейдона', 
         srcLogo: sedonaImg, 
         alt: 'Изображение главной страницы сайта Рейдона', 
@@ -88,9 +89,9 @@ export const CATALOG_GOODS = [
         descPrice: 7000, 
         layout: 'Rubber3', 
         features: ['Slider', 'News', 'Gallery'], 
-    }, 
-
+    },
     {
+        id: '008',
         title: 'Cайт SerINK ', 
         srcLogo: pinkImg, 
         alt: 'Изображение главной страницы сайта SerINK', 
@@ -100,9 +101,9 @@ export const CATALOG_GOODS = [
         descPrice: 2000, 
         layout: 'Rubber3', 
         features: ['News', 'Gallery', 'Cart'], 
-    }, 
-
+    },
     {
+        id: '009',
         title: 'Cайт beauty «TuffyShop»', 
         srcLogo: barberImg, 
         alt: 'Изображение главной страницы cайта beauty «TuffyShop»', 
@@ -112,9 +113,9 @@ export const CATALOG_GOODS = [
         descPrice: 9000, 
         layout: 'Rubber3', 
         features: ['blockFeatures', 'News', 'Gallery', 'Cart'], 
-    }, 
-
+    },
     {
+        id: '010',
         title: 'Cайт Karatuwka', 
         srcLogo: mishkaImg, 
         alt: 'Изображение главной страницы сайта Karatuwka', 
@@ -124,9 +125,9 @@ export const CATALOG_GOODS = [
         descPrice: 5000, 
         layout: 'Fixed2', 
         features: ['blockFeatures', 'News', 'Gallery', 'Cart'],
-    }, 
-
+    },
     {
+        id: '011',
         title: 'Cайт Zenda', 
         srcLogo: aplusImg, 
         alt: 'Изображение главной страницы сайта Zenda', 
@@ -137,8 +138,8 @@ export const CATALOG_GOODS = [
         layout: 'Rubber3', 
         features: ['Slider', 'News', 'Gallery', 'Cart'], 
     },
-
     {
+        id: '012',
         title: 'Cайт Raketa', 
         srcLogo: kvastImg, 
         alt: 'Изображение главной страницы сайта Raketa', 

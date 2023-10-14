@@ -23,6 +23,7 @@ export const selectGoods = state => {
 
         return isPrice && isLayout && isFeatures
     })
+    // }).sort(a, b)
 }
 
 export default goodsSlice.reducer;

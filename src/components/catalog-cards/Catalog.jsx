@@ -2,9 +2,9 @@
 import { css } from '@emotion/react';
 import { PaginationList } from './PaginationList';
 import { CardItem } from './CardItem';
-// import { CATALOG_GOODS } from "../../constants";
+import { useSelector, useDispatch } from 'react-redux';
 import { selectGoods } from '../../store/slices/goodsSlice';
-import { useSelector } from 'react-redux';
+import { increment } from '../../store/slices';
 
 
 const cardWrapper = css `
@@ -19,18 +19,23 @@ const cardWrapper = css `
 
 export const Catalog = () => {
 
+    const dispatch = useDispatch();
     const goods = useSelector(selectGoods);
+
+
+    const handleCartAdd = (siteId) => {
+        dispatch(increment(siteId))
+    }
 
     return ( 
         <>
-            {/* <div css={cardWrapper}>
-                {CATALOG_GOODS.map((item) =>
-                    <CardItem key={item.title} options={item}/>
-                )}
-            </div> */}
             <div css={cardWrapper}>
                 {goods.map((item) =>
-                    <CardItem key={item.title} options={item}/>
+                    <CardItem
+                        key={item.title}
+                        options={item}
+                        goodCartAdd={() => handleCartAdd(item.id)}
+                    />
                 )}
             </div>
            
