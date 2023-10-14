@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 import { Card, CardMedia, Typography, Button, CardActionArea, Box } from '@mui/material';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
-export const CardItem = ({options, goodCartAdd}) => {
+export const CardItem = ({options, handleGoodCartAdd}) => {
     const { title, srcLogo, alt, descInfo, descPrice } = options;
 
     const CardTooltip = styled(({ className, ...props }) => (
@@ -64,8 +64,7 @@ export const CardItem = ({options, goodCartAdd}) => {
                             {descInfo}
                         </Typography>
                         <Button css={buttonStyles}
-                            value={title}
-                            onClick={goodCartAdd}
+                            onClick={handleGoodCartAdd}
                             variant="submit"
                             size="large">
                             {descPrice}  

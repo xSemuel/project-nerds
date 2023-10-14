@@ -4,7 +4,7 @@ import { PaginationList } from './PaginationList';
 import { CardItem } from './CardItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectGoods } from '../../store/slices/goodsSlice';
-import { increment } from '../../store/slices';
+import { addIdToCart } from '../../store/slices';
 
 
 const cardWrapper = css `
@@ -24,7 +24,7 @@ export const Catalog = () => {
 
 
     const handleCartAdd = (siteId) => {
-        dispatch(increment(siteId))
+        dispatch(addIdToCart(siteId))
     }
 
     return ( 
@@ -34,7 +34,7 @@ export const Catalog = () => {
                     <CardItem
                         key={item.title}
                         options={item}
-                        goodCartAdd={() => handleCartAdd(item.id)}
+                        handleGoodCartAdd={() => handleCartAdd(item.id)}
                     />
                 )}
             </div>

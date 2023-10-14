@@ -3,23 +3,22 @@ import { createSlice } from '@reduxjs/toolkit';
 export const cartSlice = createSlice({
     name: 'cart',
     initialState: {
-        value: [] // id1, id2
+        idCartMas: [] // id1, id2
     },
     reducers: {
-        increment: (state, action) => {
-            console.log(action.payload)
-            state.value = Array.from(new Set([...state.value, action.payload])) // TODO: Array -> Set -> Array
+        addIdToCart: (state, action) => {
+            state.idCartMas = Array.from(new Set([...state.idCartMas, action.payload])) // TODO: Array -> Set -> Array
         },
-        remove: (state, action) => {
+        removeIdToCart: (state, action) => {
             const articul = action.payload;
-            delete state.value[articul];
+            delete state.idCartMas[articul];
         }
     }
 });
 
-export const { increment, remove } = cartSlice.actions;
+export const { addIdToCart, removeIdToCart } = cartSlice.actions;
 
-export const selectCart = state => state.cart.value; // TODO state.goods [{ id, .... }]   \\   createSelector 
+export const selectCart = state => state.cart.idCartMas; // TODO state.goods [{ id, .... }]   \\   createSelector 
 
 
 export default cartSlice.reducer;
