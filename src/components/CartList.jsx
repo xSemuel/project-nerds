@@ -2,32 +2,18 @@
 import { css } from '@emotion/react';
 
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Box, Button } from '@mui/material';
-// import { selectGoods } from '../store/slices/goodsSlice';
-import { selectCart } from '../store/slices/cartSlice';
+import { selectedGoodsInCart, sumSelectedGoodsInCart } from '../store/slices/cartSlice';
 import { Cart } from '../components';
-// import { remove } from '../store/slices/cartSlice';
 
 export const CartList = () => {
-    // const dispatch = useDispatch();
-    // const goods = useSelector(selectGoods);
-    const cart = useSelector(selectCart);
 
+    const cart = useSelector(selectedGoodsInCart);
+    const cartSum = useSelector(sumSelectedGoodsInCart); 
 
-    // const clickHandler = (event) => {
-    //     event.preventDefault();
-    //     const articul = event.target.getAttribute('data-key')
-
-    //     if (event.target.classList.contains('minus-from-cart')){   
-    //         const quantity = cart[articul]
-    //         const action = quantity > 1 ? minus : remove
-    //         dispatch(action(articul))
-    //     } else if (event.target.classList.contains('remove-from-cart')) {
-    //         dispatch(remove(articul));
-    //     }
-    // }
-    console.dir(cart)
+    console.log(cart.length)
+    console.log(cartSum)
 
     const cartWrapper = css`
         min-height: 500px;
@@ -53,31 +39,12 @@ export const CartList = () => {
     return (
         <div className="container">
             <Box css={cartWrapper}>
-                {cart.map(item => console.log(item))}
-
-                <Cart/>
+                <Cart options={cart} sumInCart={cartSum} />
                 <Button css={buttonStyles}>
                     Оформити
                 </Button>
             </Box>
         </div>
-        // <div className='cart-field' onClick={clickHandler}>
-        //     {Object.keys(cart).map(articul => {                
-        //         const {image, title, cost} = goodsObj[articul]
-        //         const quantity = cart[articul]
-
-        //         // <Cart good={goodsObj[item]} quantity={cart[item]} />
-
-        //         return (
-        //             <Cart
-        //                 key={title}
-        //                 image={image}
-        //                 title={title}
-        //                 cost={cost}
-        //                 count={quantity}
-        //                 articul={articul}
-        //             />)})}
-        // </div>
     );
 
 }
