@@ -1,19 +1,25 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Box, Button } from '@mui/material';
-import { selectedGoodsInCart, sumSelectedGoodsInCart } from '../store/slices/cartSlice';
+import { selectedGoodsInCart, sumSelectedGoodsInCart, removeIdToCart } from '../store/slices/cartSlice';
 import { Cart } from '../components';
 
 export const CartList = () => {
 
+    const dispatch = useDispatch();
     const cart = useSelector(selectedGoodsInCart);
     const cartSum = useSelector(sumSelectedGoodsInCart); 
 
     console.log(cart.length)
     console.log(cartSum)
+
+    const handleCartDelete = (event) => {
+        const siteId = event.currentTarget.value;
+        event.preventDefault()
+        dispatch(removeIdToCart(siteId))
+    }
 
     const cartWrapper = css`
         min-height: 500px;
@@ -44,7 +50,7 @@ export const CartList = () => {
     return (
         <div className="container">
             <Box css={cartWrapper}>
-                <Cart options={cart} sumInCart={cartSum} />
+                <Cart options={cart} sumInCart={cartSum} handleGoodCartDelete={handleCartDelete} />
                 <Button css={buttonStyles}>
                     Оформити замовлення
                 </Button>

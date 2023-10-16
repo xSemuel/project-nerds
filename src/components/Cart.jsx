@@ -1,20 +1,22 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { Typography } from '@mui/material';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import { Tooltip, IconButton, Typography } from '@mui/material';
+
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
-export const Cart = ({options, sumInCart}) => {
+
+export const Cart = ({options, sumInCart, handleGoodCartDelete}) => {
 
     const currencyButtonStyle = css`
     font-size: 11px;
     padding-top: 4px;
+    `
+    const smallLogoCartGoods = css`
+        height: 100px;
+        width: 100px;
     `
 
     return (
@@ -22,7 +24,7 @@ export const Cart = ({options, sumInCart}) => {
             <Table sx={{ minWidth: 700 }} aria-label="spanning table">
                 <TableHead>
                     <TableRow>
-                        <TableCell align="center" colSpan={3}>
+                        <TableCell align="center" colSpan={5}>
                             Товар
                         </TableCell>
                         <TableCell align="right">
@@ -30,16 +32,26 @@ export const Cart = ({options, sumInCart}) => {
                         </TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell>Назва товару</TableCell>
-                        <TableCell align="right">Вартість</TableCell>
-                        <TableCell align="right">Кількість</TableCell>
+                        <TableCell>Дія</TableCell>
+                        <TableCell>№</TableCell>
+                        <TableCell>Фото товару</TableCell>
+                        <TableCell align="right">Назва</TableCell>
+                        <TableCell align="right">Опис</TableCell>
                         <TableCell align="right">Ціна</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {options.map((row) => (
+                    {options.map((row, index) => (
                         <TableRow key={row.id}>
-                            <TableCell align="right"><img src={row.srcLogo} alt={row.alt}/></TableCell>
+                            <TableCell>
+                                <Tooltip title="Видалити">
+                                    <IconButton onClick={handleGoodCartDelete} value={row.id}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </Tooltip>
+                            </TableCell>
+                            <TableCell align="right">{index+1}</TableCell>
+                            <TableCell align="right"><img css={smallLogoCartGoods} src={row.srcLogo} alt={row.alt}/></TableCell>
                             <TableCell>{row.title}</TableCell>
                             <TableCell align="right">{row.descInfo}</TableCell>                      
                             <TableCell align="right">
@@ -50,8 +62,8 @@ export const Cart = ({options, sumInCart}) => {
                     ))} 
 
                     <TableRow>
-                        <TableCell rowSpan={3} />
-                        <TableCell colSpan={2}>Всього:</TableCell>
+                        <TableCell rowSpan={5} />
+                        <TableCell colSpan={4}>Всього:</TableCell>
                         <TableCell align="right">
                             {sumInCart}
                             <Typography css={currencyButtonStyle} variant="body2">грн.</Typography>

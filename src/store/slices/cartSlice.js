@@ -11,8 +11,7 @@ export const cartSlice = createSlice({
             state.idCartMas = Array.from(new Set([...state.idCartMas, action.payload])) // TODO: Array -> Set -> Array
         },
         removeIdToCart: (state, action) => {
-            const articul = action.payload;
-            delete state.idCartMas[articul];
+            state.idCartMas = [...state.idCartMas].filter((id) => id !== action.payload)
         }
     }
 });
