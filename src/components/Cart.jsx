@@ -1,3 +1,6 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
+import { Typography } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -8,6 +11,11 @@ import Paper from '@mui/material/Paper';
 
 
 export const Cart = ({options, sumInCart}) => {
+
+    const currencyButtonStyle = css`
+    font-size: 11px;
+    padding-top: 4px;
+    `
 
     return (
         <TableContainer component={Paper}>
@@ -34,14 +42,20 @@ export const Cart = ({options, sumInCart}) => {
                             <TableCell align="right"><img src={row.srcLogo} alt={row.alt}/></TableCell>
                             <TableCell>{row.title}</TableCell>
                             <TableCell align="right">{row.descInfo}</TableCell>                      
-                            <TableCell align="right">{row.descPrice}</TableCell>
+                            <TableCell align="right">
+                                {row.descPrice}
+                                <Typography css={currencyButtonStyle} variant="body2">грн.</Typography>
+                            </TableCell>
                         </TableRow>
                     ))} 
 
                     <TableRow>
                         <TableCell rowSpan={3} />
                         <TableCell colSpan={2}>Всього:</TableCell>
-                        <TableCell align="right">{sumInCart}</TableCell>
+                        <TableCell align="right">
+                            {sumInCart}
+                            <Typography css={currencyButtonStyle} variant="body2">грн.</Typography>
+                        </TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
