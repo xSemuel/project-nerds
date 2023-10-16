@@ -2,7 +2,7 @@
 import { css } from '@emotion/react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { Box, Button } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { selectedGoodsInCart, sumSelectedGoodsInCart, removeIdToCart } from '../store/slices/cartSlice';
 import { Cart } from '../components';
 
@@ -17,7 +17,6 @@ export const CartList = () => {
 
     const handleCartDelete = (event) => {
         const siteId = event.currentTarget.value;
-        event.preventDefault()
         dispatch(removeIdToCart(siteId))
     }
 
@@ -46,14 +45,23 @@ export const CartList = () => {
             color: #ffffff;
         }
     `
+    const styleCartEmpty =css`
+        font-weight: bold;
+        margin: 0 auto;
+    
+    `
 
     return (
         <div className="container">
             <Box css={cartWrapper}>
-                <Cart options={cart} sumInCart={cartSum} handleGoodCartDelete={handleCartDelete} />
-                <Button css={buttonStyles}>
-                    Оформити замовлення
-                </Button>
+                {cart ? <Typography css={styleCartEmpty} variant="h2">Корзина пуста</Typography> :   
+                <>
+                    <Cart options={cart} sumInCart={cartSum} handleGoodCartDelete={handleCartDelete} /> 
+                    <Button css={buttonStyles}>
+                        Оформити замовлення
+                    </Button>
+                </>
+                }
             </Box>
         </div>
     );
