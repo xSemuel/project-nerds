@@ -48,13 +48,13 @@ export const CartList = () => {
     const styleCartEmpty =css`
         font-weight: bold;
         margin: 0 auto;
-    
+        margin-top: 40px;
     `
 
     return (
         <div className="container">
             <Box css={cartWrapper}>
-                {cart ? <Typography css={styleCartEmpty} variant="h2">Корзина пуста</Typography> :   
+                {cart.length === 0 ? <Typography css={styleCartEmpty} variant="h2">Корзина пуста</Typography> :   
                 <>
                     <Cart options={cart} sumInCart={cartSum} handleGoodCartDelete={handleCartDelete} /> 
                     <Button css={buttonStyles}>

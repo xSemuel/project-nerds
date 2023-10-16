@@ -1,7 +1,17 @@
 import { NavLink } from "react-router-dom";
 import { NAVIGATION_LINKS, Main_link, Cart_link } from '../constants';
 
+import { Badge, IconButton } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
+import { selectedGoodsInCart } from '../store/slices/cartSlice';
+import { useSelector } from 'react-redux';
+
+
 export const Header = () => {
+
+    const countGoodsInCart = useSelector(selectedGoodsInCart)
+
     return ( 
         <nav className="navbar navbar-expand-lg pt-50 bg-color-main">
             <div className="container">
@@ -23,9 +33,13 @@ export const Header = () => {
 
                     </ul>
 
-                    <div className="d-flex gap-3">
-                        <img src={Cart_link.logo} width="15" heigth="11" alt="Cart"/>
-                        <NavLink className="nav-link" to={Cart_link.link}>{Cart_link.text}</NavLink>
+                    <div className="d-flex gap-2 mb-0">
+                        <IconButton aria-label="cart">
+                            <Badge badgeContent={countGoodsInCart.length} color="secondary">
+                                <ShoppingCartIcon />
+                            </Badge>
+                        </IconButton>
+                        <NavLink className="nav-link mt-2" to={Cart_link.link}>{Cart_link.text}</NavLink>                        
                     </div>
                 </div>    
             </div>
