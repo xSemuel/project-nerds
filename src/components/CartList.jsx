@@ -17,11 +17,16 @@ export const CartList = () => {
 
     const cartWrapper = css`
         min-height: 500px;
+        margin: 15px auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
     `
     const buttonStyles = css`  
         width: 260px;
         height: 52px;
         margin: 0 auto;
+        margin-bottom: 30px;
         background: #eee;
         color: #000;
         fontSize: 16px;
@@ -41,7 +46,7 @@ export const CartList = () => {
             <Box css={cartWrapper}>
                 <Cart options={cart} sumInCart={cartSum} />
                 <Button css={buttonStyles}>
-                    Оформити
+                    Оформити замовлення
                 </Button>
             </Box>
         </div>
