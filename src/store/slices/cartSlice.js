@@ -22,9 +22,6 @@ export const { addIdToCart, removeIdToCart } = cartSlice.actions;
 
 export const selectedGoodsInCart = state => {
     const { goods, cart } = state
-    console.log(goods)
-    console.log(cart)
-
     return goods.items.filter(item => cart.idCartMas.includes(item.id)) 
 }
 
