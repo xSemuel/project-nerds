@@ -1,10 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
+import { forwardRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Box, Button, Typography } from '@mui/material';
+
+import { Box, Button, Typography, Snackbar } from '@mui/material';
+import MuiAlert from '@mui/material/Alert';
+
 import { selectedGoodsInCart, sumSelectedGoodsInCart, removeIdToCart } from '../store/slices/cartSlice';
 import { Cart } from '../components';
+
 
 export const CartList = () => {
 
@@ -18,7 +23,29 @@ export const CartList = () => {
     const handleCartDelete = (event) => {
         const siteId = event.currentTarget.value;
         dispatch(removeIdToCart(siteId))
+        handleClick()
     }
+
+     // ----------------------------- snackbar
+     const Alert = forwardRef(function Alert(props, ref) {
+        return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+    });
+
+    const [open, setOpen] = useState(false);
+
+    const handleClick = () => {
+        setOpen(true);
+    };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+        return;
+        }
+
+        setOpen(false);
+    };
+
+    // ------------------------------ end snackbar
 
     const cartWrapper = css`
         min-height: 500px;
@@ -63,6 +90,12 @@ export const CartList = () => {
                 </>
                 }
             </Box>
+
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="warning" sx={{ width: '100%' }}>
+                    Товар видалений з корзини!
+                </Alert>
+            </Snackbar>
         </div>
     );
 

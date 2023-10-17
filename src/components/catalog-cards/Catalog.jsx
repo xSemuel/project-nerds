@@ -1,17 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+
+import { forwardRef, useState } from 'react';
+
 import { PaginationList } from './PaginationList';
 import { CardItem } from './CardItem';
+
 import { useSelector, useDispatch } from 'react-redux';
-import { selectGoods } from '../../store/slices/goodsSlice';
-import { addIdToCart } from '../../store/slices';
+import { selectGoods, addIdToCart } from '../../store/slices';
 
-import * as React from 'react';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import Snackbar from '@mui/material/Snackbar';
+import { Snackbar, Box, Typography } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
-
 
 
     const cardWrapper = css `
@@ -23,6 +22,12 @@ import MuiAlert from '@mui/material/Alert';
         margin-top: 32px;
         margin-bottom: 58px;
     `
+    const styleCartEmpty =css`
+        font-weight: bold;
+        margin-top: 40px;
+        text-align: center;
+    `
+
 
 export const Catalog = () => {
 
@@ -36,11 +41,11 @@ export const Catalog = () => {
     }
 
     // ----------------------------- snackbar
-    const Alert = React.forwardRef(function Alert(props, ref) {
+    const Alert = forwardRef(function Alert(props, ref) {
         return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
     });
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
 
     const handleClick = () => {
         setOpen(true);
@@ -57,24 +62,31 @@ export const Catalog = () => {
     // ------------------------------ end snackbar
 
     return ( 
-        <>
-            <div css={cardWrapper}>
-                {goods.map((item) =>
-                    <CardItem
-                        key={item.title}
-                        options={item}
-                        handleGoodCartAdd={() => handleCartAdd(item.id)}
-                    />
-                )}
-            </div>
-           
-            <PaginationList />
+        <Box>
+            {goods.length !== 0 ?
+
+            <Box>
+                <Box css={cardWrapper}>
+
+                    {goods.map((item) =>
+                        <CardItem
+                            key={item.title}
+                            options={item}
+                            handleGoodCartAdd={() => handleCartAdd(item.id)}
+                        />
+                    )}
+                    
+                </Box> 
+                <PaginationList />
+            </Box>:
+           <Typography css={styleCartEmpty} variant="h4">Жоден товар не відповідає вибраним критеріям, будь ласка змініть параметри пошуку.</Typography>}
+            
 
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
                     Товар успішно доданий в корзину!
                 </Alert>
             </Snackbar>
-        </>
+        </Box>
     )
 }
