@@ -17,9 +17,6 @@ export const CartList = () => {
     const cart = useSelector(selectedGoodsInCart);
     const cartSum = useSelector(sumSelectedGoodsInCart); 
 
-    console.log(cart.length)
-    console.log(cartSum)
-
     const handleCartDelete = (event) => {
         const siteId = event.currentTarget.value;
         dispatch(removeIdToCart(siteId))

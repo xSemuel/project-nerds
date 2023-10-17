@@ -22,12 +22,11 @@ import MuiAlert from '@mui/material/Alert';
         margin-top: 32px;
         margin-bottom: 58px;
     `
-    const styleCartEmpty =css`
+    const styleGoodsListEmpty =css`
         font-weight: bold;
         margin-top: 40px;
         text-align: center;
     `
-
 
 export const Catalog = () => {
 
@@ -79,7 +78,7 @@ export const Catalog = () => {
                 </Box> 
                 <PaginationList />
             </Box>:
-           <Typography css={styleCartEmpty} variant="h4">Жоден товар не відповідає вибраним критеріям, будь ласка змініть параметри пошуку.</Typography>}
+           <Typography css={styleGoodsListEmpty} variant="h4">Жоден товар не відповідає вибраним критеріям, будь ласка змініть параметри пошуку.</Typography>}
             
 
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
