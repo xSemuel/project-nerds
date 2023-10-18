@@ -14,36 +14,36 @@ export const goodsSlice = createSlice({
 
 
 // export const {} = goodsSlice.actions;
-export const selectGoods = state => { 
-    const { goods, filter, sort } = state
-    return goods.items.filter(item => {
-        const isPrice = item.descPrice >= filter.price[0] && item.descPrice <= filter.price[1]
-        const isLayout = item.layout === filter.layout
-        const isFeatures = filter.features.every(feature => item.features.includes(feature)) // TODO: AND, some => OR
+// export const selectGoods = state => { 
+//     const { goods, filter, sort } = state
+//     return goods.items.filter(item => {
+//         const isPrice = item.descPrice >= filter.price[0] && item.descPrice <= filter.price[1]
+//         const isLayout = item.layout === filter.layout
+//         const isFeatures = filter.features.every(feature => item.features.includes(feature))
 
-        return isPrice && isLayout && isFeatures
+//         return isPrice && isLayout && isFeatures
     
-    }).sort((a, b) => {
-        if (sort.sortType === "forPrice") {
-            if (sort.sortDir === "ascending") {
-                return a.descPrice - b.descPrice;
-            } else {
-                return b.descPrice - a.descPrice;
-            }
-        } else if (sort.sortType === "forType") {
-            if (sort.sortDir === "ascending") {
-                return a.descInfo.localeCompare(b.descInfo);
-            } else {
-                return b.descInfo.localeCompare(a.descInfo);
-            }
-        } else {
-            if (sort.sortDir === "ascending") {
-                return a.descName.localeCompare(b.descName);
-            } else {
-                return b.descName.localeCompare(a.descName);
-            } 
-        }
-    });
-}
+//     }).sort((a, b) => {
+//         if (sort.sortType === "forPrice") {
+//             if (sort.sortDir === "ascending") {
+//                 return a.descPrice - b.descPrice;
+//             } else {
+//                 return b.descPrice - a.descPrice;
+//             }
+//         } else if (sort.sortType === "forType") {
+//             if (sort.sortDir === "ascending") {
+//                 return a.descInfo.localeCompare(b.descInfo);
+//             } else {
+//                 return b.descInfo.localeCompare(a.descInfo);
+//             }
+//         } else {
+//             if (sort.sortDir === "ascending") {
+//                 return a.descName.localeCompare(b.descName);
+//             } else {
+//                 return b.descName.localeCompare(a.descName);
+//             } 
+//         }
+//     });
+// }
 
 export default goodsSlice.reducer;

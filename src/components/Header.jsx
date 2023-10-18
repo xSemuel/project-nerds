@@ -8,7 +8,7 @@ import { Box, Badge, IconButton, styled } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 
-import { selectedGoodsInCart } from '../store/slices/cartSlice';
+import { selectedGoodsInCart } from '../store/slices';
 import { useSelector } from 'react-redux';
 
 

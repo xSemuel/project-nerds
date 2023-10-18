@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Box, Button, Typography, Snackbar } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 
-import { selectedGoodsInCart, sumSelectedGoodsInCart, removeIdToCart } from '../../store/slices/cartSlice';
+import { selectedGoodsInCart, sumSelectedGoodsInCart, removeIdToCart } from '../../store/slices';
 import { Cart } from './Cart';
 
 

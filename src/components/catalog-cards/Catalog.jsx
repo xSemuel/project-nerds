@@ -7,7 +7,7 @@ import { PaginationList } from './PaginationList';
 import { CardItem } from './CardItem';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { selectGoods, addIdToCart } from '../../store/slices';
+import { selectedGoods, addIdToCart } from '../../store/slices';
 
 import { Snackbar, Box, Typography } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
@@ -31,7 +31,7 @@ import MuiAlert from '@mui/material/Alert';
 export const Catalog = () => {
 
     const dispatch = useDispatch();
-    const goods = useSelector(selectGoods);
+    const goods = useSelector(selectedGoods);
 
 
     const handleCartAdd = (siteId) => {
