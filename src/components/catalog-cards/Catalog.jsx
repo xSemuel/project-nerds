@@ -13,6 +13,10 @@ import { Snackbar, Box, Typography } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 
 
+    const catalogContentWrapper = css`
+        display: flex;
+        flex-direction: column;
+    `
     const cardWrapper = css `
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -32,7 +36,17 @@ export const Catalog = () => {
 
     const dispatch = useDispatch();
     const goods = useSelector(selectedGoods);
+    const [pagePaginationCurrent, setPagePaginationCurrent] = useState(1);
+    const handleChangePagination = (event, value) => {
+        setPagePaginationCurrent(value);
+    };
+    
 
+    const totalCountPagePagination = (goods) => {
+        const totalCountGoods = goods.length
+        const numberGoodsInPage = 4
+        return Math.ceil(totalCountGoods/numberGoodsInPage)   
+    }
 
     const handleCartAdd = (siteId) => {
         dispatch(addIdToCart(siteId))
@@ -62,24 +76,33 @@ export const Catalog = () => {
 
     return ( 
         <Box>
-            {goods.length !== 0 ?
 
-            <Box>
-                <Box css={cardWrapper}>
+            <Box css={catalogContentWrapper}>
+                {goods.length !== 0 ?
+                <Box>
+                    <Box css={cardWrapper}>
 
-                    {goods.map((item) =>
-                        <CardItem
-                            key={item.title}
-                            options={item}
-                            handleGoodCartAdd={() => handleCartAdd(item.id)}
-                        />
-                    )}
-                    
-                </Box> 
-                <PaginationList />
-            </Box>:
-           <Typography css={styleGoodsListEmpty} variant="h4">Жоден товар не відповідає вибраним критеріям, будь ласка змініть параметри пошуку.</Typography>}
-            
+                        {goods.slice((pagePaginationCurrent-1) * 4, (pagePaginationCurrent-1) * 4 + 4).map((item) =>
+                            <CardItem
+                                key={item.title}
+                                options={item}
+                                handleGoodCartAdd={() => handleCartAdd(item.id)}
+                            />
+                        )}
+                        
+                        {/* {goods.map((item) =>
+                            <CardItem
+                                key={item.title}
+                                options={item}
+                                handleGoodCartAdd={() => handleCartAdd(item.id)}
+                            />
+                        ).slice(pagePaginationCurrent, pagePaginationCurrent+4)} */}
+
+                    </Box> 
+                    <PaginationList funcChangePagination={handleChangePagination} currentPage={pagePaginationCurrent}  numberPage={totalCountPagePagination(goods)}/>
+                </Box>:
+                <Typography css={styleGoodsListEmpty} variant="h4">Жоден товар не відповідає вибраним критеріям, будь ласка змініть параметри пошуку.</Typography>}
+            </Box>
 
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>

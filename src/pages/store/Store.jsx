@@ -63,9 +63,9 @@ export const Store = () => {
                                 selectedSortDir={sortsMas.sortDir}
                             />
                         </div>
-                        <div>
-                            <Catalog />
-                        </div>     
+
+                        <Catalog />
+   
                     </div>                       
                 </div>
             </div>           
