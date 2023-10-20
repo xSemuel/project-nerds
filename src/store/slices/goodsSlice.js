@@ -5,7 +5,11 @@ import { CATALOG_GOODS } from '../../constants/catalog-goods';
 export const goodsSlice = createSlice({
     name : 'goods',
     initialState : {
-        items : CATALOG_GOODS
+        items : CATALOG_GOODS,
+        page: {
+            limit: 4,
+            offset: 0
+        },
     },
     reducers : {
 

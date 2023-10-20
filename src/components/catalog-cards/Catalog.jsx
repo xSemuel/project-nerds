@@ -35,17 +35,18 @@ import MuiAlert from '@mui/material/Alert';
 export const Catalog = () => {
 
     const dispatch = useDispatch();
-    const goods = useSelector(selectedGoods);
-    const [pagePaginationCurrent, setPagePaginationCurrent] = useState(1);
+    const goods = useSelector(selectedGoods); // TODO: update selector
+    const [pagePaginationCurrent, setPagePaginationCurrent] = useState(1); // TODO: move to redux goods slice
     const handleChangePagination = (event, value) => {
         setPagePaginationCurrent(value);
     }
 
     console.log(goods.length)
     
+    // TODO: move to selector (create new in goodsSelector file)
     const totalCountPagePagination = (goods) => {
         const totalCountGoods = goods.length
-        const numberGoodsInPage = 4
+        const numberGoodsInPage = 4 // limit
         return Math.ceil(totalCountGoods/numberGoodsInPage)   
     }
 
@@ -75,15 +76,21 @@ export const Catalog = () => {
 
     // ------------------------------ end snackbar
 
+    // TODO { limit: 4, offset: 8 }
+    // { limit: 4, offset: 0 } [1,2,3,4,5,6,7,8,9,0] // [1,2,3,4]
+    // { limit: 4, offset: 8 } [1,2,3,4,5,6,7,8,9,0] // [9,0]
+
+const filteredItems = goods.slice((pagePaginationCurrent-1) * 4, (pagePaginationCurrent-1) * 4 + 4)
+
     return ( 
         <Box>
 
             <Box css={catalogContentWrapper}>
                 {goods.length !== 0 ?
                 <Box>
-                    <Box css={cardWrapper}>
+                     <Box css={cardWrapper}>  {/* TODO 100% - 100px */}
 
-                        {goods.slice((pagePaginationCurrent-1) * 4, (pagePaginationCurrent-1) * 4 + 4).map((item) =>
+                        {filteredItems.map((item) =>
                             <CardItem
                                 key={item.title}
                                 options={item}
@@ -104,7 +111,8 @@ export const Catalog = () => {
                 </Box>:
                 <Typography css={styleGoodsListEmpty} variant="h4">Жоден товар не відповідає вибраним критеріям, будь ласка змініть параметри пошуку.</Typography>}
             </Box>
-
+            {/* TODO: move to App (main) component */}
+            {/* props: severity, message, autoHideDuration = 6000  */}
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
                     Товар успішно доданий в корзину!

@@ -5,7 +5,7 @@ export const selectfilterInGoodsSelector = state => state.filter
 export const selectSortInGoodsSelector = state => state.sort
 
 
-export const selectedGoods = createSelector( [selectGoodsInGoodsSelector, selectfilterInGoodsSelector, selectSortInGoodsSelector], (goods, filter, sort) => { 
+export const selectedGoods = createSelector( [selectGoodsInGoodsSelector, selectfilterInGoodsSelector, selectSortInGoodsSelector], (goods, filter, sort) => {    
     return goods.items.filter(item => {
         const isPrice = item.descPrice >= filter.price[0] && item.descPrice <= filter.price[1]
         const isLayout = item.layout === filter.layout
@@ -34,4 +34,5 @@ export const selectedGoods = createSelector( [selectGoodsInGoodsSelector, select
             } 
         }
     });
+    // TODO: return { limit, offset }
 })

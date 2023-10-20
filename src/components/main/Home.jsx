@@ -1,9 +1,9 @@
-import { Advantage, Slider, Information, Partner } from '../main';
+import { Advantage, Carousel, Information, Partner } from '../main';
 
 export const Home = () => {
     return ( 
     <>    
-        <Slider />
+        <Carousel />
         <Advantage />  
         <div className="container my-5">
             <hr className="hrDevided m-0"/>
