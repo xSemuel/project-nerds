@@ -39,9 +39,10 @@ export const Catalog = () => {
     const [pagePaginationCurrent, setPagePaginationCurrent] = useState(1);
     const handleChangePagination = (event, value) => {
         setPagePaginationCurrent(value);
-    };
-    
+    }
 
+    console.log(goods.length)
+    
     const totalCountPagePagination = (goods) => {
         const totalCountGoods = goods.length
         const numberGoodsInPage = 4
