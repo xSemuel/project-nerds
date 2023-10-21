@@ -9,9 +9,8 @@ import MuiAlert from '@mui/material/Alert';
 
 import { selectedGoodsInCart, sumSelectedGoodsInCart, removeIdToCart } from '../../store/slices';
 import { Cart } from './Cart';
+
 import cartEmpty from './img/cartEmpty.png'
-
-
 
 
 export const CartList = () => {
