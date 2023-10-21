@@ -9,6 +9,9 @@ import MuiAlert from '@mui/material/Alert';
 
 import { selectedGoodsInCart, sumSelectedGoodsInCart, removeIdToCart } from '../../store/slices';
 import { Cart } from './Cart';
+import cartEmpty from './img/cartEmpty.png'
+
+
 
 
 export const CartList = () => {
@@ -69,22 +72,40 @@ export const CartList = () => {
             color: #ffffff;
         }
     `
-    const styleCartEmpty =css`
+
+    const wrapperCartEmpty = css`
+        margin: 50px auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    `
+   
+    const styleCartEmpty = css`
         font-weight: bold;
         margin: 0 auto;
         margin-top: 40px;
+    `
+    const imgCartEmpty = css`
+        height: 350px;
+        width: 350px;
     `
 
     return (
         <div className="container">
             <Box css={cartWrapper}>
-                {cart.length === 0 ? <Typography css={styleCartEmpty} variant="h2">Корзина пуста</Typography> :   
-                <>
-                    <Cart options={cart} sumInCart={cartSum} handleGoodCartDelete={handleCartDelete} /> 
-                    <Button css={buttonStyles}>
-                        Оформити замовлення
-                    </Button>
-                </>
+                {cart.length === 0 ? 
+                    <Box css={wrapperCartEmpty}>
+                        <img css={imgCartEmpty} src={cartEmpty} alt="cart empty"/>
+                        <Typography css={styleCartEmpty} variant="h2">
+                            Корзина пуста
+                        </Typography>
+                    </Box> :   
+                    <Box>
+                        <Cart options={cart} sumInCart={cartSum} handleGoodCartDelete={handleCartDelete} /> 
+                        <Button css={buttonStyles}>
+                            Оформити замовлення
+                        </Button>
+                    </Box>
                 }
             </Box>
 
