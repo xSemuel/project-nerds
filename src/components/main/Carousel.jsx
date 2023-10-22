@@ -26,11 +26,11 @@ const imgDescArea = css`
     top: 100px;
     left: 5px;
     bottom: 0;
-    width: 400px;
+    width: 530px;
     height: 250px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 `
 const buttonStyles = css`  
     width: 240px;
@@ -48,6 +48,27 @@ const buttonStyles = css`
         background: #d7373b;
         color: #ffffff;
     }
+`
+const styleCarouselTitle = css`
+    font-family: Roboto;
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 55px;
+`
+
+const styleCarouselInfo = css`
+    color: #283136;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+`
+
+const imgCarouselStyle = css`
+    height: 100%;
+    padding-left: 360px;
 `
 
 export const Carousel = () => {
@@ -96,13 +117,13 @@ export const Carousel = () => {
                 <div key={step.id}>
                     {Math.abs(activeStep - index) <= 2 ? (
                     <Box css={wrapperCarouselStyle} sx={{
-                        height: 500,
+                        height: 430,
                         display: 'block',
                         maxWidth: 1125,
                         overflow: 'hidden',
                         width: '100%',
                         }}>
-                        <Box 
+                        <Box css={imgCarouselStyle}
                             component="img"
                             src={step.img}
                             alt={step.title}
@@ -110,10 +131,10 @@ export const Carousel = () => {
                         </Box>
                         
                         <Box css={imgDescArea}>
-                            <Typography>
+                            <Typography css={styleCarouselTitle}>
                                 {step.title}
                             </Typography>
-                            <Typography>
+                            <Typography css={styleCarouselInfo}>
                                 {step.info}
                             </Typography>
                             <NavLink to={step.link}>
