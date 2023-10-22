@@ -2,21 +2,20 @@
 import { css } from '@emotion/react'
 
 import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 import { CAROUSEL_BLOCK } from '../../constants';
 
-import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import MobileStepper from '@mui/material/MobileStepper';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import { Box, Typography, Button, MobileStepper } from '@mui/material';
+
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+
+const asd = css`
+    max-width: 1125px;
+`
 
 const wrapperCarouselStyle = css`
     position: relative;
@@ -71,18 +70,21 @@ const imgCarouselStyle = css`
     padding-left: 360px;
 `
 
+const styleCarouselStepper = css`
+    position: absolute;
+    top: 530px;
+    left: 760px;
+    bottom: auto;
+    right: auto;
+    padding: 8px;
+    border-radius: 10%;
+`
+
 export const Carousel = () => {
+
   const theme = useTheme();
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
   const maxSteps = CAROUSEL_BLOCK.length;
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
 
   const handleStepChange = (step) => {
     setActiveStep(step);
@@ -90,23 +92,7 @@ export const Carousel = () => {
 
   return (
     <div className="container mt-5 d-flex justify-content-between">
-        <Box sx={{ maxWidth: 1125, flexGrow: 1 }}>
-            <Paper
-                square
-                elevation={0}
-                sx={{
-                display: 'flex',
-                alignItems: 'center',
-                height: 50,
-                pl: 2,
-                bgcolor: 'background.default',
-                }}
-            >
-                <Typography>{CAROUSEL_BLOCK[activeStep].title}</Typography>
-                <Typography>{CAROUSEL_BLOCK[activeStep].info}</Typography>
-                <Button>{CAROUSEL_BLOCK[activeStep].btnInfo}</Button>
-
-            </Paper>
+        <Box css={asd}>
             <AutoPlaySwipeableViews
                 axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
                 index={activeStep}
@@ -147,36 +133,12 @@ export const Carousel = () => {
                     ) : null}
                 </div>
                 ))}
-            </AutoPlaySwipeableViews>
-            <MobileStepper
+            </AutoPlaySwipeableViews>  
+            <MobileStepper 
+                css={styleCarouselStepper}
                 steps={maxSteps}
-                position="static"
                 activeStep={activeStep}
-                nextButton={
-                <Button
-                    size="small"
-                    onClick={handleNext}
-                    disabled={activeStep === maxSteps - 1}
-                >
-                    Next
-                    {theme.direction === 'rtl' ? (
-                    <KeyboardArrowLeft />
-                    ) : (
-                    <KeyboardArrowRight />
-                    )}
-                </Button>
-                }
-                backButton={
-                <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-                    {theme.direction === 'rtl' ? (
-                    <KeyboardArrowRight />
-                    ) : (
-                    <KeyboardArrowLeft />
-                    )}
-                    Back
-                </Button>
-                }
-            />
+            /> 
         </Box>
     </div>
   );
