@@ -12,6 +12,8 @@ import { selectedGoods, addIdToCart } from '../../store/slices';
 import { Snackbar, Box, Typography } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 
+import noFindedGoods from './img/findGoods.png';
+
 
     const catalogContentWrapper = css`
         display: flex;
@@ -26,10 +28,23 @@ import MuiAlert from '@mui/material/Alert';
         margin-top: 32px;
         margin-bottom: 58px;
     `
-    const styleGoodsListEmpty =css`
+
+    const wrapperNoFindedGoods = css`
+        margin: 50px auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    `
+    const styleGoodsListEmpty = css`
         font-weight: bold;
         margin-top: 40px;
         text-align: center;
+    `
+
+    const imgGoodsEmpty = css`
+        margin: 0 auto;
+        height: 350px;
+        width: 350px;
     `
 
 export const Catalog = () => {
@@ -97,19 +112,16 @@ const filteredItems = goods.slice((pagePaginationCurrent-1) * 4, (pagePagination
                                 handleGoodCartAdd={() => handleCartAdd(item.id)}
                             />
                         )}
-                        
-                        {/* {goods.map((item) =>
-                            <CardItem
-                                key={item.title}
-                                options={item}
-                                handleGoodCartAdd={() => handleCartAdd(item.id)}
-                            />
-                        ).slice(pagePaginationCurrent, pagePaginationCurrent+4)} */}
-
                     </Box> 
                     <PaginationList funcChangePagination={handleChangePagination} currentPage={pagePaginationCurrent}  numberPage={totalCountPagePagination(goods)}/>
                 </Box>:
-                <Typography css={styleGoodsListEmpty} variant="h4">Жоден товар не відповідає вибраним критеріям, будь ласка змініть параметри пошуку.</Typography>}
+                <Box css={wrapperNoFindedGoods}>
+                    <img css={imgGoodsEmpty} src={noFindedGoods} alt="Not goods for filtration"/>
+                    <Typography css={styleGoodsListEmpty} variant="h4">
+                        Жоден товар не відповідає вибраним критеріям, будь ласка змініть параметри пошуку.
+                    </Typography>
+                </Box>
+                }
             </Box>
             {/* TODO: move to App (main) component */}
             {/* props: severity, message, autoHideDuration = 6000  */}
