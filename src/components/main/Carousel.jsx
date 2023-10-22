@@ -1,3 +1,6 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
+
 import { NavLink } from 'react-router-dom';
 import { CAROUSEL_BLOCK } from '../../constants';
 
@@ -15,33 +18,42 @@ import { autoPlay } from 'react-swipeable-views-utils';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-const images = [
-  {
-    label: 'San Francisco – Oakland Bay Bridge, United States',
-    imgPath:
-      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
-  },
-  {
-    label: 'Bird',
-    imgPath:
-      'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
-  },
-  {
-    label: 'Bali, Indonesia',
-    imgPath:
-      'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250',
-  },
-  {
-    label: 'Goč, Serbia',
-    imgPath:
-      'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
-  },
-];
+const wrapperCarouselStyle = css`
+    position: relative;
+`
+const imgDescArea = css`
+    position: absolute;
+    top: 100px;
+    left: 5px;
+    bottom: 0;
+    width: 400px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+`
+const buttonStyles = css`  
+    width: 240px;
+    height: 50px;
+    margin: 0 auto;
+    background: #fb565a;
+    color: #eee;
+    fontSize: 16px;
+    fontWeight: 500;
+    font-family: inherit;
+    line-height: 18px;
+    text-transform: uppercase;
+    transition: .3s ease-in;
+    &:hover {
+        background: #d7373b;
+        color: #ffffff;
+    }
+`
 
 export const Carousel = () => {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = images.length;
+  const maxSteps = CAROUSEL_BLOCK.length;
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -56,74 +68,95 @@ export const Carousel = () => {
   };
 
   return (
-    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
-      <Paper
-        square
-        elevation={0}
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          height: 50,
-          pl: 2,
-          bgcolor: 'background.default',
-        }}
-      >
-        <Typography>{images[activeStep].label}</Typography>
-      </Paper>
-      <AutoPlaySwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        enableMouseEvents
-      >
-        {images.map((step, index) => (
-          <div key={step.label}>
-            {Math.abs(activeStep - index) <= 2 ? (
-              <Box
-                component="img"
+    <div className="container mt-5 d-flex justify-content-between">
+        <Box sx={{ maxWidth: 1125, flexGrow: 1 }}>
+            <Paper
+                square
+                elevation={0}
                 sx={{
-                  height: 255,
-                  display: 'block',
-                  maxWidth: 400,
-                  overflow: 'hidden',
-                  width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                height: 50,
+                pl: 2,
+                bgcolor: 'background.default',
                 }}
-                src={step.imgPath}
-                alt={step.label}
-              />
-            ) : null}
-          </div>
-        ))}
-      </AutoPlaySwipeableViews>
-      <MobileStepper
-        steps={maxSteps}
-        position="static"
-        activeStep={activeStep}
-        nextButton={
-          <Button
-            size="small"
-            onClick={handleNext}
-            disabled={activeStep === maxSteps - 1}
-          >
-            Next
-            {theme.direction === 'rtl' ? (
-              <KeyboardArrowLeft />
-            ) : (
-              <KeyboardArrowRight />
-            )}
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === 'rtl' ? (
-              <KeyboardArrowRight />
-            ) : (
-              <KeyboardArrowLeft />
-            )}
-            Back
-          </Button>
-        }
-      />
-    </Box>
+            >
+                <Typography>{CAROUSEL_BLOCK[activeStep].title}</Typography>
+                <Typography>{CAROUSEL_BLOCK[activeStep].info}</Typography>
+                <Button>{CAROUSEL_BLOCK[activeStep].btnInfo}</Button>
+
+            </Paper>
+            <AutoPlaySwipeableViews
+                axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                index={activeStep}
+                onChangeIndex={handleStepChange}
+                enableMouseEvents
+            >
+                {CAROUSEL_BLOCK.map((step, index) => (
+                <div key={step.id}>
+                    {Math.abs(activeStep - index) <= 2 ? (
+                    <Box css={wrapperCarouselStyle} sx={{
+                        height: 500,
+                        display: 'block',
+                        maxWidth: 1125,
+                        overflow: 'hidden',
+                        width: '100%',
+                        }}>
+                        <Box 
+                            component="img"
+                            src={step.img}
+                            alt={step.title}
+                        >
+                        </Box>
+                        
+                        <Box css={imgDescArea}>
+                            <Typography>
+                                {step.title}
+                            </Typography>
+                            <Typography>
+                                {step.info}
+                            </Typography>
+                            <NavLink to={step.link}>
+                                <Button css={buttonStyles}>
+                                    {step.btnInfo}
+                                </Button>
+                            </NavLink>
+                        </Box>
+                    </Box>
+                    ) : null}
+                </div>
+                ))}
+            </AutoPlaySwipeableViews>
+            <MobileStepper
+                steps={maxSteps}
+                position="static"
+                activeStep={activeStep}
+                nextButton={
+                <Button
+                    size="small"
+                    onClick={handleNext}
+                    disabled={activeStep === maxSteps - 1}
+                >
+                    Next
+                    {theme.direction === 'rtl' ? (
+                    <KeyboardArrowLeft />
+                    ) : (
+                    <KeyboardArrowRight />
+                    )}
+                </Button>
+                }
+                backButton={
+                <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                    {theme.direction === 'rtl' ? (
+                    <KeyboardArrowRight />
+                    ) : (
+                    <KeyboardArrowLeft />
+                    )}
+                    Back
+                </Button>
+                }
+            />
+        </Box>
+    </div>
   );
 }
