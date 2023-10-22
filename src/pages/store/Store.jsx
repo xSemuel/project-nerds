@@ -7,6 +7,8 @@ import { SortItems, Catalog } from '../../components';
 import { SORT_TYPE, SORT_DIR } from '../../constants';
 import { selectedSort, updateFilters, selectedFilters, changeDirection, changeType  } from '../../store/slices';
 
+import { Box } from '@mui/material';
+
 
 const sortWrapperStyle = css`
     display: flex;
@@ -52,7 +54,7 @@ export const Store = () => {
                         <FilterPanel config={filters} onChange={onSubmit} />
                     </div>
                     <div className='col-9'>
-                        <div css={sortWrapperStyle}>
+                        <Box css={sortWrapperStyle}>
                             <Typography variant="h3" css={titleFilterCost}>Сортувати:</Typography>
                             <SortItems 
                                 optionsType={SORT_TYPE} 
@@ -62,10 +64,8 @@ export const Store = () => {
                                 selectedSortType={sortsMas.sortType} 
                                 selectedSortDir={sortsMas.sortDir}
                             />
-                        </div>
-
+                        </Box>
                         <Catalog />
-   
                     </div>                       
                 </div>
             </div>           

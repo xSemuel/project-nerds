@@ -20,6 +20,7 @@ import noFindedGoods from './img/findGoods.png';
         flex-direction: column;
     `
     const cardWrapper = css `
+        height: calc(100% - 100px);
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         column-gap: 40px;
@@ -27,6 +28,7 @@ import noFindedGoods from './img/findGoods.png';
         .list-reset();
         margin-top: 32px;
         margin-bottom: 58px;
+        
     `
 
     const wrapperNoFindedGoods = css`
@@ -98,38 +100,38 @@ export const Catalog = () => {
 const filteredItems = goods.slice((pagePaginationCurrent-1) * 4, (pagePaginationCurrent-1) * 4 + 4)
 
     return ( 
-        <Box>
+        // <Box>
 
             <Box css={catalogContentWrapper}>
                 {goods.length !== 0 ?
-                <Box>
-                     <Box css={cardWrapper}>  {/* TODO 100% - 100px */}
+                    <Box>
+                        <Box css={cardWrapper}>  {/* TODO 100% - 100px */}
 
-                        {filteredItems.map((item) =>
-                            <CardItem
-                                key={item.title}
-                                options={item}
-                                handleGoodCartAdd={() => handleCartAdd(item.id)}
-                            />
-                        )}
-                    </Box> 
-                    <PaginationList funcChangePagination={handleChangePagination} currentPage={pagePaginationCurrent}  numberPage={totalCountPagePagination(goods)}/>
-                </Box>:
-                <Box css={wrapperNoFindedGoods}>
-                    <img css={imgGoodsEmpty} src={noFindedGoods} alt="Not goods for filtration"/>
-                    <Typography css={styleGoodsListEmpty} variant="h4">
-                        Жоден товар не відповідає вибраним критеріям, будь ласка змініть параметри пошуку.
-                    </Typography>
-                </Box>
+                            {filteredItems.map((item) =>
+                                <CardItem
+                                    key={item.title}
+                                    options={item}
+                                    handleGoodCartAdd={() => handleCartAdd(item.id)}
+                                />
+                            )}
+                        </Box> 
+                        <PaginationList funcChangePagination={handleChangePagination} currentPage={pagePaginationCurrent}  numberPage={totalCountPagePagination(goods)}/>
+                    </Box>:
+                    <Box css={wrapperNoFindedGoods}>
+                        <img css={imgGoodsEmpty} src={noFindedGoods} alt="Not goods for filtration"/>
+                        <Typography css={styleGoodsListEmpty} variant="h4">
+                            Жоден товар не відповідає вибраним критеріям, будь ласка змініть параметри пошуку.
+                        </Typography>
+                    </Box>
                 }
             </Box>
-            {/* TODO: move to App (main) component */}
-            {/* props: severity, message, autoHideDuration = 6000  */}
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                    Товар успішно доданий в корзину!
-                </Alert>
-            </Snackbar>
-        </Box>
+            // {/* TODO: move to App (main) component */}
+            // {/* props: severity, message, autoHideDuration = 6000  */}
+            // {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                // <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                //     Товар успішно доданий в корзину!
+                // </Alert>
+            // </Snackbar> */}
+        // {/* </Box> */}
     )
 }
