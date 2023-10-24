@@ -35,29 +35,34 @@ export const CardItem = ({options, handleGoodCartAdd }) => {
             flex-wrap: nowrap;
             align-items: center;
             gap: 10px;
-            padding: 5px 0;
+            padding: 25px 0;
             background-color: #eee;
 
             position: absolute;
             bottom: 0;
-            top: 400px;
+            top: 384px;
+            animation: 2s show ease;
+            @keyframes show {
+                from { opacity: 0.25; }
+                to { opacity: 1; }
+            }
         `
-
         const currencyButtonStyle = css`
             font-size: 11px;
             padding-top: 4px;
         `
-
         const wrapperCardItem = css`
             position: relative;
             max-height: 618px;
             max-width: 360px;
         `
+        const descInfostyle = css`
+            text-align: center;
+        `
 
         const [ hide, setHide ] = useState(false);
 
-        const watchCardInfo = (id) => {
-            console.log(id)
+        const watchCardInfo = () => {
             setHide(true)
         }
 
@@ -69,8 +74,8 @@ export const CardItem = ({options, handleGoodCartAdd }) => {
         <Card 
             key={id} 
             css={wrapperCardItem} 
-            onMouseEnter={() => {watchCardInfo(id)}} 
-            onMouseLeave={() => {closeCardInfo(id)}}
+            onMouseEnter={() => {watchCardInfo()}} 
+            onMouseLeave={() => {closeCardInfo()}}
         >
             <CardActionArea>
 
@@ -84,7 +89,7 @@ export const CardItem = ({options, handleGoodCartAdd }) => {
                     <Typography variant="h5" component="div">
                         {title}
                     </Typography>
-                    <Typography variant="h6">
+                    <Typography variant="h6" css={descInfostyle}>
                         {descInfo}
                     </Typography>
                     <Button css={buttonStyles}
