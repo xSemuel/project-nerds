@@ -15,8 +15,8 @@ export const CardItem = ({options, handleGoodCartAdd }) => {
             margin: 0 auto;
             background: #fb565a;
             color: #000;
-            fontSize: 16px;
-            fontWeight: 500;
+            font-size: 16px;
+            font-weight: 500;
             font-family: inherit;
             line-height: 18px;
             text-transform: uppercase;
@@ -60,22 +60,22 @@ export const CardItem = ({options, handleGoodCartAdd }) => {
             text-align: center;
         `
 
-        const [ hide, setHide ] = useState(false);
+        const [ watchCardInfo, setWatchCardInfo ] = useState(false);
 
-        const watchCardInfo = () => {
-            setHide(true)
+        const openCardInfo = () => {
+            setWatchCardInfo(true)
         }
 
         const closeCardInfo = () => {
-            setHide(false)
+            setWatchCardInfo(false)
         }
 
     return ( 
         <Card 
             key={id} 
             css={wrapperCardItem} 
-            onMouseEnter={() => {watchCardInfo()}} 
-            onMouseLeave={() => {closeCardInfo()}}
+            onMouseEnter={openCardInfo} 
+            onMouseLeave={closeCardInfo}
         >
             <CardActionArea>
 
@@ -85,7 +85,7 @@ export const CardItem = ({options, handleGoodCartAdd }) => {
                     image={srcLogo}
                     alt={alt}
                 />
-                {hide && <Box css={wrapperDescCardStyle}>
+                {watchCardInfo && <Box css={wrapperDescCardStyle}>
                     <Typography variant="h5" component="div">
                         {title}
                     </Typography>
