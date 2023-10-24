@@ -27,10 +27,8 @@ import noFindedGoods from './img/findGoods.png';
         row-gap: 30px;
         .list-reset();
         margin-top: 32px;
-        margin-bottom: 58px;
-        
+        margin-bottom: 58px;  
     `
-
     const wrapperNoFindedGoods = css`
         margin: 50px auto;
         display: flex;

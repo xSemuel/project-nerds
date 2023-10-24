@@ -1,28 +1,19 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { styled } from '@mui/material/styles';
+
 import { Card, CardMedia, Typography, Button, CardActionArea, Box } from '@mui/material';
-import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+
+import { useState } from 'react';
+
 
 export const CardItem = ({options, handleGoodCartAdd }) => {
-    const { title, srcLogo, alt, descInfo, descPrice } = options;
-
-    const CardTooltip = styled(({ className, ...props }) => (
-            <Tooltip {...props} classes={{ popper: className }} />
-        ))({
-            [`& .${tooltipClasses.tooltip}`]: {
-                maxWidth: 360,
-                maxHeight: 420,
-                backgroundColor: `#eee`,
-                color: "black"
-            },
-        });
+    const { id, title, srcLogo, alt, descInfo, descPrice } = options;
 
         const buttonStyles = css`  
             width: 160px;
             height: 40px;
             margin: 0 auto;
-            background: #eee;
+            background: #fb565a;
             color: #000;
             fontSize: 16px;
             fontWeight: 500;
@@ -45,6 +36,11 @@ export const CardItem = ({options, handleGoodCartAdd }) => {
             align-items: center;
             gap: 10px;
             padding: 5px 0;
+            background-color: #eee;
+
+            position: absolute;
+            bottom: 0;
+            top: 400px;
         `
 
         const currencyButtonStyle = css`
@@ -52,33 +48,53 @@ export const CardItem = ({options, handleGoodCartAdd }) => {
             padding-top: 4px;
         `
 
+        const wrapperCardItem = css`
+            position: relative;
+            max-height: 618px;
+            max-width: 360px;
+        `
+
+        const [ hide, setHide ] = useState(false);
+
+        const watchCardInfo = (id) => {
+            console.log(id)
+            setHide(true)
+        }
+
+        const closeCardInfo = () => {
+            setHide(false)
+        }
+
     return ( 
-        <Card key={title} sx={{ maxWidth: 360, maxHeight: 618 }}>
+        <Card 
+            key={id} 
+            css={wrapperCardItem} 
+            onMouseEnter={() => {watchCardInfo(id)}} 
+            onMouseLeave={() => {closeCardInfo(id)}}
+        >
             <CardActionArea>
-                <CardTooltip placement="bottom-start" title={
-                    <Box css={wrapperDescCardStyle}>
-                        <Typography variant="h5" component="div">
-                            {title}
-                        </Typography>
-                        <Typography variant="h6">
-                            {descInfo}
-                        </Typography>
-                        <Button css={buttonStyles}
-                            onClick={handleGoodCartAdd}
-                            variant="submit"
-                            size="large">
-                            {descPrice}  
-                            <Typography css={currencyButtonStyle} variant="body2">грн.</Typography>
-                        </Button>
-                    </Box>
-                }>
-                    <CardMedia
+
+                <CardMedia
                     component="img"
-                    height="418"
+                    height="618"
                     image={srcLogo}
                     alt={alt}
-                    />
-                </CardTooltip>
+                />
+                {hide && <Box css={wrapperDescCardStyle}>
+                    <Typography variant="h5" component="div">
+                        {title}
+                    </Typography>
+                    <Typography variant="h6">
+                        {descInfo}
+                    </Typography>
+                    <Button css={buttonStyles}
+                        onClick={handleGoodCartAdd}
+                        variant="submit"
+                        size="large">
+                        {descPrice}  
+                        <Typography css={currencyButtonStyle} variant="body2">грн.</Typography>
+                    </Button>
+                </Box>}
             </CardActionArea>    
         </Card>
     )
