@@ -94,7 +94,6 @@ export const CardItem = ({options, handleGoodCartAdd }) => {
                     </Typography>
                     <Button css={buttonStyles}
                         onClick={handleGoodCartAdd}
-                        variant="submit"
                         size="large">
                         {descPrice}  
                         <Typography css={currencyButtonStyle} variant="body2">грн.</Typography>

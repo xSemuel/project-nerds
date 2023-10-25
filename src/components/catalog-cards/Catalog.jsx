@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-
-import { forwardRef, useState } from 'react';
+import { useState } from 'react';
 
 import { PaginationList } from './PaginationList';
 import { CardItem } from './CardItem';
@@ -9,8 +8,7 @@ import { CardItem } from './CardItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectedGoods, addIdToCart } from '../../store/slices';
 
-import { Snackbar, Box, Typography } from '@mui/material';
-import MuiAlert from '@mui/material/Alert';
+import { Box, Typography } from '@mui/material';
 
 import noFindedGoods from './img/findGoods.png';
 
@@ -30,7 +28,6 @@ import noFindedGoods from './img/findGoods.png';
         margin-bottom: 58px;
         
     `
-
     const wrapperNoFindedGoods = css`
         margin: 50px auto;
         display: flex;
@@ -42,7 +39,6 @@ import noFindedGoods from './img/findGoods.png';
         margin-top: 40px;
         text-align: center;
     `
-
     const imgGoodsEmpty = css`
         margin: 0 auto;
         height: 350px;
@@ -69,29 +65,8 @@ export const Catalog = () => {
 
     const handleCartAdd = (siteId) => {
         dispatch(addIdToCart(siteId))
-        handleClick()
     }
 
-    // ----------------------------- snackbar
-    const Alert = forwardRef(function Alert(props, ref) {
-        return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-    });
-
-    const [open, setOpen] = useState(false);
-
-    const handleClick = () => {
-        setOpen(true);
-    };
-
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-        return;
-        }
-
-        setOpen(false);
-    };
-
-    // ------------------------------ end snackbar
 
     // TODO { limit: 4, offset: 8 }
     // { limit: 4, offset: 0 } [1,2,3,4,5,6,7,8,9,0] // [1,2,3,4]
