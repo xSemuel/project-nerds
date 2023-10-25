@@ -11,6 +11,7 @@ import { selectedGoods, addIdToCart } from '../../store/slices';
 import { Box, Typography } from '@mui/material';
 
 import noFindedGoods from './img/findGoods.png';
+import { AppSnackbar } from '../../features';
 
 
     const catalogContentWrapper = css`
@@ -99,6 +100,15 @@ const filteredItems = goods.slice((pagePaginationCurrent-1) * 4, (pagePagination
                         </Typography>
                     </Box>
                 }
+                <AppSnackbar
+                    options={{
+                        severity: "success",
+                        message: "Товар успішно доданий в корзину!",
+                        autoHideDuration: 6000,
+                    }}
+
+                    handleClick={ () => {handleCartAdd()}}
+                />
             </Box>
             // {/* TODO: move to App (main) component */}
             // {/* props: severity, message, autoHideDuration = 6000  */}

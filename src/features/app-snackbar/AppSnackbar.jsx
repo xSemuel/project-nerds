@@ -3,7 +3,9 @@ import { forwardRef, useState } from 'react';
 import { Snackbar } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 
-export const AppSnackbar = ({options}) => {
+export const AppSnackbar = ({options, handleClick}) => {
+
+    console.log(options, handleClick)
 
     const { severity, message, autoHideDuration = 6000 } = options;
 
@@ -13,7 +15,7 @@ export const AppSnackbar = ({options}) => {
 
     const [open, setOpen] = useState(false);
 
-    const handleClick = () => {
+    const handleClick1 = () => {
         setOpen(true);
     };
 

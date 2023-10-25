@@ -52,6 +52,7 @@ export const CartList = () => {
         display: flex;
         flex-direction: column;
         gap: 15px;
+        width: 1125px;
     `
     const buttonStyles = css`  
         width: 260px;
@@ -99,7 +100,7 @@ export const CartList = () => {
                             Корзина пуста
                         </Typography>
                     </Box> :   
-                    <Box>
+                    <Box css={cartWrapper}>
                         <Cart options={cart} sumInCart={cartSum} handleGoodCartDelete={handleCartDelete} /> 
                         <Button css={buttonStyles}>
                             Оформити замовлення
