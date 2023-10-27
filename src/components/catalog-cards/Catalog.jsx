@@ -18,7 +18,7 @@ import noFindedGoods from './img/findGoods.png';
         flex-direction: column;
     `
     const cardWrapper = css `
-        height: calc(100% - 100px);
+        min-height: calc(100vh - 100px);
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         column-gap: 40px;
@@ -86,7 +86,7 @@ const filteredItems = goods.slice((pagePaginationCurrent-1) * 4, (pagePagination
         <Box css={catalogContentWrapper}>
             {goods.length !== 0 ?
                 <Box>
-                    <Box css={cardWrapper}>  {/* TODO 100% - 100px */}
+                    <Box css={cardWrapper}>
 
                         {filteredItems.map((item) =>
                             <CardItem
