@@ -5,6 +5,7 @@ import mishkaImg from '../components/store/img/img-mishka-1.jpg';
 import pinkImg from '../components/store/img/img-pink-1.jpg';
 import sedonaImg from '../components/store/img/img-sedona-1.jpg';
 
+
 export const CATALOG_GOODS = [
     {
         id: '001',

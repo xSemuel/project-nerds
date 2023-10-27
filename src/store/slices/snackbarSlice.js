@@ -5,7 +5,7 @@ export const snackbarSlice = createSlice({
     initialState : {
         open: false,
         snackProps: {
-            severity: "success",
+            severity: '',
             message: '',
             autoHideDuration: 6000,
         },
