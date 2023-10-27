@@ -37,14 +37,12 @@ export const CardItem = ({options, handleGoodCartAdd }) => {
             gap: 10px;
             padding: 25px 0;
             background-color: #eee;
-
             position: absolute;
             bottom: 0;
-            top: 384px;
-            animation: 2s show ease;
+            animation: 750ms show linear;
             @keyframes show {
-                from { opacity: 0.25; }
-                to { opacity: 1; }
+                from { opacity: 0; }
+                to { opacity: 1;}
             }
         `
         const currencyButtonStyle = css`

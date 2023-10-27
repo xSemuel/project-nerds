@@ -6,3 +6,4 @@ export * from './app-social';
 export * from './catalog-goods';
 export * from './catalog-sortParams';
 export * from './catalog-filterParams';
+export * from './snackbar-list';

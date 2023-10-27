@@ -26,8 +26,7 @@ import { AppSnackbar } from '../../features';
         row-gap: 30px;
         .list-reset();
         margin-top: 32px;
-        margin-bottom: 58px;
-        
+        margin-bottom: 58px;  
     `
     const wrapperNoFindedGoods = css`
         margin: 50px auto;
@@ -66,6 +65,7 @@ export const Catalog = () => {
 
     const handleCartAdd = (siteId) => {
         dispatch(addIdToCart(siteId))
+        
     }
 
 

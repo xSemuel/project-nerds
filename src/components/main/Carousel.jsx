@@ -69,11 +69,12 @@ import { autoPlay } from 'react-swipeable-views-utils';
     const styleCarouselStepper = css`
         position: absolute;
         top: 530px;
-        left: 760px;
+        left: 47vw;
         bottom: auto;
         right: auto;
         padding: 8px;
         border-radius: 10%;
+        background: unset;  
     `
 
 export const Carousel = () => {
