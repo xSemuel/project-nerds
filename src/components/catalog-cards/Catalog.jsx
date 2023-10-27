@@ -12,8 +12,6 @@ import { toogleSnakebar, updateSnakebar } from '../../store/slices';
 import { Box, Typography } from '@mui/material';
 
 import noFindedGoods from './img/findGoods.png';
-import { AppSnackbar } from '../../features';
-
 
     const catalogContentWrapper = css`
         display: flex;
@@ -85,47 +83,28 @@ export const Catalog = () => {
 const filteredItems = goods.slice((pagePaginationCurrent-1) * 4, (pagePaginationCurrent-1) * 4 + 4)
 
     return ( 
-        // <Box>
+        <Box css={catalogContentWrapper}>
+            {goods.length !== 0 ?
+                <Box>
+                    <Box css={cardWrapper}>  {/* TODO 100% - 100px */}
 
-            <Box css={catalogContentWrapper}>
-                {goods.length !== 0 ?
-                    <Box>
-                        <Box css={cardWrapper}>  {/* TODO 100% - 100px */}
-
-                            {filteredItems.map((item) =>
-                                <CardItem
-                                    key={item.title}
-                                    options={item}
-                                    handleGoodCartAdd={() => handleCartAdd(item.id)}
-                                />
-                            )}
-                        </Box> 
-                        <PaginationList funcChangePagination={handleChangePagination} currentPage={pagePaginationCurrent}  numberPage={totalCountPagePagination(goods)}/>
-                    </Box>:
-                    <Box css={wrapperNoFindedGoods}>
-                        <img css={imgGoodsEmpty} src={noFindedGoods} alt="Not goods for filtration"/>
-                        <Typography css={styleGoodsListEmpty} variant="h4">
-                            Жоден товар не відповідає вибраним критеріям, будь ласка змініть параметри пошуку.
-                        </Typography>
-                    </Box>
-                }
-                <AppSnackbar
-                    options={{
-                        severity: "success",
-                        message: "Товар успішно доданий в корзину!",
-                        autoHideDuration: 6000,
-                    }}
-
-                    handleClick={ () => {handleCartAdd()}}
-                />
-            </Box>
-            // {/* TODO: move to App (main) component */}
-            // {/* props: severity, message, autoHideDuration = 6000  */}
-            // {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                // <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                //     Товар успішно доданий в корзину!
-                // </Alert>
-            // </Snackbar> */}
-        // {/* </Box> */}
+                        {filteredItems.map((item) =>
+                            <CardItem
+                                key={item.title}
+                                options={item}
+                                handleGoodCartAdd={() => handleCartAdd(item.id)}
+                            />
+                        )}
+                    </Box> 
+                    <PaginationList funcChangePagination={handleChangePagination} currentPage={pagePaginationCurrent}  numberPage={totalCountPagePagination(goods)}/>
+                </Box>:
+                <Box css={wrapperNoFindedGoods}>
+                    <img css={imgGoodsEmpty} src={noFindedGoods} alt="Not goods for filtration"/>
+                    <Typography css={styleGoodsListEmpty} variant="h4">
+                        Жоден товар не відповідає вибраним критеріям, будь ласка змініть параметри пошуку.
+                    </Typography>
+                </Box>
+            }
+        </Box>
     )
 }
