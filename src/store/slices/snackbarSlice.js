@@ -1,15 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { CATALOG_GOODS } from '../../constants/catalog-goods';
-
 
 export const snackbarSlice = createSlice({
     name : 'snackbar',
     initialState : {
-        items : CATALOG_GOODS,
+        open: false,
+        snackProps: {
+            severity: "success",
+            message: '',
+            autoHideDuration: 6000,
+        },
     },
     reducers : {
-
+        toogleSnakebar: (state, action) => {
+            state.open = action.payload;
+          },
+        updateSnakebar: (state, action) => {
+            state.snackProps = action.payload;
+        },
     }
 });
+
+
+export const { toogleSnakebar, updateSnakebar } = snackbarSlice.actions;
+export const selectedSnackbar = state => state.snackbar;
 
 export default snackbarSlice.reducer;

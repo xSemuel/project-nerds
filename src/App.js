@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Header, Mapcontact, Footer, Studio, Clients, Contacts, NotFound } from './components'
 import { Home } from './components/main'
 import { CartList } from './components/cart-goods'
-
+import { AppSnackbar } from './features';
 import { Store } from './pages'
 
 
@@ -21,7 +21,7 @@ function App() {
           <Route path="*" element={<NotFound />}/>
         </Routes>
         <Mapcontact />
-        {/* <AppSnackbar /> feature */}
+        <AppSnackbar />
         <Footer />
       </BrowserRouter>
     </div>

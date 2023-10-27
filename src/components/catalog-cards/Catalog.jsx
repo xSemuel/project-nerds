@@ -7,6 +7,7 @@ import { CardItem } from './CardItem';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { selectedGoods, addIdToCart } from '../../store/slices';
+import { toogleSnakebar, updateSnakebar } from '../../store/slices';
 
 import { Box, Typography } from '@mui/material';
 
@@ -65,6 +66,14 @@ export const Catalog = () => {
 
     const handleCartAdd = (siteId) => {
         dispatch(addIdToCart(siteId))
+
+        dispatch(updateSnakebar({
+            severity: "success",
+            message: 'Товар успішно доданий в корзину!',
+            autoHideDuration: 6000,
+        }))
+        dispatch(toogleSnakebar(true))
+        
         
     }
 
