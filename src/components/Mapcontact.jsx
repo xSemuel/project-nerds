@@ -1,3 +1,26 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
+import { Button } from '@mui/material';
+
+    const buttonStyles = css`  
+        width: 260px;
+        height: 52px;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        background: #eee;
+        color: #000;
+        fontSize: 16px;
+        fontWeight: 500;
+        font-family: inherit;
+        line-height: 18px;
+        text-transform: uppercase;
+        transition: .3s ease-in;
+        &:hover {
+            background: #d7373b;
+            color: #ffffff;
+        }
+    `
+
 export const Mapcontact = () => {
 
     return ( 
@@ -13,7 +36,7 @@ export const Mapcontact = () => {
                         allowFullScreen=""
                         aria-hidden="false"
                         tabIndex="0"
-                        title="Офис компании по адресу ул. Большая Конюшенная 19/8, Санкт-Петербург"
+                        title="Офіс компанії за адресою вул. Велика Конюшенна 19/8, Уганда"
                         />
                     </div>
 
@@ -21,18 +44,18 @@ export const Mapcontact = () => {
                         <div className="contacts-adress">
                         <p className="adress-title">NЁRDS DESIGN STUDIO</p>
                         <p className="adress-text">
-                            191186, Санкт-Петербург,<br />
-                            ул. Б. Конюшенная, д. 19/8<br />
+                            191186, Уганда,<br />
+                            вул. В. Конюшенна, д. 19/8<br />
                         </p>
                         <p className="tel-text">
                             тел.
-                            <a className="footer-phone" href="tel:+78122757575"
-                            >+7 (812) 275-75-75</a
-                            >
+                            <a className="footer-phone" href="tel:+7845454354557575">
+                                +4 (764) 564-64-65
+                            </a>
                         </p>
-                        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
-                            Напишите нам
-                        </button>
+                        <Button css={buttonStyles} data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Відправити
+                        </Button>
                     </div>
                        
                     </div>
@@ -62,7 +85,9 @@ export const Mapcontact = () => {
                             </form>    
                         </div>
                         <div className="d-flex p-3">
-                            <button type="button" className="btn btn-primary">Відправити</button>
+                            <Button css={buttonStyles}>
+                                Відправити
+                            </Button>
                         </div>
                     </div>
                 </div>
