@@ -5,3 +5,4 @@ export * from './cartSlice';
 export * from './cartSelectors';
 export * from './goodsSelectors';
 export * from './snackbarSlice';
+export * from './orderListSlice';

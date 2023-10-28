@@ -44,6 +44,7 @@ const buttonStyles = css`
 	`
 	const tableWrapper = css`
 		display: table;
+		justify-content: space-between;
 		width: 100%;
 	`
 	const styleTotalSumWrapper = css`
@@ -187,12 +188,12 @@ export const OrderGoodsPage = () => {
 						{cart.map(({id, srcLogo, alt, title, descInfo, descPrice}) => (
 							
 							<TableRow key={id} css={tableWrapper}>
-								<TableCell align="left">
+								<TableCell>
 									<img css={smallLogoCartGoods} src={srcLogo} alt={alt}/>
 								</TableCell>
 								<TableCell>{title}</TableCell>
-								<TableCell align="left">{descInfo}</TableCell>                      
-								<TableCell align="center">
+								<TableCell>{descInfo}</TableCell>                      
+								<TableCell>
 									<Typography variant="body2">{descPrice}грн.</Typography>
 								</TableCell>
 							</TableRow>	
