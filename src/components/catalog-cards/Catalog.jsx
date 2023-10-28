@@ -7,9 +7,9 @@ import { CardItem } from './CardItem';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { selectedGoods, addIdToCart } from '../../store/slices';
-import { toogleSnakebar, updateSnakebar } from '../../store/slices';
+import { toogleSnakebar, updateSnakebar, resetFilters } from '../../store/slices';
 
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 
 import noFindedGoods from './img/findGoods.png';
 
@@ -43,6 +43,24 @@ import noFindedGoods from './img/findGoods.png';
         height: 350px;
         width: 350px;
     `
+    const buttonStyles = css`  
+        width: 260px;
+        height: 52px;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        background: #eee;
+        color: #000;
+        fontSize: 16px;
+        fontWeight: 500;
+        font-family: inherit;
+        line-height: 18px;
+        text-transform: uppercase;
+        transition: .3s ease-in;
+        &:hover {
+            background: #d7373b;
+            color: #ffffff;
+        }
+    `
 
 export const Catalog = () => {
 
@@ -52,8 +70,6 @@ export const Catalog = () => {
     const handleChangePagination = (event, value) => {
         setPagePaginationCurrent(value);
     }
-
-    console.log(goods.length)
     
     // TODO: move to selector (create new in goodsSelector file)
     const totalCountPagePagination = (goods) => {
@@ -70,9 +86,11 @@ export const Catalog = () => {
             message: 'Товар успішно доданий в корзину!',
             autoHideDuration: 6000,
         }))
-        dispatch(toogleSnakebar(true))
-        
-        
+        dispatch(toogleSnakebar(true)) 
+    }
+
+    const resetFiltersSearch = () => {
+        dispatch(resetFilters())
     }
 
 
@@ -103,6 +121,9 @@ const filteredItems = goods.slice((pagePaginationCurrent-1) * 4, (pagePagination
                     <Typography css={styleGoodsListEmpty} variant="h4">
                         Жоден товар не відповідає вибраним критеріям, будь ласка змініть параметри пошуку.
                     </Typography>
+                    <Button css={buttonStyles} onClick={resetFiltersSearch}>
+                        Скинути налаштування
+                    </Button>
                 </Box>
             }
         </Box>
