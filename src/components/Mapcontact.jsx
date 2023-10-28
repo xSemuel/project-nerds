@@ -26,7 +26,7 @@ export const Mapcontact = () => {
     return ( 
         <>
             <div className="container-fluid p-0">
-                <h2 className="visually-hidden">Как нас найти</h2>
+                <h2 className="visually-hidden">Як нас знайти</h2>
                 <div className="wrap-map">
                     <div className="ratio ratio-21x9 p-0" style={{height: '416px'}}>
                         <iframe
@@ -54,7 +54,7 @@ export const Mapcontact = () => {
                             </a>
                         </p>
                         <Button css={buttonStyles} data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Відправити
+                            Відправити
                         </Button>
                     </div>
                        
