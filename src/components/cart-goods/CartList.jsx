@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-
+import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Box, Button, Typography } from '@mui/material';
 
-import { selectedGoodsInCart, sumSelectedGoodsInCart, removeIdToCart } from '../../store/slices';
+import { selectedGoodsInCart, sumSelectedGoodsInCart, removeIdToCart, countNumberOfOrder } from '../../store/slices';
 import { toogleSnakebar, updateSnakebar } from '../../store/slices';
 import { Cart } from './Cart';
 
@@ -30,6 +30,11 @@ export const CartList = () => {
         dispatch(toogleSnakebar(true))
     }
 
+    const handleAddNumberOfOrder = () => {
+        dispatch(countNumberOfOrder())
+    }
+
+    
     const cartWrapper = css`
         min-height: 500px;
         margin: 15px auto;
@@ -86,9 +91,11 @@ export const CartList = () => {
                     </Box> :   
                     <Box css={cartWrapper}>
                         <Cart options={cart} sumInCart={cartSum} handleGoodCartDelete={handleCartDelete} /> 
-                        <Button css={buttonStyles}>
-                            Оформити замовлення
-                        </Button>
+                        <NavLink to="/order_goods">
+                            <Button css={buttonStyles} onClick={handleAddNumberOfOrder}>
+                                Оформити замовлення
+                            </Button>
+                        </NavLink>                       
                     </Box>
                 }
             </Box>

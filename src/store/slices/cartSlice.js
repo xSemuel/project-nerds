@@ -5,6 +5,7 @@ export const cartSlice = createSlice({
     initialState: {
         idCartMas: [],
         sumInCart: 0, 
+        numberOfOrder: 0,
     },
     reducers: {
         addIdToCart: (state, action) => {
@@ -12,9 +13,14 @@ export const cartSlice = createSlice({
         },
         removeIdToCart: (state, action) => {
             state.idCartMas = [...state.idCartMas].filter((id) => id !== action.payload)
+        },
+        countNumberOfOrder: (state, action) => {
+            state.numberOfOrder += 1; 
         }
+
     }
 });
 
-export const { addIdToCart, removeIdToCart } = cartSlice.actions;
+export const { addIdToCart, removeIdToCart, countNumberOfOrder } = cartSlice.actions;
+export const currentNumberOfOrder = state => state.cart.numberOfOrder
 export default cartSlice.reducer;

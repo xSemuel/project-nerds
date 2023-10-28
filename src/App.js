@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Header, Mapcontact, Footer, Studio, Clients, Contacts, NotFound } from './components'
 import { Home } from './components/main'
 import { CartList } from './components/cart-goods'
-import { AppSnackbar } from './features';
+import { AppSnackbar, OrderGoodsPage } from './features';
 import { Store } from './pages'
 
 
@@ -19,6 +19,7 @@ function App() {
           <Route path="/contacts" element={<Contacts />}/>
           <Route path="/cart" element={<CartList />}/>
           <Route path="*" element={<NotFound />}/>
+          <Route path="/order_goods" element={<OrderGoodsPage/>}/>
         </Routes>
         <Mapcontact />
         <AppSnackbar />
