@@ -240,8 +240,8 @@ export const OrderGoodsPage = () => {
 						</Box>
 					</Grid>
 					<Grid item xs={12}>
-						<FormControlLabel
-							control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
+						<FormControlLabel onChange={(e) => onChangeHandler('dontCallback', e.target.checked)}
+							control={<Checkbox color="secondary" name="dontCallback" />}
 							label="Неперезванювати для підтвердження замовлення"
 						/>
 					</Grid>
