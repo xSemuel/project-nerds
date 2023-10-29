@@ -68,7 +68,8 @@ export const Advantage = () => {
             
             {ADVANTAGE_BLOCK.map(({ title, img, info, alt, btnInfo, btnColor, link }) => 
                 <Card key={title} css={cardStyle}> 
-                    <Box css={imgAdvantageStyle}
+                    <Box 
+                        css={imgAdvantageStyle}
                         component="img"
                         src={img}
                         alt={alt}

@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { Grid, Typography, TextField, FormControlLabel, Checkbox, Container, Button, Box, TableRow, TableCell } from '@mui/material';
-import { selectedGoodsInCart, sumSelectedGoodsInCart, updateOrderList, selectedorderListSlice } from '../../store/slices';
+import { selectedGoodsInCart, sumSelectedGoodsInCart, updateOrderList, selectedOrderListSlice } from '../../store/slices';
 import { currentNumberOfOrder, resetCart } from '../../store/slices'
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react'
@@ -28,17 +28,14 @@ const buttonStyles = css`
 		margin-top: 25px;
 		margin-bottom: 25px;
 	`
-
 	const orderGoodsWrapper = css`
 		display: flex;
 		flex-direction: column;
 		gap: 25px;
 	`
-
 	const orderGoodsTitle = css`
 		text-align: center;
 	`
-
 	const smallLogoCartGoods = css`
 		height: 30px;
 		width: 30px;
@@ -67,8 +64,7 @@ const buttonStyles = css`
 
 export const OrderGoodsPage = () => {
 
-
-	const as = useSelector(selectedorderListSlice); 
+	const as = useSelector(selectedOrderListSlice); 
 	console.log(as)
 	const dispatch = useDispatch();
 	const currentOrder = useSelector(currentNumberOfOrder);
@@ -118,7 +114,6 @@ export const OrderGoodsPage = () => {
 							label="Ваше ім'я"
 							fullWidth
 							autoComplete="given-name"
-							// onChange={onChangeHandler}
 							onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
 						/>
 					</Grid>
@@ -216,9 +211,14 @@ export const OrderGoodsPage = () => {
 					</Grid>
 					<Grid item xs={12} >
 						{cart.map(({id, srcLogo, alt, title, descInfo, descPrice}) => (
-							<TableRow key={id} css={tableWrapper} onClick={() => onChangeHandler(id, descPrice)}>
+							<TableRow key={id} css={tableWrapper}>
 								<TableCell>
-									<img css={smallLogoCartGoods} src={srcLogo} alt={alt}/>
+									<Box 
+										component="img" 
+										css={smallLogoCartGoods} 
+										src={srcLogo} 
+										alt={alt}
+									/>
 								</TableCell>
 								<TableCell>{title}</TableCell>
 								<TableCell>{descInfo}</TableCell>                      
@@ -226,7 +226,6 @@ export const OrderGoodsPage = () => {
 									<Typography variant="body2">{descPrice}грн.</Typography>
 								</TableCell>
 							</TableRow>	
-							
 						))} 
 					</Grid>
 					<Grid item xs={12} >
@@ -253,4 +252,3 @@ export const OrderGoodsPage = () => {
     </Container>
   );
 }
-

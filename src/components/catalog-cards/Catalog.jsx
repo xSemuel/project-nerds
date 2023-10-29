@@ -117,7 +117,12 @@ const filteredItems = goods.slice((pagePaginationCurrent-1) * 4, (pagePagination
                     <PaginationList funcChangePagination={handleChangePagination} currentPage={pagePaginationCurrent}  numberPage={totalCountPagePagination(goods)}/>
                 </Box>:
                 <Box css={wrapperNoFindedGoods}>
-                    <img css={imgGoodsEmpty} src={noFindedGoods} alt="Not goods for filtration"/>
+                    <Box 
+                        component="img" 
+                        css={imgGoodsEmpty} 
+                        src={noFindedGoods} 
+                        alt="Not goods for filtration"
+                    />
                     <Typography css={styleGoodsListEmpty} variant="h4">
                         Жоден товар не відповідає вибраним критеріям, будь ласка змініть параметри пошуку.
                     </Typography>

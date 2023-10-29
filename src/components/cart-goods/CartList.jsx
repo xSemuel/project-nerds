@@ -86,7 +86,12 @@ export const CartList = () => {
             <Box css={cartWrapper}>
                 {cart.length === 0 ? 
                     <Box css={wrapperCartEmpty}>
-                        <img css={imgCartEmpty} src={cartEmpty} alt="cart empty"/>
+                        <Box 
+                            component="img" 
+                            css={imgCartEmpty} 
+                            src={cartEmpty} 
+                            alt="cart empty"
+                        />
                         <Typography css={styleCartEmpty} variant="h2">
                             Корзина пуста
                         </Typography>

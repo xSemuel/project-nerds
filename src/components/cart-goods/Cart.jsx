@@ -2,7 +2,7 @@
 import { css } from '@emotion/react';
 
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
-import { Tooltip, IconButton, Typography } from '@mui/material';
+import { Tooltip, IconButton, Typography, Box } from '@mui/material';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -56,7 +56,9 @@ export const Cart = ({options, sumInCart, handleGoodCartDelete}) => {
                                 </Tooltip>
                             </TableCell>
                             <TableCell align="left">{index+1}</TableCell>
-                            <TableCell align="left"><img css={smallLogoCartGoods} src={row.srcLogo} alt={row.alt}/></TableCell>
+                            <TableCell align="left">
+                                <Box component="img" css={smallLogoCartGoods} src={row.srcLogo} alt={row.alt}/>
+                            </TableCell>
                             <TableCell>{row.title}</TableCell>
                             <TableCell align="left">{row.descInfo}</TableCell>                      
                             <TableCell align="center" css={styleCurrency}>

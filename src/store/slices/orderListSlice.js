@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  numberOfOrder: 1,
+  numberOfOrder: 0,
   ordersList: {},
 }
 
@@ -18,7 +18,7 @@ export const orderListSlice = createSlice({
   },
 })
 
-export const { updateOrderList } = orderListSlice.actions
+export const { updateOrderList, countNumberOfOrder } = orderListSlice.actions
 export const selectedOrderListSlice = state => state.orderList.ordersList;
 export const currentNumberOfOrder = state => state.orderList.numberOfOrder;
 export default orderListSlice.reducer
