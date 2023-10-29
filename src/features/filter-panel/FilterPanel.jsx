@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from 'react';
-import { Button, Typography } from '@mui/material'
+import { Button, Typography, Box } from '@mui/material'
 import { css } from '@emotion/react';
 import { RangeFilter, RadioButtonGroup, CheckboxGroup } from '../../components'
 import { FILTER_RANGE, FILTER_NETWORK, FILTER_FEATURES } from '../../constants';
@@ -53,7 +53,7 @@ export const FilterPanel = (props) => {
     }
 
     return ( 
-        <div css={css`margin-bottom: 38px;`}>
+        <Box css={css`margin-bottom: 38px;`}>
             <Typography variant="h3" css={titleFilterCost}>Вартість:</Typography>
             <RangeFilter
                 options={FILTER_RANGE}
@@ -81,6 +81,6 @@ export const FilterPanel = (props) => {
             >
                 Показати
             </Button>
-        </div>   
+        </Box>   
     )
 }

@@ -8,7 +8,7 @@ export const orderListSlice = createSlice({
   initialState,
   reducers: {
     updateOrderList: (state, action) => {
-      return action.payload
+      return  action.payload
     }
   },
 })

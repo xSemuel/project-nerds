@@ -1,12 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+    idCartMas: [],
+    sumInCart: 0, 
+    numberOfOrder: 0,
+}
+
+
 export const cartSlice = createSlice({
     name: 'cart',
-    initialState: {
-        idCartMas: [],
-        sumInCart: 0, 
-        numberOfOrder: 0,
-    },
+    initialState,
     reducers: {
         addIdToCart: (state, action) => {
             state.idCartMas = Array.from(new Set([...state.idCartMas, action.payload]))
@@ -16,11 +19,11 @@ export const cartSlice = createSlice({
         },
         countNumberOfOrder: (state, action) => {
             state.numberOfOrder += 1; 
-        }
-
+        },
+        resetCart: () => initialState,       
     }
 });
 
-export const { addIdToCart, removeIdToCart, countNumberOfOrder } = cartSlice.actions;
+export const { addIdToCart, removeIdToCart, countNumberOfOrder, resetCart } = cartSlice.actions;
 export const currentNumberOfOrder = state => state.cart.numberOfOrder
 export default cartSlice.reducer;

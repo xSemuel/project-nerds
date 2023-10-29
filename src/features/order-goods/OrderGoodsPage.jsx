@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { Grid, Typography, TextField, FormControlLabel, Checkbox, Container, Button, Box, TableRow, TableCell } from '@mui/material';
-import { selectedGoodsInCart, sumSelectedGoodsInCart, removeIdToCart, countNumberOfOrder } from '../../store/slices';
-import { currentNumberOfOrder } from '../../store/slices'
-import { useSelector } from 'react-redux';
+import { selectedGoodsInCart, sumSelectedGoodsInCart, updateOrderList, selectedorderListSlice } from '../../store/slices';
+import { currentNumberOfOrder, resetCart } from '../../store/slices'
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react'
 
 const buttonStyles = css`  
 	width: 260px;
@@ -66,11 +67,31 @@ const buttonStyles = css`
 
 export const OrderGoodsPage = () => {
 
+
+	const as = useSelector(selectedorderListSlice); 
+	console.log(as)
+	const dispatch = useDispatch();
 	const currentOrder = useSelector(currentNumberOfOrder);
 	const cart = useSelector(selectedGoodsInCart);
     const cartSum = useSelector(sumSelectedGoodsInCart); 
 
+	const [ordersGoodsArray, setOrdersGoodsArray] = useState({idOrder: currentOrder,
+															  OrderGoods: cart,
+															  totalSumOfOrder: cartSum,
+															})
 
+    const onChangeHandler = (filterName, value) => {
+		console.log(filterName, value )
+        setOrdersGoodsArray((prevState) => ({ ...prevState, [filterName]: value }))
+    }
+
+	const applyOrdersGoodsHandler = (event) => {
+        event.preventDefault();
+        dispatch(updateOrderList(ordersGoodsArray))
+		dispatch(resetCart())
+    }
+
+	console.log(ordersGoodsArray)
 
   return ( 
       <Container fixed css={orderGoodsContainer}>
@@ -92,11 +113,13 @@ export const OrderGoodsPage = () => {
 					<Grid item xs={12} sm={6}>
 						<TextField
 							required
-							id="First name"
+							id="firstName"
 							name="First name"
 							label="Ваше ім'я"
 							fullWidth
 							autoComplete="given-name"
+							// onChange={onChangeHandler}
+							onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
 						/>
 					</Grid>
 					<Grid item xs={12} sm={6}>
@@ -107,6 +130,7 @@ export const OrderGoodsPage = () => {
 							label="Ваше прізвище"
 							fullWidth
 							autoComplete="family-name"
+							onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
 						/>
 					</Grid>
 					<Grid item xs={12}>
@@ -117,6 +141,7 @@ export const OrderGoodsPage = () => {
 							label="Ваш email"
 							fullWidth
 							autoComplete="email"
+							onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
 						/>
 					</Grid>
 					<Grid item xs={12}>
@@ -127,6 +152,7 @@ export const OrderGoodsPage = () => {
 							label="Ваш номер телефону"
 							fullWidth
 							autoComplete="telephone"
+							onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
 						/>
 					</Grid>
 					<Grid item xs={12}>
@@ -147,6 +173,7 @@ export const OrderGoodsPage = () => {
 							label="Населений пункт"
 							fullWidth
 							autoComplete="city"
+							onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
 						/>
 					</Grid>
 					<Grid item xs={12} sm={6}>
@@ -157,6 +184,7 @@ export const OrderGoodsPage = () => {
 							label="Область" 
 							fullWidth 
 							autoComplete="state"
+							onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
 
 						/>
 					</Grid>
@@ -168,6 +196,7 @@ export const OrderGoodsPage = () => {
 							label="Номер віділення нової пошти"
 							fullWidth
 							autoComplete="numberDepartment"
+							onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
 						/>
 					</Grid>
 					<Grid item xs={12} sm={6}>
@@ -177,6 +206,7 @@ export const OrderGoodsPage = () => {
 							label="Адреса віділення нової пошти"
 							fullWidth
 							autoComplete="adressDepartment"
+							onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
 						/>
 					</Grid>
 					<Grid item xs={12}>
@@ -186,8 +216,7 @@ export const OrderGoodsPage = () => {
 					</Grid>
 					<Grid item xs={12} >
 						{cart.map(({id, srcLogo, alt, title, descInfo, descPrice}) => (
-							
-							<TableRow key={id} css={tableWrapper}>
+							<TableRow key={id} css={tableWrapper} onClick={() => onChangeHandler(id, descPrice)}>
 								<TableCell>
 									<img css={smallLogoCartGoods} src={srcLogo} alt={alt}/>
 								</TableCell>
@@ -197,6 +226,7 @@ export const OrderGoodsPage = () => {
 									<Typography variant="body2">{descPrice}грн.</Typography>
 								</TableCell>
 							</TableRow>	
+							
 						))} 
 					</Grid>
 					<Grid item xs={12} >
@@ -204,7 +234,7 @@ export const OrderGoodsPage = () => {
 							<Typography css={styleTotalSumInfo}>
 								Загальна сума вашого замовлення:
 							</Typography>
-							<Typography css={styleTotalSumInfo}>
+							<Typography id="totalSum" css={styleTotalSumInfo} onChange={(e) => onChangeHandler(e.target.id, e.target.value)}>
 								{cartSum}грн.
 							</Typography>	
 						</Box>
@@ -216,7 +246,7 @@ export const OrderGoodsPage = () => {
 						/>
 					</Grid>
 				</Grid>
-				<Button css={buttonStyles}>
+				<Button css={buttonStyles} onClick={applyOrdersGoodsHandler}>
                     Замовлення підтверджую
                 </Button>
 			</Box>
