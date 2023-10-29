@@ -46,7 +46,7 @@ export const CartList = () => {
     const buttonStyles = css`  
         width: 260px;
         height: 52px;
-        margin: 0 auto;
+        
         margin-bottom: 30px;
         background: #eee;
         color: #000;
@@ -60,6 +60,9 @@ export const CartList = () => {
             background: #d7373b;
             color: #ffffff;
         }
+    `
+    const wrapperButton = css`
+        margin: 0 auto;
     `
 
     const wrapperCartEmpty = css`
@@ -78,7 +81,6 @@ export const CartList = () => {
         height: 350px;
         width: 350px;
     `
-
     return (
         <div className="container">
             <Box css={cartWrapper}>
@@ -91,11 +93,11 @@ export const CartList = () => {
                     </Box> :   
                     <Box css={cartWrapper}>
                         <Cart options={cart} sumInCart={cartSum} handleGoodCartDelete={handleCartDelete} /> 
-                        <NavLink to="/order_goods">
+                        <NavLink to="/order_goods" css={wrapperButton}>
                             <Button css={buttonStyles} onClick={handleAddNumberOfOrder}>
-                                Оформити замовлення
+                                Оформити замовлення   
                             </Button>
-                        </NavLink>                       
+                        </NavLink>                
                     </Box>
                 }
             </Box>
