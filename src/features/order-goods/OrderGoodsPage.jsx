@@ -71,7 +71,7 @@ export const OrderGoodsPage = () => {
 	const cart = useSelector(selectedGoodsInCart);
     const cartSum = useSelector(sumSelectedGoodsInCart); 
 
-	const [ordersGoodsArray, setOrdersGoodsArray] = useState({idOrder: currentOrder,
+	const [objectOrderGood, setObjectOrderGood] = useState({idOrder: currentOrder,
 															  OrderGoods: cart,
 															  totalSumOfOrder: cartSum,
 															})
@@ -80,21 +80,21 @@ export const OrderGoodsPage = () => {
     const onChangeHandler = (e) => {
 		const { id: filterName, value } = e.target
 		console.log(filterName, value)
-        setOrdersGoodsArray((prevState) => ({ ...prevState, [filterName]: value }))
+        setObjectOrderGood((prevState) => ({ ...prevState, [filterName]: value }))
     }
 
 	const onCheckHandler = (e) => {
 		const { id: filterName, checked } = e.target
-        setOrdersGoodsArray((prevState) => ({ ...prevState, [filterName]: checked }))
+        setObjectOrderGood((prevState) => ({ ...prevState, [filterName]: checked }))
     }
 
 	const applyOrdersGoodsHandler = (event) => {
         event.preventDefault();
-        dispatch(updateOrderList(ordersGoodsArray))
+        dispatch(updateOrderList(objectOrderGood))
 		dispatch(resetCart())
     }
 
-	console.log(ordersGoodsArray)
+	console.log(objectOrderGood)
 
   return ( 
       <Container fixed css={orderGoodsContainer}>
