@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { Grid, Typography, TextField, FormControlLabel, Checkbox, Container, Button, Box, TableRow, TableCell } from '@mui/material';
+import { Grid, Typography, TextField, FormControlLabel, Checkbox, Container, Button, Box, Table, TableBody, TableRow, TableCell } from '@mui/material';
 import { selectedGoodsInCart, sumSelectedGoodsInCart, updateOrderList, selectedOrderListSlice } from '../../store/slices';
 import { currentNumberOfOrder, resetCart } from '../../store/slices'
 import { useSelector, useDispatch } from 'react-redux';
@@ -222,24 +222,28 @@ export const OrderGoodsPage = () => {
 							Інформація про товар:
 						</Typography>
 					</Grid>
-					<Grid item xs={12} >
-						{cart.map(({id, srcLogo, alt, title, descInfo, descPrice}) => (
-							<TableRow key={id} css={tableWrapper}>
-								<TableCell>
-									<Box 
-										component="img" 
-										css={smallLogoCartGoods} 
-										src={srcLogo} 
-										alt={alt}
-									/>
-								</TableCell>
-								<TableCell>{title}</TableCell>
-								<TableCell>{descInfo}</TableCell>                      
-								<TableCell>
-									<Typography variant="body2">{descPrice}грн.</Typography>
-								</TableCell>
-							</TableRow>	
-						))} 
+					<Grid item xs={12}>
+					    <Table>
+							<TableBody>
+								{cart.map(({id, srcLogo, alt, title, descInfo, descPrice}) => (
+									<TableRow key={id} css={tableWrapper}>
+										<TableCell>
+											<Box 
+												component="img" 
+												css={smallLogoCartGoods} 
+												src={srcLogo} 
+												alt={alt}
+											/>
+										</TableCell>
+										<TableCell>{title}</TableCell>
+										<TableCell>{descInfo}</TableCell>                      
+										<TableCell>
+											<Typography variant="body2">{descPrice}грн.</Typography>
+										</TableCell>
+									</TableRow>	
+								))} 
+							</TableBody>
+						</Table>
 					</Grid>
 					<Grid item xs={12} >
 						<Box css={styleTotalSumWrapper}>	

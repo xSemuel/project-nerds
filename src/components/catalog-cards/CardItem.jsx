@@ -76,7 +76,6 @@ export const CardItem = ({options, handleGoodCartAdd }) => {
             onMouseLeave={closeCardInfo}
         >
             <CardActionArea>
-
                 <CardMedia
                     component="img"
                     height="618"
