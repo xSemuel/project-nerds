@@ -83,7 +83,8 @@ export const CardItem = ({options, handleGoodCartAdd }) => {
                     image={srcLogo}
                     alt={alt}
                 />
-                {watchCardInfo && <Box css={wrapperDescCardStyle}>
+            </CardActionArea>    
+            {watchCardInfo && <Box css={wrapperDescCardStyle}>
                     <Typography variant="h5" component="div">
                         {title}
                     </Typography>
@@ -97,8 +98,6 @@ export const CardItem = ({options, handleGoodCartAdd }) => {
                         <Typography css={currencyButtonStyle} variant="body2">грн.</Typography>
                     </Button>
                 </Box>}
-            </CardActionArea>    
         </Card>
     )
 }
- 

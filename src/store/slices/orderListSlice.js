@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   numberOfOrder: 0,
-  ordersList: {},
+  ordersList: { 1: {}, 2: {},},
 }
 
 export const orderListSlice = createSlice({
@@ -10,7 +10,12 @@ export const orderListSlice = createSlice({
   initialState,
   reducers: {
     updateOrderList: (state, action) => {
-      state.ordersList = action.payload
+      // console.log({...state.ordersList, action.payload})
+      // return {...state.ordersList, action.payload}
+      // { 1: {}, 2: {}, {} }
+      // { numberOfOrder: 10, ordersList: { 1: {}, 2: {} } }
+      state.numberOfOrder = 45
+      state.ordersList = { ...state.ordersList, [state.numberOfOrder]:  action.payload}
     },
     countNumberOfOrder: (state, action) => {
       state.numberOfOrder += 1; 

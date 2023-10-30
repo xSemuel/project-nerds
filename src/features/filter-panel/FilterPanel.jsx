@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Typography, Box } from '@mui/material'
 import { css } from '@emotion/react';
 import { RangeFilter, RadioButtonGroup, CheckboxGroup } from '../../components'
@@ -42,6 +42,10 @@ export const FilterPanel = (props) => {
     const { config, onChange } = props
 
     const [filters, setFilters] = useState({...config})
+
+    useEffect(()=> {
+        setFilters(config)
+    }, [config])
 
     const applyFiltersHandler = (event) => {
         event.preventDefault();

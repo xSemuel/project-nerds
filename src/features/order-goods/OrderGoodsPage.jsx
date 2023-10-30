@@ -76,9 +76,16 @@ export const OrderGoodsPage = () => {
 															  totalSumOfOrder: cartSum,
 															})
 
-    const onChangeHandler = (filterName, value) => {
-		console.log(filterName, value )
+    // const onChangeHandler = (filterName, value) => {
+    const onChangeHandler = (e) => {
+		const { id: filterName, value } = e.target
+		console.log(filterName, value)
         setOrdersGoodsArray((prevState) => ({ ...prevState, [filterName]: value }))
+    }
+
+	const onCheckHandler = (e) => {
+		const { id: filterName, checked } = e.target
+        setOrdersGoodsArray((prevState) => ({ ...prevState, [filterName]: checked }))
     }
 
 	const applyOrdersGoodsHandler = (event) => {
@@ -125,7 +132,8 @@ export const OrderGoodsPage = () => {
 							label="Ваше прізвище"
 							fullWidth
 							autoComplete="family-name"
-							onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
+							// onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
+							onChange={onChangeHandler}
 						/>
 					</Grid>
 					<Grid item xs={12}>
@@ -136,7 +144,8 @@ export const OrderGoodsPage = () => {
 							label="Ваш email"
 							fullWidth
 							autoComplete="email"
-							onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
+							// onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
+							onChange={onChangeHandler}
 						/>
 					</Grid>
 					<Grid item xs={12}>
@@ -147,7 +156,8 @@ export const OrderGoodsPage = () => {
 							label="Ваш номер телефону"
 							fullWidth
 							autoComplete="telephone"
-							onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
+							// onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
+							onChange={onChangeHandler}
 						/>
 					</Grid>
 					<Grid item xs={12}>
@@ -168,7 +178,8 @@ export const OrderGoodsPage = () => {
 							label="Населений пункт"
 							fullWidth
 							autoComplete="city"
-							onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
+							// onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
+							onChange={onChangeHandler}
 						/>
 					</Grid>
 					<Grid item xs={12} sm={6}>
@@ -179,8 +190,8 @@ export const OrderGoodsPage = () => {
 							label="Область" 
 							fullWidth 
 							autoComplete="state"
-							onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
-
+							// onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
+							onChange={onChangeHandler}
 						/>
 					</Grid>
 					<Grid item xs={12} sm={6}>
@@ -191,7 +202,8 @@ export const OrderGoodsPage = () => {
 							label="Номер віділення нової пошти"
 							fullWidth
 							autoComplete="numberDepartment"
-							onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
+							// onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
+							onChange={onChangeHandler}
 						/>
 					</Grid>
 					<Grid item xs={12} sm={6}>
@@ -201,7 +213,8 @@ export const OrderGoodsPage = () => {
 							label="Адреса віділення нової пошти"
 							fullWidth
 							autoComplete="adressDepartment"
-							onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
+							// onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
+							onChange={onChangeHandler}
 						/>
 					</Grid>
 					<Grid item xs={12}>
@@ -233,14 +246,15 @@ export const OrderGoodsPage = () => {
 							<Typography css={styleTotalSumInfo}>
 								Загальна сума вашого замовлення:
 							</Typography>
-							<Typography id="totalSum" css={styleTotalSumInfo} onChange={(e) => onChangeHandler(e.target.id, e.target.value)}>
+							<Typography id="totalSum" css={styleTotalSumInfo} 	onChange={onChangeHandler}>
 								{cartSum}грн.
 							</Typography>	
 						</Box>
 					</Grid>
 					<Grid item xs={12}>
-						<FormControlLabel onChange={(e) => onChangeHandler('dontCallback', e.target.checked)}
-							control={<Checkbox color="secondary" name="dontCallback" />}
+						<FormControlLabel 
+						// <FormControlLabel onChange={(e) => onChangeHandler('dontCallback', e.target.checked)}
+							control={<Checkbox id="dontCallback" onChange={onCheckHandler} color="secondary" name="dontCallback" />}
 							label="Неперезванювати для підтвердження замовлення"
 						/>
 					</Grid>
