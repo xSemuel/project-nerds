@@ -107,7 +107,6 @@ export const OrderGoodsPage = () => {
 					Оформлення замовлення № {currentOrder}
 				</Typography>
 				<Grid container spacing={3}>
-
 					<Grid item xs={12}>
 						<Typography css={orderGoodsTitle}>
 							Інформація про отримувача:
@@ -121,7 +120,7 @@ export const OrderGoodsPage = () => {
 							label="Ваше ім'я"
 							fullWidth
 							autoComplete="given-name"
-							onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
+							onChange={onChangeHandler}
 						/>
 					</Grid>
 					<Grid item xs={12} sm={6}>
@@ -132,7 +131,6 @@ export const OrderGoodsPage = () => {
 							label="Ваше прізвище"
 							fullWidth
 							autoComplete="family-name"
-							// onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
 							onChange={onChangeHandler}
 						/>
 					</Grid>
@@ -144,7 +142,6 @@ export const OrderGoodsPage = () => {
 							label="Ваш email"
 							fullWidth
 							autoComplete="email"
-							// onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
 							onChange={onChangeHandler}
 						/>
 					</Grid>
@@ -156,7 +153,6 @@ export const OrderGoodsPage = () => {
 							label="Ваш номер телефону"
 							fullWidth
 							autoComplete="telephone"
-							// onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
 							onChange={onChangeHandler}
 						/>
 					</Grid>
@@ -178,7 +174,6 @@ export const OrderGoodsPage = () => {
 							label="Населений пункт"
 							fullWidth
 							autoComplete="city"
-							// onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
 							onChange={onChangeHandler}
 						/>
 					</Grid>
@@ -190,7 +185,6 @@ export const OrderGoodsPage = () => {
 							label="Область" 
 							fullWidth 
 							autoComplete="state"
-							// onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
 							onChange={onChangeHandler}
 						/>
 					</Grid>
@@ -202,7 +196,6 @@ export const OrderGoodsPage = () => {
 							label="Номер віділення нової пошти"
 							fullWidth
 							autoComplete="numberDepartment"
-							// onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
 							onChange={onChangeHandler}
 						/>
 					</Grid>
@@ -213,7 +206,6 @@ export const OrderGoodsPage = () => {
 							label="Адреса віділення нової пошти"
 							fullWidth
 							autoComplete="adressDepartment"
-							// onChange={(e) => onChangeHandler(e.target.id, e.target.value)}
 							onChange={onChangeHandler}
 						/>
 					</Grid>
@@ -250,14 +242,13 @@ export const OrderGoodsPage = () => {
 							<Typography css={styleTotalSumInfo}>
 								Загальна сума вашого замовлення:
 							</Typography>
-							<Typography id="totalSum" css={styleTotalSumInfo} 	onChange={onChangeHandler}>
+							<Typography id="totalSum" css={styleTotalSumInfo} onChange={onChangeHandler}>
 								{cartSum}грн.
 							</Typography>	
 						</Box>
 					</Grid>
 					<Grid item xs={12}>
 						<FormControlLabel 
-						// <FormControlLabel onChange={(e) => onChangeHandler('dontCallback', e.target.checked)}
 							control={<Checkbox id="dontCallback" onChange={onCheckHandler} color="secondary" name="dontCallback" />}
 							label="Неперезванювати для підтвердження замовлення"
 						/>
