@@ -103,6 +103,9 @@ export const OrderGoodsPage = () => {
 
   return ( 
       	<Container fixed css={orderGoodsContainer}>
+
+			{openOrderInfo ? <OrderInfoSucess options={objectOrderGood}/> : 
+
 			<Box css={orderGoodsWrapper}>
 				<Typography 
 					css={orderGoodsTitle}
@@ -263,10 +266,13 @@ export const OrderGoodsPage = () => {
                     Замовлення підтверджую
                 </Button>
 
-				<OrderInfoSucess options={objectOrderGood}/>
+				
 			</Box>
 
 			
+			
+			}
+
     	</Container>
   	);
 }

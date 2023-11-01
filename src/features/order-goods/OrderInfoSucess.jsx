@@ -33,7 +33,7 @@ import { NavLink } from "react-router-dom";
         align-items: center;
         padding: 10px 10px;
     `
-    const orderInfoTitle = css`
+    const orderInfoHeadlines = css`
         color: #000;
         font-size: 16px;
         font-weight: 700;
@@ -64,16 +64,15 @@ import { NavLink } from "react-router-dom";
 export const OrderInfoSucess = ({options}) => {
 
     const {idOrder, totalSumOfOrder, firstName, lastName} = options;
-    console.log(options)
 
     return ( 
 
         <Paper elevation={3} css={orderInfoWrapper}>
-            <Typography css={orderInfoTitle}>Замовлення № {idOrder}</Typography> 
-            <Typography css={orderInfoTitle}>Замовник:</Typography>
+            <Typography css={orderInfoHeadlines}>Замовлення № {idOrder}</Typography> 
+            <Typography css={orderInfoHeadlines}>Замовник:</Typography>
             <Typography css={orderInfoName}>Прізвище: {lastName} </Typography>
             <Typography css={orderInfoName}>Ім'я: {firstName}</Typography>
-            <Typography css={orderInfoTitle}>Сумма замовлення: {totalSumOfOrder} грн.</Typography>
+            <Typography css={orderInfoHeadlines}>Сумма замовлення: {totalSumOfOrder} грн.</Typography>
             <Typography css={orderInfoThanks}>Дякуємо за замовлення. Ваш товар буде надісланий найближчим часом!</Typography> 
             
             <NavLink css={styleLink} to="/">
