@@ -3,7 +3,8 @@ import { Header, Mapcontact, Footer, Studio, Clients, Contacts, NotFound } from 
 import { Home } from './components/main'
 import { CartList } from './components/cart-goods'
 import { AppSnackbar, OrderGoodsPage } from './features';
-import { Store } from './pages'
+import { Store } from './pages';
+import { links } from './constants';
 
 
 function App() {
@@ -12,14 +13,14 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/studio" element={<Studio />}/>
-          <Route path="/clients" element={<Clients />}/>
-          <Route path="/store" element={<Store />}/>
-          <Route path="/contacts" element={<Contacts />}/>
-          <Route path="/cart" element={<CartList />}/>
-          <Route path="*" element={<NotFound />}/>
-          <Route path="/order_goods" element={<OrderGoodsPage/>}/>
+          <Route path={links.main} element={<Home />}/>
+          <Route path={links.studio} element={<Studio />}/>
+          <Route path={links.clients} element={<Clients />}/>
+          <Route path={links.store} element={<Store />}/>
+          <Route path={links.contacts} element={<Contacts />}/>
+          <Route path={links.cart} element={<CartList />}/>
+          <Route path={links.notFound} element={<NotFound />}/>
+          <Route path={links.orderGood} element={<OrderGoodsPage/>}/>
         </Routes>
         <Mapcontact />
         <AppSnackbar />

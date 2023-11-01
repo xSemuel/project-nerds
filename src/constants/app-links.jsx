@@ -6,4 +6,6 @@ export const links = {
     clients: '/clients',
     store: '/store',
     contacts: '/contacts',
+    orderGood: '/order_goods',
+    notFound: '*',
 }
