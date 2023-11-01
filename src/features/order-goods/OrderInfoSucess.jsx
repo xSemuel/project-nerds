@@ -2,6 +2,7 @@
 import { css } from '@emotion/react';
 import { Paper, Typography, Button } from '@mui/material';
 import { NavLink } from "react-router-dom";
+import { links } from '../../constants';
 
     const buttonStyles = css`  
     width: 180px;
@@ -75,12 +76,12 @@ export const OrderInfoSucess = ({options}) => {
             <Typography css={orderInfoHeadlines}>Сумма замовлення: {totalSumOfOrder} грн.</Typography>
             <Typography css={orderInfoThanks}>Дякуємо за замовлення. Ваш товар буде надісланий найближчим часом!</Typography> 
             
-            <NavLink css={styleLink} to="/">
+            <NavLink css={styleLink} to={links.main}>
                 <Button css={buttonStyles}>
                     Перейти на головну
                 </Button>  
             </NavLink> 
-            <NavLink css={styleLink} to="/store">
+            <NavLink css={styleLink} to={links.store}>
                 <Button css={buttonStyles}>
                     Продовжити покупки
                 </Button> 

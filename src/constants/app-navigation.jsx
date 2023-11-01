@@ -1,6 +1,5 @@
 import nerdsLogo from '../images/nerds-logo.svg';
 
-
 // Navigation menu 
 
 export const Main_link = { text: 'Головна', link: '/', logo: nerdsLogo };

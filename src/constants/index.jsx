@@ -7,3 +7,4 @@ export * from './catalog-goods';
 export * from './catalog-sortParams';
 export * from './catalog-filterParams';
 export * from './app-ordersGoodsPage';
+export * from './app-links';
