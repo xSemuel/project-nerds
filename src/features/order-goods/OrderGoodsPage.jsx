@@ -1,12 +1,67 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { Grid, Typography, TextField, FormControlLabel, Checkbox, Container, Button, Box, Table, TableBody, TableRow, TableCell } from '@mui/material';
-import { selectedGoodsInCart, sumSelectedGoodsInCart, updateOrderList, selectedOrderListSlice } from '../../store/slices';
+import { selectedGoodsInCart, sumSelectedGoodsInCart, updateOrderList } from '../../store/slices';
 import { currentNumberOfOrder, resetCart } from '../../store/slices'
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react'
 
 import { OrderInfoSucess } from './OrderInfoSucess';
+
+const orderCustomer = [
+	{
+		id: "firstName",
+		name: "First name",
+		label: "Ваше ім'я",
+		autoComplete: "given-name",
+	},
+	{
+		id: "lastName",
+		name: "lastName",
+		label: "Ваше прізвище",
+		autoComplete: "family-name",
+	},
+	{
+		id: "email",
+		name: "email",
+		label: "Ваш email",
+		autoComplete: "email",
+	},
+	{
+		id: "telephone",
+		name: "telephone",
+		label: "Ваш номер телефону",
+		autoComplete: "telephone",
+	},
+]	
+
+const orderDelivery = [
+
+	{
+		id: "state", 
+		name: "state",
+		label: "Область", 
+		autoComplete: "state",
+	},
+	{
+		id: "city",
+		name: "city",
+		label: "Населений пункт",
+		autoComplete: "city",
+	},
+	{
+		id: "numberDepartment",
+		name: "numberDepartment",
+		label: "Номер віділення нової пошти",
+		autoComplete: "numberDepartment",
+	},
+	{
+		id: "adressDepartment",
+		name: "adressDepartment",
+		label: "Адреса віділення нової пошти",						
+		autoComplete: "adressDepartment",
+	},
+]
 
 const buttonStyles = css`  
 	width: 260px;
@@ -67,9 +122,6 @@ const buttonStyles = css`
 export const OrderGoodsPage = () => {
 
 	const [ openOrderInfo, setOpenOrderInfo] = useState(false);
-
-	const as = useSelector(selectedOrderListSlice); 
-	console.log(as)
 	const dispatch = useDispatch();
 	const currentOrder = useSelector(currentNumberOfOrder);
 	const cart = useSelector(selectedGoodsInCart);
@@ -99,180 +151,115 @@ export const OrderGoodsPage = () => {
 		setOpenOrderInfo(true)
     }
 
-	console.log(objectOrderGood)
-
-  return ( 
+  	return ( 
       	<Container fixed css={orderGoodsContainer}>
 
 			{openOrderInfo ? <OrderInfoSucess options={objectOrderGood}/> : 
 
-			<Box css={orderGoodsWrapper}>
-				<Typography 
-					css={orderGoodsTitle}
-					variant="h6" 
-					gutterBottom
-				>
-					Оформлення замовлення № {currentOrder}
-				</Typography>
-				<Grid container spacing={3}>
-					<Grid item xs={12}>
-						<Typography css={orderGoodsTitle}>
-							Інформація про отримувача:
-						</Typography>
-					</Grid>
-					<Grid item xs={12} sm={6}>
-						<TextField
-							required
-							id="firstName"
-							name="First name"
-							label="Ваше ім'я"
-							fullWidth
-							autoComplete="given-name"
-							onChange={onChangeHandler}
-						/>
-					</Grid>
-					<Grid item xs={12} sm={6}>
-						<TextField
-							required
-							id="lastName"
-							name="lastName"
-							label="Ваше прізвище"
-							fullWidth
-							autoComplete="family-name"
-							onChange={onChangeHandler}
-						/>
-					</Grid>
-					<Grid item xs={12}>
-						<TextField
-							required
-							id="email"
-							name="email"
-							label="Ваш email"
-							fullWidth
-							autoComplete="email"
-							onChange={onChangeHandler}
-						/>
-					</Grid>
-					<Grid item xs={12}>
-						<TextField
-							required
-							id="telephone"
-							name="telephone"
-							label="Ваш номер телефону"
-							fullWidth
-							autoComplete="telephone"
-							onChange={onChangeHandler}
-						/>
-					</Grid>
-					<Grid item xs={12}>
-						<Typography css={orderGoodsTitle}>
-							Інформація про доставку:
-						</Typography>
-					</Grid>
-					<Grid item xs={12}>
-						<Typography css={orderGoodsTitle}>
-							Відправка товару тільки перевізником Нова Пошта:
-						</Typography>
-					</Grid>
-					<Grid item xs={12} sm={6}>
-						<TextField
-							required
-							id="city"
-							name="city"
-							label="Населений пункт"
-							fullWidth
-							autoComplete="city"
-							onChange={onChangeHandler}
-						/>
-					</Grid>
-					<Grid item xs={12} sm={6}>
-						<TextField 
-							required
-							id="state" 
-							name="state" 
-							label="Область" 
-							fullWidth 
-							autoComplete="state"
-							onChange={onChangeHandler}
-						/>
-					</Grid>
-					<Grid item xs={12} sm={6}>
-						<TextField
-							required
-							id="numberDepartment"
-							name="numberDepartment"
-							label="Номер віділення нової пошти"
-							fullWidth
-							autoComplete="numberDepartment"
-							onChange={onChangeHandler}
-						/>
-					</Grid>
-					<Grid item xs={12} sm={6}>
-						<TextField
-							id="adressDepartment"
-							name="adressDepartment"
-							label="Адреса віділення нової пошти"
-							fullWidth
-							autoComplete="adressDepartment"
-							onChange={onChangeHandler}
-						/>
-					</Grid>
-					<Grid item xs={12}>
-						<Typography css={orderGoodsTitle}>
-							Інформація про товар:
-						</Typography>
-					</Grid>
-					<Grid item xs={12}>
-					    <Table>
-							<TableBody>
-								{cart.map(({id, srcLogo, alt, title, descInfo, descPrice}) => (
-									<TableRow key={id} css={tableWrapper}>
-										<TableCell>
-											<Box 
-												component="img" 
-												css={smallLogoCartGoods} 
-												src={srcLogo} 
-												alt={alt}
-											/>
-										</TableCell>
-										<TableCell>{title}</TableCell>
-										<TableCell>{descInfo}</TableCell>                      
-										<TableCell>
-											<Typography variant="body2">{descPrice}грн.</Typography>
-										</TableCell>
-									</TableRow>	
-								))} 
-							</TableBody>
-						</Table>
-					</Grid>
-					<Grid item xs={12} >
-						<Box css={styleTotalSumWrapper}>	
-							<Typography css={styleTotalSumInfo}>
-								Загальна сума вашого замовлення:
+				<Box css={orderGoodsWrapper}>
+					<Typography 
+						css={orderGoodsTitle}
+						variant="h6" 
+						gutterBottom
+					>
+						Оформлення замовлення № {currentOrder}
+					</Typography>
+					<Grid container spacing={3}>
+						<Grid item xs={12}>
+							<Typography css={orderGoodsTitle}>
+								Інформація про отримувача:
 							</Typography>
-							<Typography id="totalSum" css={styleTotalSumInfo} onChange={onChangeHandler}>
-								{cartSum}грн.
-							</Typography>	
-						</Box>
-					</Grid>
-					<Grid item xs={12}>
-						<FormControlLabel 
-							control={<Checkbox id="dontCallback" onChange={onCheckHandler} color="secondary" name="dontCallback" />}
-							label="Неперезванювати для підтвердження замовлення"
-						/>
-					</Grid>
-				</Grid>
-				<Button css={buttonStyles} onClick={applyOrdersGoodsHandler}>
-                    Замовлення підтверджую
-                </Button>
+						</Grid>
 
-				
-			</Box>
+						{orderCustomer.map(({id, name, label, autoComplete}) => (
+							<Grid item xs={12} sm={6} key={id}>
+								<TextField
+									required
+									fullWidth
+									id={id}
+									name={name}
+									label={label}
+									autoComplete={autoComplete}
+									onChange={onChangeHandler}
+								/>
+							</Grid>
+						))}
 
-			
-			
+						<Grid item xs={12}>
+							<Typography css={orderGoodsTitle}>
+								Інформація про доставку:
+							</Typography>
+						</Grid>
+						<Grid item xs={12}>
+							<Typography css={orderGoodsTitle}>
+								Відправка товару тільки перевізником Нова Пошта:
+							</Typography>
+						</Grid>
+
+						{orderDelivery.map(({id, name, label, autoComplete}) => (
+							<Grid item xs={12} sm={6} key={id}>
+								<TextField
+									required
+									fullWidth
+									id={id}
+									name={name}
+									label={label}									
+									autoComplete={autoComplete}
+									onChange={onChangeHandler}
+								/>
+							</Grid>
+						))}
+
+						<Grid item xs={12}>
+							<Typography css={orderGoodsTitle}>
+								Інформація про товар:
+							</Typography>
+						</Grid>
+						<Grid item xs={12}>
+							<Table>
+								<TableBody>
+									{cart.map(({id, srcLogo, alt, title, descInfo, descPrice}) => (
+										<TableRow key={id} css={tableWrapper}>
+											<TableCell>
+												<Box 
+													component="img" 
+													css={smallLogoCartGoods} 
+													src={srcLogo} 
+													alt={alt}
+												/>
+											</TableCell>
+											<TableCell>{title}</TableCell>
+											<TableCell>{descInfo}</TableCell>                      
+											<TableCell>
+												<Typography variant="body2">{descPrice}грн.</Typography>
+											</TableCell>
+										</TableRow>	
+									))} 
+								</TableBody>
+							</Table>
+						</Grid>
+						<Grid item xs={12} >
+							<Box css={styleTotalSumWrapper}>	
+								<Typography css={styleTotalSumInfo}>
+									Загальна сума вашого замовлення:
+								</Typography>
+								<Typography id="totalSum" css={styleTotalSumInfo} onChange={onChangeHandler}>
+									{cartSum}грн.
+								</Typography>	
+							</Box>
+						</Grid>
+						<Grid item xs={12}>
+							<FormControlLabel 
+								control={<Checkbox id="dontCallback" onChange={onCheckHandler} color="secondary" name="dontCallback" />}
+								label="Неперезванювати для підтвердження замовлення"
+							/>
+						</Grid>
+					</Grid>
+					<Button css={buttonStyles} onClick={applyOrdersGoodsHandler}>
+						Замовлення підтверджую
+					</Button>
+				</Box>
 			}
-
     	</Container>
   	);
 }
