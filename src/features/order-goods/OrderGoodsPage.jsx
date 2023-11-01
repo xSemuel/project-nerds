@@ -6,6 +6,8 @@ import { currentNumberOfOrder, resetCart } from '../../store/slices'
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react'
 
+import { OrderInfoSucess } from './OrderInfoSucess';
+
 const buttonStyles = css`  
 	width: 260px;
 	height: 52px;
@@ -64,6 +66,8 @@ const buttonStyles = css`
 
 export const OrderGoodsPage = () => {
 
+	const [ openOrderInfo, setOpenOrderInfo] = useState(false);
+
 	const as = useSelector(selectedOrderListSlice); 
 	console.log(as)
 	const dispatch = useDispatch();
@@ -92,12 +96,13 @@ export const OrderGoodsPage = () => {
         event.preventDefault();
         dispatch(updateOrderList(objectOrderGood))
 		dispatch(resetCart())
+		setOpenOrderInfo(true)
     }
 
 	console.log(objectOrderGood)
 
   return ( 
-      <Container fixed css={orderGoodsContainer}>
+      	<Container fixed css={orderGoodsContainer}>
 			<Box css={orderGoodsWrapper}>
 				<Typography 
 					css={orderGoodsTitle}
@@ -257,7 +262,11 @@ export const OrderGoodsPage = () => {
 				<Button css={buttonStyles} onClick={applyOrdersGoodsHandler}>
                     Замовлення підтверджую
                 </Button>
+
+				<OrderInfoSucess options={objectOrderGood}/>
 			</Box>
-    </Container>
-  );
+
+			
+    	</Container>
+  	);
 }
