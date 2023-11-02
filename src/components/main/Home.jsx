@@ -1,23 +1,32 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
+
 import { Advantage, Carousel, Information, Partner } from '../main';
+import { Container, Box } from '@mui/material';
+
+    const styleWrapperDivided = css`
+        margin: 3rem auto;
+    `
+    const styleDivided = css`
+        border: solid 2px #eee;
+    `
 
 export const Home = () => {
     return ( 
-    <>    
-        <Carousel />
-        <Advantage />  
-        <div className="container my-5">
-            <hr className="hrDevided m-0"/>
-        </div>
-        <Information />
-        <div className="container my-5">
-            <hr className="hrDevided m-0"/>
-        </div>
-        <Partner />
-        <div className="container my-5">
-            <hr className="hrDevided m-0"/>
-        </div>
-        
-    </>
-
-);
+        <Box>    
+            <Carousel />
+            <Advantage />  
+            <Container fixed css={styleWrapperDivided}>
+                <Box css={styleDivided}/>
+            </Container>
+            <Information />
+            <Container fixed css={styleWrapperDivided}>
+                <Box css={styleDivided}/>
+            </Container>
+            <Partner />
+            <Container fixed css={styleWrapperDivided}>
+                <Box css={styleDivided}/>
+            </Container>           
+        </Box>
+    );
 }

@@ -31,10 +31,6 @@ ul, li {
   list-style-type: none;
 }
 
-.hrDevided {
-  border: solid 2px var(--color-bg-main);
-}
-
 /* Mapcontact */
 
 .ratio::before {
