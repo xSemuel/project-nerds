@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { CAROUSEL_BLOCK } from '../../constants';
 
 import { useTheme } from '@mui/material/styles';
-import { Box, Typography, Button, MobileStepper } from '@mui/material';
+import { Container, Box, Typography, Button, MobileStepper } from '@mui/material';
 
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
@@ -88,7 +88,7 @@ export const Carousel = () => {
     };
 
     return (
-        <Box className="container mt-5 d-flex justify-content-between">
+        <Container fixed>
             <Box css={mainWrapperCarousel}>
                 <AutoPlaySwipeableViews
                     axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -97,38 +97,38 @@ export const Carousel = () => {
                     enableMouseEvents
                 >
                     {CAROUSEL_BLOCK.map((step, index) => (
-                    <div key={step.id}>
-                        {Math.abs(activeStep - index) <= 2 ? (
-                        <Box css={wrapperCarouselStyle} sx={{
-                            height: 430,
-                            display: 'block',
-                            maxWidth: 1125,
-                            overflow: 'hidden',
-                            width: '100%',
-                            }}>
-                            <Box css={imgCarouselStyle}
-                                component="img"
-                                src={step.img}
-                                alt={step.title}
-                            >
+                        <Box key={step.id}>
+                            {Math.abs(activeStep - index) <= 2 ? (
+                            <Box css={wrapperCarouselStyle} sx={{
+                                height: 430,
+                                display: 'block',
+                                maxWidth: 1125,
+                                overflow: 'hidden',
+                                width: '100%',
+                                }}>
+                                <Box css={imgCarouselStyle}
+                                    component="img"
+                                    src={step.img}
+                                    alt={step.title}
+                                >
+                                </Box>
+                                
+                                <Box css={imgDescArea}>
+                                    <Typography css={styleCarouselTitle}>
+                                        {step.title}
+                                    </Typography>
+                                    <Typography css={styleCarouselInfo}>
+                                        {step.info}
+                                    </Typography>
+                                    <NavLink to={step.link}>
+                                        <Button css={buttonStyles}>
+                                            {step.btnInfo}
+                                        </Button>
+                                    </NavLink>
+                                </Box>
                             </Box>
-                            
-                            <Box css={imgDescArea}>
-                                <Typography css={styleCarouselTitle}>
-                                    {step.title}
-                                </Typography>
-                                <Typography css={styleCarouselInfo}>
-                                    {step.info}
-                                </Typography>
-                                <NavLink to={step.link}>
-                                    <Button css={buttonStyles}>
-                                        {step.btnInfo}
-                                    </Button>
-                                </NavLink>
-                            </Box>
+                            ) : null}
                         </Box>
-                        ) : null}
-                    </div>
                     ))}
                 </AutoPlaySwipeableViews>  
                 <MobileStepper 
@@ -137,6 +137,6 @@ export const Carousel = () => {
                     activeStep={activeStep}
                 /> 
             </Box>
-        </Box>
+        </Container>
   );
 }
