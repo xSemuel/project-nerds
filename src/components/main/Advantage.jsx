@@ -1,10 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { Typography, Button, Box, Card } from '@mui/material';
+import { Container, Typography, Button, Box, Card } from '@mui/material';
 
 import { NavLink } from "react-router-dom";
 import { ADVANTAGE_BLOCK } from '../../constants';
 
+    const advantageWrapper = css`
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3rem;
+    `
     const cardStyle = css`
         width: 18.75rem; 
         height: 21.87rem;
@@ -42,7 +47,6 @@ import { ADVANTAGE_BLOCK } from '../../constants';
         line-height: 30px;
         text-transform: uppercase;
     `
-
     const advantageDesc = css`
         text-align: center;
         color: #283136;
@@ -61,32 +65,31 @@ import { ADVANTAGE_BLOCK } from '../../constants';
         align-items: center;
     `
 
-
 export const Advantage = () => {
     return ( 
-        <Box className="container mt-5 d-flex justify-content-between">
-            
-            {ADVANTAGE_BLOCK.map(({ title, img, info, alt, btnInfo, btnColor, link }) => 
-                <Card key={title} css={cardStyle}> 
-                    <Box 
-                        css={imgAdvantageStyle}
-                        component="img"
-                        src={img}
-                        alt={alt}
-                    />          
-                    <Box css={wrapperAdvantageInfo}>
-                        <Typography css={advantageTitle}>{title}</Typography>
-                        <Typography css={advantageDesc}>{info}</Typography>
-                        <NavLink to={link}>
-                            <Button css={buttonStyles} sx={{backgroundColor: btnColor }}>
-                                {btnInfo}
-                            </Button>
-                        </NavLink>
-                    </Box>
-                </Card>
-            )}
-
-        </Box>
+        <Container fixed>
+            <Box css={advantageWrapper}>
+                {ADVANTAGE_BLOCK.map(({ title, img, info, alt, btnInfo, btnColor, link }) => 
+                    <Card key={title} css={cardStyle}> 
+                        <Box 
+                            css={imgAdvantageStyle}
+                            component="img"
+                            src={img}
+                            alt={alt}
+                        />          
+                        <Box css={wrapperAdvantageInfo}>
+                            <Typography css={advantageTitle}>{title}</Typography>
+                            <Typography css={advantageDesc}>{info}</Typography>
+                            <NavLink to={link}>
+                                <Button css={buttonStyles} sx={{backgroundColor: btnColor }}>
+                                    {btnInfo}
+                                </Button>
+                            </NavLink>
+                        </Box>
+                    </Card>
+                )}
+            </Box>
+        </Container>
 
     )
 }
