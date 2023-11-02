@@ -13,8 +13,8 @@ import { autoPlay } from 'react-swipeable-views-utils';
 
     const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-    const mainWrapperCarousel = css`
-        max-width: 1125px;
+    const carouselWrapper = css`
+        margin: 3rem auto;
     `
     const wrapperCarouselStyle = css`
         position: relative;
@@ -88,8 +88,8 @@ export const Carousel = () => {
     };
 
     return (
-        <Container fixed>
-            <Box css={mainWrapperCarousel}>
+        <Container fixed css={carouselWrapper}>
+            <Box>
                 <AutoPlaySwipeableViews
                     axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
                     index={activeStep}
