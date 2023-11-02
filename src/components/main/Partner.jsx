@@ -1,26 +1,33 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
+import { Container, Box } from '@mui/material';
 import { NavLink } from "react-router-dom";
 import { PARTNERS_BLOCK } from '../../constants';
 
+    const partnerWrapper = css`
+        display: flex;
+        justify-content: space-around;
+    `
+    const imgStyle = css`
+        width: 199px;
+        height: 68px;
+    `
 export const Partner = () => {
     return ( 
-      <div className="container">
-        <h2 className="visually-hidden">Партнеры</h2>
-          <ul className="d-flex justify-content-around align-items-center p-0">
-            
-            {PARTNERS_BLOCK.map(({ id, logo, alt, link }) =>   
-              <li key={id} className="partners-item">
-                <NavLink to={link} target="_blank">
-                  <img
-                    src={logo}
-                    width="199"
-                    height="68"
-                    alt={alt}
-                  />
-                </NavLink>
-              </li>
-            )}
-
-          </ul>
-      </div>
+        <Container fixed>
+            <Box css={partnerWrapper}>
+                {PARTNERS_BLOCK.map(({ id, logo, alt, link }) =>   
+                    <Box key={id}>
+                        <NavLink to={link} target="_blank">
+                            <Box css={imgStyle}
+                                component='img'
+                                src={logo}
+                                alt={alt}
+                            />
+                        </NavLink>
+                    </Box>
+                )}
+            </Box>
+        </Container>
     )
 }
