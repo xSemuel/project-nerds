@@ -1,39 +1,184 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
+import { Container, Grid, Typography, Button, Box, Card } from '@mui/material';
+
+import { NavLink } from "react-router-dom";
+
 import nerdsIllustration from '../../images/nerds-illustration.png';
+import rectangle from '../../images/Rectangle10.svg';
+
+
+    const containerTitle = css`
+        color: #000;
+        font-family: Roboto;
+        font-size: 45px;
+        font-weight: 500;
+        line-height: 45px;
+    `
+    const infoDescription = css`
+        margin-top: 1rem;
+        color: #283136;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+    `
+    const wrapperItemInfo = css`
+        margin-top: 40px;
+    `
+    const orderTitle = css`
+        color: #283136;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        text-transform: uppercase;
+    `
+    const orderList = css`
+        color: #283136;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+    `
+    const itemStyle = css`
+        display: flex;
+        gap: 6px;
+        margin: 10px 0;
+    `
+
+    const orderListsInfo = [
+        {
+            id: '01',
+            text: 'Веб-сайтів будь-якої складності.', 
+        },
+        {
+            id: '02',
+            text: 'Мобільних додатків для iOS та Android.', 
+        },
+        {
+            id: '03',
+            text: 'Слайдшоу та відео для корпоративних презентацій.', 
+        },
+    ]
+// ------------------------------------------------------------------------
+const STATISTIC_LIST = [
+    {
+        id: '01',
+        percent: '%',
+        percentNum: '146',
+        text: `Рівень самовіддачі`,
+    },
+    {
+        id: '02',
+        percent: '%',
+        percentNum: '100',
+        text: `Збереження термінів`,
+    },
+    {
+        id: '03',
+        percent: '%',
+        percentNum: '50',
+        text: `Мінімальна передплата`,
+    },
+]
+    const statisticTitle = css`
+        margin-top: 30px;
+        color: #000;
+        text-align: center;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        text-transform: uppercase;
+    `
+    const statisticPercentWrapper = css`
+        display: flex;
+        justify-content: center;
+        gap: 2px;
+    `
+    const percentNumberStyle = css`
+        padding-top: 10px;
+        color: #000;
+        font-family: Roboto;
+        font-size: 45px;
+        font-weight: 700;
+        line-height: 64px; 
+    `
+    const percentStyle = css`
+        padding-bottom: 10px; 
+        color: #000;
+        font-family: Roboto;
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 40px;
+    `
+    const statisticInfo = css`
+        color: #283136;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 18px;
+    `
 
 export const Information = () => {
     return ( 
-        <div className="container text-center">   
-            <div className="row">
-                <div className="col-8 text-start">
-                    <h2 className="visually-hidden">Інформація про студію</h2>
-                    <h3 className="">Ми — маленька, але горда<br />дизайн-студія з Уганди.</h3>
-                    <p className="">Дотримуємось принципів мінімалізму та чистоти. Ставимо математичний розрахунок<br /> вище креативу. Працюємо не покладаючи рук, як роботи.</p>
-                    <h4>Виконуємо замовлення на разробку:</h4>
-                    <p>	Веб-сайтів будь-якої складності<br />  Мобільних додатків для iOS та Android<br /> Слайдшоу та відео для корпоративних презентацій</p>
-                </div>
+        <Container fixed>   
+            <Grid container spacing={3}>
+                <Grid item xs={8}>
+                    <Box>
+                        <Typography css={containerTitle}>
+                            Ми — маленька, але горда<br />дизайн-студія<br /> з Уганди.
+                        </Typography>
+                        <Typography css={infoDescription}>
+                            Дотримуємось принципів мінімалізму та чистоти. Ставимо математичний розрахунок<br /> вище креативу. Працюємо не покладаючи рук, як роботи.
+                        </Typography>
+                    </Box>
+                    <Box css={wrapperItemInfo}>
+                        <Typography css={orderTitle}>                           
+                            Виконуємо замовлення на разробку:
+                        </Typography>
+                        {orderListsInfo.map(({id, text}) => (
+                            <Box key={id} css={itemStyle}>
+                                <Box 
+                                    component='img' 
+                                    src={rectangle} 
+                                    alt='rectangle'
+                                />
+                                <Typography css={orderList}>
+                                    {text}
+                                </Typography> 
+                            </Box>
+                        ))}
+                    </Box>
+                </Grid>
             
-                <div className="col-4">
-                    <a href="!#"><img className="pb-3" src={nerdsIllustration} width="360" heigth="280"  alt="Nerds-illustration" /></a>
-                    <h5 className='pb-3'>з 2004 року Любимо точність у всьому:</h5>
-                    <ul className="row p-0">
-                        <li className="col-4">
-                        <p className="text-end mb-0">%</p>
-                        <p>146</p>
-                        <p className="text-start">Рівень<br />самовіддачі</p>
-                        </li>
-                        <li className="col-4">
-                        <p className="text-end mb-0">%</p>
-                        <p>100</p>
-                        <p className="text-start">Збереження<br />термінів</p>
-                        </li>
-                        <li className="col-4">
-                        <p className="text-end mb-0">%</p>
-                        <p>50</p>
-                        <p className="text-start">Мінімальна<br />передплата</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div> 
+                <Grid item xs={4}>
+                    <NavLink to="!#">
+                        <Box 
+                            component='img' 
+                            src={nerdsIllustration} 
+                            width="360" 
+                            heigth="208"  
+                            alt="Nerds-illustration" 
+                        />
+                    </NavLink>
+                    <Typography css={statisticTitle}>
+                        з 2004 року Любимо точність у всьому:
+                    </Typography>
+                    <Grid container spacing={3}>
+                        {STATISTIC_LIST.map(({id, percent, percentNum, text}) => (
+                            <Grid item xs={4} key={id}>
+                                <Box css={statisticPercentWrapper}>
+                                    <Typography css={percentNumberStyle}>{percentNum}</Typography>
+                                    <Typography css={percentStyle}>{percent}</Typography>
+                                </Box>
+                                <Typography css={statisticInfo}>{text}</Typography>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Container> 
     )
 }
