@@ -7,8 +7,8 @@ export const Partner = () => {
         <h2 className="visually-hidden">Партнеры</h2>
           <ul className="d-flex justify-content-around align-items-center p-0">
             
-            {PARTNERS_BLOCK.map(({ logo, alt, link }, index) =>   
-              <li key={index} className="partners-item">
+            {PARTNERS_BLOCK.map(({ id, logo, alt, link }) =>   
+              <li key={id} className="partners-item">
                 <NavLink to={link} target="_blank">
                   <img
                     src={logo}
