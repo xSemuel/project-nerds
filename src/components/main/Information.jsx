@@ -1,11 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { Container, Grid, Typography, Button, Box, Card } from '@mui/material';
+import { Container, Grid, Typography, Box } from '@mui/material';
 
 import { NavLink } from "react-router-dom";
 
 import nerdsIllustration from '../../images/nerds-illustration.png';
 import rectangle from '../../images/Rectangle10.svg';
+
+import { STATISTIC_LIST, ORDER_LIST_INFO } from '../../constants';
 
 
     const containerTitle = css`
@@ -46,42 +48,8 @@ import rectangle from '../../images/Rectangle10.svg';
         gap: 6px;
         margin: 10px 0;
     `
+// -----------------------------------------------
 
-    const orderListsInfo = [
-        {
-            id: '01',
-            text: 'Веб-сайтів будь-якої складності.', 
-        },
-        {
-            id: '02',
-            text: 'Мобільних додатків для iOS та Android.', 
-        },
-        {
-            id: '03',
-            text: 'Слайдшоу та відео для корпоративних презентацій.', 
-        },
-    ]
-// ------------------------------------------------------------------------
-const STATISTIC_LIST = [
-    {
-        id: '01',
-        percent: '%',
-        percentNum: '146',
-        text: `Рівень самовіддачі`,
-    },
-    {
-        id: '02',
-        percent: '%',
-        percentNum: '100',
-        text: `Збереження термінів`,
-    },
-    {
-        id: '03',
-        percent: '%',
-        percentNum: '50',
-        text: `Мінімальна передплата`,
-    },
-]
     const statisticTitle = css`
         margin-top: 30px;
         color: #000;
@@ -138,7 +106,7 @@ export const Information = () => {
                         <Typography css={orderTitle}>                           
                             Виконуємо замовлення на разробку:
                         </Typography>
-                        {orderListsInfo.map(({id, text}) => (
+                        {ORDER_LIST_INFO.map(({id, text}) => (
                             <Box key={id} css={itemStyle}>
                                 <Box 
                                     component='img' 

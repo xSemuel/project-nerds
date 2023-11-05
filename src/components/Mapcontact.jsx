@@ -1,7 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { Button } from '@mui/material';
+import { Container, Button } from '@mui/material';
 
+    const mapContactWrapper = css`
+    max-width: 100%;
+            padding-left: 0px;
+            padding-right: 0px;
+
+    `
+    const mapWrapper = css`
+    padding-left: 0px;
+    padding-right: 0px;
+    `
     const buttonStyles = css`  
         width: 260px;
         height: 52px;
@@ -24,9 +34,8 @@ import { Button } from '@mui/material';
 export const Mapcontact = () => {
 
     return ( 
-        <>
-            <div className="container-fluid p-0">
-                <h2 className="visually-hidden">Як нас знайти</h2>
+        <Container css={mapContactWrapper}>
+            <Container css={mapWrapper}>
                 <div className="wrap-map">
                     <div className="ratio ratio-21x9 p-0" style={{height: '416px'}}>
                         <iframe
@@ -54,13 +63,13 @@ export const Mapcontact = () => {
                             </a>
                         </p>
                         <Button css={buttonStyles} data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Відправити
+                            Написати нам
                         </Button>
                     </div>
                        
                     </div>
                 </div>
-            </div>
+            </Container>
             <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content modal-content-user">
@@ -92,6 +101,6 @@ export const Mapcontact = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </Container>
     )
 }
