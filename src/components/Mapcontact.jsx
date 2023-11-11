@@ -2,6 +2,7 @@
 import { css } from '@emotion/react';
 import { Container, Box, Button, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 
 import { ModalWindow } from '../utils';
 
@@ -97,10 +98,11 @@ import mapMarker from '../images/map-marker.png'
 
 export const Mapcontact = () => {
 
-    const openModalWindow = (event) => {
-        event.preventDefault();
-        return true;
-    } 
+    const [openModalWindow, setOpenModalWindow] = useState(false);
+
+    const funcOpenModalWindow = () => {
+        setOpenModalWindow(true)
+    }
 
     return ( 
         <Container css={mapContactWrapper}>
@@ -134,7 +136,7 @@ export const Mapcontact = () => {
                     </Typography>
                     <Button 
                         css={buttonStyles}
-                        onClick={openModalWindow}
+                        onClick={funcOpenModalWindow}
                     >
                         Написати нам
                     </Button>
@@ -156,34 +158,4 @@ export const Mapcontact = () => {
     )
 }
 
-                {/* <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div className="modal-dialog">
-                        <div className="modal-content modal-content-user">
-                            <div className="modal-header">
-                                <h2 className="modal-title" id="exampleModalLabel">Напишіть нам</h2>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Закрыть" ></button>
-                            </div>
-                            <div className="modal-body">
-                                <form className="row g-2 needs-validation" noValidate>
-                                    <div className="col-4 position-relative">
-                                        <label htmlFor="validationTooltip01" className="form-label">Ваше ім'я:</label>
-                                        <input type="text" className="form-control" id="validationTooltip01" defaultValue="Ім'я Прізвище" required />
-                                    </div>
-                                    <div className="col-4 position-relative">
-                                        <label htmlFor="validationTooltip02" className="form-label">Ваш email:</label>
-                                        <input type="email" className="form-control" id="validationTooltip02" defaultValue="email@example.com" required />
-                                    </div>
-                                    <div className="mb-3">
-                                        <label htmlFor="exampleFormControlTextarea1" className="form-label">Пример текстового поля</label>
-                                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </div>
-                                </form>    
-                            </div>
-                            <div className="d-flex p-3">
-                                <Button css={buttonStyles}>
-                                    Відправити
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
+               
