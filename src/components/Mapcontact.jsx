@@ -3,6 +3,10 @@ import { css } from '@emotion/react';
 import { Container, Box, Button, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
+import { ModalWindow } from '../utils';
+
+import mapMarker from '../images/map-marker.png'
+
     const mapContactWrapper = css`
         position: relative;
         max-width: 100%;
@@ -82,8 +86,21 @@ import { NavLink } from 'react-router-dom';
             color: #ffffff;
         }
     `
+    const mapMarkerStyle = css`
+        width: 231px;
+        height: 190px;
+        position: absolute;
+        bottom: 151px;
+        top: 75px;
+        left: 806px;
+    `
 
 export const Mapcontact = () => {
+
+    const openModalWindow = (event) => {
+        event.preventDefault();
+        return true;
+    } 
 
     return ( 
         <Container css={mapContactWrapper}>
@@ -115,11 +132,26 @@ export const Mapcontact = () => {
                             +1 (7990) 123-45-67
                         </NavLink>
                     </Typography>
-                    <Button css={buttonStyles}>
+                    <Button 
+                        css={buttonStyles}
+                        onClick={openModalWindow}
+                    >
                         Написати нам
                     </Button>
                 </Box>
             </Box>
+
+            <Box>
+                <Box 
+                    css={mapMarkerStyle}
+                    component="img"
+                    src={mapMarker}
+                    alt='map marker'
+                /> 
+            </Box>
+
+            <ModalWindow buttonOpenWindow={openModalWindow}/>
+
         </Container>
     )
 }

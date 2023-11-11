@@ -1,4 +1,7 @@
-import * as React from 'react';
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
+
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
@@ -16,9 +19,11 @@ const style = {
   p: 4,
 };
 
-export default function KeepMountedModal() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+export const ModalWindow = ({buttonOpenWindow}) => {
+
+    console.log(buttonOpenWindow)
+  const [open, setOpen] = useState(false);
+  const handleOpen = (buttonOpenWindow) => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
