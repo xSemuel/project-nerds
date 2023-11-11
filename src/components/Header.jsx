@@ -2,78 +2,170 @@
 import { css } from '@emotion/react';
 
 import { NavLink } from "react-router-dom";
-import { NAVIGATION_LINKS, Main_link, Cart_link } from '../constants';
-
-import { Box, Badge, IconButton, styled } from '@mui/material';
+import { useState } from 'react';
+import tooltipClasses from '@mui/material/Tooltip';
+import { AppBar, Box, Toolbar, Typography, Menu, Container, Button, Tooltip, MenuItem, Badge, styled } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+
+import { NAVIGATION_LINKS, Main_link, Cart_link } from '../constants';
 
 import { selectedGoodsInCart } from '../store/slices';
 import { useSelector } from 'react-redux';
 
 
-const LightTooltip = styled(({ className, ...props }) => (
-    <Tooltip {...props} classes={{ popper: className }} />
-  ))(({ theme }) => ({
-    [`& .${tooltipClasses.tooltip}`]: {
-      backgroundColor: theme.palette.common.white,
-      color: 'rgba(0, 0, 0, 0.87)',
-      boxShadow: theme.shadows[1],
-      fontSize: 16,
-    },
-  }));
+    const LightTooltip = styled(({ className, ...props }) => (
+        <Tooltip {...props} classes={{ popper: className }} />
+    ))(({ theme }) => ({
+        [`& .${tooltipClasses.tooltip}`]: {
+        backgroundColor: theme.palette.common.white,
+        color: 'rgba(0, 0, 0, 0.87)',
+        boxShadow: theme.shadows[1],
+        fontSize: 16,
+        },
+    }));
 
-
-  const styleCart = css`
-    display: flex;
-    gap: 5px;
-  
-  `
-  const styleTextCart = css`
-    margin-top: 7px;
-  `
+    const headerWrapper = css`
+        padding-top: 8px;
+        background-color: #EEE;
+        height: 80px;
+    `
+    const navigatonWrapper = css`
+        display: flex;
+        gap: 200px;
+    `
+    const navigatonMenuWrapper = css`
+        display: flex;
+        flex-grow: 2;
+        justify-content: space-between;
+    `
+    const styleCart = css`
+        display: flex;
+        gap: 5px;
+    
+    `
+    const styleTextCart = css`
+        margin-top: 7px;
+        color: #000;
+        text-align: right;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 30px;
+        text-transform: uppercase;
+    `
+    const navMenuItem = css`
+        color: #000;
+        text-align: right;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 30px;
+        text-transform: uppercase;
+        text-decoration: none;
+    `
 
 export const Header = () => {
 
+    const [anchorElNav, setAnchorElNav] = useState(null);
     const countGoodsInCart = useSelector(selectedGoodsInCart)
 
-    return ( 
-        <nav className="navbar navbar-expand-lg pt-50 bg-color-main">
-            
-            <div className="container">
-                <LightTooltip describeChild title="На головну">
-                    <NavLink className="navbar-brand" to={Main_link.link}>
-                        <img className="d-inline-block align-text-top" src={Main_link.logo} width="160" heigth="65"  alt="Nerds logo" />
-                    </NavLink>
-                </LightTooltip>
+    const handleOpenNavMenu = (event) => {
+        setAnchorElNav(event.currentTarget);
+    };
 
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Переключатель навигации">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
 
-                <div className="collapse navbar-collapse ms-5" id="navbarSupportedContent">
-                    
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+    return (
+        <AppBar position="static" css={headerWrapper}>
+            <Container fixed>
+                <Toolbar disableGutters css={navigatonWrapper}>
 
-                        {NAVIGATION_LINKS.map(({ text, link }, index) => 
-                            <li className="nav-item" key={index}><NavLink className="nav-link" to={link}>{text}</NavLink></li>
-                        )}
+                    <LightTooltip describeChild title="На головну">
+                        <NavLink to={Main_link.link}>
+                            <Box 
+                                component="img" 
+                                src={Main_link.logo} 
+                                width="160" 
+                                heigth="65"  
+                                alt="Nerds logo" 
+                            />
+                        </NavLink>
+                    </LightTooltip>
 
-                    </ul>
-
-                    <NavLink className="nav-link" to={Cart_link.link} css={styleCart}>
-                        <IconButton aria-label="cart">
-                            <Badge badgeContent={countGoodsInCart.length} color="secondary">
-                                <ShoppingCartIcon />
-                            </Badge>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                        <IconButton
+                            size="large"
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            onClick={handleOpenNavMenu}
+                            color="inherit"
+                        >
+                        <MenuIcon />
                         </IconButton>
-                        <Box css={styleTextCart}>
-                            {Cart_link.text}
-                        </Box> 
-                    </NavLink>                        
+                        <Menu
+                            id="menu-appbar"
+                            anchorEl={anchorElNav}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                            open={Boolean(anchorElNav)}
+                            onClose={handleCloseNavMenu}
+                            sx={{
+                                display: { xs: 'block', md: 'none' },
+                            }}
+                        >
+                            {NAVIGATION_LINKS.map(({text, link}) => (
+                                <MenuItem key={text} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">
+                                        <NavLink to={link}>
+                                            {text}
+                                        </NavLink>
+                                    </Typography>
+                                </MenuItem>
+                            ))}
 
-                </div>    
-            </div>
-        </nav>
+                        </Menu>
+
+                    </Box>
+
+                    <Box css={navigatonMenuWrapper}>
+                        <Box>
+                            {NAVIGATION_LINKS.map(({text, link}) => (
+                                <Button
+                                    key={text}
+                                    onClick={handleCloseNavMenu}
+                                >
+                                    <NavLink to={link} css={navMenuItem}>
+                                        {text}
+                                    </NavLink>
+                                </Button>
+                            ))}
+                        </Box>
+                        <NavLink className="nav-link" to={Cart_link.link} css={styleCart}>
+                            <IconButton aria-label="cart">
+                                <Badge badgeContent={countGoodsInCart.length} color="secondary">
+                                    <ShoppingCartIcon />
+                                </Badge>
+                            </IconButton>
+                            <Button css={styleTextCart}>
+                                {Cart_link.text}
+                            </Button> 
+                        </NavLink>  
+                    </Box>
+                </Toolbar>
+            </Container>
+        </AppBar>
     );
 }

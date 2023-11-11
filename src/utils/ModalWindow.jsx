@@ -82,97 +82,98 @@ export const ModalWindow = ({buttonOpenWindow}) => {
     const applyWriteUsHandler = (event) => {
     }
 
-  console.log(writeUsObject)
+    console.log(writeUsObject)
 
+    const [open, setOpen] = useState(false);
+    // const handleOpen = (buttonOpenWindow) => setOpen(true);
+    const handleClose = () => setOpen(false);
 
-  const [open, setOpen] = useState(false);
-  // const handleOpen = (buttonOpenWindow) => setOpen(true);
-  const handleClose = () => setOpen(false);
+    useEffect(()=> {
+        if (buttonOpenWindow === true) {
+            setOpen(true)
+        }       
+    }, [buttonOpenWindow, setOpen ])
 
-  useEffect(()=> {
-      setOpen(buttonOpenWindow)
-  }, [buttonOpenWindow])
-
-  return (
-    <Grid container spacing={3}>
-        {/* <Button onClick={() => setOpen(true)}>Open modal</Button> */}
-        <Modal
-            keepMounted
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="keep-mounted-modal-title"
-            aria-describedby="keep-mounted-modal-description"
-        >
-            <Grid item xs={12} sx={style} css={modalWrapper}>
-                <Grid item xs={12} css={writeUsTitle}>
-                    <Stack
-                        direction="row"
-                        alignItems="center"
-                        justifyContent="space-between"
-                    >
-                        <Typography css={modalTitle}>Напишіть нам:</Typography>
-                        <Button 
-                            css={buttonCloseStyle}
-                            onClick={handleClose}
+    return (
+        <Grid container spacing={3}>
+            {/* <Button onClick={() => setOpen(true)}>Open modal</Button> */}
+            <Modal
+                keepMounted
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="keep-mounted-modal-title"
+                aria-describedby="keep-mounted-modal-description"
+            >
+                <Grid item xs={12} sx={style} css={modalWrapper}>
+                    <Grid item xs={12} css={writeUsTitle}>
+                        <Stack
+                            direction="row"
+                            alignItems="center"
+                            justifyContent="space-between"
                         >
-                            <Box 
-                                component="img"
-                                src={closeModalButton}
-                                alt='close modal button'
-                            /> 
+                            <Typography css={modalTitle}>Напишіть нам:</Typography>
+                            <Button 
+                                css={buttonCloseStyle}
+                                onClick={handleClose}
+                            >
+                                <Box 
+                                    component="img"
+                                    src={closeModalButton}
+                                    alt='close modal button'
+                                /> 
+                            </Button>
+                        </Stack>
+                    </Grid>
+                    <Grid container spacing={3}>
+                        <Grid item xs={12} sm={6}>
+                            <Typography css={textFieldTitle}>Ваше ім'я:</Typography>
+                            <TextField
+                                required
+                                fullWidth
+                                id="firstName"
+                                name="First name"
+                                hiddenLabel
+                                autoComplete="given-name"
+                                defaultValue="Іван Петров"
+                                onChange={onChangeHandler}
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <Typography css={textFieldTitle}>Ваш email:</Typography>
+                            <TextField
+                                required
+                                fullWidth
+                                id="email"
+                                name="email"
+                                hiddenLabel
+                                autoComplete="email"
+                                defaultValue="IvanPetrov@email.com"
+                                onChange={onChangeHandler}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Typography css={textFieldTitle}>Текст листа:</Typography>
+                            <TextField
+                                required
+                                fullWidth
+                                multiline
+                                rows={4}
+                                id="message"
+                                name="message"
+                                hiddenLabel
+                                autoComplete="message"
+                                defaultValue="Ваш текст"
+                                onChange={onChangeHandler}
+                            />
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={12}  css={buttonWrapper}>
+                        <Button css={buttonStyles} onClick={applyWriteUsHandler}>
+                            Відправити
                         </Button>
-                    </Stack>
-                </Grid>
-                <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                        <Typography css={textFieldTitle}>Ваше ім'я:</Typography>
-                        <TextField
-                            required
-                            fullWidth
-                            id="firstName"
-                            name="First name"
-                            hiddenLabel
-                            autoComplete="given-name"
-                            defaultValue="Іван Петров"
-                            onChange={onChangeHandler}
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <Typography css={textFieldTitle}>Ваш email:</Typography>
-                        <TextField
-                            required
-                            fullWidth
-                            id="email"
-                            name="email"
-                            hiddenLabel
-                            autoComplete="email"
-                            defaultValue="IvanPetrov@email.com"
-                            onChange={onChangeHandler}
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Typography css={textFieldTitle}>Текст листа:</Typography>
-                        <TextField
-                            required
-                            fullWidth
-                            multiline
-                            rows={4}
-                            id="message"
-                            name="message"
-                            hiddenLabel
-                            autoComplete="message"
-                            defaultValue="Ваш текст"
-                            onChange={onChangeHandler}
-                        />
                     </Grid>
                 </Grid>
-                <Grid item xs={12}  css={buttonWrapper}>
-                    <Button css={buttonStyles} onClick={applyWriteUsHandler}>
-                        Відправити
-                    </Button>
-                </Grid>
-            </Grid>
-        </Modal>
-    </Grid>
-  );
+            </Modal>
+        </Grid>
+    );
 }
