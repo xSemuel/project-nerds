@@ -2,7 +2,7 @@
 import { css } from '@emotion/react';
 
 import { useState, useEffect } from 'react';
-import { Box, Modal, Button, Typography, Grid, TextField } from '@mui/material';
+import { Box, Modal, Button, Typography, Grid, TextField, Stack } from '@mui/material';
 import closeModalButton from './img/closeModalButton.png';
 
     const style = {
@@ -22,7 +22,7 @@ import closeModalButton from './img/closeModalButton.png';
         padding: 63px 100px 84px 100px;
     `
     const writeUsTitle = css`
-        margin-bottom: 13px;
+        margin-bottom: 37px;
     `
     const modalTitle = css`
         color: #000;
@@ -61,6 +61,14 @@ import closeModalButton from './img/closeModalButton.png';
             color: #ffffff;
         }
     `
+    const buttonCloseStyle = css`
+        min-width: 0;
+        background: none;
+        padding: 0;
+        &:hover {
+            background: none;
+        }
+    `
 
 export const ModalWindow = ({buttonOpenWindow}) => {
 
@@ -97,13 +105,23 @@ export const ModalWindow = ({buttonOpenWindow}) => {
         >
             <Grid item xs={12} sx={style} css={modalWrapper}>
                 <Grid item xs={12} css={writeUsTitle}>
-                    <Typography css={modalTitle}>Напишіть нам:</Typography>
-                    <Box 
-                        css={qw}
-                        component="img"
-                        src={closeModalButton}
-                        alt='close modal button'
-                    /> 
+                    <Stack
+                        direction="row"
+                        alignItems="center"
+                        justifyContent="space-between"
+                    >
+                        <Typography css={modalTitle}>Напишіть нам:</Typography>
+                        <Button 
+                            css={buttonCloseStyle}
+                            onClick={handleClose}
+                        >
+                            <Box 
+                                component="img"
+                                src={closeModalButton}
+                                alt='close modal button'
+                            /> 
+                        </Button>
+                    </Stack>
                 </Grid>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
