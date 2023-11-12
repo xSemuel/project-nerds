@@ -2,13 +2,11 @@
 import { css } from '@emotion/react';
 
 import { NavLink } from "react-router-dom";
-import { useState } from 'react';
 import tooltipClasses from '@mui/material/Tooltip';
-import { AppBar, Box, Toolbar, Typography, Menu, Container, Button, Tooltip, MenuItem, Badge, styled } from '@mui/material';
+import { AppBar, Box, Toolbar, Container, Button, Tooltip, Badge, styled } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 
 import { NAVIGATION_LINKS, Main_link, Cart_link } from '../constants';
 
@@ -69,16 +67,7 @@ import { useSelector } from 'react-redux';
 
 export const Header = () => {
 
-    const [anchorElNav, setAnchorElNav] = useState(null);
     const countGoodsInCart = useSelector(selectedGoodsInCart)
-
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
 
     return (
         <AppBar position="static" css={headerWrapper}>
@@ -97,55 +86,11 @@ export const Header = () => {
                         </NavLink>
                     </LightTooltip>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                        <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{
-                                display: { xs: 'block', md: 'none' },
-                            }}
-                        >
-                            {NAVIGATION_LINKS.map(({text, link}) => (
-                                <MenuItem key={text} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">
-                                        <NavLink to={link}>
-                                            {text}
-                                        </NavLink>
-                                    </Typography>
-                                </MenuItem>
-                            ))}
-
-                        </Menu>
-
-                    </Box>
-
                     <Box css={navigatonMenuWrapper}>
                         <Box>
                             {NAVIGATION_LINKS.map(({text, link}) => (
                                 <Button
                                     key={text}
-                                    onClick={handleCloseNavMenu}
                                 >
                                     <NavLink to={link} css={navMenuItem}>
                                         {text}
