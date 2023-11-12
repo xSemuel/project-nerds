@@ -94,6 +94,7 @@ export const ModalWindow = ({buttonOpenWindow}) => {
         }       
     }, [buttonOpenWindow, setOpen ])
 
+    
     return (
         <Grid container spacing={3}>
             {/* <Button onClick={() => setOpen(true)}>Open modal</Button> */}
