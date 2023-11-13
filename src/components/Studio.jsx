@@ -6,30 +6,30 @@ import aboutUs from '../images/aboutUs.jpg';
 import { STUDIO_BLOCK } from '../constants';
 
     const studioContainer = css`
-    margin: 5rem auto;
-    padding: 2px;
-    min-height: 600px;
+        margin: 5rem auto;
+        padding: 2px;
+        min-height: 600px;
     `
     const studioWrapper = css`
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
     `
     const studioInfoWrapper = css`
-    padding: 28px 8px 8px 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    min-height: 600px;
+        padding: 28px 8px 8px 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        min-height: 600px;
     `
     const contactsTitle = css`
-    color: #000;
-    font-size: 24px;
-    font-weight: 700;
-    font-family: inherit;
-    line-height: 18px;
-    text-transform: uppercase;
-    text-align: center;
+        color: #000;
+        font-size: 24px;
+        font-weight: 700;
+        font-family: inherit;
+        line-height: 18px;
+        text-transform: uppercase;
+        text-align: center;
     `
     const studioDescription = css`
         color: #000;
@@ -60,7 +60,7 @@ export const Studio = () => {
                         </Typography>
 
                     ))}
-                    
+
                 </Paper>             
             </Box>
         </Container>
