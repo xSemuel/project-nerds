@@ -1,7 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { Container, Typography, Paper, Box } from '@mui/material';
-import aboutUs from '../images/aboutUs.jpg'
+import aboutUs from '../images/aboutUs.jpg';
+
+import { STUDIO_BLOCK } from '../constants';
 
     const studioContainer = css`
     margin: 5rem auto;
@@ -50,33 +52,15 @@ export const Studio = () => {
                         src={aboutUs}
                         alt="about us"
                     />
-                    <Typography css={studioDescription}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Animi architecto nihil deleniti harum sed doloribus vero, 
-                        molestias ipsam molestiae adipisci non laudantium sequi quo ad consequuntur. 
-                        Numquam ducimus error iste!
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                        Harum provident eaque perferendis cumque nihil aliquid, minus excepturi explicabo dolorem,
-                        animi praesentium? Dolor quasi, delectus consectetur quibusdam sint non saepe in.
-                    </Typography>
-                    <Typography css={studioDescription}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Animi architecto nihil deleniti harum sed doloribus vero, 
-                        molestias ipsam molestiae adipisci non laudantium sequi quo ad consequuntur. 
-                        Numquam ducimus error iste!
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                        Harum provident eaque perferendis cumque nihil aliquid, minus excepturi explicabo dolorem,
-                        animi praesentium? Dolor quasi, delectus consectetur quibusdam sint non saepe in.
-                    </Typography>
-                    <Typography css={studioDescription}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Animi architecto nihil deleniti harum sed doloribus vero, 
-                        molestias ipsam molestiae adipisci non laudantium sequi quo ad consequuntur. 
-                        Numquam ducimus error iste!
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                        Harum provident eaque perferendis cumque nihil aliquid, minus excepturi explicabo dolorem,
-                        animi praesentium? Dolor quasi, delectus consectetur quibusdam sint non saepe in.
-                    </Typography>
+
+                    {STUDIO_BLOCK.map(({ id, text }) => (
+
+                        <Typography css={studioDescription} key={id}>
+                            {text}
+                        </Typography>
+
+                    ))}
+                    
                 </Paper>             
             </Box>
         </Container>

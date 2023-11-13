@@ -9,3 +9,4 @@ export * from './catalog-filterParams';
 export * from './app-ordersGoodsPage';
 export * from './app-links';
 export * from './app-information';
+export * from './app-studio';
