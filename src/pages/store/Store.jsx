@@ -1,31 +1,45 @@
 /** @jsxImportSource @emotion/react */
-import { useSelector, useDispatch } from 'react-redux';
-import { Typography } from '@mui/material';
 import { css } from '@emotion/react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Typography, Box, Container, Grid } from '@mui/material';
 import { FilterPanel } from '../../features';
 import { SortItems, Catalog } from '../../components';
 import { SORT_TYPE, SORT_DIR } from '../../constants';
 import { selectedSort, updateFilters, selectedFilters, changeDirection, changeType  } from '../../store/slices';
 
-import { Box } from '@mui/material';
 
-
-const sortWrapperStyle = css`
-    display: flex;
-    justify-content: space-between;
-    align-items: top;
-    min-height: 70px;
-`
-const titleFilterCost = css`
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 30px;
-    text-transform: uppercase;
-    margin-bottom: 38px;
-    padding-top: 5px;
-`
+    const storeTitleWrapper = css`
+        height: 240px;
+        background-color: #EEE;
+        margin-bottom: 55px;
+        padding-top: 80px;
+        padding-bottom: 108px;
+    `
+    const storeTitle = css`
+        color: #000;
+        font-family: Roboto;
+        font-size: 55px;
+        font-weight: 500;
+        line-height: 55px;
+        text-align: center;
+    `
+    const sortWrapperStyle = css`
+        display: flex;
+        justify-content: space-between;
+        align-items: top;
+        min-height: 70px;
+    `
+    const titleFilterCost = css`
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 30px;
+        text-transform: uppercase;
+        margin-bottom: 38px;
+        padding-top: 5px;
+    `
 
 export const Store = () => {
+
     const dispatch = useDispatch();
     const sortsMas = useSelector(selectedSort);
     const filters = useSelector(selectedFilters);
@@ -43,17 +57,17 @@ export const Store = () => {
     }
 
     return ( 
-        <div>
-            <div className="container-fluid bg-color-main mb-5 py-5">
-                <h1 className="container text-center">Магазин готовых шаблонов</h1>
-            </div>
+        <Box>
+            <Container maxWidth="false" css={storeTitleWrapper}>
+                <Typography css={storeTitle}>Магазин готовых шаблонов</Typography>
+            </Container>
 
-            <div className="container">
-                <div className="row row-cols-2">
-                    <div className="col-3">
+            <Container fixed>
+                <Grid container spacing={3}>
+                    <Grid item xs={3}>
                         <FilterPanel config={filters} onChange={onSubmit} />
-                    </div>
-                    <div className='col-9'>
+                    </Grid>
+                    <Grid item xs={9}>
                         <Box css={sortWrapperStyle}>
                             <Typography variant="h3" css={titleFilterCost}>Сортувати:</Typography>
                             <SortItems 
@@ -66,9 +80,9 @@ export const Store = () => {
                             />
                         </Box>
                         <Catalog />
-                    </div>                       
-                </div>
-            </div>           
-        </div>
+                    </Grid>                       
+                </Grid>
+            </Container>           
+        </Box>
     )
 }

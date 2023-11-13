@@ -42,7 +42,6 @@ import { useSelector } from 'react-redux';
     const styleCart = css`
         display: flex;
         gap: 5px;
-    
     `
     const styleTextCart = css`
         margin-top: 7px;
