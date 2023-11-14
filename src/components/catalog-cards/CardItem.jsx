@@ -28,8 +28,8 @@ export const CardItem = ({options, handleGoodCartAdd }) => {
             display: flex;
             gap: 2px;
         `
-
         const wrapperDescCardStyle = css`
+            width: 100%;
             display: flex;
             flex-direction: column;
             flex-wrap: nowrap;
@@ -57,7 +57,6 @@ export const CardItem = ({options, handleGoodCartAdd }) => {
         const descInfostyle = css`
             text-align: center;
         `
-
         const [ watchCardInfo, setWatchCardInfo ] = useState(false);
 
         const openCardInfo = () => {
@@ -67,6 +66,7 @@ export const CardItem = ({options, handleGoodCartAdd }) => {
         const closeCardInfo = () => {
             setWatchCardInfo(false)
         }
+
 
     return ( 
         <Card 
@@ -82,21 +82,23 @@ export const CardItem = ({options, handleGoodCartAdd }) => {
                     image={srcLogo}
                     alt={alt}
                 />
-            </CardActionArea>    
+            </CardActionArea> 
+
             {watchCardInfo && <Box css={wrapperDescCardStyle}>
-                    <Typography variant="h5" component="div">
-                        {title}
-                    </Typography>
-                    <Typography variant="h6" css={descInfostyle}>
-                        {descInfo}
-                    </Typography>
-                    <Button css={buttonStyles}
-                        onClick={handleGoodCartAdd}
-                        size="large">
-                        {descPrice}  
-                        <Typography css={currencyButtonStyle} variant="body2">грн.</Typography>
-                    </Button>
-                </Box>}
+                <Typography variant="h5" component="div">
+                    {title}
+                </Typography>
+                <Typography variant="h6" css={descInfostyle}>
+                    {descInfo}
+                </Typography>
+                <Button css={buttonStyles}
+                    onClick={handleGoodCartAdd}
+                    size="large">
+                    {descPrice}  
+                    <Typography css={currencyButtonStyle} variant="body2">грн.</Typography>
+                </Button>
+            </Box>}
+
         </Card>
     )
 }
