@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 
 import { NavLink } from "react-router-dom";
 import { SOCIAL_ICONS } from "../constants";
-import { AppBar, Box, Typography, Container } from '@mui/material';
+import { BottomNavigation, Box, Typography, Container } from '@mui/material';
 
 
     const footerWrapper = css`
@@ -58,7 +58,7 @@ import { AppBar, Box, Typography, Container } from '@mui/material';
     
 export const Footer = () => {
     return (
-        <AppBar position="static" css={footerWrapper}>
+        <BottomNavigation position="static" css={footerWrapper}>
             <Container fixed css={footerWrapperContainer}>
                 <Box css={socialList}>
                     {SOCIAL_ICONS.map(({ logo, alt, link, width, height, id }) =>
@@ -85,7 +85,7 @@ export const Footer = () => {
                     </Typography>
                 </Box>
             </Container>
-        </AppBar>
+        </BottomNavigation>
     );
 }
  
