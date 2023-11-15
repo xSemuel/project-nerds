@@ -1,1 +1,1 @@
-export * from './ModalWindow';
+export * from './FeedbackModal';

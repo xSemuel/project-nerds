@@ -4,7 +4,7 @@ import { Container, Box, Button, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 
-import { ModalWindow } from '../utils';
+import { FeedbackModal } from '../utils';
 
 import mapMarker from '../images/map-marker.png'
 
@@ -68,25 +68,7 @@ import mapMarker from '../images/map-marker.png'
     const writeUsNavLink = css`
         text-decoration: none;
     `
-    const buttonStyles = css` 
-        margin-top: 37px;
-        width: 219px;
-        height: 50px;
-        background: #FB565A;
-        border-radius: 3px;
-        color: #FFF;
-        text-align: center;
-        font-family: Roboto;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 18px;
-        text-transform: uppercase;
-        transition: .3s ease-in;
-        &:hover {
-            background: #d7373b;
-            color: #ffffff;
-        }
-    `
+
     const mapMarkerStyle = css`
         width: 231px;
         height: 190px;
@@ -98,6 +80,7 @@ import mapMarker from '../images/map-marker.png'
 
 export const Mapcontact = () => {
 
+    // TODO: isOpen, setIsOpen
     const [openModalWindow, setOpenModalWindow] = useState(false);
 
     const funcOpenModalWindow = () => {
@@ -134,12 +117,13 @@ export const Mapcontact = () => {
                             +1 (7990) 123-45-67
                         </NavLink>
                     </Typography>
-                    <Button 
+                    {/* <Button 
                         css={buttonStyles}
                         onClick={funcOpenModalWindow}
                     >
                         Написати нам
-                    </Button>
+                    </Button> */}
+                    <FeedbackModal />
                 </Box>
             </Box>
 
@@ -152,7 +136,7 @@ export const Mapcontact = () => {
                 /> 
             </Box>
 
-            <ModalWindow buttonOpenWindow={openModalWindow}/>
+            
 
         </Container>
     )

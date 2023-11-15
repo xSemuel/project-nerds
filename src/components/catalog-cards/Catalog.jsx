@@ -98,7 +98,7 @@ export const Catalog = () => {
     // { limit: 4, offset: 0 } [1,2,3,4,5,6,7,8,9,0] // [1,2,3,4]
     // { limit: 4, offset: 8 } [1,2,3,4,5,6,7,8,9,0] // [9,0]
 
-const filteredItems = goods.slice((pagePaginationCurrent-1) * 4, (pagePaginationCurrent-1) * 4 + 4)
+    const filteredItems = goods.slice((pagePaginationCurrent-1) * 4, (pagePaginationCurrent-1) * 4 + 4)
 
     return ( 
         <Box css={catalogContentWrapper}>

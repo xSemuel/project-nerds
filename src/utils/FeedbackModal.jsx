@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Box, Modal, Button, Typography, Grid, TextField, Stack } from '@mui/material';
 import closeModalButton from './img/closeModalButton.png';
 
@@ -43,9 +43,33 @@ import closeModalButton from './img/closeModalButton.png';
         margin-top: 30px;
     `
     const buttonStyles = css`  
-        width: 259px;
+        // width: 259px;
+        // height: 50px;
+        // margin: 0 auto;
+
+        // font-family: Roboto;
+        // font-size: 16px;
+        // font-weight: 500;
+        // line-height: 18px;
+
+        // text-align: center;
+        // text-transform: uppercase;
+
+        background: #FB565A;
+        // border-radius: 3px;
+        // color: #FFF;
+        
+        // transition: .3s ease-in;
+        // &:hover {
+        //     background: #d7373b;
+        //     color: #ffffff;
+        // }
+    `
+
+    const modalBtnStyles = css` 
+        margin-top: 37px;
+        width: 219px;
         height: 50px;
-        margin: 0 auto;
         background: #FB565A;
         border-radius: 3px;
         color: #FFF;
@@ -61,6 +85,7 @@ import closeModalButton from './img/closeModalButton.png';
             color: #ffffff;
         }
     `
+
     const buttonCloseStyle = css`
         min-width: 0;
         background: none;
@@ -70,7 +95,7 @@ import closeModalButton from './img/closeModalButton.png';
         }
     `
 
-export const ModalWindow = ({buttonOpenWindow}) => {
+export const FeedbackModal = () => {
 
     const [writeUsObject, setWriteUsObject] = useState({})
 
@@ -85,23 +110,21 @@ export const ModalWindow = ({buttonOpenWindow}) => {
     console.log(writeUsObject)
 
     const [open, setOpen] = useState(false);
-    // const handleOpen = (buttonOpenWindow) => setOpen(true);
-    const handleClose = () => setOpen(false);
-
-    useEffect(()=> {
-        if (buttonOpenWindow === true) {
-            setOpen(true)
-        }       
-    }, [buttonOpenWindow, setOpen ])
-
+    
+    const toggleModal = () => setOpen(prevState => !prevState);
     
     return (
-        <Grid container spacing={3}>
-            {/* <Button onClick={() => setOpen(true)}>Open modal</Button> */}
+        <>
+            <Button 
+                css={modalBtnStyles}
+                onClick={toggleModal}
+            >
+                Написати нам
+            </Button>
             <Modal
                 keepMounted
                 open={open}
-                onClose={handleClose}
+                onClose={toggleModal}
                 aria-labelledby="keep-mounted-modal-title"
                 aria-describedby="keep-mounted-modal-description"
             >
@@ -113,9 +136,9 @@ export const ModalWindow = ({buttonOpenWindow}) => {
                             justifyContent="space-between"
                         >
                             <Typography css={modalTitle}>Напишіть нам:</Typography>
-                            <Button 
+                            <Button
                                 css={buttonCloseStyle}
-                                onClick={handleClose}
+                                onClick={toggleModal}
                             >
                                 <Box 
                                     component="img"
@@ -169,12 +192,12 @@ export const ModalWindow = ({buttonOpenWindow}) => {
                         </Grid>
                     </Grid>
                     <Grid item xs={12}  css={buttonWrapper}>
-                        <Button css={buttonStyles} onClick={applyWriteUsHandler}>
+                        <Button variant="contained" size="medium" css={buttonStyles} onClick={applyWriteUsHandler}>
                             Відправити
                         </Button>
                     </Grid>
                 </Grid>
             </Modal>
-        </Grid>
+        </>
     );
 }

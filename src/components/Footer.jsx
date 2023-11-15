@@ -58,7 +58,7 @@ import { BottomNavigation, Box, Typography, Container } from '@mui/material';
     
 export const Footer = () => {
     return (
-        <BottomNavigation position="static" css={footerWrapper}>
+        <BottomNavigation css={footerWrapper}>
             <Container fixed css={footerWrapperContainer}>
                 <Box css={socialList}>
                     {SOCIAL_ICONS.map(({ logo, alt, link, width, height, id }) =>
