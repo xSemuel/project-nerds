@@ -1,10 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { Container, Box, Button, Typography } from '@mui/material';
+import { Container, Box, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
 
-import { FeedbackModal } from '../utils';
+import { FeedbackModal } from '../features/feedbackModal';
 
 import mapMarker from '../images/map-marker.png'
 
@@ -22,7 +21,6 @@ import mapMarker from '../images/map-marker.png'
                 padding-right: 0px;
             }
         }
-
     `
     const mapWrapper = css`
         position: relative;
@@ -68,7 +66,6 @@ import mapMarker from '../images/map-marker.png'
     const writeUsNavLink = css`
         text-decoration: none;
     `
-
     const mapMarkerStyle = css`
         width: 231px;
         height: 190px;
@@ -79,13 +76,6 @@ import mapMarker from '../images/map-marker.png'
     `
 
 export const Mapcontact = () => {
-
-    // TODO: isOpen, setIsOpen
-    const [openModalWindow, setOpenModalWindow] = useState(false);
-
-    const funcOpenModalWindow = () => {
-        setOpenModalWindow(true)
-    }
 
     return ( 
         <Container css={mapContactWrapper}>
@@ -117,13 +107,9 @@ export const Mapcontact = () => {
                             +1 (7990) 123-45-67
                         </NavLink>
                     </Typography>
-                    {/* <Button 
-                        css={buttonStyles}
-                        onClick={funcOpenModalWindow}
-                    >
-                        Написати нам
-                    </Button> */}
+
                     <FeedbackModal />
+
                 </Box>
             </Box>
 
@@ -135,8 +121,6 @@ export const Mapcontact = () => {
                     alt='map marker'
                 /> 
             </Box>
-
-            
 
         </Container>
     )

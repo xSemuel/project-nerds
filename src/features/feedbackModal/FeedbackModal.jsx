@@ -65,7 +65,6 @@ import closeModalButton from './img/closeModalButton.png';
         //     color: #ffffff;
         // }
     `
-
     const modalBtnStyles = css` 
         margin-top: 37px;
         width: 219px;
@@ -85,7 +84,6 @@ import closeModalButton from './img/closeModalButton.png';
             color: #ffffff;
         }
     `
-
     const buttonCloseStyle = css`
         min-width: 0;
         background: none;
@@ -107,10 +105,7 @@ export const FeedbackModal = () => {
     const applyWriteUsHandler = (event) => {
     }
 
-    console.log(writeUsObject)
-
     const [open, setOpen] = useState(false);
-    
     const toggleModal = () => setOpen(prevState => !prevState);
     
     return (
