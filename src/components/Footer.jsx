@@ -9,7 +9,6 @@ import { BottomNavigation, Box, Typography, Container } from '@mui/material';
     const footerWrapper = css`
         background-color: #EEE;
         height: 225px;
-        margin-top: 24px;
     `
     const footerWrapperContainer = css`
         display: flex;
@@ -58,7 +57,7 @@ import { BottomNavigation, Box, Typography, Container } from '@mui/material';
     
 export const Footer = () => {
     return (
-        <BottomNavigation css={footerWrapper}>
+        <Box css={footerWrapper}>
             <Container fixed css={footerWrapperContainer}>
                 <Box css={socialList}>
                     {SOCIAL_ICONS.map(({ logo, alt, link, width, height, id }) =>
@@ -85,7 +84,7 @@ export const Footer = () => {
                     </Typography>
                 </Box>
             </Container>
-        </BottomNavigation>
+        </Box>
     );
 }
  
