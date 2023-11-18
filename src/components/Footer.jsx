@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 
 import { NavLink } from "react-router-dom";
 import { SOCIAL_ICONS } from "../constants";
-import { BottomNavigation, Box, Typography, Container } from '@mui/material';
+import { Box, Typography, Container } from '@mui/material';
 
 
     const footerWrapper = css`

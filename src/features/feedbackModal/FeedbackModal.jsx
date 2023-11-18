@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { Box, Modal, Button, Typography, Grid, TextField, Stack } from '@mui/material';
 import closeModalButton from './img/closeModalButton.png';
 
+import { NameValidation, EmailValidation, MessageValidation } from '../validate';
+
     const style = {
         position: 'absolute',
         top: '50%',
@@ -95,10 +97,19 @@ import closeModalButton from './img/closeModalButton.png';
 
 export const FeedbackModal = () => {
 
+    
+
     const [writeUsObject, setWriteUsObject] = useState({})
+
+
+    const handleValidation = (filterName, value, isValid) => {
+        console.log(`Input: ${value}, Valid: ${isValid}, id: ${filterName}`);
+        setWriteUsObject((prevState) => ({ ...prevState, [filterName]: value }))
+    };
 
     const onChangeHandler = (e) => {
     const { id: filterName, value } = e.target
+
         setWriteUsObject((prevState) => ({ ...prevState, [filterName]: value }))
     }
 
@@ -146,7 +157,14 @@ export const FeedbackModal = () => {
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm={6}>
                             <Typography css={textFieldTitle}>Ваше ім'я:</Typography>
-                            <TextField
+                                <NameValidation 
+                                    onValidation={handleValidation}
+                                    id="firstName"
+                                    name="First name"
+                                    autoComplete="given-name"
+                                    defaultValue="Іван Петров"
+                                />
+                            {/* <TextField
                                 required
                                 fullWidth
                                 id="firstName"
@@ -155,11 +173,18 @@ export const FeedbackModal = () => {
                                 autoComplete="given-name"
                                 defaultValue="Іван Петров"
                                 onChange={onChangeHandler}
-                            />
+                            /> */}
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <Typography css={textFieldTitle}>Ваш email:</Typography>
-                            <TextField
+                                <EmailValidation
+                                    onValidation={handleValidation}
+                                    id="email"
+                                    name="email"
+                                    autoComplete="email"
+                                    defaultValue="IvanPetrov@email.com"
+                                />
+                            {/* <TextField
                                 required
                                 fullWidth
                                 id="email"
@@ -168,11 +193,20 @@ export const FeedbackModal = () => {
                                 autoComplete="email"
                                 defaultValue="IvanPetrov@email.com"
                                 onChange={onChangeHandler}
-                            />
+                            /> */}
                         </Grid>
                         <Grid item xs={12}>
                             <Typography css={textFieldTitle}>Текст листа:</Typography>
-                            <TextField
+                                <MessageValidation 
+                                    onValidation={handleValidation}
+                                    rows={4}
+                                    id="message"
+                                    name="message"
+                                    autoComplete="message"
+                                    defaultValue="Ваш текст"
+                                />
+
+                            {/* <TextField
                                 required
                                 fullWidth
                                 multiline
@@ -183,7 +217,7 @@ export const FeedbackModal = () => {
                                 autoComplete="message"
                                 defaultValue="Ваш текст"
                                 onChange={onChangeHandler}
-                            />
+                            /> */}
                         </Grid>
                     </Grid>
                     <Grid item xs={12}  css={buttonWrapper}>
