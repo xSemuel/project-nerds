@@ -6,7 +6,7 @@ const textNameValidation = [
     "email неправильного формату"
 ]
 
-export const EmailValidation = ({ onValidation, id, name, autoComplete, placeholder, defaultValue }) => {
+export const EmailValidation = ({ onValidation, id, name, autoComplete, placeholder }) => {
 
   const [inputValue, setInputValue] = useState('');
   const [errorText, setErrorText] = useState(textNameValidation[0]);
@@ -19,7 +19,7 @@ export const EmailValidation = ({ onValidation, id, name, autoComplete, placehol
         if (value.trim().length === 0) {
             setError(true)
             setErrorText(textNameValidation[0])
-        } else if (!value.match(/^[A-Za-z]\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)) {
+        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
             setError(true)
             setErrorText(textNameValidation[1])
         } else {
