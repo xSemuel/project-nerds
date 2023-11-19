@@ -98,10 +98,12 @@ import { NameValidation, EmailValidation, MessageValidation } from '../validate'
 export const FeedbackModal = () => {
 
     const [writeUsObject, setWriteUsObject] = useState({})
+    const [isValid, setIsValid]= useState({})
 
-    const handleValidation = (filterName, value, isValid) => {
-        console.log(`Input: ${value}, Valid: ${isValid}, id: ${filterName}`);
+    const handleValidation = (filterName, value, isValidTextField) => {
+        console.log(`Input: ${value}, Valid: ${isValidTextField}, id: ${filterName}`);
         setWriteUsObject((prevState) => ({ ...prevState, [filterName]: value }))
+        setIsValid((prevState) => ({ ...prevState, [filterName]: isValidTextField }))
     };
 
     // const onChangeHandler = (e) => {
@@ -112,6 +114,16 @@ export const FeedbackModal = () => {
 
     const applyWriteUsHandler = (event) => {
         console.log(writeUsObject)
+        console.log(isValid)
+        const booleanArrValid = isValid;
+        const arrLength = Object.keys(booleanArrValid).length;
+        console.log(arrLength)
+
+        const validateForSend = Object.values(booleanArrValid).filter(item => item === false)
+        
+        if (arrLength === validateForSend.length) {
+            console.log('send')
+        }
     }
 
     const [open, setOpen] = useState(false);
