@@ -2,7 +2,7 @@
 import { css } from '@emotion/react';
 
 import { useState } from 'react';
-import { Box, Modal, Button, Typography, Grid, TextField, Stack } from '@mui/material';
+import { Box, Modal, Button, Typography, Grid, Stack } from '@mui/material';
 import closeModalButton from './img/closeModalButton.png';
 
 import { NameValidation, EmailValidation, MessageValidation } from '../validate';
@@ -45,27 +45,27 @@ import { NameValidation, EmailValidation, MessageValidation } from '../validate'
         margin-top: 30px;
     `
     const buttonStyles = css`  
-        // width: 259px;
-        // height: 50px;
-        // margin: 0 auto;
+        width: 259px;
+        height: 50px;
+        margin: 0 auto;
 
-        // font-family: Roboto;
-        // font-size: 16px;
-        // font-weight: 500;
-        // line-height: 18px;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 18px;
 
-        // text-align: center;
-        // text-transform: uppercase;
+        text-align: center;
+        text-transform: uppercase;
 
         background: #FB565A;
-        // border-radius: 3px;
-        // color: #FFF;
+        border-radius: 3px;
+        color: #FFF;
         
-        // transition: .3s ease-in;
-        // &:hover {
-        //     background: #d7373b;
-        //     color: #ffffff;
-        // }
+        transition: .3s ease-in;
+        &:hover {
+            background: #d7373b;
+            color: #ffffff;
+        }
     `
     const modalBtnStyles = css` 
         margin-top: 37px;
@@ -97,23 +97,21 @@ import { NameValidation, EmailValidation, MessageValidation } from '../validate'
 
 export const FeedbackModal = () => {
 
-    
-
     const [writeUsObject, setWriteUsObject] = useState({})
-
 
     const handleValidation = (filterName, value, isValid) => {
         console.log(`Input: ${value}, Valid: ${isValid}, id: ${filterName}`);
         setWriteUsObject((prevState) => ({ ...prevState, [filterName]: value }))
     };
 
-    const onChangeHandler = (e) => {
-    const { id: filterName, value } = e.target
+    // const onChangeHandler = (e) => {
+    // const { id: filterName, value } = e.target
 
-        setWriteUsObject((prevState) => ({ ...prevState, [filterName]: value }))
-    }
+    //     setWriteUsObject((prevState) => ({ ...prevState, [filterName]: value }))
+    // }
 
     const applyWriteUsHandler = (event) => {
+        console.log(writeUsObject)
     }
 
     const [open, setOpen] = useState(false);
@@ -162,7 +160,7 @@ export const FeedbackModal = () => {
                                     id="firstName"
                                     name="First name"
                                     autoComplete="given-name"
-                                    defaultValue="Іван Петров"
+                                    placeholder="Іван Петров"
                                 />
                             {/* <TextField
                                 required
@@ -182,7 +180,7 @@ export const FeedbackModal = () => {
                                     id="email"
                                     name="email"
                                     autoComplete="email"
-                                    defaultValue="IvanPetrov@email.com"
+                                    placeholder="IvanPetrov@email.com"
                                 />
                             {/* <TextField
                                 required
@@ -203,7 +201,7 @@ export const FeedbackModal = () => {
                                     id="message"
                                     name="message"
                                     autoComplete="message"
-                                    defaultValue="Ваш текст"
+                                    placeholder="Ваше повідомлення"
                                 />
 
                             {/* <TextField

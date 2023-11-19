@@ -6,7 +6,7 @@ const textNameValidation = [
     "email неправильного формату"
 ]
 
-export const EmailValidation = ({ onValidation, id, name, autoComplete, defaultValue }) => {
+export const EmailValidation = ({ onValidation, id, name, autoComplete, placeholder, defaultValue }) => {
 
   const [inputValue, setInputValue] = useState('');
   const [errorText, setErrorText] = useState(textNameValidation[0]);
@@ -36,6 +36,7 @@ export const EmailValidation = ({ onValidation, id, name, autoComplete, defaultV
             required
             fullWidth
             id={id}
+            placeholder={placeholder}
             name={name}
             hiddenLabel
             autoComplete={autoComplete}

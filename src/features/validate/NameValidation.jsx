@@ -5,7 +5,7 @@ const textNameValidation = [
     'Введіть не менше 4 символів',
 ]
 
-export const NameValidation = ({ onValidation, id, name, autoComplete, defaultValue }) => {
+export const NameValidation = ({ onValidation, id, name, autoComplete, placeholder }) => {
 
   const [inputValue, setInputValue] = useState('');
   const [errorText, setErrorText] = useState(textNameValidation[0]);
@@ -32,6 +32,7 @@ export const NameValidation = ({ onValidation, id, name, autoComplete, defaultVa
             required
             fullWidth
             id={id}
+            placeholder={placeholder}
             name={name}
             hiddenLabel
             autoComplete={autoComplete}

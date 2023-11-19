@@ -2,10 +2,10 @@ import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 
 const textNameValidation = [
-    'Введіть не менше 4 символів',
+    'Залишилось символів',
 ]
 
-export const MessageValidation = ({ onValidation, id, name, autoComplete, rows, defaultValue }) => {
+export const MessageValidation = ({ onValidation, id, name, autoComplete, rows, placeholder }) => {
 
   const [inputValue, setInputValue] = useState('');
   const [errorText, setErrorText] = useState(textNameValidation[0]);
@@ -20,7 +20,7 @@ export const MessageValidation = ({ onValidation, id, name, autoComplete, rows, 
 
         if (leftSymbol > 0) {
             setError(true)
-            setErrorText(`${leftSymbol}textNameValidation[0]`)
+            setErrorText(`${textNameValidation[0]} ${leftSymbol}/30`)
         } else {
             setError(false)
             setErrorText('')
@@ -36,6 +36,7 @@ export const MessageValidation = ({ onValidation, id, name, autoComplete, rows, 
             fullWidth
             multiline
             id={id}
+            placeholder={placeholder}
             name={name}
             rows={rows}
             hiddenLabel
