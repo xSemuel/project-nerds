@@ -1,5 +1,6 @@
 export * from './Home'
 export * from './Carousel'
 export * from './Advantage'
-export * from './Information'
 export * from './Partner'
+
+export * from './information'
