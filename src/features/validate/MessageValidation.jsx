@@ -2,8 +2,11 @@ import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 
 const textNameValidation = [
+    'Поле не може бути пустим',
     'Залишилось символів',
 ]
+
+const requiredSymbol = 30;
 
 export const MessageValidation = ({ onValidation, id, name, autoComplete, rows, placeholder }) => {
 
@@ -13,14 +16,14 @@ export const MessageValidation = ({ onValidation, id, name, autoComplete, rows, 
 
     const handleInputChange = (e) => {
 
-        const { id: filterName, value } = e.target
-
-        const requiredSymbol = 30;
+        const { id: filterName, value } = e.target       
         const leftSymbol = requiredSymbol - value.length;
 
-        if (leftSymbol > 0) {
-            setError(true)
-            setErrorText(`${textNameValidation[0]} ${leftSymbol}/30`)
+        if (value.trim().length === 0) {
+            setErrorText(textNameValidation[0])
+        }
+        else if (leftSymbol > 0 && leftSymbol < requiredSymbol) {
+            setErrorText(`${textNameValidation[1]} ${leftSymbol}/${requiredSymbol}`)
         } else {
             setError(false)
             setErrorText('')

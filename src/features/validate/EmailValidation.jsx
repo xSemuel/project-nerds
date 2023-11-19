@@ -17,10 +17,8 @@ export const EmailValidation = ({ onValidation, id, name, autoComplete, placehol
         const { id: filterName, value } = e.target
 
         if (value.trim().length === 0) {
-            setError(true)
             setErrorText(textNameValidation[0])
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-            setError(true)
             setErrorText(textNameValidation[1])
         } else {
             setError(false)

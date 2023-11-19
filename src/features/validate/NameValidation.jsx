@@ -2,6 +2,7 @@ import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 
 const textNameValidation = [
+    'Поле не може бути пустим',
     'Введіть не менше 4 символів',
 ]
 
@@ -15,9 +16,11 @@ export const NameValidation = ({ onValidation, id, name, autoComplete, placehold
 
         const { id: filterName, value } = e.target
 
-        if (value.trim().length <= 3) {
-            setError(true)
+        if (value.trim().length === 0) {
             setErrorText(textNameValidation[0])
+        }
+        if (value.trim().length <= 3 && value.trim().length > 0) {
+            setErrorText(textNameValidation[1])
         } else {
             setError(false)
             setErrorText('')
