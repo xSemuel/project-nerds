@@ -126,6 +126,8 @@ export const FeedbackModal = () => {
         }
     }
 
+
+
     const [open, setOpen] = useState(false);
     const toggleModal = () => setOpen(prevState => !prevState);
     
@@ -236,7 +238,7 @@ export const FeedbackModal = () => {
                         </Button>
                     </Grid>
                 </Grid>
-            </Modal>
+            </Modal>           
         </>
     );
 }
