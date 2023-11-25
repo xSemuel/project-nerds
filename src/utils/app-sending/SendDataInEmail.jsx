@@ -15,3 +15,8 @@ export const SendDataInEmail = ({ email, message }) => {
         sendDataToServer();
     }, [email, message])
 };
+
+
+// custom hook
+
+

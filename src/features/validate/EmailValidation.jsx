@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
+// import {sendEmail} from '../../utils'
 
 const textNameValidation = [
     "email обов'язковий",
@@ -26,7 +27,9 @@ export const EmailValidation = ({ onValidation, id, name, autoComplete, placehol
         }
         
         setInputValue(value);
-        onValidation(filterName, value, error);       
+        onValidation(filterName, value, error);
+        
+        // const a = await sendEmail(email,message).then
     };
 
   return (
