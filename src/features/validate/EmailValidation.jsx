@@ -27,9 +27,7 @@ export const EmailValidation = ({ onValidation, id, name, autoComplete, placehol
         }
         
         setInputValue(value);
-        onValidation(filterName, value, error);
-        
-        // const a = await sendEmail(email,message).then
+        onValidation(filterName, value, error);  
     };
 
   return (

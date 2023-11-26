@@ -5,7 +5,8 @@ import { useState } from 'react';
 import { Box, Modal, Button, Typography, Grid, Stack } from '@mui/material';
 import closeModalButton from './img/closeModalButton.png';
 
-import { NameValidation, EmailValidation, MessageValidation } from '../validate';
+import { SendDataInEmail } from '../../utils';
+import { TextInput } from './TextInput';
 
     const style = {
         position: 'absolute',
@@ -106,27 +107,23 @@ export const FeedbackModal = () => {
         setIsValid((prevState) => ({ ...prevState, [filterName]: isValidTextField }))
     };
 
-    // const onChangeHandler = (e) => {
-    // const { id: filterName, value } = e.target
+    // useEffect(() => {
+    //     console.log(writeUsObject)
+    //     console.log(isValid)
+    //     const booleanArrValid = isValid;
+    //     const arrLength = Object.keys(booleanArrValid).length;
+    //     console.log(arrLength)
 
-    //     setWriteUsObject((prevState) => ({ ...prevState, [filterName]: value }))
-    // }
+    //     const validateForSend = Object.values(booleanArrValid).filter(item => item === false)
+        
+    //     if (arrLength === validateForSend.length) {
+
+    //     }
+    // }, [writeUsObject, isValid])
 
     const applyWriteUsHandler = (event) => {
-        console.log(writeUsObject)
-        console.log(isValid)
-        const booleanArrValid = isValid;
-        const arrLength = Object.keys(booleanArrValid).length;
-        console.log(arrLength)
-
-        const validateForSend = Object.values(booleanArrValid).filter(item => item === false)
-        
-        if (arrLength === validateForSend.length) {
-            console.log('send')
-        }
+        SendDataInEmail( 'serg_artemenko@ukr.net', writeUsObject )
     }
-
-
 
     const [open, setOpen] = useState(false);
     const toggleModal = () => setOpen(prevState => !prevState);
@@ -169,71 +166,43 @@ export const FeedbackModal = () => {
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm={6}>
                             <Typography css={textFieldTitle}>Ваше ім'я:</Typography>
-                                <NameValidation 
-                                    onValidation={handleValidation}
-                                    id="firstName"
-                                    name="First name"
-                                    autoComplete="given-name"
-                                    placeholder="Іван Петров"
-                                />
-                            {/* <TextField
-                                required
-                                fullWidth
+                            <TextInput 
+                                onValidation={handleValidation}
                                 id="firstName"
                                 name="First name"
-                                hiddenLabel
                                 autoComplete="given-name"
-                                defaultValue="Іван Петров"
-                                onChange={onChangeHandler}
-                            /> */}
+                                placeholder="Іван Петров"
+                            />
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <Typography css={textFieldTitle}>Ваш email:</Typography>
-                                <EmailValidation
-                                    onValidation={handleValidation}
-                                    id="email"
-                                    name="email"
-                                    autoComplete="email"
-                                    placeholder="IvanPetrov@email.com"
-                                />
-                            {/* <TextField
-                                required
-                                fullWidth
+                            <TextInput 
+                                onValidation={handleValidation}
                                 id="email"
                                 name="email"
-                                hiddenLabel
                                 autoComplete="email"
-                                defaultValue="IvanPetrov@email.com"
-                                onChange={onChangeHandler}
-                            /> */}
+                                placeholder="IvanPetrov@email.com"
+                            />
                         </Grid>
                         <Grid item xs={12}>
                             <Typography css={textFieldTitle}>Текст листа:</Typography>
-                                <MessageValidation 
-                                    onValidation={handleValidation}
-                                    rows={4}
-                                    id="message"
-                                    name="message"
-                                    autoComplete="message"
-                                    placeholder="Ваше повідомлення"
-                                />
-
-                            {/* <TextField
-                                required
-                                fullWidth
-                                multiline
+                            <TextInput 
+                                onValidation={handleValidation}
                                 rows={4}
                                 id="message"
                                 name="message"
-                                hiddenLabel
                                 autoComplete="message"
-                                defaultValue="Ваш текст"
-                                onChange={onChangeHandler}
-                            /> */}
+                                placeholder="Ваше повідомлення"
+                            />
                         </Grid>
                     </Grid>
                     <Grid item xs={12}  css={buttonWrapper}>
-                        <Button variant="contained" size="medium" css={buttonStyles} onClick={applyWriteUsHandler}>
+                        <Button 
+                            variant="contained" 
+                            size="medium" 
+                            css={buttonStyles} 
+                            onClick={applyWriteUsHandler}
+                        >
                             Відправити
                         </Button>
                     </Grid>
