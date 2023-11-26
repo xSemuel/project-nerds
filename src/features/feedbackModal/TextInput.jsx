@@ -4,7 +4,7 @@ import { validateName } from './NameValid';
 import { validateEmail } from './EmailValid';
 import { validateTextArea } from './TextAreaValid';
 
-export const TextInput = ({ onValidation, id, name, autoComplete, placeholder }) => {
+export const TextInput = ({ onValidation, id, name, autoComplete, placeholder, rows }) => {
 
   const [inputValue, setInputValue] = useState('');
   const [errorText, setErrorText] = useState('');
@@ -13,19 +13,19 @@ export const TextInput = ({ onValidation, id, name, autoComplete, placeholder })
     const handleInputChange = (e) => {
         const { id: filterName, value } = e.target
 
-        let valid = '';
+        let validInput = '';
         if (filterName === 'firstName') {
-            valid = validateName(value)
-            setErrorText(valid.errorMessage)
-            setError(valid.isValid)
+            validInput = validateName(value)
+            setErrorText(validInput.errorMessage)
+            setError(!validInput.isValid)
         } else if (filterName === 'email') {
-            valid = validateEmail(value)
-            setErrorText(valid.errorMessage)
-            setError(valid.isValid)
-        } else if (filterName === 'email') {
-            valid = validateTextArea(value)
-            setErrorText(valid.errorMessage)
-            setError(valid.isValid)
+            validInput = validateEmail(value)
+            setErrorText(validInput.errorMessage)
+            setError(!validInput.isValid)
+        } else if (filterName === 'message') {
+            validInput = validateTextArea(value)
+            setErrorText(validInput.errorMessage)
+            setError(!validInput.isValid)
         }
 
         setInputValue(value);
@@ -36,6 +36,8 @@ export const TextInput = ({ onValidation, id, name, autoComplete, placeholder })
         <TextField
             required
             fullWidth
+            rows={rows}
+            multiline
             id={id}
             placeholder={placeholder}
             name={name}

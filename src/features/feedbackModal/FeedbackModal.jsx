@@ -188,11 +188,12 @@ export const FeedbackModal = () => {
                             <Typography css={textFieldTitle}>Текст листа:</Typography>
                             <TextInput 
                                 onValidation={handleValidation}
+                                multiline
                                 rows={4}
                                 id="message"
                                 name="message"
                                 autoComplete="message"
-                                placeholder="Ваше повідомлення"
+                                placeholder="Ваше повідомлення"    
                             />
                         </Grid>
                     </Grid>
