@@ -170,6 +170,7 @@ export const FeedbackModal = () => {
                                 onValidation={handleValidation}
                                 id="firstName"
                                 name="First name"
+                                rows={1}
                                 autoComplete="given-name"
                                 placeholder="Іван Петров"
                             />
@@ -180,6 +181,7 @@ export const FeedbackModal = () => {
                                 onValidation={handleValidation}
                                 id="email"
                                 name="email"
+                                rows={1}
                                 autoComplete="email"
                                 placeholder="IvanPetrov@email.com"
                             />

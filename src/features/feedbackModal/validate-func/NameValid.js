@@ -1,4 +1,4 @@
-import { checkIsEmptyString, checkIsNumberInRange } from '../../utils/validation';
+import { checkIsEmptyString, checkIsNumberInRange } from '../../../utils/validation';
 
 const errors = {
     empty: 'Поле не може бути пустим',

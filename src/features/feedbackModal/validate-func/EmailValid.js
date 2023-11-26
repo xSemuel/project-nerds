@@ -1,4 +1,4 @@
-import { checkIsEmptyString, checkIsCorrectlyEmail } from '../../utils/validation';
+import { checkIsEmptyString, checkIsCorrectlyEmail } from '../../../utils/validation';
 
 const errors = {
     empty: "email обов'язковий",

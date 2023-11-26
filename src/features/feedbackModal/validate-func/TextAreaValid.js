@@ -1,4 +1,4 @@
-import { checkIsEmptyString, checkIsCorrectlyMinSymbol } from '../../utils/validation';
+import { checkIsEmptyString, checkIsCorrectlyMinSymbol } from '../../../utils/validation';
 
 const errors = {
     empty: 'Поле не може бути пустим',
