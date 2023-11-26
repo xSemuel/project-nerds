@@ -1,12 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Modal, Button, Typography, Grid, Stack } from '@mui/material';
 import closeModalButton from './img/closeModalButton.png';
 
 import { SendDataInEmail } from '../../utils';
 import { TextInput } from './TextInput';
+import { MessageAboutSucces } from './MessageAboutSucces';
 
     const style = {
         position: 'absolute',
@@ -98,6 +99,8 @@ import { TextInput } from './TextInput';
 
 export const FeedbackModal = () => {
 
+    const [isModalOpen, setIsModalOpen] = useState(true)
+    const [isDisabledButton, setIsDisabledButton] = useState(true);
     const [writeUsObject, setWriteUsObject] = useState({})
     const [isValid, setIsValid]= useState({})
 
@@ -107,27 +110,32 @@ export const FeedbackModal = () => {
         setIsValid((prevState) => ({ ...prevState, [filterName]: isValidTextField }))
     };
 
-    // useEffect(() => {
-    //     console.log(writeUsObject)
-    //     console.log(isValid)
-    //     const booleanArrValid = isValid;
-    //     const arrLength = Object.keys(booleanArrValid).length;
-    //     console.log(arrLength)
-
-    //     const validateForSend = Object.values(booleanArrValid).filter(item => item === false)
-        
-    //     if (arrLength === validateForSend.length) {
-
-    //     }
-    // }, [writeUsObject, isValid])
+    useEffect(() => {
+        const booleanArrValid = isValid;
+        const arrLength = Object.keys(booleanArrValid).length;
+        const validateForSend = Object.values(booleanArrValid).filter(item => item === false)
+        if (arrLength === validateForSend.length) {
+            setIsDisabledButton(false)
+        } else {
+            setIsDisabledButton(true)
+        }
+    }, [writeUsObject, isValid])
 
     const applyWriteUsHandler = (event) => {
         SendDataInEmail( 'serg_artemenko@ukr.net', writeUsObject )
+        setIsModalOpen(false)      
     }
 
     const [open, setOpen] = useState(false);
     const toggleModal = () => setOpen(prevState => !prevState);
-    
+
+    useEffect(() => {
+        if (open === false) {
+            setIsModalOpen(true)
+        }
+    }, [open])
+
+  
     return (
         <>
             <Button 
@@ -163,53 +171,61 @@ export const FeedbackModal = () => {
                             </Button>
                         </Stack>
                     </Grid>
-                    <Grid container spacing={3}>
-                        <Grid item xs={12} sm={6}>
-                            <Typography css={textFieldTitle}>Ваше ім'я:</Typography>
-                            <TextInput 
-                                onValidation={handleValidation}
-                                id="firstName"
-                                name="First name"
-                                rows={1}
-                                autoComplete="given-name"
-                                placeholder="Іван Петров"
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <Typography css={textFieldTitle}>Ваш email:</Typography>
-                            <TextInput 
-                                onValidation={handleValidation}
-                                id="email"
-                                name="email"
-                                rows={1}
-                                autoComplete="email"
-                                placeholder="IvanPetrov@email.com"
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Typography css={textFieldTitle}>Текст листа:</Typography>
-                            <TextInput 
-                                onValidation={handleValidation}
-                                multiline
-                                rows={4}
-                                id="message"
-                                name="message"
-                                autoComplete="message"
-                                placeholder="Ваше повідомлення"    
-                            />
-                        </Grid>
-                    </Grid>
-                    <Grid item xs={12}  css={buttonWrapper}>
-                        <Button 
-                            variant="contained" 
-                            size="medium" 
-                            css={buttonStyles} 
-                            onClick={applyWriteUsHandler}
-                        >
-                            Відправити
-                        </Button>
-                    </Grid>
-                </Grid>
+
+                    {isModalOpen ?
+                        <>
+                            <Grid container spacing={3}>
+                                <Grid item xs={12} sm={6}>
+                                    <Typography css={textFieldTitle}>Ваше ім'я:</Typography>
+                                    <TextInput 
+                                        onValidation={handleValidation}
+                                        id="firstName"
+                                        name="First name"
+                                        rows={1}
+                                        autoComplete="given-name"
+                                        placeholder="Іван Петров"
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <Typography css={textFieldTitle}>Ваш email:</Typography>
+                                    <TextInput 
+                                        onValidation={handleValidation}
+                                        id="email"
+                                        name="email"
+                                        rows={1}
+                                        autoComplete="email"
+                                        placeholder="IvanPetrov@email.com"
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <Typography css={textFieldTitle}>Текст листа:</Typography>
+                                    <TextInput 
+                                        onValidation={handleValidation}
+                                        multiline
+                                        rows={4}
+                                        id="message"
+                                        name="message"
+                                        autoComplete="message"
+                                        placeholder="Ваше повідомлення"    
+                                    />
+                                </Grid>
+                            </Grid>
+                            <Grid item xs={12}  css={buttonWrapper}>
+                                <Button 
+                                    variant="contained" 
+                                    size="medium" 
+                                    css={buttonStyles} 
+                                    disabled={isDisabledButton}
+                                    onClick={applyWriteUsHandler}
+                                >
+                                    Відправити
+                                </Button>
+                            </Grid>
+                        </>
+                        :
+                        <MessageAboutSucces />
+                    } 
+                </Grid>                               
             </Modal>           
         </>
     );
