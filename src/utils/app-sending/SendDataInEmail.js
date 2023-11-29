@@ -2,37 +2,35 @@
 
 export const SendDataInEmail = async ({ email, message }) => {
 
+    const url = 'https://api.example.com/data';
+
+    const dataToSend = {
+        key1: email,
+        key2: message,
+        // Add more data as needed
+    };
+
     try {
-        // Send data to your backend server
-        const response = await fetch.post('/api/send-email', { email, message });
-        console.log('Email sent:', response.data);
+        const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', // Specify the content type you're sending
+            // Add any other headers as needed
+        },
+        body: JSON.stringify(dataToSend), // Convert JS object to JSON string
+        });
+    
+        if (response.ok) {
+        const responseData = await response.json();
+        console.log('Data sent successfully:', responseData);
+        // Handle the response data
+        return true;
+        } else {
+        throw new Error('Error sending data.');
+        }
     } catch (error) {
-        console.error('Error sending email:', error);
+        console.error('Error:', error.message);
+        // Handle errors here
+        return false;
     }
 };
-
-
-// custom hook
-// const a = await sendEmail(email,message).then
-
-// const sendDataToServer = async () => {
-//     try {
-//       // Використання аргументів, переданих через props, у запиті fetch
-//       const response = await fetch('URL_адреса_сервера', {
-//         method: 'POST', // або 'PUT', 'DELETE', інше
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({
-//           argument1: props.argument1,
-//           argument2: props.argument2,
-//           // Інші дані для відправки на сервер
-//         }),
-//       });
-
-//       const responseData = await response.json();
-//       setData(responseData); // Збереження відповіді в стані компоненту
-//     } catch (error) {
-//       console.error('Помилка відправлення даних на сервер:', error);
-//     }
-//   };
