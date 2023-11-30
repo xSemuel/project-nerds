@@ -3,7 +3,8 @@ import { css } from '@emotion/react';
 import { Container, Box, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
-import { FeedbackModal } from '../features/feedbackModal';
+// import { FeedbackModal } from '../features/feedbackModal';
+import { FeedbackModal } from '../features/app-feedback';
 
 import mapMarker from '../images/map-marker.png'
 

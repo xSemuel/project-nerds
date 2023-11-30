@@ -1,1 +1,1 @@
-export * from './ValidationList';
+export * from './validator-func';

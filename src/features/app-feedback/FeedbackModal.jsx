@@ -106,19 +106,14 @@ export const FeedbackModal = () => {
     const [isFormValid, setIFormsValid]= useState({})
 
     const handleValidation = (filterName, value, isValidTextField) => {
-        console.log(`Input: ${value}, Valid: ${isValidTextField}, id: ${filterName}`);
+        // console.log(`Input: ${value}, Valid: ${isValidTextField}, id: ${filterName}`);
         setFormData((prevState) => ({ ...prevState, [filterName]: value }))
         setIFormsValid((prevState) => ({ ...prevState, [filterName]: isValidTextField }))
     };
 
     useEffect(() => {
-        // TODO
-        // const arrLength = Object.keys(isFormValid).length;
-        // const validateForSend = Object.values(isFormValid).filter(item => item === false)
-        // setIsButtonDisabled(arrLength !== validateForSend.length)
-        const validateForSend = Object.values(isFormValid).every(item => item === false)
-        console.log(validateForSend)
-
+        const validateForSend = Object.values(isFormValid).every(item => item !== true && item !== '') && Object.values(isFormValid).length === 3
+        validateForSend ? setIsButtonDisabled(false) : setIsButtonDisabled(true)  
     }, [formData, isFormValid])
 
     const applyWriteUsHandler = (event) => {
