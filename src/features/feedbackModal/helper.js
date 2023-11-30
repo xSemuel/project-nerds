@@ -1,11 +1,11 @@
-// export validateEmail
-// eport valide....
-import { checkIsEmptyString, checkIsCorrectlyEmail } from '../../../utils/validation';
+import { ErrorMessages } from './constants'
+import { 
+    checkIsEmptyString, 
+    checkIsCorrectlyEmail, 
+    checkIsNumberInRange, 
+    checkIsCorrectlyMinSymbol 
+} from '../../utils/validation';
 
-const errors = {
-    empty: "email обов'язковий",
-    wrong: "email неправильного формату",
-}
 
 export const validateEmail = (email) => {
     const value = email.trim()
@@ -13,21 +13,14 @@ export const validateEmail = (email) => {
 
     if (checkIsEmptyString(value)) {
         result.isValid = false
-        result.errorMessage = errors.empty
+        result.errorMessage = ErrorMessages.emptyEmail
     } else if (checkIsCorrectlyEmail(value)) {
         result.isValid = false
-        result.errorMessage = errors.wrong
+        result.errorMessage = ErrorMessages.emailInvalidFormat
     }
 
     return result
-}
-
-import { checkIsEmptyString, checkIsNumberInRange } from '../../../utils/validation';
-
-const errors = {
-    empty: 'Поле не може бути пустим',
-    minLength: 'Введіть не менше 4 символів',
-}
+};
 
 export const validateName = (name) => {
     const value = name.trim()
@@ -35,21 +28,14 @@ export const validateName = (name) => {
 
     if (checkIsEmptyString(value)) {
         result.isValid = false
-        result.errorMessage = errors.empty
+        result.errorMessage = ErrorMessages.empty
     } else if (checkIsNumberInRange(value, 0, 3)) {
         result.isValid = false
-        result.errorMessage = errors.minLength
+        result.errorMessage = ErrorMessages.nameMinLength
     }
 
     return result
-}
-
-import { checkIsEmptyString, checkIsCorrectlyMinSymbol } from '../../../utils/validation';
-
-const errors = {
-    empty: 'Поле не може бути пустим',
-    symbolLast: 'Залишилось символів',
-}
+};
 
 const requiredSymbol = 30;
 
@@ -60,11 +46,11 @@ export const validateTextArea = (name) => {
 
     if (checkIsEmptyString(value)) {
         result.isValid = false
-        result.errorMessage = errors.empty
+        result.errorMessage = ErrorMessages.empty
     } else if (checkIsCorrectlyMinSymbol(leftSymbol, requiredSymbol)) {
         result.isValid = false
-        result.errorMessage = `${errors.symbolLast} ${leftSymbol}/${requiredSymbol}`
+        result.errorMessage = `${ErrorMessages.textAreaSymbolLast} ${leftSymbol}/${requiredSymbol}`
     }
 
     return result
-}
+};

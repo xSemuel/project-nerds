@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TextField } from '@mui/material';
-import { validateName, validateEmail, validateTextArea  } from './validate-func';
+import { validateName, validateEmail, validateTextArea  } from './helper';
 
 
 export const TextInput = ({ onValidation, id, name, autoComplete, placeholder, rows }) => {
