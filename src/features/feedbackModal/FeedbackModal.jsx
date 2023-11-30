@@ -6,6 +6,7 @@ import { Box, Modal, Button, Typography, Grid, Stack } from '@mui/material';
 import closeModalButton from './img/closeModalButton.png';
 
 import { SendDataInEmail } from '../../utils';
+import { emailForSend } from './constants';
 import { TextInput } from './TextInput';
 import { MessageAboutSucces } from './MessageAboutSucces';
 
@@ -99,37 +100,31 @@ import { MessageAboutSucces } from './MessageAboutSucces';
 
 export const FeedbackModal = () => {
 
-    // const [isOpen, setIsOpen] = useState(true)
-    // const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-    // const [formData, setFormData] = useState({})
-    // const [isFormValid, setIFormsValid]= useState({}) // true/false
-
-
-    const [isModalOpen, setIsModalOpen] = useState(true)
-    const [isDisabledButton, setIsDisabledButton] = useState(true);
-    const [writeUsObject, setWriteUsObject] = useState({})
-    const [isValid, setIsValid]= useState({})
+    const [isOpen, setIsOpen] = useState(true)
+    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+    const [formData, setFormData] = useState({})
+    const [isFormValid, setIFormsValid]= useState({})
 
     const handleValidation = (filterName, value, isValidTextField) => {
         console.log(`Input: ${value}, Valid: ${isValidTextField}, id: ${filterName}`);
-        setWriteUsObject((prevState) => ({ ...prevState, [filterName]: value }))
-        setIsValid((prevState) => ({ ...prevState, [filterName]: isValidTextField }))
+        setFormData((prevState) => ({ ...prevState, [filterName]: value }))
+        setIFormsValid((prevState) => ({ ...prevState, [filterName]: isValidTextField }))
     };
 
     useEffect(() => {
         // TODO
-        // const arrLength = Object.keys(isValid).length;
-        // const validateForSend = Object.values(isValid).filter(item => item === false)
-        // setIsDisabledButton(arrLength !== validateForSend.length)
-        const validateForSend = Object.values(isValid).every(item => item === false)
+        // const arrLength = Object.keys(isFormValid).length;
+        // const validateForSend = Object.values(isFormValid).filter(item => item === false)
+        // setIsButtonDisabled(arrLength !== validateForSend.length)
+        const validateForSend = Object.values(isFormValid).every(item => item === false)
         console.log(validateForSend)
 
-    }, [writeUsObject, isValid])
+    }, [formData, isFormValid])
 
     const applyWriteUsHandler = (event) => {
         // async await + try catch
-        SendDataInEmail( 'serg_artemenko@ukr.net', writeUsObject )
-        setIsModalOpen(false)      
+        SendDataInEmail( emailForSend, formData )
+        setIsOpen(false)      
     }
 
     const [open, setOpen] = useState(false);
@@ -137,7 +132,7 @@ export const FeedbackModal = () => {
 
     useEffect(() => {
         if (open === false) {
-            setIsModalOpen(true)
+            setIsOpen(true)
         }
     }, [open])
 
@@ -178,7 +173,7 @@ export const FeedbackModal = () => {
                         </Stack>
                     </Grid>
 
-                    {isModalOpen ?
+                    {isOpen ?
                         <>
                             <Grid container spacing={3}>
                                 <Grid item xs={12} sm={6}>
@@ -221,7 +216,7 @@ export const FeedbackModal = () => {
                                     variant="contained" 
                                     size="medium" 
                                     css={buttonStyles} 
-                                    disabled={isDisabledButton}
+                                    disabled={isButtonDisabled}
                                     onClick={applyWriteUsHandler}
                                 >
                                     Відправити
