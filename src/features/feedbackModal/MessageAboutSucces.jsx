@@ -12,8 +12,5 @@ const messageStyle = css`
     margin-top: 150px;
 `
 
-export const MessageAboutSucces = () => {
-    return ( 
-        <Typography css={messageStyle}>Повідомлення відправлене!</Typography>
-    );
-}
+export const MessageAboutSucces = () => 
+    <Typography css={messageStyle}>Повідомлення відправлене!</Typography>

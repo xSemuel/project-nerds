@@ -99,6 +99,12 @@ import { MessageAboutSucces } from './MessageAboutSucces';
 
 export const FeedbackModal = () => {
 
+    // const [isOpen, setIsOpen] = useState(true)
+    // const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+    // const [formData, setFormData] = useState({})
+    // const [isFormValid, setIFormsValid]= useState({}) // true/false
+
+
     const [isModalOpen, setIsModalOpen] = useState(true)
     const [isDisabledButton, setIsDisabledButton] = useState(true);
     const [writeUsObject, setWriteUsObject] = useState({})
@@ -111,17 +117,17 @@ export const FeedbackModal = () => {
     };
 
     useEffect(() => {
-        const booleanArrValid = isValid;
-        const arrLength = Object.keys(booleanArrValid).length;
-        const validateForSend = Object.values(booleanArrValid).filter(item => item === false)
-        if (arrLength === validateForSend.length) {
-            setIsDisabledButton(false)
-        } else {
-            setIsDisabledButton(true)
-        }
+        // TODO
+        // const arrLength = Object.keys(isValid).length;
+        // const validateForSend = Object.values(isValid).filter(item => item === false)
+        // setIsDisabledButton(arrLength !== validateForSend.length)
+        const validateForSend = Object.values(isValid).every(item => item === false)
+        console.log(validateForSend)
+
     }, [writeUsObject, isValid])
 
     const applyWriteUsHandler = (event) => {
+        // async await + try catch
         SendDataInEmail( 'serg_artemenko@ukr.net', writeUsObject )
         setIsModalOpen(false)      
     }
