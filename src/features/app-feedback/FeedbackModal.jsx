@@ -104,6 +104,7 @@ export const FeedbackModal = () => {
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     const [formData, setFormData] = useState({})
     const [isFormValid, setIFormsValid]= useState({})
+    const [isSendingCallback, setIsSendingCallback] = useState(false)
 
     const handleValidation = (filterName, value, isValidTextField) => {
         // console.log(`Input: ${value}, Valid: ${isValidTextField}, id: ${filterName}`);
@@ -116,9 +117,11 @@ export const FeedbackModal = () => {
         validateForSend ? setIsButtonDisabled(false) : setIsButtonDisabled(true)  
     }, [formData, isFormValid])
 
-    const applyWriteUsHandler = (event) => {
+    const applyWriteUsHandler = async (event) => {
         // async await + try catch
-        SendDataInEmail( emailForSend, formData )
+        const isSending = await SendDataInEmail( emailForSend, formData )
+        setIsSendingCallback(isSending)
+        console.log(isSending);
         setIsOpen(false)      
     }
 
@@ -219,7 +222,7 @@ export const FeedbackModal = () => {
                             </Grid>
                         </>
                         :
-                        <MessageAboutSucces />
+                        <MessageAboutSucces options={isSendingCallback}/>
                     } 
                 </Grid>                               
             </Modal>           

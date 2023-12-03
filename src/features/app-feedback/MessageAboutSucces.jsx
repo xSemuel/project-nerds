@@ -2,6 +2,8 @@
 import { css } from '@emotion/react';
 import { Typography } from '@mui/material';
 
+import { isSendingText } from './constants';
+
 const messageStyle = css`
     font-family: Roboto;
     font-size: 24px;
@@ -12,5 +14,10 @@ const messageStyle = css`
     margin-top: 150px;
 `
 
-export const MessageAboutSucces = () => 
-    <Typography css={messageStyle}>Повідомлення відправлене!</Typography>
+export const MessageAboutSucces = ({options}) => {
+    return(
+        <Typography css={messageStyle}>
+            {options ? isSendingText.success : isSendingText.fail}
+        </Typography>
+    );
+};

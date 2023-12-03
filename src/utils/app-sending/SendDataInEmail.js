@@ -26,7 +26,7 @@ export const SendDataInEmail = async ({ email, message }) => {
         // Handle the response data
         return true;
         } else {
-        throw new Error('Error sending data.');
+        return false;
         }
     } catch (error) {
         console.error('Error:', error.message);

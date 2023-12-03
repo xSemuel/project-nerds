@@ -9,3 +9,8 @@ export const ErrorMessages = {
 }
 
 export const emailForSend = 'serg_artemenko@ukr.net';
+
+export const isSendingText = {
+    success: 'Повідомлення відправлене!',
+    fail: 'Сталася помилка, спробуйте пізніше.',
+}
