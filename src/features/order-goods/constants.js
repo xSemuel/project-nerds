@@ -5,7 +5,7 @@ export const ErrorMessages = {
     emailInvalidFormat: "email неправильного формату",
     empty: 'Поле не може бути пустим',
     nameMinLength: 'Введіть не менше 4 символів',
-    textAreaSymbolLast: 'Залишилось символів',
+    telephoneInvalidFormat: 'Номер телефону неправильного формату',
 }
 
 export const emailForSend = 'serg_artemenko@ukr.net';

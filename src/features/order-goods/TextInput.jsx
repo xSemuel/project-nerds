@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TextField } from '@mui/material';
-import { validateName, validateEmail, validateTextArea  } from './helper';
+import { validateName, validateEmail, validatePhone } from './helper';
 
 
 export const TextInput = ({ onValidation, id, name, label, autoComplete, placeholder, rows }) => {
@@ -13,7 +13,7 @@ export const TextInput = ({ onValidation, id, name, label, autoComplete, placeho
         const { id: filterName, value } = e.target
         console.log(filterName, value)
         let validInput = '';
-        if (filterName === 'firstName' || filterName === 'lastName' || filterName === 'telephone') {
+        if (filterName === 'firstName' || filterName === 'lastName' ) {
             validInput = validateName(value)
             setErrorText(validInput.errorMessage)
             setError(!validInput.isValid)
@@ -21,12 +21,11 @@ export const TextInput = ({ onValidation, id, name, label, autoComplete, placeho
             validInput = validateEmail(value)
             setErrorText(validInput.errorMessage)
             setError(!validInput.isValid)
-        } else if (filterName === 'message') {
-            validInput = validateTextArea(value)
+        } else if (filterName === 'telephone') {
+            validInput = validatePhone(value)
             setErrorText(validInput.errorMessage)
             setError(!validInput.isValid)
         }
-
 
         setInputValue(value);
         onValidation(filterName, value, error);       

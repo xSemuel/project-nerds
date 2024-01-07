@@ -3,7 +3,7 @@ import {
     checkIsEmptyString, 
     checkIsCorrectlyEmail, 
     checkIsNumberInRange, 
-    checkIsCorrectlyMinSymbol 
+    checkIsCorrectlyTelephone,
 } from '../../utils/validation';
 
 
@@ -37,19 +37,16 @@ export const validateName = (name) => {
     return result
 };
 
-const requiredSymbol = 30;
-
-export const validateTextArea = (name) => {
+export const validatePhone = (name) => {
     const value = name.trim()
     const result = { isValid: true, errorMessage: '' }
-    const leftSymbol = requiredSymbol - value.length;
 
     if (checkIsEmptyString(value)) {
         result.isValid = false
         result.errorMessage = ErrorMessages.empty
-    } else if (checkIsCorrectlyMinSymbol(leftSymbol, requiredSymbol)) {
+    } else if (checkIsCorrectlyTelephone(value)) {
         result.isValid = false
-        result.errorMessage = `${ErrorMessages.textAreaSymbolLast} ${leftSymbol}/${requiredSymbol}`
+        result.errorMessage = ErrorMessages.telephoneInvalidFormat
     }
 
     return result

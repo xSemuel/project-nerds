@@ -14,3 +14,7 @@ export const checkIsCorrectlyEmail = (value) => (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.
 // ---------------- for text area
 
 export const checkIsCorrectlyMinSymbol = (leftSymbol, requiredSymbol ) => (leftSymbol > 0 && leftSymbol < requiredSymbol)
+
+// ---------------- for telephone
+
+export const checkIsCorrectlyTelephone = (value) => (!/^\(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(value))
