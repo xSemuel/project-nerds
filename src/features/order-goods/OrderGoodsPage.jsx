@@ -82,11 +82,7 @@ export const OrderGoodsPage = () => {
 															  totalSumOfOrder: cartSum,
 															})
 
-    const onChangeHandler = (e) => {
-		const { id: filterName, value } = e.target
-        setObjectOrderGood((prevState) => ({ ...prevState, [filterName]: value }))
-    }
-
+															
     const handleValidation = (filterName, value, isValidTextField) => {
         setObjectOrderGood((prevState) => ({ ...prevState, [filterName]: value }))
 		setIFormsValid((prevState) => ({ ...prevState, [filterName]: isValidTextField }))
@@ -204,7 +200,7 @@ export const OrderGoodsPage = () => {
 								<Typography css={styleTotalSumInfo}>
 									Загальна сума вашого замовлення:
 								</Typography>
-								<Typography id="totalSum" css={styleTotalSumInfo} onChange={onChangeHandler}>
+								<Typography id="totalSum" css={styleTotalSumInfo} >
 									{cartSum}грн.
 								</Typography>	
 							</Box>
