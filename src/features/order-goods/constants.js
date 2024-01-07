@@ -6,9 +6,8 @@ export const ErrorMessages = {
     empty: 'Поле не може бути пустим',
     nameMinLength: 'Введіть не менше 4 символів',
     telephoneInvalidFormat: 'Номер телефону неправильного формату',
+    isNumber: 'Може бути тільки число',
 }
-
-export const emailForSend = 'serg_artemenko@ukr.net';
 
 export const isSendingText = {
     success: 'Повідомлення відправлене!',

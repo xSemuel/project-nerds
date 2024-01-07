@@ -51,3 +51,18 @@ export const validatePhone = (name) => {
 
     return result
 };
+
+export const validateNumberDepartment = (name) => {
+    const value = name.trim()
+    const result = { isValid: true, errorMessage: '' }
+
+    if (checkIsEmptyString(value)) {
+        result.isValid = false
+        result.errorMessage = ErrorMessages.empty
+    } else if (isNaN(value)) {
+        result.isValid = false
+        result.errorMessage = ErrorMessages.isNumber
+    }
+
+    return result
+};

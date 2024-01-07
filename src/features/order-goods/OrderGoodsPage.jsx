@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { Grid, Typography, TextField, FormControlLabel, Checkbox, Container, Button, Box, Table, TableBody, TableRow, TableCell } from '@mui/material';
+import { Grid, Typography, FormControlLabel, Checkbox, Container, Button, Box, Table, TableBody, TableRow, TableCell } from '@mui/material';
 import { selectedGoodsInCart, sumSelectedGoodsInCart, updateOrderList } from '../../store/slices';
 import { currentNumberOfOrder, resetCart } from '../../store/slices'
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { OrderInfoSucess } from './OrderInfoSucess';
 import { TextInput } from './TextInput';
@@ -70,6 +70,8 @@ const buttonStyles = css`
 export const OrderGoodsPage = () => {
 
 	const [ openOrderInfo, setOpenOrderInfo] = useState(false);
+	const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+	const [isFormValid, setIFormsValid]= useState({})
 	const dispatch = useDispatch();
 	const currentOrder = useSelector(currentNumberOfOrder);
 	const cart = useSelector(selectedGoodsInCart);
@@ -85,9 +87,17 @@ export const OrderGoodsPage = () => {
         setObjectOrderGood((prevState) => ({ ...prevState, [filterName]: value }))
     }
 
-    const handleValidation = (filterName, value) => {
+    const handleValidation = (filterName, value, isValidTextField) => {
         setObjectOrderGood((prevState) => ({ ...prevState, [filterName]: value }))
+		setIFormsValid((prevState) => ({ ...prevState, [filterName]: isValidTextField }))
     }
+
+	useEffect(() => {
+		console.log(isFormValid)
+        const validateForSend = Object.values(isFormValid).every(item => item !== true && item !== '') && Object.values(isFormValid).length === 8
+		console.log(validateForSend)
+        validateForSend ? setIsButtonDisabled(false) : setIsButtonDisabled(true)  
+    }, [isFormValid])
 
 	const onCheckHandler = (e) => {
 		const { id: filterName, checked } = e.target
@@ -124,15 +134,6 @@ export const OrderGoodsPage = () => {
 
 						{orderCustomer.map(({id, name, label, autoComplete, placeholder}) => (
 							<Grid item xs={12} sm={6} key={id}>
-								{/* <TextField
-									required
-									fullWidth
-									id={id}
-									name={name}
-									label={label}
-									autoComplete={autoComplete}
-									onChange={onChangeHandler}
-								/> */}
 								<TextInput 
 									onValidation={handleValidation}
 									id={id}
@@ -156,16 +157,16 @@ export const OrderGoodsPage = () => {
 							</Typography>
 						</Grid>
 
-						{orderDelivery.map(({id, name, label, autoComplete}) => (
+						{orderDelivery.map(({id, name, label, autoComplete, placeholder}) => (
 							<Grid item xs={12} sm={6} key={id}>
-								<TextField
-									required
-									fullWidth
+								<TextInput 
+									onValidation={handleValidation}
 									id={id}
 									name={name}
-									label={label}									
+									rows={1}
+									label={label}
 									autoComplete={autoComplete}
-									onChange={onChangeHandler}
+									placeholder={placeholder}
 								/>
 							</Grid>
 						))}
@@ -215,7 +216,11 @@ export const OrderGoodsPage = () => {
 							/>
 						</Grid>
 					</Grid>
-					<Button css={buttonStyles} onClick={applyOrdersGoodsHandler}>
+					<Button 
+						css={buttonStyles}
+						disabled={isButtonDisabled} 
+						onClick={applyOrdersGoodsHandler}
+					>
 						Замовлення підтверджую
 					</Button>
 				</Box>

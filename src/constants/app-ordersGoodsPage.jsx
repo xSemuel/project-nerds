@@ -26,7 +26,7 @@ export const orderCustomer = [
 		name: "telephone",
 		label: "Ваш номер телефону",
 		autoComplete: "telephone",
-		placeholder: "0632678342",
+		placeholder: "(063) 267-83-42",
 	},
 ]	
 
@@ -37,23 +37,27 @@ export const orderDelivery = [
 		name: "state",
 		label: "Область", 
 		autoComplete: "state",
+		placeholder: "Київська",
 	},
 	{
 		id: "city",
 		name: "city",
 		label: "Населений пункт",
 		autoComplete: "city",
+		placeholder: "Київ",
 	},
 	{
 		id: "numberDepartment",
 		name: "numberDepartment",
 		label: "Номер віділення нової пошти",
 		autoComplete: "numberDepartment",
+		placeholder: "24",
 	},
 	{
 		id: "adressDepartment",
 		name: "adressDepartment",
 		label: "Адреса віділення нової пошти",						
 		autoComplete: "adressDepartment",
+		placeholder: "Київська, 19",
 	},
 ]
