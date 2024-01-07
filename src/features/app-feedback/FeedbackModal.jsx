@@ -118,7 +118,6 @@ export const FeedbackModal = () => {
     }, [formData, isFormValid])
 
     const applyWriteUsHandler = async (event) => {
-        // async await + try catch
         const isSending = await SendDataInEmail( emailForSend, formData )
         setIsSendingCallback(isSending)
         console.log(isSending);

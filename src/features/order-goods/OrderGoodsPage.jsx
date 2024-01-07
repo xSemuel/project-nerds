@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react'
 
 import { OrderInfoSucess } from './OrderInfoSucess';
+import { TextInput } from './TextInput';
 import { orderCustomer, orderDelivery } from '../../constants';
 
 
@@ -79,9 +80,12 @@ export const OrderGoodsPage = () => {
 															  totalSumOfOrder: cartSum,
 															})
 
-    // const onChangeHandler = (filterName, value) => {
     const onChangeHandler = (e) => {
 		const { id: filterName, value } = e.target
+        setObjectOrderGood((prevState) => ({ ...prevState, [filterName]: value }))
+    }
+
+    const handleValidation = (filterName, value) => {
         setObjectOrderGood((prevState) => ({ ...prevState, [filterName]: value }))
     }
 
@@ -96,6 +100,7 @@ export const OrderGoodsPage = () => {
 		dispatch(resetCart())
 		setOpenOrderInfo(true)
     }
+
 
   	return ( 
       	<Container fixed css={orderGoodsContainer}>
@@ -117,9 +122,9 @@ export const OrderGoodsPage = () => {
 							</Typography>
 						</Grid>
 
-						{orderCustomer.map(({id, name, label, autoComplete}) => (
+						{orderCustomer.map(({id, name, label, autoComplete, placeholder}) => (
 							<Grid item xs={12} sm={6} key={id}>
-								<TextField
+								{/* <TextField
 									required
 									fullWidth
 									id={id}
@@ -127,6 +132,15 @@ export const OrderGoodsPage = () => {
 									label={label}
 									autoComplete={autoComplete}
 									onChange={onChangeHandler}
+								/> */}
+								<TextInput 
+									onValidation={handleValidation}
+									id={id}
+									name={name}
+									rows={1}
+									label={label}
+									autoComplete={autoComplete}
+									placeholder={placeholder}
 								/>
 							</Grid>
 						))}
