@@ -49,8 +49,11 @@ export const TextInput = ({ onValidation, id, name, label, autoComplete, placeho
             autoComplete={autoComplete}
             value={inputValue}
             onChange={handleInputChange}
+            // onBlur={handleInputChange}
             error={error}
             helperText={errorText}
         />
     );
 };
+
+

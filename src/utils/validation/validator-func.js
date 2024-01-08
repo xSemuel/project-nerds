@@ -7,6 +7,8 @@ export const checkIsEmptyString = (value) => value.length === 0
 
 export const checkIsNumberInRange = (value, min, max) => value.length > min && value.length <= max
 
+// export const checkIsNumberInRange1 = (numb, min, max) => numb >= min && numb <= max
+
 // ---------------- for email
 
 export const checkIsCorrectlyEmail = (value) => (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value))
