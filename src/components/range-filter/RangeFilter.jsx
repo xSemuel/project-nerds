@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import { Box, Slider, Paper, Stack, styled, TextField } from '@mui/material';
+import { Box, Slider, Paper, Stack, styled } from '@mui/material';
 import { css } from '@emotion/react';
 import { useState } from 'react';
-// import RangeInput from './RangeInput';
+import { RangeInput } from './RangeInput';
 
 const wrapperRangeFilter = css`
     width: 260px; 
@@ -18,12 +18,10 @@ const sliderRange = css`
     color: #d7373b; 
     width: 200px;
 `
-
 const wrapperInputItem = css`
     width: 120px; 
     height: 38px;
 `
-
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -101,7 +99,7 @@ export const RangeFilter = (props) => {
                 {options.map(({text, id, indexValue}) => 
                     <Box key={text} direction="row" spacing={{sm:1, xs:1}} css={wrapperInputItem}>
                         <Stack direction="row" justifyContent="space-between">
-                            <TextField
+                            {/* <TextField
                                 value={value[indexValue]}
                                 id={id}
                                 onChange={validateFunc}
@@ -116,7 +114,16 @@ export const RangeFilter = (props) => {
                                     min: {min},
                                     max: {max},
                                 }}
+                            /> */}
+                            <RangeInput 
+                                value={value[indexValue]}
+                                id={id}
+                                onChange={validateFunc}
+                                label={text}
+                                min={min}
+                                max={max}
                             />
+
                         </Stack>
                     </Box>  
                 )}
