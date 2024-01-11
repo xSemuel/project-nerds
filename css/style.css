@@ -1,0 +1,91 @@
+:root {
+  
+  --color-bg-main: #eee;
+  --special-grey-active: #a6a6a6;
+  --basic-white: #ffffff;
+  --basic-grey-dark: #444444;
+  --basic-grey-light: #e1e1e1;
+  --special-red-hover: #e74246;
+  --special-red-active: #d7373b;
+  --basic-black-rgb: 0, 0, 0;
+  --basic-grey: #666666;
+  --basic-black-rgb: 0, 0, 0;
+  --basic-red: #fb565a;
+  --special-red-hover: #e74246;
+  --special-red-active: #d7373b;
+
+}
+
+/* Global */
+
+.container {
+  max-width: 1150px;
+}
+
+.bg-color-main {
+  background-color: var(--color-bg-main);
+}
+
+/*Store*/
+
+/*Filters*/
+
+/*Filter Panel*/
+
+.filter-cost {
+  text-transform: uppercase;
+}
+
+.filter-cost legend {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.form-range { 
+  margin-bottom: 13px;
+  padding: 23px 18px;
+  height: 80px;
+  border-radius: 3px;
+  background-color: var(--color-bg-main);
+  
+}
+
+.slider-color {
+  color: var(--basic-black);
+}
+
+.inut-range__number {
+  box-sizing: border-box;
+  margin-left: 8px;
+  padding: 2px;
+  width: 80px;
+  height: 38px;
+  border-radius: 2px;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  text-align: center;
+  background-color: #eee;
+}
+
+.inut-range__number:active, :hover, :focus {
+  outline: 0;
+  outline-offset: 0;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+}
+
+
+
+

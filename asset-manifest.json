@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.js": "/static/js/main.a0f3153c.js",
+    "static/media/findGoods.png": "/static/media/findGoods.3bf78932a1241268d96a.png",
+    "static/media/cartEmpty.png": "/static/media/cartEmpty.95dedd7bf8e4a3f46aaa.png",
+    "static/media/slide_3.png": "/static/media/slide_3.a4ac790f1b9757cada30.png",
+    "static/media/slide_1.png": "/static/media/slide_1.e5516ca51cafd7e03612.png",
+    "static/media/slide_2.png": "/static/media/slide_2.0735aa0ee44cea040353.png",
+    "static/media/img-sedona-1.jpg": "/static/media/img-sedona-1.482b983097d7d2f85355.jpg",
+    "static/media/img-kvast-1.jpg": "/static/media/img-kvast-1.845a8ba954f59d19914e.jpg",
+    "static/media/img-pink-1.jpg": "/static/media/img-pink-1.fe93404007dfd0b0cf23.jpg",
+    "static/media/img-aplus-1.jpg": "/static/media/img-aplus-1.3675ad4297a8b721b0bc.jpg",
+    "static/media/img-mishka-1.jpg": "/static/media/img-mishka-1.46efe399eb91dbbff136.jpg",
+    "static/media/img-barbershop-1.jpg": "/static/media/img-barbershop-1.cb1e4af945b09ccd7ae4.jpg",
+    "static/media/nerds-illustration.png": "/static/media/nerds-illustration.047d7bc192c584a63d5c.png",
+    "static/media/aboutUs.jpg": "/static/media/aboutUs.fd03c02cf1b82fcacc66.jpg",
+    "static/media/404NotFound.png": "/static/media/404NotFound.0a6f66e4652820dc9b57.png",
+    "static/media/barber-shop.svg": "/static/media/barber-shop.6e991f6752632f71c39e1eff5f96a088.svg",
+    "static/media/illustration_2.jpg": "/static/media/illustration_2.9ebe6c28f317bb223c9f.jpg",
+    "static/media/map-marker.png": "/static/media/map-marker.e5faf53fc190f8d24f83.png",
+    "static/media/illustration_1.jpg": "/static/media/illustration_1.2cf089eb2286a4037fd6.jpg",
+    "static/media/html-academy.svg": "/static/media/html-academy.286304ed08c67860e4b7da003e2e6ed1.svg",
+    "static/media/mishka.svg": "/static/media/mishka.e845cbcff3bf0cab673e42578e73f883.svg",
+    "static/media/pink.svg": "/static/media/pink.497a822013aaeeb04ddbe3e854776807.svg",
+    "static/media/nerds-logo.svg": "/static/media/nerds-logo.c1a81aae347cfa12cfaa5a0c60a6fc93.svg",
+    "static/media/vk-icon.svg": "/static/media/vk-icon.c3a63aa3332193692fae1024479756fc.svg",
+    "index.html": "/index.html",
+    "static/media/insta-icon.svg": "/static/media/insta-icon.66b031faf7f6a99fcf71740027a812f8.svg",
+    "static/media/Rectangle10.svg": "/static/media/Rectangle10.7191d3f6ac182b158590a25ba565ba0b.svg",
+    "main.a0f3153c.js.map": "/static/js/main.a0f3153c.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.a0f3153c.js"
+  ]
+}
