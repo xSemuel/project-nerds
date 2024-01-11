@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { Grid, Typography, FormControlLabel, Checkbox, Container, Button, Box, Table, TableBody, TableRow, TableCell } from '@mui/material';
+import { Grid, TextField, Typography, FormControlLabel, Checkbox, Container, Button, Box, Table, TableBody, TableRow, TableCell } from '@mui/material';
 import { selectedGoodsInCart, sumSelectedGoodsInCart, updateOrderList } from '../../store/slices';
 import { currentNumberOfOrder, resetCart } from '../../store/slices'
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react'
 
 import { OrderInfoSucess } from './OrderInfoSucess';
-import { TextInput } from './TextInput';
+// import { TextInput } from './copy/TextInput';
 import { orderCustomer, orderDelivery } from '../../constants';
 
 
@@ -68,62 +68,57 @@ const buttonStyles = css`
 	`
 
 export const OrderGoodsPage = () => {
+	const currentOrder = useSelector(currentNumberOfOrder);
+	const cart = useSelector(selectedGoodsInCart);
+    const cartSum = useSelector(sumSelectedGoodsInCart);
 
-	const [ openOrderInfo, setOpenOrderInfo] = useState(false); // isOrderInfoOpen, setIsOrderInfoOpen
-	const [isButtonDisabled, setIsButtonDisabled] = useState(true); // === isFormValid ???
-	const [isFormValid, setIFormsValid]= useState({})  // remove
+    // joi in helper
 	
+	// const [inputValue, setInputValue] = useState('');
+	// const [errorText, setErrorText] = useState('');
+	// const [error, setError] = useState(false);
+
+	const [ isOrderInfoOpen, setIsOrderInfoOpen] = useState(false);
+	const [isButtonDisabled, setIsButtonDisabled] = useState(true); // === isFormValid ???
 	const dispatch = useDispatch();
-	const currentOrder = useSelector(currentNumberOfOrder); // remove
-	const cart = useSelector(selectedGoodsInCart); // remove
-    const cartSum = useSelector(sumSelectedGoodsInCart);  // remove
 
-	// const [objectOrderGood, setObjectOrderGood] = useState({idOrder: currentOrder,
-	// 														  OrderGoods: cart,
-	// 														  totalSumOfOrder: cartSum,
-	// 														})
-	const [objectOrderGood, setObjectOrderGood] = useState({
-		firstName: '', // ....
+
+
+	const [buyerInfo, setBuyerInfo] = useState({   // orderInfo
+		firstName: '',
 		lastName: '',
-	}) // buyerInfo, setBuyerInfo
-
-		// TODO: rename to onChange													
-    const handleValidation = (filterName, value, isValidTextField) => {
-        setObjectOrderGood((prevState) => ({ ...prevState, [filterName]: value }))
-		// setIFormsValid((prevState) => ({ ...prevState, [filterName]: isValidTextField }))
-    }
+	});
+												
 
 	useEffect(() => {     // useMemo
-		console.log(isFormValid)
-        const validateForSend = Object.values(isFormValid).every(item => item !== true && item !== '') && Object.values(isFormValid).length === 8
-		console.log(validateForSend)
-        // validateForSend ? setIsButtonDisabled(false) : setIsButtonDisabled(true)  
+		console.log(buyerInfo)
+        const validateForSend = Object.values(buyerInfo).every(item => item !== true && item !== '') && Object.values(buyerInfo).length === 8
+		console.log(validateForSend) 
         setIsButtonDisabled(validateForSend)  
-    }, [isFormValid])
+    }, [buyerInfo])
+
+    const onChangeHandler = (e) => {
+		const { id: filterName, value } = e.target
+        setBuyerInfo((prevState) => ({ ...prevState, [filterName]: value }))
+    }
 
 	const onCheckHandler = (e) => {
 		const { id: filterName, checked } = e.target
-        setObjectOrderGood((prevState) => ({ ...prevState, [filterName]: checked }))
+        setBuyerInfo((prevState) => ({ ...prevState, [filterName]: checked }))
     }
 
 	const applyOrdersGoodsHandler = (event) => {
         event.preventDefault();
-        // dispatch(updateOrderList(objectOrderGood))
-        dispatch(updateOrderList({
-			...objectOrderGood,
-			// idOrder: currentOrder,
-			// OrderGoods: cart,
-			// totalSumOfOrder: cartSum
-		}))
+        dispatch(updateOrderList(buyerInfo))
 		dispatch(resetCart())
-		setOpenOrderInfo(true)
+		setIsOrderInfoOpen(true)
     }
 
 
   	return ( 
       	<Container fixed css={orderGoodsContainer}>
 
-			{openOrderInfo ? <OrderInfoSucess options={objectOrderGood}/> : 
+			{isOrderInfoOpen ? <OrderInfoSucess options={buyerInfo}/> : 
 
 				<Box css={orderGoodsWrapper}>
 					<Typography 
@@ -142,14 +137,21 @@ export const OrderGoodsPage = () => {
 
 						{orderCustomer.map(({id, name, label, autoComplete, placeholder}) => (
 							<Grid item xs={12} sm={6} key={id}>
-								<TextInput 
-									onValidation={handleValidation}
-									id={id}
-									name={name}
-									rows={1}
+								<TextField
+									required
+									fullWidth
 									label={label}
-									autoComplete={autoComplete}
+									rows={1}
+									multiline
+									id={id}
 									placeholder={placeholder}
+									name={name}
+									hiddenLabel
+									autoComplete={autoComplete}
+									onChange={onChangeHandler}
+									// onBlur={onChangeHandler}
+									// error={error}
+									// helperText={errorText}
 								/>
 							</Grid>
 						))}
@@ -167,14 +169,22 @@ export const OrderGoodsPage = () => {
 
 						{orderDelivery.map(({id, name, label, autoComplete, placeholder}) => (
 							<Grid item xs={12} sm={6} key={id}>
-								<TextInput 
-									onValidation={handleValidation}
-									id={id}
-									name={name}
-									rows={1}
+								<TextField
+									required
+									fullWidth
 									label={label}
-									autoComplete={autoComplete}
+									rows={1}
+									multiline
+									id={id}
 									placeholder={placeholder}
+									name={name}
+									hiddenLabel
+									autoComplete={autoComplete}
+									onChange={onChangeHandler}
+									// onBlur={onChangeHandler}
+									// error={error}
+									// helperText={errors[id]}
+									// helperText={errorText}
 								/>
 							</Grid>
 						))}

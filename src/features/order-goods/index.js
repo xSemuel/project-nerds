@@ -1,3 +1,3 @@
 export * from './OrderGoodsPage';
 export * from './OrderInfoSucess';
-export * from './TextInput';
+export * from './copy/TextInput';

@@ -37,3 +37,6 @@ export const selectedGoods = createSelector( [selectGoodsInGoodsSelector, select
     // TODO: return { limit, offset }
     // return limit штук з
 })
+
+// export totalPagesCount
+

@@ -3,6 +3,9 @@ import { css } from '@emotion/react';
 import { Paper, Typography, Button } from '@mui/material';
 import { NavLink } from "react-router-dom";
 import { links } from '../../constants';
+import { selectedOrderListSlice, currentNumberOfOrder } from '../../store/slices';
+import { useSelector, useDispatch } from 'react-redux';
+
 
     const buttonStyles = css`  
     width: 180px;
