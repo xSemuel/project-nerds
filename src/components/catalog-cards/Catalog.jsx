@@ -6,7 +6,7 @@ import { PaginationList } from './PaginationList';
 import { CardItem } from './CardItem';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { selectedGoods, addIdToCart } from '../../store/slices';
+import { selectedGoods, addIdToCart, totalPagesCount } from '../../store/slices';
 import { toogleSnakebar, updateSnakebar, resetFilters } from '../../store/slices';
 
 import { Box, Typography, Button } from '@mui/material';
@@ -66,17 +66,19 @@ export const Catalog = () => {
 
     const dispatch = useDispatch();
     const goods = useSelector(selectedGoods); // TODO: update selector
+    const totalPagesCountPagination = useSelector(totalPagesCount); // TODO: update selector
     const [pagePaginationCurrent, setPagePaginationCurrent] = useState(1); // TODO: move to redux goods slice
     const handleChangePagination = (event, value) => {
         setPagePaginationCurrent(value);
     }
     
-    // TODO: move to selector (create new in goodsSelector file)
-    const totalCountPagePagination = (goods) => {
-        const totalCountGoods = goods.length
-        const numberGoodsInPage = 4 // limit
-        return Math.ceil(totalCountGoods/numberGoodsInPage)   
-    }
+
+    // // TODO: move to selector (create new in goodsSelector file)
+    // const totalCountPagePagination = (goods) => {
+    //     const totalCountGoods = goods.length
+    //     const numberGoodsInPage = 4 // limit
+    //     return Math.ceil(totalCountGoods/numberGoodsInPage)   
+    // }
 
     const handleCartAdd = (siteId) => {
         dispatch(addIdToCart(siteId))
@@ -114,7 +116,7 @@ export const Catalog = () => {
                             />
                         )}
                     </Box> 
-                    <PaginationList funcChangePagination={handleChangePagination} currentPage={pagePaginationCurrent}  numberPage={totalCountPagePagination(goods)}/>
+                    <PaginationList funcChangePagination={handleChangePagination} currentPage={pagePaginationCurrent}  numberPage={totalPagesCountPagination}/>
                 </Box>:
                 <Box css={wrapperNoFindedGoods}>
                     <Box 

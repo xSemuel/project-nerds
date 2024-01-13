@@ -5,6 +5,8 @@ export const selectfilterInGoodsSelector = state => state.filter
 export const selectSortInGoodsSelector = state => state.sort
 
 
+// ----- filters and sorts goods ------
+
 export const selectedGoods = createSelector( [selectGoodsInGoodsSelector, selectfilterInGoodsSelector, selectSortInGoodsSelector], (goods, filter, sort) => {    
     return goods.items.filter(item => {
         const isPrice = item.descPrice >= filter.price[0] && item.descPrice <= filter.price[1]
@@ -34,9 +36,20 @@ export const selectedGoods = createSelector( [selectGoodsInGoodsSelector, select
             } 
         }
     });
-    // TODO: return { limit, offset }
-    // return limit штук з
 })
 
-// export totalPagesCount
+// ----- Calculate the number of pages for pagination ------
+
+export const totalPagesCount = createSelector( [selectedGoods, selectGoodsInGoodsSelector], (selectedGoods, goods) => {
+    const totalCountGoods = selectedGoods.length;
+    const numberGoodsInPage = goods.page.limit
+    return Math.ceil(totalCountGoods/numberGoodsInPage)   
+})
+
+// ----- Cut goods for out in Catalog component ------
+
+
+
+
+
 
