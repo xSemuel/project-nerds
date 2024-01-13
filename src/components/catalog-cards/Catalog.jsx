@@ -1,12 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useState } from 'react';
 
 import { PaginationList } from './PaginationList';
 import { CardItem } from './CardItem';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { selectedGoods, addIdToCart, totalPagesCount } from '../../store/slices';
+import { selectedGoods, addIdToCart, totalPagesCount, goodsForCurrentPage, pageGoodsSlice, updateGoodsPage } from '../../store/slices';
 import { toogleSnakebar, updateSnakebar, resetFilters } from '../../store/slices';
 
 import { Box, Typography, Button } from '@mui/material';
@@ -65,21 +64,25 @@ import noFindedGoods from './img/findGoods.png';
 export const Catalog = () => {
 
     const dispatch = useDispatch();
-    const goods = useSelector(selectedGoods); // TODO: update selector
-    const totalPagesCountPagination = useSelector(totalPagesCount); // TODO: update selector
-    const [pagePaginationCurrent, setPagePaginationCurrent] = useState(1); // TODO: move to redux goods slice
-    const handleChangePagination = (event, value) => {
-        setPagePaginationCurrent(value);
-    }
+
+    const goods = useSelector(selectedGoods);
+    const objectPagePagination = useSelector(pageGoodsSlice);
+    const showGoodsCurrentPage = useSelector(goodsForCurrentPage);
+    const totalPagesCountPagination = useSelector(totalPagesCount);
     
+    console.log(objectPagePagination)
 
-    // // TODO: move to selector (create new in goodsSelector file)
-    // const totalCountPagePagination = (goods) => {
-    //     const totalCountGoods = goods.length
-    //     const numberGoodsInPage = 4 // limit
-    //     return Math.ceil(totalCountGoods/numberGoodsInPage)   
-    // }
+    const handleChangePagination = (event, value) => {
+        const calcOffset = (value - 1) * objectPagePagination.limit;
+        dispatch(updateGoodsPage({
+            limit: 4,
+            offset: calcOffset,
+            currentPage: value,
+        }))
+    }
 
+    console.log(showGoodsCurrentPage)
+    
     const handleCartAdd = (siteId) => {
         dispatch(addIdToCart(siteId))
 
@@ -95,20 +98,13 @@ export const Catalog = () => {
         dispatch(resetFilters())
     }
 
-
-    // TODO { limit: 4, offset: 8 }
-    // { limit: 4, offset: 0 } [1,2,3,4,5,6,7,8,9,0] // [1,2,3,4]
-    // { limit: 4, offset: 8 } [1,2,3,4,5,6,7,8,9,0] // [9,0]
-
-    const filteredItems = goods.slice((pagePaginationCurrent-1) * 4, (pagePaginationCurrent-1) * 4 + 4)
-
     return ( 
         <Box css={catalogContentWrapper}>
             {goods.length !== 0 ?
                 <Box>
                     <Box css={cardWrapper}>
 
-                        {filteredItems.map((item) =>
+                        {showGoodsCurrentPage.map((item) =>
                             <CardItem
                                 key={item.title}
                                 options={item}
@@ -116,7 +112,7 @@ export const Catalog = () => {
                             />
                         )}
                     </Box> 
-                    <PaginationList funcChangePagination={handleChangePagination} currentPage={pagePaginationCurrent}  numberPage={totalPagesCountPagination}/>
+                    <PaginationList funcChangePagination={handleChangePagination} currentPage={objectPagePagination.currentPage}  numberPage={totalPagesCountPagination}/>
                 </Box>:
                 <Box css={wrapperNoFindedGoods}>
                     <Box 

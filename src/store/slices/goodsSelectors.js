@@ -48,6 +48,9 @@ export const totalPagesCount = createSelector( [selectedGoods, selectGoodsInGood
 
 // ----- Cut goods for out in Catalog component ------
 
+export const goodsForCurrentPage = createSelector( [selectedGoods, selectGoodsInGoodsSelector], (selectedGoods, goods) => {
+    return selectedGoods.slice(goods.page.offset, goods.page.offset + goods.page.limit);
+})
 
 
 
