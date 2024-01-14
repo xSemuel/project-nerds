@@ -9,6 +9,8 @@ import { useState, useMemo } from 'react'
 import { OrderInfoSucess } from './OrderInfoSucess';
 import { orderCustomer, orderDelivery } from '../../constants';
 
+import { validateForm } from './helper';
+
 
 const buttonStyles = css`  
 	width: 260px;
@@ -71,14 +73,9 @@ export const OrderGoodsPage = () => {
 	const cart = useSelector(selectedGoodsInCart);
     const cartSum = useSelector(sumSelectedGoodsInCart);
 
-    // joi in helper
-	
-	// const [inputValue, setInputValue] = useState('');
-	// const [errorText, setErrorText] = useState('');
-	// const [error, setError] = useState(false);
 
 	const [ isOrderInfoOpen, setIsOrderInfoOpen] = useState(false);
-	const [isFormValid, setIsFormValid] = useState(true);
+	const [error, setError] = useState('');
 	const dispatch = useDispatch();
 
 
@@ -95,11 +92,8 @@ export const OrderGoodsPage = () => {
 	});
 												
 
-	useMemo(() => {
-		console.log(orderInfo)
-        const validateForSend = Object.values(orderInfo).every(item => item !== true && item !== '') && Object.values(orderInfo).length === 8
-		console.log(validateForSend) 
-        setIsFormValid(validateForSend)  
+	useMemo(() => {		
+		console.log(validateForm(orderInfo))
     }, [orderInfo])
 
     const onChangeHandler = (e) => {
@@ -114,11 +108,20 @@ export const OrderGoodsPage = () => {
 
 	const applyOrdersGoodsHandler = (event) => {
         event.preventDefault();
-        dispatch(updateOrderList(orderInfo))
-		dispatch(resetCart())
-		setIsOrderInfoOpen(true)
+
+		const isValid = validateForm(orderInfo);
+		console.log(isValid)
+		if (isValid === null) {
+			dispatch(updateOrderList(orderInfo))
+			dispatch(resetCart())
+			setIsOrderInfoOpen(true)
+		} else {
+			setError(isValid)
+		}
     }
 
+	console.log(isOrderInfoOpen)
+	console.log(error)
 
   	return ( 
       	<Container fixed css={orderGoodsContainer}>
@@ -155,8 +158,8 @@ export const OrderGoodsPage = () => {
 									autoComplete={autoComplete}
 									onChange={onChangeHandler}
 									// onBlur={onChangeHandler}
-									// error={error}
-									// helperText={errorText}
+									error={error.id}
+									// helperText={error}
 								/>
 							</Grid>
 						))}
@@ -241,11 +244,14 @@ export const OrderGoodsPage = () => {
 					</Grid>
 					<Button 
 						css={buttonStyles}
-						disabled={isFormValid} 
 						onClick={applyOrdersGoodsHandler}
 					>
 						Замовлення підтверджую
 					</Button>
+
+					<Grid item xs={12} >
+						{Object.keys(error).map(key => <Typography align="center" key={key}>{error[key]}</Typography>)}
+					</Grid>
 				</Box>
 			}
     	</Container>

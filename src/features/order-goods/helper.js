@@ -1,68 +1,55 @@
-import { ErrorMessages } from './constants'
-import { 
-    checkIsEmptyString, 
-    checkIsCorrectlyEmail, 
-    checkIsNumberInRange, 
-    checkIsCorrectlyTelephone,
-} from '../../utils/validation';
+const Joi = require('joi');
 
+export const schema = Joi.object({
+    firstName: Joi.string()
+        .min(3)
+        .max(30)
+        .required(),
 
-export const validateEmail = (email) => {
-    const value = email.trim()
-    const result = { isValid: true, errorMessage: '' }
+    lastName: Joi.string()
+        .min(3)
+        .max(30)
+        .required(),
 
-    if (checkIsEmptyString(value)) {
-        result.isValid = false
-        result.errorMessage = ErrorMessages.emptyEmail
-    } else if (checkIsCorrectlyEmail(value)) {
-        result.isValid = false
-        result.errorMessage = ErrorMessages.emailInvalidFormat
+    email: Joi.string()
+        .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
+
+    telephone: Joi.string()
+        .regex(/^[0-9]{10}$/),
+
+    state: Joi.string()
+        .min(3)
+        .max(30)
+        .required(),
+
+    city: Joi.string()
+        .min(3)
+        .max(30)
+        .required(),
+
+    numberDepartment: Joi.string()
+        .min(3)
+        .max(30)
+        .required(),
+
+    adressDepartment: Joi.string()
+        .min(3)
+        .max(30)
+        .required(), 
+
+    dontCallback: Joi.boolean(),
+
+        
+})
+
+export const validateForm = (form) => {
+    const { error } = schema.validate(form);
+    if (!error) return null;
+
+    const validationErrors = {};
+    for (let item of error.details) {
+      validationErrors[item.path[0]] = item.message;
     }
 
-    return result
-};
-
-export const validateName = (name) => {
-    const value = name.trim()
-    const result = { isValid: true, errorMessage: '' }
-
-    if (checkIsEmptyString(value)) {
-        result.isValid = false
-        result.errorMessage = ErrorMessages.empty
-    } else if (checkIsNumberInRange(value, 0, 3)) {
-        result.isValid = false
-        result.errorMessage = ErrorMessages.nameMinLength
-    }
-
-    return result
-};
-
-export const validatePhone = (name) => {
-    const value = name.trim()
-    const result = { isValid: true, errorMessage: '' }
-
-    if (checkIsEmptyString(value)) {
-        result.isValid = false
-        result.errorMessage = ErrorMessages.empty
-    } else if (checkIsCorrectlyTelephone(value)) {
-        result.isValid = false
-        result.errorMessage = ErrorMessages.telephoneInvalidFormat
-    }
-
-    return result
-};
-
-export const validateNumberDepartment = (name) => {
-    const value = name.trim()
-    const result = { isValid: true, errorMessage: '' }
-
-    if (checkIsEmptyString(value)) {
-        result.isValid = false
-        result.errorMessage = ErrorMessages.empty
-    } else if (isNaN(value)) {
-        result.isValid = false
-        result.errorMessage = ErrorMessages.isNumber
-    }
-
-    return result
+    return validationErrors;
 };
