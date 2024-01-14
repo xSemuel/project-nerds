@@ -4,7 +4,7 @@ import { Grid, TextField, Typography, FormControlLabel, Checkbox, Container, But
 import { selectedGoodsInCart, sumSelectedGoodsInCart, updateOrderList } from '../../store/slices';
 import { currentNumberOfOrder, resetCart } from '../../store/slices'
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react'
+import { useState, useMemo } from 'react'
 
 import { OrderInfoSucess } from './OrderInfoSucess';
 import { orderCustomer, orderDelivery } from '../../constants';
@@ -95,7 +95,7 @@ export const OrderGoodsPage = () => {
 	});
 												
 
-	useEffect(() => {     // useMemo
+	useMemo(() => {
 		console.log(orderInfo)
         const validateForSend = Object.values(orderInfo).every(item => item !== true && item !== '') && Object.values(orderInfo).length === 8
 		console.log(validateForSend) 
