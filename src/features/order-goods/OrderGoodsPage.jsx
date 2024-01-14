@@ -7,7 +7,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react'
 
 import { OrderInfoSucess } from './OrderInfoSucess';
-// import { TextInput } from './copy/TextInput';
 import { orderCustomer, orderDelivery } from '../../constants';
 
 
@@ -79,37 +78,43 @@ export const OrderGoodsPage = () => {
 	// const [error, setError] = useState(false);
 
 	const [ isOrderInfoOpen, setIsOrderInfoOpen] = useState(false);
-	const [isButtonDisabled, setIsButtonDisabled] = useState(true); // === isFormValid ???
+	const [isFormValid, setIsFormValid] = useState(true);
 	const dispatch = useDispatch();
 
 
-
-	const [buyerInfo, setBuyerInfo] = useState({   // orderInfo
+	const [orderInfo, setOrderInfo] = useState({
 		firstName: '',
 		lastName: '',
+		email: '',
+		telephone: '',
+		state: '',
+		city: '',
+		numberDepartment: '',
+		adressDepartment: '',
+		dontCallback: false,
 	});
 												
 
 	useEffect(() => {     // useMemo
-		console.log(buyerInfo)
-        const validateForSend = Object.values(buyerInfo).every(item => item !== true && item !== '') && Object.values(buyerInfo).length === 8
+		console.log(orderInfo)
+        const validateForSend = Object.values(orderInfo).every(item => item !== true && item !== '') && Object.values(orderInfo).length === 8
 		console.log(validateForSend) 
-        setIsButtonDisabled(validateForSend)  
-    }, [buyerInfo])
+        setIsFormValid(validateForSend)  
+    }, [orderInfo])
 
     const onChangeHandler = (e) => {
 		const { id: filterName, value } = e.target
-        setBuyerInfo((prevState) => ({ ...prevState, [filterName]: value }))
+        setOrderInfo((prevState) => ({ ...prevState, [filterName]: value }))
     }
 
 	const onCheckHandler = (e) => {
 		const { id: filterName, checked } = e.target
-        setBuyerInfo((prevState) => ({ ...prevState, [filterName]: checked }))
+        setOrderInfo((prevState) => ({ ...prevState, [filterName]: checked }))
     }
 
 	const applyOrdersGoodsHandler = (event) => {
         event.preventDefault();
-        dispatch(updateOrderList(buyerInfo))
+        dispatch(updateOrderList(orderInfo))
 		dispatch(resetCart())
 		setIsOrderInfoOpen(true)
     }
@@ -118,7 +123,7 @@ export const OrderGoodsPage = () => {
   	return ( 
       	<Container fixed css={orderGoodsContainer}>
 
-			{isOrderInfoOpen ? <OrderInfoSucess options={buyerInfo}/> : 
+			{isOrderInfoOpen ? <OrderInfoSucess options={orderInfo}/> : 
 
 				<Box css={orderGoodsWrapper}>
 					<Typography 
@@ -236,7 +241,7 @@ export const OrderGoodsPage = () => {
 					</Grid>
 					<Button 
 						css={buttonStyles}
-						disabled={isButtonDisabled} 
+						disabled={isFormValid} 
 						onClick={applyOrdersGoodsHandler}
 					>
 						Замовлення підтверджую
