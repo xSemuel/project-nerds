@@ -24,6 +24,5 @@ export const RangeInput = (props) => {
                 max: {max},
             }}
         />
-
     )
 }

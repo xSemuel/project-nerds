@@ -43,7 +43,7 @@ export const schema = Joi.object({
 })
 
 export const validateForm = (form) => {
-    const { error } = schema.validate(form);
+    const { error } = schema.validate(form, { abortEarly: false });
     if (!error) return null;
 
     const validationErrors = {};

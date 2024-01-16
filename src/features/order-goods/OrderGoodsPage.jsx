@@ -76,6 +76,7 @@ export const OrderGoodsPage = () => {
 
 	const [ isOrderInfoOpen, setIsOrderInfoOpen] = useState(false);
 	const [error, setError] = useState('');
+	const [errorText, setErrorText] = useState('');
 	const dispatch = useDispatch();
 
 
@@ -116,12 +117,22 @@ export const OrderGoodsPage = () => {
 			dispatch(resetCart())
 			setIsOrderInfoOpen(true)
 		} else {
-			setError(isValid)
+
+			const q = Object.keys(isValid)
+			
+			
+			q.map( key => {
+				
+				setErrorText((prevState) => ({ ...prevState, [key]: isValid[key] }))
+				setError((prevState) => ({ ...prevState, [key]: (!isValid[key].isValid) }))
+				// !validInput.isValid
+			})
 		}
     }
 
 	console.log(isOrderInfoOpen)
 	console.log(error)
+	console.log(errorText)
 
   	return ( 
       	<Container fixed css={orderGoodsContainer}>
@@ -158,8 +169,8 @@ export const OrderGoodsPage = () => {
 									autoComplete={autoComplete}
 									onChange={onChangeHandler}
 									// onBlur={onChangeHandler}
-									error={error.id}
-									// helperText={error}
+									error={error[id]}
+									helperText={errorText[id]}
 								/>
 							</Grid>
 						))}
