@@ -95,6 +95,7 @@ export const OrderGoodsPage = () => {
 
 	useMemo(() => {		
 		console.log(validateForm(orderInfo))
+		// setErrorText((prevState) => ({ ...prevState, [key]: isValid[key] }))
     }, [orderInfo])
 
     const onChangeHandler = (e) => {
@@ -110,8 +111,8 @@ export const OrderGoodsPage = () => {
 	const applyOrdersGoodsHandler = (event) => {
         event.preventDefault();
 
-		const isValid = validateForm(orderInfo);
-		console.log(isValid)
+		const isValid = validateForm(orderInfo); // errors
+		console.log("isValid",isValid)
 		if (isValid === null) {
 			dispatch(updateOrderList(orderInfo))
 			dispatch(resetCart())
@@ -130,9 +131,11 @@ export const OrderGoodsPage = () => {
 		}
     }
 
-	console.log(isOrderInfoOpen)
-	console.log(error)
-	console.log(errorText)
+	// console.log(isOrderInfoOpen)
+	// console.log(error)
+	// console.log(errorText)
+	console.log("errorText",errorText)
+
 
   	return ( 
       	<Container fixed css={orderGoodsContainer}>
@@ -169,7 +172,7 @@ export const OrderGoodsPage = () => {
 									autoComplete={autoComplete}
 									onChange={onChangeHandler}
 									// onBlur={onChangeHandler}
-									error={error[id]}
+									error={error[id]}  // Boolean(error[id])
 									helperText={errorText[id]}
 								/>
 							</Grid>
